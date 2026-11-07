@@ -39,6 +39,7 @@ public final class ClientSetup {
         MinecraftForge.EVENT_BUS.register(new ClientSetup());
         com.exiledradio.netherupdatebackport.blocks.client.BlocksClient.init();
         com.exiledradio.netherupdatebackport.soul.client.SoulClient.init();
+        com.exiledradio.netherupdatebackport.hoglin.client.HoglinClient.init();
         com.exiledradio.netherupdatebackport.fungus.client.FungusClient.init();
     }
 

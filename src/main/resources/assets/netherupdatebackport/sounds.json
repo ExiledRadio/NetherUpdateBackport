@@ -1551,5 +1551,289 @@
       }
     ],
     "subtitle": "subtitles.netherupdatebackport.item.armor.equip_netherite"
+  },
+  "entity.hoglin.ambient": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle1",
+        "volume": 0.65
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle3",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle4",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle5",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle6",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle7",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle8",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle9",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle10",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle11",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.hoglin.ambient"
+  },
+  "entity.hoglin.angry": {
+    "sounds": [
+      "netherupdatebackport:mob/hoglin/angry1",
+      "netherupdatebackport:mob/hoglin/angry2",
+      "netherupdatebackport:mob/hoglin/angry3",
+      "netherupdatebackport:mob/hoglin/angry4",
+      "netherupdatebackport:mob/hoglin/angry5",
+      "netherupdatebackport:mob/hoglin/angry6"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.hoglin.angry"
+  },
+  "entity.hoglin.attack": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/hoglin/attack1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/attack1",
+        "pitch": 0.8,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/attack2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/attack2",
+        "pitch": 0.8,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.hoglin.attack"
+  },
+  "entity.hoglin.converted_to_zombified": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/hoglin/converted1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/converted2",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.hoglin.converted_to_zombified"
+  },
+  "entity.hoglin.death": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/hoglin/death1",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/death2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/death3",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.hoglin.death"
+  },
+  "entity.hoglin.hurt": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/hoglin/hurt1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/hurt2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/hurt3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/hurt4",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.hoglin.hurt"
+  },
+  "entity.hoglin.retreat": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/hoglin/idle11",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/retreat1",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/retreat2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/hoglin/retreat3",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.hoglin.retreat"
+  },
+  "entity.hoglin.step": {
+    "sounds": [
+      "netherupdatebackport:mob/hoglin/step1",
+      "netherupdatebackport:mob/hoglin/step2",
+      "netherupdatebackport:mob/hoglin/step3",
+      "netherupdatebackport:mob/hoglin/step4",
+      "netherupdatebackport:mob/hoglin/step5",
+      "netherupdatebackport:mob/hoglin/step6"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.hoglin.step"
+  },
+  "entity.zoglin.ambient": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/zoglin/idle1",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/idle1",
+        "pitch": 0.8,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/idle2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/idle3",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/idle4",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/idle5",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/idle6",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zoglin.ambient"
+  },
+  "entity.zoglin.angry": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/zoglin/angry1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/angry2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/angry3",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zoglin.angry"
+  },
+  "entity.zoglin.attack": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/zoglin/attack1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/attack1",
+        "pitch": 0.8,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/attack2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/attack2",
+        "pitch": 0.8,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zoglin.attack"
+  },
+  "entity.zoglin.death": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/zoglin/death1",
+        "volume": 0.93
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/death2",
+        "volume": 0.93
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/death3",
+        "volume": 0.93
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zoglin.death"
+  },
+  "entity.zoglin.hurt": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/zoglin/hurt1",
+        "volume": 0.83
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/hurt2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/zoglin/hurt3",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zoglin.hurt"
+  },
+  "entity.zoglin.step": {
+    "sounds": [
+      "netherupdatebackport:mob/zoglin/step1",
+      "netherupdatebackport:mob/zoglin/step2",
+      "netherupdatebackport:mob/zoglin/step3",
+      "netherupdatebackport:mob/zoglin/step4",
+      "netherupdatebackport:mob/zoglin/step5"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zoglin.step"
   }
 }
