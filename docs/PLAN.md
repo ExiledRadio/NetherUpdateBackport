@@ -223,7 +223,11 @@ instance that has Future MC, and `/futuremc check` reporting 0 mismatches.
 
 ## Still open (the user's call)
 
-### 1. The four nether biomes
+### 1. The four nether biomes: decided 2026-11-07, Proposal A
+
+The user chose **Proposal A**: real biomes behind `biomes.enabled`, vanilla's nether terrain shape kept, and
+stepping aside when another mod has already replaced the nether's biome provider. Built as stream V, after the mobs.
+The original write-up follows.
 
 Crimson forest, warped forest, soul sand valley and basalt deltas, with nether wastes for the rest. They
 replace vanilla's single `Hell` biome in newly generated nether chunks, which matters in big packs: the
@@ -321,4 +325,5 @@ As Update Aquatic's plan, unchanged:
 3. Mobs: H **done**; then R (needs a lava-walking path processor: 1.12.2's walk processor has no "stand on a
    fluid"), P, Z. Then M and C.
 4. Fm once the blocks exist (they do; needs a dev game with Future MC for `/futuremc dump`).
-5. V and X after the user's answers; X once Core has the template loader.
+5. V (Proposal A, decided) after the mobs; X after the user's answer on bastions and fortresses, and once Core has
+   the template loader.
