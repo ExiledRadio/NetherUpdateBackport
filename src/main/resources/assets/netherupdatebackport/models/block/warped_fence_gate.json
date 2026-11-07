@@ -1,0 +1,6 @@
+{
+  "parent": "netherupdatebackport:block/template_fence_gate",
+  "textures": {
+    "texture": "netherupdatebackport:block/warped_planks"
+  }
+}

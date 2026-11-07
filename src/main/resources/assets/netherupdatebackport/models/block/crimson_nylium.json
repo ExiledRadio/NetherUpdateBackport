@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "netherupdatebackport:block/crimson_nylium",
+    "bottom": "netherupdatebackport:block/netherrack",
+    "side": "netherupdatebackport:block/crimson_nylium_side"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "netherupdatebackport:wooden_pressure_plate",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "netherupdatebackport:warped_planks"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:warped_pressure_plate"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:warped_planks",
+        "netherupdatebackport:warped_pressure_plate"
+      ]
+    }
+  ]
+}

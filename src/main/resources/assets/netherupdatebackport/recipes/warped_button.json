@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "netherupdatebackport:wooden_button",
+  "ingredients": [
+    {
+      "item": "netherupdatebackport:warped_planks"
+    }
+  ],
+  "result": {
+    "item": "netherupdatebackport:warped_button"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:warped_button",
+        "netherupdatebackport:warped_planks"
+      ]
+    }
+  ]
+}

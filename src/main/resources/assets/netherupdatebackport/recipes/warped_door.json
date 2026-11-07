@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "netherupdatebackport:wooden_door",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "netherupdatebackport:warped_planks"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:warped_door",
+    "count": 3
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:warped_door",
+        "netherupdatebackport:warped_planks"
+      ]
+    }
+  ]
+}

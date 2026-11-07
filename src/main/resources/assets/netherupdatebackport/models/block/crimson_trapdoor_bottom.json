@@ -1,0 +1,6 @@
+{
+  "parent": "netherupdatebackport:block/template_orientable_trapdoor_bottom",
+  "textures": {
+    "texture": "netherupdatebackport:block/crimson_trapdoor"
+  }
+}

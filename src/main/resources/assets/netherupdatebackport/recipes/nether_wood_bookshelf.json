@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX",
+    "###"
+  ],
+  "key": {
+    "#": [
+      {
+        "item": "minecraft:planks",
+        "data": 32767
+      },
+      {
+        "item": "netherupdatebackport:crimson_planks"
+      },
+      {
+        "item": "netherupdatebackport:warped_planks"
+      }
+    ],
+    "X": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "minecraft:bookshelf"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crimson_planks",
+        "netherupdatebackport:warped_planks"
+      ]
+    }
+  ]
+}

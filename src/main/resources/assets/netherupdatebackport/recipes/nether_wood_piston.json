@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TTT",
+    "#X#",
+    "#R#"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "#": {
+      "item": "minecraft:cobblestone"
+    },
+    "T": [
+      {
+        "item": "minecraft:planks",
+        "data": 32767
+      },
+      {
+        "item": "netherupdatebackport:crimson_planks"
+      },
+      {
+        "item": "netherupdatebackport:warped_planks"
+      }
+    ],
+    "X": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "minecraft:piston"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crimson_planks",
+        "netherupdatebackport:warped_planks"
+      ]
+    }
+  ]
+}

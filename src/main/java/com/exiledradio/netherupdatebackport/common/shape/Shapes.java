@@ -150,4 +150,68 @@ public final class Shapes {
             return this.color;
         }
     }
+
+    /** A door; the item is a {@code net.minecraft.item.ItemDoor} the caller registers. */
+    public static final class Door extends net.minecraft.block.BlockDoor {
+        private net.minecraft.item.Item item;
+
+        public Door(Material material, SoundType sound, float hardness) {
+            super(material);
+            strength(this, hardness, hardness);
+            setSoundType(sound);
+        }
+
+        public void setItem(net.minecraft.item.Item item) {
+            this.item = item;
+        }
+
+        @Override
+        public net.minecraft.item.Item getItemDropped(IBlockState state, java.util.Random rand, int fortune) {
+            return state.getValue(HALF) == EnumDoorHalf.UPPER ? net.minecraft.init.Items.AIR : this.item;
+        }
+
+        @Override
+        public ItemStack getItem(net.minecraft.world.World world, BlockPos pos, IBlockState state) {
+            return new ItemStack(this.item);
+        }
+    }
+
+    /** A trapdoor. */
+    public static final class Trapdoor extends net.minecraft.block.BlockTrapDoor {
+        public Trapdoor(Material material, SoundType sound, float hardness) {
+            super(material);
+            strength(this, hardness, hardness);
+            setSoundType(sound);
+        }
+    }
+
+    /**
+     * A wooden fence. It joins every other wooden fence (vanilla's join only fences of their own
+     * material, which these share: {@code Material.WOOD}) and fence gates.
+     */
+    public static final class Fence extends net.minecraft.block.BlockFence {
+        public Fence(Material material, MapColor color, SoundType sound, float hardness, float blast) {
+            super(material, color);
+            strength(this, hardness, blast);
+            setSoundType(sound);
+        }
+    }
+
+    /** A fence gate. Its map color is passed as vanilla's plank type's; the gate's own color is overridden. */
+    public static final class FenceGate extends net.minecraft.block.BlockFenceGate {
+        private final MapColor color;
+
+        public FenceGate(MapColor color, SoundType sound, float hardness, float blast) {
+            super(net.minecraft.block.BlockPlanks.EnumType.OAK);
+            this.color = color;
+            strength(this, hardness, blast);
+            setSoundType(sound);
+        }
+
+        @Override
+        @SuppressWarnings("deprecation")
+        public MapColor getMapColor(IBlockState state, IBlockAccess world, BlockPos pos) {
+            return this.color;
+        }
+    }
 }

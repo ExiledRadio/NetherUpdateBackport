@@ -113,6 +113,7 @@ FLAT = {
     "minecraft:red_nether_bricks": ("minecraft:red_nether_brick", 0),
     "minecraft:nether_brick_slab": ("minecraft:stone_slab", 6),
     "minecraft:quartz_slab": ("minecraft:stone_slab", 7),
+    "minecraft:note_block": ("minecraft:noteblock", 0),
 }
 # 1.12.2 items with subtypes: a recipe must give their data value.
 SUBTYPED = {"minecraft:" + n for n in (

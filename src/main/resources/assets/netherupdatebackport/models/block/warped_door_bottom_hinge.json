@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom_rh",
+  "textures": {
+    "top": "netherupdatebackport:block/warped_door_top",
+    "bottom": "netherupdatebackport:block/warped_door_bottom"
+  }
+}

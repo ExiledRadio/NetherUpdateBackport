@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "netherupdatebackport:planks",
+  "ingredients": [
+    [
+      {
+        "item": "netherupdatebackport:crimson_stem"
+      },
+      {
+        "item": "netherupdatebackport:stripped_crimson_stem"
+      },
+      {
+        "item": "netherupdatebackport:crimson_hyphae"
+      },
+      {
+        "item": "netherupdatebackport:stripped_crimson_hyphae"
+      }
+    ]
+  ],
+  "result": {
+    "item": "netherupdatebackport:crimson_planks",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crimson_hyphae",
+        "netherupdatebackport:crimson_planks",
+        "netherupdatebackport:crimson_stem",
+        "netherupdatebackport:stripped_crimson_hyphae",
+        "netherupdatebackport:stripped_crimson_stem"
+      ]
+    }
+  ]
+}

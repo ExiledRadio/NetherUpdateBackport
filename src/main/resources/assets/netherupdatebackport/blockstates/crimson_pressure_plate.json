@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "netherupdatebackport:crimson_pressure_plate"
+    },
+    "powered=true": {
+      "model": "netherupdatebackport:crimson_pressure_plate_down"
+    }
+  }
+}

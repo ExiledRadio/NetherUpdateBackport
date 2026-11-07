@@ -46,6 +46,7 @@ public final class SelfTestRunner {
             new ScaffoldSelfTest(),
             new StoneSelfTest(),
             new BlocksSelfTest(),
+            new FungusSelfTest(),
     };
 
     private final List<String> wanted;

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "netherupdatebackport:wooden_fence_gate",
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "netherupdatebackport:crimson_planks"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:crimson_fence_gate"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crimson_fence_gate",
+        "netherupdatebackport:crimson_planks"
+      ]
+    }
+  ]
+}
