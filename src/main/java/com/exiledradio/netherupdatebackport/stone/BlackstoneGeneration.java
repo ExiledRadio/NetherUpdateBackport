@@ -29,10 +29,11 @@ final class BlackstoneGeneration implements IWorldGenerator {
             return;
         }
         WorldGenMinable blob = new WorldGenMinable(StoneContent.blackstone.getDefaultState(), 33, BlockMatcher.forBlock(Blocks.NETHERRACK));
-        // +8: decorate the middle of the 2x2 chunks vanilla guarantees are generated, never a neighbor
-        // that would have to be generated for it.
-        int x = chunkX * 16 + 8;
-        int z = chunkZ * 16 + 8;
+        // No +8 here: WorldGenMinable adds it itself (as vanilla's quartz and magma calls rely on), so the
+        // blob lands in the middle of the 2x2 chunks that population guarantees. Adding it again pushed
+        // blobs 16-31 blocks in plus their reach, into chunks not yet generated (cascading worldgen).
+        int x = chunkX * 16;
+        int z = chunkZ * 16;
         for (int i = 0; i < 2; i++) {
             blob.generate(world, random, new BlockPos(x + random.nextInt(16), 5 + random.nextInt(27), z + random.nextInt(16)));
         }

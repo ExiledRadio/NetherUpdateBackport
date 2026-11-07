@@ -42,6 +42,7 @@ public final class ClientSetup {
         com.exiledradio.netherupdatebackport.hoglin.client.HoglinClient.init();
         com.exiledradio.netherupdatebackport.strider.client.StriderClient.init();
         com.exiledradio.netherupdatebackport.fungus.client.FungusClient.init();
+        com.exiledradio.netherupdatebackport.changes.client.ChangesClient.init();
     }
 
     @SubscribeEvent

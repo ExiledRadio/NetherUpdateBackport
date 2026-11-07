@@ -67,6 +67,7 @@ public final class NetherUpdateBackport {
         com.exiledradio.netherupdatebackport.common.Smelting.init();
         com.exiledradio.netherupdatebackport.blocks.BlocksContent.init();
         com.exiledradio.netherupdatebackport.netherite.NetheriteContent.init();
+        com.exiledradio.netherupdatebackport.changes.ChangesContent.init();
     }
 
     @Mod.EventHandler

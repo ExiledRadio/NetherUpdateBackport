@@ -207,6 +207,16 @@ public final class ModConfig {
         @Config.Comment("Smaller 1.16 changes to existing blocks and items.")
         @Config.LangKey("config.netherupdatebackport.changes.enabled")
         public boolean enabled = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Hoes are the tool for leaves, hay bales, wart blocks, sponges, dried kelp blocks, targets and shroomlights,",
+                "and break them faster. Like other tools, a hoe then wears 1 durability per block it breaks and 2 per hit."})
+        @Config.LangKey("config.netherupdatebackport.changes.hoes")
+        public boolean hoes = true;
+
+        @Config.Comment("In lava you see 5 blocks with Fire Resistance and 1 without.")
+        @Config.LangKey("config.netherupdatebackport.changes.lavaFog")
+        public boolean lavaFog = true;
     }
 
     public static final class Biomes {
