@@ -47,6 +47,7 @@ public final class ClientSetup {
         com.exiledradio.netherupdatebackport.biome.client.BiomeClient.init();
         com.exiledradio.netherupdatebackport.owned.client.CrossbowClient.init();
         com.exiledradio.netherupdatebackport.piglin.client.PiglinClient.init();
+        com.exiledradio.netherupdatebackport.music.client.MusicClient.init();
     }
 
     @SubscribeEvent

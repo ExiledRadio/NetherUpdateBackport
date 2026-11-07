@@ -56,6 +56,7 @@ public final class SelfTestRunner {
             new MobsSelfTest(),
             new BiomeSelfTest(),
             new PiglinSelfTest(),
+            new MusicSelfTest(),
     };
 
     private final List<String> wanted;

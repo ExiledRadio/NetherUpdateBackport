@@ -205,6 +205,20 @@ public final class ModConfig {
         @Config.Comment("The Pigstep disc and 1.16's nether music and sounds. Off, nothing is registered.")
         @Config.LangKey("config.netherupdatebackport.music.enabled")
         public boolean enabled = true;
+
+        @Config.Comment("Pigstep can be found in nether fortress chests (the chance a bastion's chests have, 5 in 89), until bastions exist.")
+        @Config.LangKey("config.netherupdatebackport.music.pigstepInFortressChests")
+        public boolean pigstepInFortressChests = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"1.16's music: each nether biome has its own tracks, and music no longer stops when you switch game",
+                "modes or walk into another biome. Client only."})
+        @Config.LangKey("config.netherupdatebackport.music.biomeMusic")
+        public boolean biomeMusic = true;
+
+        @Config.Comment("1.16's nether ambience: each nether biome's sound loop, mood sounds and additions. Client only.")
+        @Config.LangKey("config.netherupdatebackport.music.biomeAmbience")
+        public boolean biomeAmbience = true;
     }
 
     public static final class Changes {
