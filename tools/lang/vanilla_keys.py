@@ -26,6 +26,8 @@ SPECIAL = {
     "tile.pressurePlateWood.name": "block.minecraft.oak_pressure_plate",
     # 1.16 renamed the zombie pigman (stream Z keeps the entity and overrides 1.12.2's own key).
     "entity.PigZombie.name": "entity.minecraft.zombified_piglin",
+    # 1.12.2's records name their description item.record.<name>.desc (stream M).
+    "item.record.%s.pigstep.desc" % M: "item.minecraft.music_disc_pigstep.desc",
 }
 
 

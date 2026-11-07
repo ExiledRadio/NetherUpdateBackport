@@ -27,6 +27,7 @@ public final class NetherUpdateCore implements IFMLLoadingPlugin {
     public String[] getASMTransformerClass() {
         return new String[] {
                 PigZombieTransformer.class.getName(),
+                JukeboxTransformer.class.getName(),
         };
     }
 

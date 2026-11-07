@@ -186,6 +186,10 @@ subtitles.netherupdatebackport.entity.zombified_piglin.angry=Zombified Piglin gr
 subtitles.netherupdatebackport.entity.zombified_piglin.death=Zombified Piglin dies
 subtitles.netherupdatebackport.entity.zombified_piglin.hurt=Zombified Piglin hurts
 
+# --- music ---
+item.netherupdatebackport.music_disc_pigstep.name=Music Disc
+item.record.netherupdatebackport.pigstep.desc=Lena Raine - Pigstep
+
 # --- config ---
 config.netherupdatebackport.stone=Blackstone and Basalt
 config.netherupdatebackport.blocks=Smaller Blocks
@@ -241,6 +245,12 @@ config.netherupdatebackport.mobs.enabled=Enabled
 config.netherupdatebackport.mobs.enabled.tooltip=1.16's changes to existing mobs.
 config.netherupdatebackport.music.enabled=Enabled
 config.netherupdatebackport.music.enabled.tooltip=The Pigstep disc and 1.16's nether music and sounds. Off, nothing is registered.
+config.netherupdatebackport.music.pigstepInFortressChests=Pigstep in fortress chests
+config.netherupdatebackport.music.pigstepInFortressChests.tooltip=Pigstep can be found in nether fortress chests (the chance a bastion's chests have, 5 in 89), until bastions exist.
+config.netherupdatebackport.music.biomeMusic=Biome music
+config.netherupdatebackport.music.biomeMusic.tooltip=1.16's music: each nether biome has its own tracks, and music no longer stops when you switch game modes or walk into another biome. Client only.
+config.netherupdatebackport.music.biomeAmbience=Biome ambience
+config.netherupdatebackport.music.biomeAmbience.tooltip=1.16's nether ambience: each nether biome's sound loop, mood sounds and additions. Client only.
 config.netherupdatebackport.changes.enabled=Enabled
 config.netherupdatebackport.changes.enabled.tooltip=Smaller 1.16 changes to existing blocks and items.
 config.netherupdatebackport.changes.hoes=Hoes

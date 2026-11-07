@@ -39,6 +39,25 @@ looks for.
     state; only the hitter is kept from sleeping; the speed boost comes and goes with the anger (adults only);
     angry, ambient, hurt and death sounds are the new events.
 
+### P2. Jukebox comparator signal for 1.16's discs
+
+*   **Class**: `net.minecraft.block.BlockJukebox`. **Transformer**: `asm/JukeboxTransformer`. **Hooks**:
+    `music/MusicHooks`. **Switch**: `music.enabled`. **Stream**: M.
+*   **Vanilla 1.16.5**: each `MusicDiscItem` carries its own comparator signal (`analogOutput`); Pigstep's is 13.
+*   **Why a patch**: 1.12.2's `getComparatorInputOverride` works the signal out from the item id
+    (`id + 1 - id(record_13)`), which is right for vanilla's twelve discs only: a modded disc's id gives a number in
+    the thousands, so a comparator reads 15. No Forge hook or event covers a vanilla block's comparator output.
+*   **What changes**: one method gets, at its head, `if (MusicHooks.active()) { int s = MusicHooks.jukeboxSignal(world,
+    pos); if (s >= 0) return s; }`. The hook answers only for this mod's discs (`ItemMusicDisc.comparatorSignal`) and
+    gives -1 for every other disc and an empty jukebox, so vanilla's own code still answers those.
+*   **Fails safe**: if the method is missing or starts on a stack-map frame, nothing is patched and `P2 ... patch
+    skipped` is logged; Pigstep then gives what 1.12.2's formula gives (a comparator reads 15). With `music.enabled`
+    off, `active()` is false.
+*   **Other mods**: a mod that also changes this method keeps working as long as it does not need its first
+    instruction. Not yet checked against other coremods in a real instance.
+*   **Tested** (`-Pselftest=music`): applied; a jukebox with Pigstep gives 13 and a comparator beside it outputs 13;
+    13, cat and wait still give 1, 2 and 12; an empty jukebox 0.
+
 ## Candidates: approximations made without patches that a patch would make vanilla
 
 | Where | What vanilla 1.16 does | What this mod does now | Patch |

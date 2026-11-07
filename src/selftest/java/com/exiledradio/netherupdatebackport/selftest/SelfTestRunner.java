@@ -55,6 +55,7 @@ public final class SelfTestRunner {
             new ChangesSelfTest(),
             new MobsSelfTest(),
             new BiomeSelfTest(),
+            new MusicSelfTest(),
     };
 
     private final List<String> wanted;

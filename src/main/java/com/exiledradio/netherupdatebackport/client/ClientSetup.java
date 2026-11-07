@@ -45,6 +45,7 @@ public final class ClientSetup {
         com.exiledradio.netherupdatebackport.changes.client.ChangesClient.init();
         com.exiledradio.netherupdatebackport.mobs.client.MobsClient.init();
         com.exiledradio.netherupdatebackport.biome.client.BiomeClient.init();
+        com.exiledradio.netherupdatebackport.music.client.MusicClient.init();
     }
 
     @SubscribeEvent

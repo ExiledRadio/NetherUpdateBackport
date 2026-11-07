@@ -30,6 +30,7 @@ MC_JAR = os.path.join(os.path.expanduser("~"), ".gradle", "caches", "minecraft",
                       "minecraft", "1.12.2", "minecraft-1.12.2.jar")
 
 jar = zipfile.ZipFile(MC_JAR)
+INDEX_112 = json.load(open("G:/Sort this shit/Minecraft/Install/assets/indexes/1.12.json", encoding="utf-8"))["objects"]
 jar_names = set(jar.namelist())
 errors = []
 model_cache = {}
@@ -196,7 +197,9 @@ def check_sounds():
             if isinstance(sound, dict) and sound.get("type") == "event":
                 continue
             sns, spath = split(name)
-            if read_asset(sns, "sounds/%s.ogg" % spath) is None:
+            # 1.12.2's own sounds are not in its jar but in its asset index, which every game has.
+            vanilla = sns == "minecraft" and "minecraft/sounds/%s.ogg" % spath in INDEX_112
+            if not vanilla and read_asset(sns, "sounds/%s.ogg" % spath) is None:
                 errors.append("sound %s: missing %s" % (event, name))
             count += 1
         if "subtitle" in spec and spec["subtitle"] + "=" not in LANG and spec["subtitle"] not in OLD_LANG:
