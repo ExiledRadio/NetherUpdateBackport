@@ -211,9 +211,23 @@ public final class ModConfig {
 
     public static final class Biomes {
         @Config.RequiresMcRestart
-        @Config.Comment("The four new nether biomes in newly generated nether chunks. Not built yet.")
+        @Config.Comment({"The crimson forest, warped forest, soul sand valley and basalt deltas, in nether chunks generated from now",
+                "on, laid out as in 1.16 for the world's seed. Chunks generated before stay nether wastes. Off, nothing is registered."})
         @Config.LangKey("config.netherupdatebackport.biomes.enabled")
         public boolean enabled = true;
+
+        @Config.RequiresWorldRestart
+        @Config.Comment({"How much room each nether biome takes, as 'biome=number': 1 is 1.16's (and keeps the map the same as",
+                "1.16's for the seed), more grows a biome, less shrinks it, 0 removes it. Biomes are nether_wastes,",
+                "crimson_forest, warped_forest, soul_sand_valley and basalt_deltas."})
+        @Config.LangKey("config.netherupdatebackport.biomes.weights")
+        public String[] weights = {"nether_wastes=1", "crimson_forest=1", "warped_forest=1", "soul_sand_valley=1", "basalt_deltas=1"};
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"When another mod has already replaced the nether (with biomes of its own), the 1.16 biomes step aside.",
+                "On, they replace that mod's nether instead."})
+        @Config.LangKey("config.netherupdatebackport.biomes.overrideOtherMods")
+        public boolean overrideOtherMods = false;
     }
 
     public static final class Structures {

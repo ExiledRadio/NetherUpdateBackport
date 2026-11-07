@@ -16,5 +16,6 @@ None yet.
 | N, fireproof items | Silent in lava | 1.12.2 plays its fizz when the item enters a lava block | `EntityItem.onUpdate`: no burn sound for fire-immune items |
 | R, striders | Stand on lava (`canStandOnFluid`) | Held on the surface after each move, so they can jitter at block edges and path through lava nodes | `Entity.move` collision: lava's top half solid for striders |
 | L, soul sand | Soul Speed sets soul sand's speed factor to 1 | Divides soul sand's 0.4 back out the next tick | `BlockSoulSand.onEntityCollision`: skip for Soul Speed wearers |
+| V, spawning | Soul sand valleys and warped forests limit their mobs with spawn costs (`MobSpawnInfo.addMobCharge`: energy budget 0.15 / 0.12, charge 0.7 / 1.0) | Plain spawn lists: those biomes can hold denser groups than 1.16's | `WorldEntitySpawner.findChunksForSpawning`: 1.16's `PotentialCalculator` per spawn attempt |
 
 Each is worth doing when its stream is next touched; none blocks a stream.

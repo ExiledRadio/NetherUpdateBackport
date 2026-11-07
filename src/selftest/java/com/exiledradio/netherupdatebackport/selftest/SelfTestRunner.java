@@ -52,6 +52,7 @@ public final class SelfTestRunner {
             new HoglinSelfTest(),
             new StriderSelfTest(),
             new OwnedSelfTest(),
+            new BiomeSelfTest(),
     };
 
     private final List<String> wanted;
