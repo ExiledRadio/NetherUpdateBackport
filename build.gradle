@@ -1,0 +1,163 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
+        }
+        maven {
+            name = "github"
+            url = "https://github.com/juanmuscaria/maven/raw/master"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle2:[2.3-1.0.0-SNAPSHOT,)'
+    }
+}
+
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+repositories {
+    // Backport Core's MCP-named dev jar. Its copyToDependents task puts it here; until this repo is in
+    // its dependents list, copy BackportCore/build/libs/BackportCore-<version>-dev.jar by hand.
+    flatDir { dirs 'deps' }
+}
+
+dependencies {
+    // Plain compile, never deobfCompile: flatDir matches by file name, so deobfCompile would hand
+    // ForgeGradle the SRG-named jar and every Minecraft call in it would fail to link in dev.
+    compile name: "BackportCore-${core_version}-dev"
+}
+
+version = mod_version
+group = mod_group
+archivesBaseName = mod_archives_name
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+minecraft {
+    // Single-sourced from gradle.properties - see the ceiling note on forge_version there.
+    version = "${mc_version}-${forge_version}"
+    mappings = "stable_39"
+    runDir = "eclipse"
+
+    replace '@VERSION@', project.version
+    // The display name is not final: it lives only in gradle.properties (mod_name) and the lang file.
+    replace '@MOD_NAME@', project.mod_name
+    replaceIn 'NetherUpdateBackport.java'
+}
+
+// Headless self-tests live in src/selftest/java and are compiled in only for a test run:
+//
+//     ./gradlew runServer -Pselftest=kelp
+//
+// The value names the stream to test ("all" runs every one). The tests never reach a release jar:
+// without the property the directory is not a source directory at all, and the jar excludes the
+// package in case a test build's classes are still in build/classes. A test run needs them IN the jar,
+// because FG2's runServer runs from the jar - which is one more reason a release is built last.
+def selftest = project.findProperty('selftest')
+if (selftest) {
+    sourceSets.main.java.srcDir 'src/selftest/java'
+} else {
+    jar {
+        exclude 'com/exiledradio/netherupdatebackport/selftest/**'
+    }
+}
+
+// The run tasks always run: a dev server is how this mod is tested, and Gradle deciding a run is
+// UP-TO-DATE skips the test. Never use cleanRunServer to force one - it deletes eclipse/, worlds,
+// configs and all.
+[runServer, runClient].each { task ->
+    task.outputs.upToDateWhen { false }
+    if (selftest) {
+        task.systemProperty 'netherupdatebackport.selftest', selftest
+    }
+}
+
+processResources {
+    // Gradle does not treat `expand` values as task inputs, so without declaring them here the task
+    // stays UP-TO-DATE across a version bump and the jar ships an mcmod.info still claiming the
+    // previous version.
+    inputs.property 'version', project.version
+    inputs.property 'mod_id', mod_id
+    inputs.property 'mod_name', mod_name
+    inputs.property 'mod_author', mod_author
+    inputs.property 'mod_description', mod_description
+    inputs.property 'mod_credits', mod_credits
+    inputs.property 'mod_url', mod_url
+    inputs.property 'mc_version', mc_version
+    inputs.property 'mod_version', mod_version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version,
+                'mod_id': mod_id,
+                'mod_name': mod_name,
+                'mod_author': mod_author,
+                'mod_description': mod_description,
+                'mod_credits': mod_credits,
+                'mod_url': mod_url,
+                'mc_version': mc_version,
+                'mod_version': mod_version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+task devJar(type: Jar) {
+    classifier = 'dev'
+    from sourceSets.main.output
+    exclude 'com/exiledradio/netherupdatebackport/selftest/**'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+    exclude 'com/exiledradio/netherupdatebackport/selftest/**'
+}
+
+artifacts {
+    archives devJar
+    archives sourcesJar
+}
+
+// Dev convenience: copies the built jar into a local test instance. Opt-in and machine-local: set
+// `nubDeployDir` in ~/.gradle/gradle.properties. It is deliberately NOT the `deployDir` property the
+// other mods in this workspace read, so a machine-wide deployDir never sends this mod's jar into an
+// instance by accident.
+def deployDir = project.findProperty('nubDeployDir')
+
+task deployToInstance(type: Copy) {
+    onlyIf { deployDir && file(deployDir).isDirectory() }
+
+    // Clear out earlier builds of this mod first: the jar name carries the version, so a bump would
+    // otherwise leave the old jar beside the new one, and FML crashes on a duplicate mod id.
+    doFirst {
+        if (deployDir && file(deployDir).isDirectory()) {
+            file(deployDir).listFiles()?.each { f ->
+                if (f.name ==~ /^${archivesBaseName}-.*\.jar$/) {
+                    logger.lifecycle("Removing previous build: ${f.name}")
+                    f.delete()
+                }
+            }
+        }
+    }
+
+    from jar.archivePath
+    into deployDir ?: "$buildDir/deploy"
+    rename { "${archivesBaseName}-${project.version}.jar" }
+}
+
+deployToInstance.dependsOn reobfJar
+
+// reobfJar rewrites the jar in place, which Gradle cannot see, so it can decide there is nothing to
+// do and leave a jar with development names in it. That jar works in runClient and crashes a real
+// instance with NoSuchMethodError on the first Minecraft method it calls. Always run it - and always
+// build LAST: any run task afterwards rewrites build/libs with an unmapped jar.
+reobfJar.outputs.upToDateWhen { false }
+build.finalizedBy deployToInstance
