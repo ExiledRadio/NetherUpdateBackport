@@ -33,7 +33,7 @@ import org.apache.logging.log4j.Logger;
         name = NetherUpdateBackport.MOD_NAME,
         version = NetherUpdateBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.1.0,);required-after:fluidlogged_api@[3.3.3,)"
+        dependencies = "required-after:backportcore@[1.2.0,);required-after:fluidlogged_api@[3.3.3,)"
 )
 public final class NetherUpdateBackport {
 
@@ -52,6 +52,7 @@ public final class NetherUpdateBackport {
         com.exiledradio.netherupdatebackport.common.Triggers.init();
         com.exiledradio.netherupdatebackport.owned.OwnedContent.preInit();
         com.exiledradio.netherupdatebackport.mobs.MobsContent.preInit();
+        com.exiledradio.netherupdatebackport.structure.StructureContent.preInit();
         net.minecraftforge.fml.common.network.NetworkRegistry.INSTANCE.registerGuiHandler(this,
                 new com.exiledradio.netherupdatebackport.common.GuiHandler());
 
@@ -69,6 +70,7 @@ public final class NetherUpdateBackport {
         com.exiledradio.netherupdatebackport.blocks.BlocksContent.init();
         com.exiledradio.netherupdatebackport.netherite.NetheriteContent.init();
         com.exiledradio.netherupdatebackport.changes.ChangesContent.init();
+        com.exiledradio.netherupdatebackport.structure.StructureContent.init();
     }
 
     @Mod.EventHandler

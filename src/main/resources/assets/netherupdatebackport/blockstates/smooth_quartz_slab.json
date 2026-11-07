@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "netherupdatebackport:smooth_quartz_slab"
+    },
+    "half=top": {
+      "model": "netherupdatebackport:smooth_quartz_slab_top"
+    }
+  }
+}

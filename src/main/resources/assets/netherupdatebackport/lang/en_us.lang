@@ -168,10 +168,6 @@ subtitles.netherupdatebackport.entity.strider.hurt=Strider hurts
 subtitles.netherupdatebackport.entity.strider.idle=Strider chirps
 subtitles.netherupdatebackport.entity.strider.retreat=Strider retreats
 
-# --- owned ---
-container.upgrade=Upgrade Gear
-tile.netherupdatebackport.smithing_table.name=Smithing Table
-
 # --- biome ---
 biome.netherupdatebackport.basalt_deltas=Basalt Deltas
 biome.netherupdatebackport.crimson_forest=Crimson Forest
@@ -254,6 +250,24 @@ config.netherupdatebackport.biomes.weights.tooltip=How much room each nether bio
 config.netherupdatebackport.biomes.overrideOtherMods=Override other mods
 config.netherupdatebackport.biomes.overrideOtherMods.tooltip=When another mod has already replaced the nether (with biomes of its own), the 1.16 biomes step aside. On, they replace that mod's nether instead.
 config.netherupdatebackport.structures.enabled=Enabled
-config.netherupdatebackport.structures.enabled.tooltip=Bastion remnants, nether fossils and ruined portals in newly generated chunks. Not built yet.
+config.netherupdatebackport.structures.enabled.tooltip=Bastion remnants, ruined portals and nether fossils in chunks generated from now on, where 1.16 puts them for the world's seed. Off, none of them generate and nether fortresses stay where 1.12.2 puts them.
+config.netherupdatebackport.structures.bastions=Bastions
+config.netherupdatebackport.structures.bastions.tooltip=Bastion remnants in the nether. As in 1.16 they take nether fortress slots: each spot of the grid has a bastion or a fortress, so fortresses move to 1.16's places. Off, fortresses stay where 1.12.2 puts them.
+config.netherupdatebackport.structures.ruinedPortals=Ruined portals
+config.netherupdatebackport.structures.ruinedPortals.tooltip=Ruined portals in the overworld and the nether.
+config.netherupdatebackport.structures.netherFossils=Nether fossils
+config.netherupdatebackport.structures.netherFossils.tooltip=Nether fossils in soul sand valleys (needs the nether biomes).
 config.netherupdatebackport.compat.futureMcDuplicates=Duplicate Blocks
 config.netherupdatebackport.compat.futureMcDuplicates.tooltip=When another installed mod adds the same 1.16 block: OURS hides the other mod's, THEIRS hides ours, BOTH keeps both.
+
+# --- owned ---
+container.upgrade=Upgrade Gear
+tile.netherupdatebackport.lantern.name=Lantern
+tile.netherupdatebackport.mossy_stone_brick_double_slab.name=Mossy Stone Brick Slab
+tile.netherupdatebackport.mossy_stone_brick_slab.name=Mossy Stone Brick Slab
+tile.netherupdatebackport.mossy_stone_brick_stairs.name=Mossy Stone Brick Stairs
+tile.netherupdatebackport.mossy_stone_brick_wall.name=Mossy Stone Brick Wall
+tile.netherupdatebackport.smithing_table.name=Smithing Table
+tile.netherupdatebackport.smooth_quartz_double_slab.name=Smooth Quartz Slab
+tile.netherupdatebackport.smooth_quartz_slab.name=Smooth Quartz Slab
+tile.netherupdatebackport.stone_brick_wall.name=Stone Brick Wall

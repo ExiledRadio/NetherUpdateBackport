@@ -242,9 +242,26 @@ public final class ModConfig {
 
     public static final class Structures {
         @Config.RequiresMcRestart
-        @Config.Comment("Bastion remnants, nether fossils and ruined portals in newly generated chunks. Not built yet.")
+        @Config.Comment({"Bastion remnants, ruined portals and nether fossils in chunks generated from now on, where 1.16 puts them",
+                "for the world's seed. Off, none of them generate and nether fortresses stay where 1.12.2 puts them."})
         @Config.LangKey("config.netherupdatebackport.structures.enabled")
         public boolean enabled = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Bastion remnants in the nether. As in 1.16 they take nether fortress slots: each spot of the grid has a",
+                "bastion or a fortress, so fortresses move to 1.16's places. Off, fortresses stay where 1.12.2 puts them."})
+        @Config.LangKey("config.netherupdatebackport.structures.bastions")
+        public boolean bastions = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Ruined portals in the overworld and the nether.")
+        @Config.LangKey("config.netherupdatebackport.structures.ruinedPortals")
+        public boolean ruinedPortals = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Nether fossils in soul sand valleys (needs the nether biomes).")
+        @Config.LangKey("config.netherupdatebackport.structures.netherFossils")
+        public boolean netherFossils = true;
     }
 
     public static final class Compat {

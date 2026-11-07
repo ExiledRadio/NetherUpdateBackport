@@ -1,0 +1,334 @@
+{
+  "name": "minecraft:bastion/starts",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "minecraft:bastion/units/air_base",
+        "processors": {
+          "processors": [
+            {
+              "rules": [
+                {
+                  "output_state": {
+                    "Name": "minecraft:cracked_polished_blackstone_bricks"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:polished_blackstone_bricks",
+                    "probability": 0.3,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:air"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:blackstone",
+                    "probability": 0.0001,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:cracked_polished_blackstone_bricks"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:gold_block",
+                    "probability": 0.3,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:blackstone"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:gilded_blackstone",
+                    "probability": 0.5,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:gilded_blackstone"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:blackstone",
+                    "probability": 0.01,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                }
+              ],
+              "processor_type": "minecraft:rule"
+            }
+          ]
+        },
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "minecraft:bastion/hoglin_stable/air_base",
+        "processors": {
+          "processors": [
+            {
+              "rules": [
+                {
+                  "output_state": {
+                    "Name": "minecraft:cracked_polished_blackstone_bricks"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:polished_blackstone_bricks",
+                    "probability": 0.3,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:air"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:blackstone",
+                    "probability": 0.0001,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:cracked_polished_blackstone_bricks"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:gold_block",
+                    "probability": 0.3,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:blackstone"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:gilded_blackstone",
+                    "probability": 0.5,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:gilded_blackstone"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:blackstone",
+                    "probability": 0.01,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                }
+              ],
+              "processor_type": "minecraft:rule"
+            }
+          ]
+        },
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "minecraft:bastion/treasure/big_air_full",
+        "processors": {
+          "processors": [
+            {
+              "rules": [
+                {
+                  "output_state": {
+                    "Name": "minecraft:cracked_polished_blackstone_bricks"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:polished_blackstone_bricks",
+                    "probability": 0.3,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:air"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:blackstone",
+                    "probability": 0.0001,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:cracked_polished_blackstone_bricks"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:gold_block",
+                    "probability": 0.3,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:blackstone"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:gilded_blackstone",
+                    "probability": 0.5,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:gilded_blackstone"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:blackstone",
+                    "probability": 0.01,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                }
+              ],
+              "processor_type": "minecraft:rule"
+            }
+          ]
+        },
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "location": "minecraft:bastion/bridge/starting_pieces/entrance_base",
+        "processors": {
+          "processors": [
+            {
+              "rules": [
+                {
+                  "output_state": {
+                    "Name": "minecraft:cracked_polished_blackstone_bricks"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:polished_blackstone_bricks",
+                    "probability": 0.3,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:air"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:blackstone",
+                    "probability": 0.0001,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:cracked_polished_blackstone_bricks"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:gold_block",
+                    "probability": 0.3,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:blackstone"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:gilded_blackstone",
+                    "probability": 0.5,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                },
+                {
+                  "output_state": {
+                    "Name": "minecraft:gilded_blackstone"
+                  },
+                  "input_predicate": {
+                    "block": "minecraft:blackstone",
+                    "probability": 0.01,
+                    "predicate_type": "minecraft:random_block_match"
+                  },
+                  "location_predicate": {
+                    "predicate_type": "minecraft:always_true"
+                  }
+                }
+              ],
+              "processor_type": "minecraft:rule"
+            }
+          ]
+        },
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

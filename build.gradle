@@ -67,6 +67,8 @@ minecraft {
 def selftest = project.findProperty('selftest')
 if (selftest) {
     sourceSets.main.java.srcDir 'src/selftest/java'
+    // Test data (stream X's vanilla oracle answers) goes in a test build's jar only.
+    sourceSets.main.resources.srcDir 'src/selftest/resources'
 } else {
     jar {
         exclude 'com/exiledradio/netherupdatebackport/selftest/**'
