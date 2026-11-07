@@ -26,8 +26,10 @@ final class NetherGoldGeneration implements IWorldGenerator {
             return;
         }
         WorldGenMinable vein = new WorldGenMinable(BlocksContent.netherGoldOre.getDefaultState(), 10, BlockMatcher.forBlock(Blocks.NETHERRACK));
-        int x = chunkX * 16 + 8;
-        int z = chunkZ * 16 + 8;
+        // No +8 here: WorldGenMinable adds it itself, so veins land in the middle of the 2x2 chunks that
+        // population guarantees. Adding it twice reached into ungenerated chunks (cascading worldgen).
+        int x = chunkX * 16;
+        int z = chunkZ * 16;
         for (int i = 0; i < 10; i++) {
             // RANGE_10_20_ROOFED: TopSolidRangeConfig(10, 20, 128) -> 10 + rand(108).
             vein.generate(world, random, new BlockPos(x + random.nextInt(16), 10 + random.nextInt(108), z + random.nextInt(16)));
