@@ -179,6 +179,13 @@ biome.netherupdatebackport.nether_wastes=Nether Wastes
 biome.netherupdatebackport.soul_sand_valley=Soul Sand Valley
 biome.netherupdatebackport.warped_forest=Warped Forest
 
+# --- mobs ---
+entity.PigZombie.name=Zombified Piglin
+subtitles.netherupdatebackport.entity.zombified_piglin.ambient=Zombified Piglin grunts
+subtitles.netherupdatebackport.entity.zombified_piglin.angry=Zombified Piglin grunts angrily
+subtitles.netherupdatebackport.entity.zombified_piglin.death=Zombified Piglin dies
+subtitles.netherupdatebackport.entity.zombified_piglin.hurt=Zombified Piglin hurts
+
 # --- config ---
 config.netherupdatebackport.stone=Blackstone and Basalt
 config.netherupdatebackport.blocks=Smaller Blocks
@@ -250,10 +257,3 @@ config.netherupdatebackport.structures.enabled=Enabled
 config.netherupdatebackport.structures.enabled.tooltip=Bastion remnants, nether fossils and ruined portals in newly generated chunks. Not built yet.
 config.netherupdatebackport.compat.futureMcDuplicates=Duplicate Blocks
 config.netherupdatebackport.compat.futureMcDuplicates.tooltip=When another installed mod adds the same 1.16 block: OURS hides the other mod's, THEIRS hides ours, BOTH keeps both.
-
-# --- mobs ---
-entity.PigZombie.name=Zombified Piglin
-subtitles.netherupdatebackport.entity.zombified_piglin.ambient=Zombified Piglin grunts
-subtitles.netherupdatebackport.entity.zombified_piglin.angry=Zombified Piglin grunts angrily
-subtitles.netherupdatebackport.entity.zombified_piglin.death=Zombified Piglin dies
-subtitles.netherupdatebackport.entity.zombified_piglin.hurt=Zombified Piglin hurts
