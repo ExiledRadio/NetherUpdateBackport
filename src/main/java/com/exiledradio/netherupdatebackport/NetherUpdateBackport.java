@@ -51,6 +51,7 @@ public final class NetherUpdateBackport {
         NetworkHandler.init();
         com.exiledradio.netherupdatebackport.common.Triggers.init();
         com.exiledradio.netherupdatebackport.owned.OwnedContent.preInit();
+        com.exiledradio.netherupdatebackport.mobs.MobsContent.preInit();
         net.minecraftforge.fml.common.network.NetworkRegistry.INSTANCE.registerGuiHandler(this,
                 new com.exiledradio.netherupdatebackport.common.GuiHandler());
 
