@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "netherupdatebackport:netherite_ingot",
+  "ingredients": [
+    {
+      "item": "netherupdatebackport:netherite_block"
+    }
+  ],
+  "result": {
+    "item": "netherupdatebackport:netherite_ingot",
+    "count": 9
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:netherite_block",
+        "netherupdatebackport:netherite_ingot"
+      ]
+    }
+  ]
+}

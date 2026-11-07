@@ -48,6 +48,7 @@ public final class SelfTestRunner {
             new BlocksSelfTest(),
             new FungusSelfTest(),
             new SoulSelfTest(),
+            new NetheriteSelfTest(),
     };
 
     private final List<String> wanted;

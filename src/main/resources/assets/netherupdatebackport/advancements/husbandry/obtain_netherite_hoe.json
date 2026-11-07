@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherupdatebackport:netherite_hoe"
+    },
+    "title": {
+      "translate": "advancements.husbandry.netherite_hoe.title"
+    },
+    "description": {
+      "translate": "advancements.husbandry.netherite_hoe.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "netherite_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "netherupdatebackport:netherite_hoe"
+          }
+        ]
+      }
+    }
+  },
+  "parent": "minecraft:husbandry/plant_seed"
+}

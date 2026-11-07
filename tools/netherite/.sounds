@@ -1,0 +1,11 @@
+block.ancient_debris.break
+block.ancient_debris.fall
+block.ancient_debris.hit
+block.ancient_debris.place
+block.ancient_debris.step
+block.netherite_block.break
+block.netherite_block.fall
+block.netherite_block.hit
+block.netherite_block.place
+block.netherite_block.step
+item.armor.equip_netherite

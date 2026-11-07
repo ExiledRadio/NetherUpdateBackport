@@ -154,6 +154,16 @@ public final class ModConfig {
         @Config.Comment("Netherite and ancient debris. Off, nothing is registered.")
         @Config.LangKey("config.netherupdatebackport.netherite.enabled")
         public boolean enabled = true;
+
+        @Config.Comment("Ancient debris generates in the nether, in newly generated chunks.")
+        @Config.LangKey("config.netherupdatebackport.netherite.generate")
+        public boolean generate = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"With no smithing table in the game, a diamond tool or armor piece and a netherite ingot make the",
+                "netherite piece in the crafting grid, keeping enchantments, name and damage."})
+        @Config.LangKey("config.netherupdatebackport.netherite.craftingFallback")
+        public boolean craftingFallback = true;
     }
 
     public static final class Hoglins {

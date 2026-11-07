@@ -114,6 +114,28 @@ tile.netherupdatebackport.soul_lantern.name=Soul Lantern
 tile.netherupdatebackport.soul_soil.name=Soul Soil
 tile.netherupdatebackport.soul_torch.name=Soul Torch
 
+# --- netherite ---
+advancements.husbandry.netherite_hoe.description=Use a Netherite ingot to upgrade a hoe, and then reevaluate your life choices
+advancements.husbandry.netherite_hoe.title=Serious Dedication
+advancements.nether.netherite_armor.description=Get a full suit of Netherite armor
+advancements.nether.netherite_armor.title=Cover Me in Debris
+advancements.nether.obtain_ancient_debris.description=Obtain Ancient Debris
+advancements.nether.obtain_ancient_debris.title=Hidden in the Depths
+item.netherupdatebackport.netherite_axe.name=Netherite Axe
+item.netherupdatebackport.netherite_boots.name=Netherite Boots
+item.netherupdatebackport.netherite_chestplate.name=Netherite Chestplate
+item.netherupdatebackport.netherite_helmet.name=Netherite Helmet
+item.netherupdatebackport.netherite_hoe.name=Netherite Hoe
+item.netherupdatebackport.netherite_ingot.name=Netherite Ingot
+item.netherupdatebackport.netherite_leggings.name=Netherite Leggings
+item.netherupdatebackport.netherite_pickaxe.name=Netherite Pickaxe
+item.netherupdatebackport.netherite_scrap.name=Netherite Scrap
+item.netherupdatebackport.netherite_shovel.name=Netherite Shovel
+item.netherupdatebackport.netherite_sword.name=Netherite Sword
+subtitles.netherupdatebackport.item.armor.equip_netherite=Netherite armor clanks
+tile.netherupdatebackport.ancient_debris.name=Ancient Debris
+tile.netherupdatebackport.netherite_block.name=Block of Netherite
+
 # --- config ---
 config.netherupdatebackport.stone=Blackstone and Basalt
 config.netherupdatebackport.blocks=Smaller Blocks
@@ -155,6 +177,10 @@ config.netherupdatebackport.soul.campfireExcludedFoods=Campfire excluded foods
 config.netherupdatebackport.soul.campfireExcludedFoods.tooltip=Items the soul campfire refuses, as 'modid:item' or 'modid:item:meta'.
 config.netherupdatebackport.netherite.enabled=Enabled
 config.netherupdatebackport.netherite.enabled.tooltip=Netherite and ancient debris. Off, nothing is registered.
+config.netherupdatebackport.netherite.generate=Generate
+config.netherupdatebackport.netherite.generate.tooltip=Ancient debris generates in the nether, in newly generated chunks.
+config.netherupdatebackport.netherite.craftingFallback=Crafting fallback
+config.netherupdatebackport.netherite.craftingFallback.tooltip=With no smithing table in the game, a diamond tool or armor piece and a netherite ingot make the netherite piece in the crafting grid, keeping enchantments, name and damage.
 config.netherupdatebackport.hoglins.enabled=Enabled
 config.netherupdatebackport.hoglins.enabled.tooltip=Hoglins and zoglins. Off, nothing is registered.
 config.netherupdatebackport.piglins.enabled=Enabled

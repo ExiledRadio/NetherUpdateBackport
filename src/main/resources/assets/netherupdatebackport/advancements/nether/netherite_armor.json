@@ -1,0 +1,39 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherupdatebackport:netherite_chestplate"
+    },
+    "title": {
+      "translate": "advancements.nether.netherite_armor.title"
+    },
+    "description": {
+      "translate": "advancements.nether.netherite_armor.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "netherite_armor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "netherupdatebackport:netherite_helmet"
+          },
+          {
+            "item": "netherupdatebackport:netherite_chestplate"
+          },
+          {
+            "item": "netherupdatebackport:netherite_leggings"
+          },
+          {
+            "item": "netherupdatebackport:netherite_boots"
+          }
+        ]
+      }
+    }
+  },
+  "parent": "netherupdatebackport:nether/obtain_ancient_debris"
+}
