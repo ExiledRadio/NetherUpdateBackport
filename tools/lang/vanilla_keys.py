@@ -24,6 +24,8 @@ SPECIAL = {
     # 1.13 renamed vanilla's own wooden trapdoor and pressure plate once the other woods had theirs.
     "tile.trapdoor.name": "block.minecraft.oak_trapdoor",
     "tile.pressurePlateWood.name": "block.minecraft.oak_pressure_plate",
+    # 1.16 renamed the zombie pigman (stream Z keeps the entity and overrides 1.12.2's own key).
+    "entity.PigZombie.name": "entity.minecraft.zombified_piglin",
 }
 
 

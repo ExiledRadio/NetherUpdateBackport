@@ -76,7 +76,18 @@ if (selftest) {
 // The run tasks always run: a dev server is how this mod is tested, and Gradle deciding a run is
 // UP-TO-DATE skips the test. Never use cleanRunServer to force one - it deletes eclipse/, worlds,
 // configs and all.
+// The mod's own coremod (package asm; every patch in docs/PATCHES.md). A release jar names it in its
+// manifest; the dev run tasks name it with fml.coreMods.load, since they run the mod from the classpath.
+def coremod = 'com.exiledradio.netherupdatebackport.asm.NetherUpdateCore'
+jar {
+    manifest {
+        attributes 'FMLCorePlugin': coremod,
+                'FMLCorePluginContainsFMLMod': 'true'
+    }
+}
+
 [runServer, runClient].each { task ->
+    task.systemProperty 'fml.coreMods.load', coremod
     task.outputs.upToDateWhen { false }
     if (selftest) {
         task.systemProperty 'netherupdatebackport.selftest', selftest

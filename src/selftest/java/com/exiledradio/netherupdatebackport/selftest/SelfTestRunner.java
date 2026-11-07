@@ -53,6 +53,7 @@ public final class SelfTestRunner {
             new StriderSelfTest(),
             new OwnedSelfTest(),
             new ChangesSelfTest(),
+            new MobsSelfTest(),
     };
 
     private final List<String> wanted;

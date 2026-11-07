@@ -1983,5 +1983,36 @@
         "stream": false
       }
     ]
+  },
+  "entity.zombified_piglin.ambient": {
+    "sounds": [
+      "netherupdatebackport:mob/zombified_piglin/zpig1",
+      "netherupdatebackport:mob/zombified_piglin/zpig2",
+      "netherupdatebackport:mob/zombified_piglin/zpig3",
+      "netherupdatebackport:mob/zombified_piglin/zpig4"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zombified_piglin.ambient"
+  },
+  "entity.zombified_piglin.angry": {
+    "sounds": [
+      "netherupdatebackport:mob/zombified_piglin/zpigangry1",
+      "netherupdatebackport:mob/zombified_piglin/zpigangry2",
+      "netherupdatebackport:mob/zombified_piglin/zpigangry3",
+      "netherupdatebackport:mob/zombified_piglin/zpigangry4"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zombified_piglin.angry"
+  },
+  "entity.zombified_piglin.death": {
+    "sounds": [
+      "netherupdatebackport:mob/zombified_piglin/zpigdeath"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zombified_piglin.death"
+  },
+  "entity.zombified_piglin.hurt": {
+    "sounds": [
+      "netherupdatebackport:mob/zombified_piglin/zpighurt1",
+      "netherupdatebackport:mob/zombified_piglin/zpighurt2"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.zombified_piglin.hurt"
   }
 }
