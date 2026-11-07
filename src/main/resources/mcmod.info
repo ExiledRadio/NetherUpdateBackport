@@ -11,8 +11,8 @@
     "credits": "${mod_credits}",
     "logoFile": "pack.png",
     "screenshots": [],
-    "requiredMods": ["backportcore"],
-    "dependencies": ["backportcore"],
+    "requiredMods": ["backportcore", "fluidlogged_api"],
+    "dependencies": ["backportcore", "fluidlogged_api"],
     "useDependencyInformation": true
   }
 ]

@@ -23,12 +23,18 @@ repositories {
     // Backport Core's MCP-named dev jar. Its copyToDependents task puts it here; until this repo is in
     // its dependents list, copy BackportCore/build/libs/BackportCore-<version>-dev.jar by hand.
     flatDir { dirs 'deps' }
+    // CurseMaven serves CurseForge files by project and file id, so the version is pinned exactly.
+    maven { url 'https://cursemaven.com' }
 }
 
 dependencies {
     // Plain compile, never deobfCompile: flatDir matches by file name, so deobfCompile would hand
     // ForgeGradle the SRG-named jar and every Minecraft call in it would fail to link in dev.
     compile name: "BackportCore-${core_version}-dev"
+    // Fluidlogged API 3.3.3 (CurseForge 485654, file 8445863), which Backport Core 1.1.0 requires for
+    // waterlogging. Core's dev jar does not carry it. deobfCompile maps it to dev names, and FG2's
+    // GradleStart finds its coremod on the classpath. Never shade it.
+    deobfCompile 'curse.maven:fluidlogged-api-485654:8445863'
 }
 
 version = mod_version
