@@ -123,6 +123,30 @@ public final class ModConfig {
         @Config.Comment("Soul soil, soul fire and its light sources, and Soul Speed. Off, nothing is registered.")
         @Config.LangKey("config.netherupdatebackport.soul.enabled")
         public boolean enabled = true;
+
+        @Config.Comment("Fire lit on soul sand or soul soil burns as soul fire: blue, light 10, 2 damage, never spreading.")
+        @Config.LangKey("config.netherupdatebackport.soul.soulFire")
+        public boolean soulFire = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("The soul campfire. Off, it is not registered.")
+        @Config.LangKey("config.netherupdatebackport.soul.campfireEnabled")
+        public boolean campfireEnabled = true;
+
+        @Config.Comment("How long one item takes to cook on a soul campfire, in ticks. 1.16's is 600 (30 seconds).")
+        @Config.RangeInt(min = 1, max = 72000)
+        @Config.LangKey("config.netherupdatebackport.soul.campfireCookTime")
+        public int campfireCookTime = 600;
+
+        @Config.Comment({"What the soul campfire cooks besides food a furnace cooks into food, as 'modid:item' or",
+                "'modid:item=modid:result', with ':meta' to pick one variant. Not read when the campfire's own mod is",
+                "installed: the soul campfire then cooks exactly what that campfire cooks."})
+        @Config.LangKey("config.netherupdatebackport.soul.campfireExtraFoods")
+        public String[] campfireExtraFoods = {};
+
+        @Config.Comment("Items the soul campfire refuses, as 'modid:item' or 'modid:item:meta'.")
+        @Config.LangKey("config.netherupdatebackport.soul.campfireExcludedFoods")
+        public String[] campfireExcludedFoods = {};
     }
 
     public static final class Netherite {

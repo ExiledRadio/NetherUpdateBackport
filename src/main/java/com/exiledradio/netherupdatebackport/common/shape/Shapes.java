@@ -59,6 +59,8 @@ public final class Shapes {
             this.color = color;
             strength(this, hardness, resistance);
             setSoundType(sound);
+            // BlockRotatedPillar leaves the first axis (X) as the default; logs, stems and chains stand upright.
+            setDefaultState(this.blockState.getBaseState().withProperty(AXIS, net.minecraft.util.EnumFacing.Axis.Y));
         }
 
         @Override

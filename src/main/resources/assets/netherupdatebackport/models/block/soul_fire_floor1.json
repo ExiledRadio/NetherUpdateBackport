@@ -1,0 +1,6 @@
+{
+  "parent": "netherupdatebackport:block/template_fire_floor",
+  "textures": {
+    "fire": "netherupdatebackport:block/soul_fire_1"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "netherupdatebackport:soul_torch"
+    },
+    "X": {
+      "item": "minecraft:iron_nugget"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:soul_lantern"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:soul_lantern",
+        "netherupdatebackport:soul_torch"
+      ]
+    }
+  ]
+}

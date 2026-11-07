@@ -33,5 +33,8 @@ public final class NetworkHandler {
     public static void init() {
         channel = NetworkRegistry.INSTANCE.newSimpleChannel(CHANNEL);
         // Streams register their packets below, in id order.
+        channel.registerMessage(com.exiledradio.netherupdatebackport.soul.campfire.PacketSoulCampfireDowse.Handler.class,
+                com.exiledradio.netherupdatebackport.soul.campfire.PacketSoulCampfireDowse.class, 20,
+                net.minecraftforge.fml.relauncher.Side.CLIENT);
     }
 }

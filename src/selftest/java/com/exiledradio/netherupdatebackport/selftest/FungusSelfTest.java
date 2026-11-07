@@ -61,6 +61,8 @@ public final class FungusSelfTest implements SelfTest {
         hardness(c, "crimson_door", 3.0F);
         hardness(c, "warped_nylium", 0.4F);
         hardness(c, "shroomlight", 1.0F);
+        c.eq(EnumFacing.Axis.Y, FungusContent.stem(NetherWood.CRIMSON).getDefaultState().getValue(BlockRotatedPillar.AXIS),
+                "stems stand upright by default (huge fungi use the default)");
         c.eq(15, FungusContent.shroomlight.getDefaultState().getLightValue(world, BlockPos.ORIGIN), "shroomlight gives light 15");
 
         EntityPlayerMP player = Players.real(world, "fungus");

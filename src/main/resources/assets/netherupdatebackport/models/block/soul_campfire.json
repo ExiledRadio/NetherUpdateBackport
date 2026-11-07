@@ -1,0 +1,7 @@
+{
+  "parent": "netherupdatebackport:block/template_campfire",
+  "textures": {
+    "fire": "netherupdatebackport:block/soul_campfire_fire",
+    "lit_log": "netherupdatebackport:block/soul_campfire_log_lit"
+  }
+}

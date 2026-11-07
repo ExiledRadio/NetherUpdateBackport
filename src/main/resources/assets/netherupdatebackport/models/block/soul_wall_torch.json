@@ -1,0 +1,6 @@
+{
+  "parent": "netherupdatebackport:block/template_torch_wall",
+  "textures": {
+    "torch": "netherupdatebackport:block/soul_torch"
+  }
+}

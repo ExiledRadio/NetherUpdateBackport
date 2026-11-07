@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "netherupdatebackport:soul_lantern"
+    },
+    "hanging=true": {
+      "model": "netherupdatebackport:soul_lantern_hanging"
+    }
+  }
+}

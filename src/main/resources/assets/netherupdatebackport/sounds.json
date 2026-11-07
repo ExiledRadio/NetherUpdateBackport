@@ -1089,5 +1089,260 @@
       "netherupdatebackport:mob/sheep/shear"
     ],
     "subtitle": "subtitles.netherupdatebackport.block.growing_plant.crop"
+  },
+  "block.soul_soil.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/soul_soil/break1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break5",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.soul_soil.step": {
+    "sounds": [
+      "netherupdatebackport:block/soul_soil/step1",
+      "netherupdatebackport:block/soul_soil/step2",
+      "netherupdatebackport:block/soul_soil/step3",
+      "netherupdatebackport:block/soul_soil/step4",
+      "netherupdatebackport:block/soul_soil/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.soul_soil.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/soul_soil/break1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break5",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/break6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.soul_soil.hit": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/soul_soil/step1",
+        "volume": 0.66
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/step2",
+        "volume": 0.66
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/step3",
+        "volume": 0.66
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/step4",
+        "volume": 0.66
+      },
+      {
+        "name": "netherupdatebackport:block/soul_soil/step5",
+        "volume": 0.66
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.soul_soil.fall": {
+    "sounds": [
+      "netherupdatebackport:block/soul_soil/step1",
+      "netherupdatebackport:block/soul_soil/step2",
+      "netherupdatebackport:block/soul_soil/step3",
+      "netherupdatebackport:block/soul_soil/step4",
+      "netherupdatebackport:block/soul_soil/step5"
+    ]
+  },
+  "block.lantern.break": {
+    "sounds": [
+      "netherupdatebackport:block/lantern/break1",
+      "netherupdatebackport:block/lantern/break2",
+      "netherupdatebackport:block/lantern/break3",
+      "netherupdatebackport:block/lantern/break4",
+      "netherupdatebackport:block/lantern/break5",
+      "netherupdatebackport:block/lantern/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.lantern.step": {
+    "sounds": [
+      "netherupdatebackport:block/lantern/break1",
+      "netherupdatebackport:block/lantern/break2",
+      "netherupdatebackport:block/lantern/break3",
+      "netherupdatebackport:block/lantern/break4",
+      "netherupdatebackport:block/lantern/break5",
+      "netherupdatebackport:block/lantern/break6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.lantern.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/lantern/place1",
+        "pitch": 1.1
+      },
+      {
+        "name": "netherupdatebackport:block/lantern/place2",
+        "pitch": 1.1
+      },
+      {
+        "name": "netherupdatebackport:block/lantern/place3",
+        "pitch": 1.1
+      },
+      {
+        "name": "netherupdatebackport:block/lantern/place4",
+        "pitch": 1.1
+      },
+      {
+        "name": "netherupdatebackport:block/lantern/place5",
+        "pitch": 1.1
+      },
+      {
+        "name": "netherupdatebackport:block/lantern/place6",
+        "pitch": 1.1
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.lantern.hit": {
+    "sounds": [
+      "netherupdatebackport:block/lantern/place1",
+      "netherupdatebackport:block/lantern/place2",
+      "netherupdatebackport:block/lantern/place3",
+      "netherupdatebackport:block/lantern/place4",
+      "netherupdatebackport:block/lantern/place5",
+      "netherupdatebackport:block/lantern/place6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.lantern.fall": {
+    "sounds": [
+      "netherupdatebackport:block/lantern/break1",
+      "netherupdatebackport:block/lantern/break2",
+      "netherupdatebackport:block/lantern/break3",
+      "netherupdatebackport:block/lantern/break4",
+      "netherupdatebackport:block/lantern/break5",
+      "netherupdatebackport:block/lantern/break6"
+    ]
+  },
+  "block.campfire.crackle": {
+    "sounds": [
+      "netherupdatebackport:block/campfire/crackle1",
+      "netherupdatebackport:block/campfire/crackle2",
+      "netherupdatebackport:block/campfire/crackle3",
+      "netherupdatebackport:block/campfire/crackle4",
+      "netherupdatebackport:block/campfire/crackle5",
+      "netherupdatebackport:block/campfire/crackle6"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.block.campfire.crackle"
+  },
+  "particle.soul_escape": {
+    "sounds": [
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed1",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed2",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed3",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed4",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed5",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed6",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed7",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed8",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed9",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed10",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed11",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed12",
+        "volume": 0.25
+      },
+      {
+        "attenuation_distance": 12,
+        "name": "netherupdatebackport:enchant/soulspeed/soulspeed13",
+        "volume": 0.25
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.particle.soul_escape"
   }
 }

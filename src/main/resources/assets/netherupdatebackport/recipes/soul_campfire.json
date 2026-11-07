@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "S#S",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "type": "forge:ore_dict",
+      "ore": "logWood"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "#": [
+      {
+        "item": "minecraft:soul_sand"
+      },
+      {
+        "item": "netherupdatebackport:soul_soil"
+      }
+    ]
+  },
+  "result": {
+    "item": "netherupdatebackport:soul_campfire"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:soul_campfire",
+        "netherupdatebackport:soul_soil"
+      ]
+    }
+  ]
+}

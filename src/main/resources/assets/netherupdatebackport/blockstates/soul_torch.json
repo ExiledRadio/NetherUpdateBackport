@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "netherupdatebackport:soul_torch"
+    },
+    "facing=east": {
+      "model": "netherupdatebackport:soul_wall_torch"
+    },
+    "facing=south": {
+      "model": "netherupdatebackport:soul_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "netherupdatebackport:soul_wall_torch",
+      "y": 180
+    },
+    "facing=north": {
+      "model": "netherupdatebackport:soul_wall_torch",
+      "y": 270
+    }
+  }
+}
