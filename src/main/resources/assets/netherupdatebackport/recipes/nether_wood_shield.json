@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WoW",
+    "WWW",
+    " W "
+  ],
+  "key": {
+    "W": [
+      {
+        "item": "minecraft:planks",
+        "data": 32767
+      },
+      {
+        "item": "netherupdatebackport:crimson_planks"
+      },
+      {
+        "item": "netherupdatebackport:warped_planks"
+      }
+    ],
+    "o": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "minecraft:shield"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crimson_planks",
+        "netherupdatebackport:warped_planks"
+      ]
+    }
+  ]
+}

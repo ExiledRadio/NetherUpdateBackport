@@ -1,0 +1,6 @@
+{
+  "parent": "block/fence_post",
+  "textures": {
+    "texture": "netherupdatebackport:block/warped_planks"
+  }
+}

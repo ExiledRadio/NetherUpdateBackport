@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "QQQ",
+    "WWW"
+  ],
+  "key": {
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "W": [
+      {
+        "item": "minecraft:wooden_slab",
+        "data": 32767
+      },
+      {
+        "item": "netherupdatebackport:crimson_slab",
+        "data": 0
+      },
+      {
+        "item": "netherupdatebackport:warped_slab",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "minecraft:daylight_detector"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crimson_slab",
+        "netherupdatebackport:warped_slab"
+      ]
+    }
+  ]
+}

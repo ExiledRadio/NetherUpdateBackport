@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": [
+      {
+        "item": "minecraft:planks",
+        "data": 32767
+      },
+      {
+        "item": "netherupdatebackport:crimson_planks"
+      },
+      {
+        "item": "netherupdatebackport:warped_planks"
+      }
+    ]
+  },
+  "result": {
+    "item": "minecraft:wooden_sword"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crimson_planks",
+        "netherupdatebackport:warped_planks"
+      ]
+    }
+  ]
+}

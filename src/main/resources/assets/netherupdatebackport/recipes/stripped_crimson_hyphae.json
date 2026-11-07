@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "netherupdatebackport:bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "netherupdatebackport:stripped_crimson_stem"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:stripped_crimson_hyphae",
+    "count": 3
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:stripped_crimson_hyphae",
+        "netherupdatebackport:stripped_crimson_stem"
+      ]
+    }
+  ]
+}

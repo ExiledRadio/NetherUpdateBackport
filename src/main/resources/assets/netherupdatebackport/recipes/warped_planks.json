@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "netherupdatebackport:planks",
+  "ingredients": [
+    [
+      {
+        "item": "netherupdatebackport:warped_stem"
+      },
+      {
+        "item": "netherupdatebackport:stripped_warped_stem"
+      },
+      {
+        "item": "netherupdatebackport:warped_hyphae"
+      },
+      {
+        "item": "netherupdatebackport:stripped_warped_hyphae"
+      }
+    ]
+  ],
+  "result": {
+    "item": "netherupdatebackport:warped_planks",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:stripped_warped_hyphae",
+        "netherupdatebackport:stripped_warped_stem",
+        "netherupdatebackport:warped_hyphae",
+        "netherupdatebackport:warped_planks",
+        "netherupdatebackport:warped_stem"
+      ]
+    }
+  ]
+}

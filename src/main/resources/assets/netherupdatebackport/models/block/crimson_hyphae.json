@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "netherupdatebackport:block/crimson_stem",
+    "side": "netherupdatebackport:block/crimson_stem"
+  }
+}

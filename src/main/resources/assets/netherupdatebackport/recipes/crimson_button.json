@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "netherupdatebackport:wooden_button",
+  "ingredients": [
+    {
+      "item": "netherupdatebackport:crimson_planks"
+    }
+  ],
+  "result": {
+    "item": "netherupdatebackport:crimson_button"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crimson_button",
+        "netherupdatebackport:crimson_planks"
+      ]
+    }
+  ]
+}

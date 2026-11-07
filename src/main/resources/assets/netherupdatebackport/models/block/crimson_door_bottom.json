@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom",
+  "textures": {
+    "top": "netherupdatebackport:block/crimson_door_top",
+    "bottom": "netherupdatebackport:block/crimson_door_bottom"
+  }
+}

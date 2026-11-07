@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "netherupdatebackport:crimson_slab"
+    },
+    "half=top": {
+      "model": "netherupdatebackport:crimson_slab_top"
+    }
+  }
+}

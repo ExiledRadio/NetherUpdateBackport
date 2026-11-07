@@ -1,0 +1,8 @@
+{
+  "parent": "netherupdatebackport:block/slab",
+  "textures": {
+    "bottom": "netherupdatebackport:block/crimson_planks",
+    "top": "netherupdatebackport:block/crimson_planks",
+    "side": "netherupdatebackport:block/crimson_planks"
+  }
+}

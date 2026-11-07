@@ -436,5 +436,658 @@
       }
     ],
     "subtitle": "subtitles.netherupdatebackport.item.lodestone_compass.lock"
+  },
+  "block.nylium.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/nylium/break1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break4",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break5",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break6",
+        "volume": 0.85
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.nylium.step": {
+    "sounds": [
+      "netherupdatebackport:block/nylium/step1",
+      "netherupdatebackport:block/nylium/step2",
+      "netherupdatebackport:block/nylium/step3",
+      "netherupdatebackport:block/nylium/step4",
+      "netherupdatebackport:block/nylium/step5",
+      "netherupdatebackport:block/nylium/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.nylium.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/nylium/break1",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break2",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break3",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break4",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break5",
+        "volume": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/nylium/break6",
+        "volume": 0.85
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.nylium.hit": {
+    "sounds": [
+      "netherupdatebackport:block/nylium/step1",
+      "netherupdatebackport:block/nylium/step2",
+      "netherupdatebackport:block/nylium/step3",
+      "netherupdatebackport:block/nylium/step4",
+      "netherupdatebackport:block/nylium/step5",
+      "netherupdatebackport:block/nylium/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.nylium.fall": {
+    "sounds": [
+      "netherupdatebackport:block/nylium/step1",
+      "netherupdatebackport:block/nylium/step2",
+      "netherupdatebackport:block/nylium/step3",
+      "netherupdatebackport:block/nylium/step4",
+      "netherupdatebackport:block/nylium/step5",
+      "netherupdatebackport:block/nylium/step6"
+    ]
+  },
+  "block.fungus.break": {
+    "sounds": [
+      "netherupdatebackport:block/fungus/break1",
+      "netherupdatebackport:block/fungus/break2",
+      "netherupdatebackport:block/fungus/break3",
+      "netherupdatebackport:block/fungus/break4",
+      "netherupdatebackport:block/fungus/break5",
+      "netherupdatebackport:block/fungus/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.fungus.step": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/plant/netherwart1",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart1",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart2",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart2",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart3",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart3",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart4",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart4",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart5",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart5",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart6",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart6",
+        "pitch": 1.12,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.fungus.place": {
+    "sounds": [
+      "netherupdatebackport:block/fungus/break1",
+      "netherupdatebackport:block/fungus/break2",
+      "netherupdatebackport:block/fungus/break3",
+      "netherupdatebackport:block/fungus/break4",
+      "netherupdatebackport:block/fungus/break5",
+      "netherupdatebackport:block/fungus/break6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.fungus.hit": {
+    "sounds": [],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.fungus.fall": {
+    "sounds": []
+  },
+  "block.roots.break": {
+    "sounds": [
+      "netherupdatebackport:block/roots/break1",
+      "netherupdatebackport:block/roots/break2",
+      "netherupdatebackport:block/roots/break3",
+      "netherupdatebackport:block/roots/break4",
+      "netherupdatebackport:block/roots/break5",
+      "netherupdatebackport:block/roots/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.roots.step": {
+    "sounds": [],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.roots.place": {
+    "sounds": [
+      "netherupdatebackport:block/roots/break1",
+      "netherupdatebackport:block/roots/break2",
+      "netherupdatebackport:block/roots/break3",
+      "netherupdatebackport:block/roots/break4",
+      "netherupdatebackport:block/roots/break5",
+      "netherupdatebackport:block/roots/break6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.roots.hit": {
+    "sounds": [],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.roots.fall": {
+    "sounds": []
+  },
+  "block.nether_sprouts.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/break1",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/break2",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/break3",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/break4",
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.nether_sprouts.step": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/step1",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/step2",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/step3",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/step4",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/step5",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.nether_sprouts.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/break1",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/break2",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/break3",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/nether_sprouts/break4",
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.nether_sprouts.hit": {
+    "sounds": [
+      "netherupdatebackport:block/nether_sprouts/step1",
+      "netherupdatebackport:block/nether_sprouts/step2",
+      "netherupdatebackport:block/nether_sprouts/step3",
+      "netherupdatebackport:block/nether_sprouts/step4",
+      "netherupdatebackport:block/nether_sprouts/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.nether_sprouts.fall": {
+    "sounds": [
+      "netherupdatebackport:block/nether_sprouts/step1",
+      "netherupdatebackport:block/nether_sprouts/step2",
+      "netherupdatebackport:block/nether_sprouts/step3",
+      "netherupdatebackport:block/nether_sprouts/step4",
+      "netherupdatebackport:block/nether_sprouts/step5"
+    ]
+  },
+  "block.weeping_vines.break": {
+    "sounds": [
+      "netherupdatebackport:block/roots/break1",
+      "netherupdatebackport:block/roots/break2",
+      "netherupdatebackport:block/roots/break3",
+      "netherupdatebackport:block/roots/break4",
+      "netherupdatebackport:block/roots/break5",
+      "netherupdatebackport:block/roots/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.weeping_vines.step": {
+    "sounds": [
+      "netherupdatebackport:block/roots/step1",
+      "netherupdatebackport:block/roots/step2",
+      "netherupdatebackport:block/roots/step3",
+      "netherupdatebackport:block/roots/step4",
+      "netherupdatebackport:block/roots/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.weeping_vines.place": {
+    "sounds": [
+      "netherupdatebackport:block/roots/break1",
+      "netherupdatebackport:block/roots/break2",
+      "netherupdatebackport:block/roots/break3",
+      "netherupdatebackport:block/roots/break4",
+      "netherupdatebackport:block/roots/break5",
+      "netherupdatebackport:block/roots/break6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.weeping_vines.hit": {
+    "sounds": [
+      "netherupdatebackport:block/roots/break1",
+      "netherupdatebackport:block/roots/break2",
+      "netherupdatebackport:block/roots/break3",
+      "netherupdatebackport:block/roots/break4",
+      "netherupdatebackport:block/roots/break5",
+      "netherupdatebackport:block/roots/break6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.weeping_vines.fall": {
+    "sounds": [
+      "netherupdatebackport:block/roots/break1",
+      "netherupdatebackport:block/roots/break2",
+      "netherupdatebackport:block/roots/break3",
+      "netherupdatebackport:block/roots/break4",
+      "netherupdatebackport:block/roots/break5",
+      "netherupdatebackport:block/roots/break6"
+    ]
+  },
+  "block.stem.break": {
+    "sounds": [
+      "netherupdatebackport:block/stem/break1",
+      "netherupdatebackport:block/stem/break2",
+      "netherupdatebackport:block/stem/break3",
+      "netherupdatebackport:block/stem/break4",
+      "netherupdatebackport:block/stem/break5",
+      "netherupdatebackport:block/stem/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.stem.step": {
+    "sounds": [
+      "netherupdatebackport:block/stem/step1",
+      "netherupdatebackport:block/stem/step2",
+      "netherupdatebackport:block/stem/step3",
+      "netherupdatebackport:block/stem/step4",
+      "netherupdatebackport:block/stem/step5",
+      "netherupdatebackport:block/stem/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.stem.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/stem/break1",
+        "pitch": 1.1,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/break2",
+        "pitch": 1.1,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/break3",
+        "pitch": 1.1,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/break4",
+        "pitch": 1.1,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/break5",
+        "pitch": 1.1,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/break6",
+        "pitch": 1.1,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.stem.hit": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/stem/step1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/step2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/step3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/step4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/step5",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/stem/step6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.stem.fall": {
+    "sounds": [
+      "netherupdatebackport:block/stem/step1",
+      "netherupdatebackport:block/stem/step2",
+      "netherupdatebackport:block/stem/step3",
+      "netherupdatebackport:block/stem/step4",
+      "netherupdatebackport:block/stem/step5",
+      "netherupdatebackport:block/stem/step6"
+    ]
+  },
+  "block.wart_block.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/netherwart/break1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break5",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.wart_block.step": {
+    "sounds": [
+      "netherupdatebackport:block/netherwart/step1",
+      "netherupdatebackport:block/netherwart/step2",
+      "netherupdatebackport:block/netherwart/step3",
+      "netherupdatebackport:block/netherwart/step4",
+      "netherupdatebackport:block/netherwart/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.wart_block.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/netherwart/break1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break5",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/break6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.wart_block.hit": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/netherwart/step1",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/step2",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/step3",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/step4",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:block/netherwart/step5",
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.wart_block.fall": {
+    "sounds": [
+      "netherupdatebackport:block/netherwart/step1",
+      "netherupdatebackport:block/netherwart/step2",
+      "netherupdatebackport:block/netherwart/step3",
+      "netherupdatebackport:block/netherwart/step4",
+      "netherupdatebackport:block/netherwart/step5"
+    ]
+  },
+  "block.shroomlight.break": {
+    "sounds": [
+      "netherupdatebackport:block/shroomlight/break1",
+      "netherupdatebackport:block/shroomlight/break2",
+      "netherupdatebackport:block/shroomlight/break3",
+      "netherupdatebackport:block/shroomlight/break4",
+      "netherupdatebackport:block/shroomlight/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.shroomlight.step": {
+    "sounds": [
+      "netherupdatebackport:block/shroomlight/step1",
+      "netherupdatebackport:block/shroomlight/step2",
+      "netherupdatebackport:block/shroomlight/step3",
+      "netherupdatebackport:block/shroomlight/step4",
+      "netherupdatebackport:block/shroomlight/step5",
+      "netherupdatebackport:block/shroomlight/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.shroomlight.place": {
+    "sounds": [
+      "netherupdatebackport:block/shroomlight/break1",
+      "netherupdatebackport:block/shroomlight/break2",
+      "netherupdatebackport:block/shroomlight/break3",
+      "netherupdatebackport:block/shroomlight/break4",
+      "netherupdatebackport:block/shroomlight/break5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.shroomlight.hit": {
+    "sounds": [
+      "netherupdatebackport:block/shroomlight/step1",
+      "netherupdatebackport:block/shroomlight/step2",
+      "netherupdatebackport:block/shroomlight/step3",
+      "netherupdatebackport:block/shroomlight/step4",
+      "netherupdatebackport:block/shroomlight/step5",
+      "netherupdatebackport:block/shroomlight/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.shroomlight.fall": {
+    "sounds": [
+      "netherupdatebackport:block/shroomlight/step1",
+      "netherupdatebackport:block/shroomlight/step2",
+      "netherupdatebackport:block/shroomlight/step3",
+      "netherupdatebackport:block/shroomlight/step4",
+      "netherupdatebackport:block/shroomlight/step5",
+      "netherupdatebackport:block/shroomlight/step6"
+    ]
+  },
+  "item.axe.strip": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/axe/strip1",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/axe/strip1",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/axe/strip2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/axe/strip2",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/axe/strip3",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/axe/strip3",
+        "pitch": 0.85,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/axe/strip4",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/axe/strip4",
+        "pitch": 0.85,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.axe.strip"
+  },
+  "block.growing_plant.crop": {
+    "sounds": [
+      "netherupdatebackport:mob/sheep/shear"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.block.growing_plant.crop"
   }
 }

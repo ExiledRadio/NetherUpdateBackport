@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "netherupdatebackport:crimson_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "netherupdatebackport:crimson_stem"
+    },
+    "axis=z": {
+      "model": "netherupdatebackport:crimson_stem",
+      "x": 90
+    }
+  }
+}
