@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "netherupdatebackport:chain",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "netherupdatebackport:chain"
+    },
+    "axis=z": {
+      "model": "netherupdatebackport:chain",
+      "x": 90
+    }
+  }
+}

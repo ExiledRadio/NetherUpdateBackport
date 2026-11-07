@@ -1,4 +1,16 @@
 {
+  "blocks": [
+    {
+      "input": "minecraft:nether_brick",
+      "output": "netherupdatebackport:cracked_nether_bricks",
+      "xp": 0.1
+    },
+    {
+      "input": "netherupdatebackport:nether_gold_ore",
+      "output": "minecraft:gold_ingot",
+      "xp": 1.0
+    }
+  ],
   "stone": [
     {
       "input": "netherupdatebackport:polished_blackstone_bricks",

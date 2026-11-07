@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "netherupdatebackport:block/lodestone_top",
+    "side": "netherupdatebackport:block/lodestone_side"
+  }
+}

@@ -1,5 +1,56 @@
 itemGroup.netherupdatebackport=Nether Update Backport
 
+# --- stone ---
+tile.netherupdatebackport.basalt.name=Basalt
+tile.netherupdatebackport.blackstone.name=Blackstone
+tile.netherupdatebackport.blackstone_double_slab.name=Blackstone Slab
+tile.netherupdatebackport.blackstone_slab.name=Blackstone Slab
+tile.netherupdatebackport.blackstone_stairs.name=Blackstone Stairs
+tile.netherupdatebackport.blackstone_wall.name=Blackstone Wall
+tile.netherupdatebackport.chiseled_polished_blackstone.name=Chiseled Polished Blackstone
+tile.netherupdatebackport.cracked_polished_blackstone_bricks.name=Cracked Polished Blackstone Bricks
+tile.netherupdatebackport.gilded_blackstone.name=Gilded Blackstone
+tile.netherupdatebackport.polished_basalt.name=Polished Basalt
+tile.netherupdatebackport.polished_blackstone.name=Polished Blackstone
+tile.netherupdatebackport.polished_blackstone_brick_double_slab.name=Polished Blackstone Brick Slab
+tile.netherupdatebackport.polished_blackstone_brick_slab.name=Polished Blackstone Brick Slab
+tile.netherupdatebackport.polished_blackstone_brick_stairs.name=Polished Blackstone Brick Stairs
+tile.netherupdatebackport.polished_blackstone_brick_wall.name=Polished Blackstone Brick Wall
+tile.netherupdatebackport.polished_blackstone_bricks.name=Polished Blackstone Bricks
+tile.netherupdatebackport.polished_blackstone_button.name=Polished Blackstone Button
+tile.netherupdatebackport.polished_blackstone_double_slab.name=Polished Blackstone Slab
+tile.netherupdatebackport.polished_blackstone_pressure_plate.name=Polished Blackstone Pressure Plate
+tile.netherupdatebackport.polished_blackstone_slab.name=Polished Blackstone Slab
+tile.netherupdatebackport.polished_blackstone_stairs.name=Polished Blackstone Stairs
+tile.netherupdatebackport.polished_blackstone_wall.name=Polished Blackstone Wall
+
+# --- blocks ---
+advancements.adventure.bullseye.description=Hit the bullseye of a Target block from at least 30 meters away
+advancements.adventure.bullseye.title=Bullseye
+advancements.nether.charge_respawn_anchor.description=Charge a Respawn Anchor to the maximum
+advancements.nether.charge_respawn_anchor.title=Not Quite "Nine" Lives
+advancements.nether.obtain_crying_obsidian.description=Obtain Crying Obsidian
+advancements.nether.obtain_crying_obsidian.title=Who is Cutting Onions?
+advancements.nether.use_lodestone.description=Use a compass on a Lodestone
+advancements.nether.use_lodestone.title=Country Lode, Take Me Home
+block.minecraft.set_spawn=Respawn point set
+block.minecraft.spawn.not_valid=You have no home bed or charged respawn anchor, or it was obstructed
+item.netherupdatebackport.lodestone_compass.name=Lodestone Compass
+subtitles.netherupdatebackport.block.respawn_anchor.ambient=Portal whooshes
+subtitles.netherupdatebackport.block.respawn_anchor.charge=Respawn Anchor is charged
+subtitles.netherupdatebackport.block.respawn_anchor.deplete=Respawn Anchor depletes
+subtitles.netherupdatebackport.block.respawn_anchor.set_spawn=Respawn Anchor sets spawn
+subtitles.netherupdatebackport.item.lodestone_compass.lock=Lodestone Compass locks onto Lodestone
+tile.netherupdatebackport.chain.name=Chain
+tile.netherupdatebackport.chiseled_nether_bricks.name=Chiseled Nether Bricks
+tile.netherupdatebackport.cracked_nether_bricks.name=Cracked Nether Bricks
+tile.netherupdatebackport.crying_obsidian.name=Crying Obsidian
+tile.netherupdatebackport.lodestone.name=Lodestone
+tile.netherupdatebackport.nether_gold_ore.name=Nether Gold Ore
+tile.netherupdatebackport.quartz_bricks.name=Quartz Bricks
+tile.netherupdatebackport.respawn_anchor.name=Respawn Anchor
+tile.netherupdatebackport.target.name=Target
+
 # --- config ---
 config.netherupdatebackport.stone=Blackstone and Basalt
 config.netherupdatebackport.blocks=Smaller Blocks
@@ -23,6 +74,8 @@ config.netherupdatebackport.stone.basaltGenerator=Basalt generator
 config.netherupdatebackport.stone.basaltGenerator.tooltip=Lava over soul soil next to blue ice turns into basalt.
 config.netherupdatebackport.blocks.enabled=Enabled
 config.netherupdatebackport.blocks.enabled.tooltip=The smaller 1.16 blocks. Off, nothing is registered.
+config.netherupdatebackport.blocks.generateGold=Generate gold
+config.netherupdatebackport.blocks.generateGold.tooltip=Nether gold ore generates in the nether, in newly generated chunks.
 config.netherupdatebackport.fungus.enabled=Enabled
 config.netherupdatebackport.fungus.enabled.tooltip=The crimson and warped plants and woods. Off, nothing is registered.
 config.netherupdatebackport.soul.enabled=Enabled
@@ -47,27 +100,3 @@ config.netherupdatebackport.structures.enabled=Enabled
 config.netherupdatebackport.structures.enabled.tooltip=Bastion remnants, nether fossils and ruined portals in newly generated chunks. Not built yet.
 config.netherupdatebackport.compat.futureMcDuplicates=Duplicate Blocks
 config.netherupdatebackport.compat.futureMcDuplicates.tooltip=When another installed mod adds the same 1.16 block: OURS hides the other mod's, THEIRS hides ours, BOTH keeps both.
-
-# --- stone ---
-tile.netherupdatebackport.basalt.name=Basalt
-tile.netherupdatebackport.blackstone.name=Blackstone
-tile.netherupdatebackport.blackstone_double_slab.name=Blackstone Slab
-tile.netherupdatebackport.blackstone_slab.name=Blackstone Slab
-tile.netherupdatebackport.blackstone_stairs.name=Blackstone Stairs
-tile.netherupdatebackport.blackstone_wall.name=Blackstone Wall
-tile.netherupdatebackport.chiseled_polished_blackstone.name=Chiseled Polished Blackstone
-tile.netherupdatebackport.cracked_polished_blackstone_bricks.name=Cracked Polished Blackstone Bricks
-tile.netherupdatebackport.gilded_blackstone.name=Gilded Blackstone
-tile.netherupdatebackport.polished_basalt.name=Polished Basalt
-tile.netherupdatebackport.polished_blackstone.name=Polished Blackstone
-tile.netherupdatebackport.polished_blackstone_brick_double_slab.name=Polished Blackstone Brick Slab
-tile.netherupdatebackport.polished_blackstone_brick_slab.name=Polished Blackstone Brick Slab
-tile.netherupdatebackport.polished_blackstone_brick_stairs.name=Polished Blackstone Brick Stairs
-tile.netherupdatebackport.polished_blackstone_brick_wall.name=Polished Blackstone Brick Wall
-tile.netherupdatebackport.polished_blackstone_bricks.name=Polished Blackstone Bricks
-tile.netherupdatebackport.polished_blackstone_button.name=Polished Blackstone Button
-tile.netherupdatebackport.polished_blackstone_double_slab.name=Polished Blackstone Slab
-tile.netherupdatebackport.polished_blackstone_pressure_plate.name=Polished Blackstone Pressure Plate
-tile.netherupdatebackport.polished_blackstone_slab.name=Polished Blackstone Slab
-tile.netherupdatebackport.polished_blackstone_stairs.name=Polished Blackstone Stairs
-tile.netherupdatebackport.polished_blackstone_wall.name=Polished Blackstone Wall

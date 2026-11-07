@@ -105,6 +105,10 @@ public final class ModConfig {
         @Config.Comment("The smaller 1.16 blocks. Off, nothing is registered.")
         @Config.LangKey("config.netherupdatebackport.blocks.enabled")
         public boolean enabled = true;
+
+        @Config.Comment("Nether gold ore generates in the nether, in newly generated chunks.")
+        @Config.LangKey("config.netherupdatebackport.blocks.generateGold")
+        public boolean generateGold = true;
     }
 
     public static final class Fungus {
