@@ -1,0 +1,38 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:gold_ingot"
+    },
+    "title": {
+      "translate": "advancements.nether.distract_piglin.title"
+    },
+    "description": {
+      "translate": "advancements.nether.distract_piglin.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "distract_piglin": {
+      "trigger": "netherupdatebackport:event",
+      "conditions": {
+        "event": "distract_piglin"
+      }
+    },
+    "distract_piglin_directly": {
+      "trigger": "netherupdatebackport:event",
+      "conditions": {
+        "event": "distract_piglin_directly"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "distract_piglin",
+      "distract_piglin_directly"
+    ]
+  ],
+  "parent": "minecraft:nether/root"
+}

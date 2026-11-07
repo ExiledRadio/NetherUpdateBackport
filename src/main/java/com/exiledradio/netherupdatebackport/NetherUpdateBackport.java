@@ -69,6 +69,7 @@ public final class NetherUpdateBackport {
         com.exiledradio.netherupdatebackport.blocks.BlocksContent.init();
         com.exiledradio.netherupdatebackport.netherite.NetheriteContent.init();
         com.exiledradio.netherupdatebackport.changes.ChangesContent.init();
+        com.exiledradio.netherupdatebackport.piglin.PiglinContent.init();
     }
 
     @Mod.EventHandler

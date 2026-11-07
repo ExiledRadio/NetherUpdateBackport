@@ -1,0 +1,291 @@
+{
+  "pools": [
+    {
+      "name": "barter",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "weight": 5,
+          "entryName": "book_0",
+          "name": "minecraft:book",
+          "functions": [
+            {
+              "function": "netherupdatebackport:enchant_randomly",
+              "enchantments": [
+                "netherupdatebackport:soul_speed"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:registered",
+              "enchantments": [
+                "netherupdatebackport:soul_speed"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 8,
+          "entryName": "iron_boots_1",
+          "name": "minecraft:iron_boots",
+          "functions": [
+            {
+              "function": "netherupdatebackport:enchant_randomly",
+              "enchantments": [
+                "netherupdatebackport:soul_speed"
+              ]
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:registered",
+              "enchantments": [
+                "netherupdatebackport:soul_speed"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 8,
+          "entryName": "potion_2",
+          "name": "minecraft:potion",
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{Potion:\"minecraft:fire_resistance\"}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 8,
+          "entryName": "splash_potion_3",
+          "name": "minecraft:splash_potion",
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{Potion:\"minecraft:fire_resistance\"}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 10,
+          "entryName": "potion_4",
+          "name": "minecraft:potion",
+          "functions": [
+            {
+              "function": "set_nbt",
+              "tag": "{Potion:\"minecraft:water\"}"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 10,
+          "entryName": "iron_nugget_5",
+          "name": "minecraft:iron_nugget",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 10,
+                "max": 36
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 10,
+          "entryName": "ender_pearl_6",
+          "name": "minecraft:ender_pearl",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 20,
+          "entryName": "string_7",
+          "name": "minecraft:string",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 3,
+                "max": 9
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 20,
+          "entryName": "quartz_8",
+          "name": "minecraft:quartz",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 5,
+                "max": 12
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "obsidian_9",
+          "name": "minecraft:obsidian"
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "crying_obsidian_10",
+          "name": "minecraft:stone",
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "item": "netherupdatebackport:crying_obsidian"
+            },
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:registered",
+              "items": [
+                "netherupdatebackport:crying_obsidian"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "fire_charge_11",
+          "name": "minecraft:fire_charge"
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "leather_12",
+          "name": "minecraft:leather",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "soul_sand_13",
+          "name": "minecraft:soul_sand",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "nether_brick_14",
+          "name": "minecraft:netherbrick",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "spectral_arrow_15",
+          "name": "minecraft:spectral_arrow",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 6,
+                "max": 12
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "gravel_16",
+          "name": "minecraft:gravel",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 8,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "weight": 40,
+          "entryName": "blackstone_17",
+          "name": "minecraft:stone",
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "item": "netherupdatebackport:blackstone"
+            },
+            {
+              "function": "set_count",
+              "count": {
+                "min": 8,
+                "max": 16
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:registered",
+              "items": [
+                "netherupdatebackport:blackstone"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

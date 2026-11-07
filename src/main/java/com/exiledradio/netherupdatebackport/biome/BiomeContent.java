@@ -139,8 +139,11 @@ public final class BiomeContent {
     private static void spawns() {
         Biome crimson = NetherBiomes.biome(NetherBiomes.Kind.CRIMSON_FOREST);
         add(crimson, "hoglin", EnumCreatureType.MONSTER, 9, 3, 4);
-        add(crimson, "piglin", EnumCreatureType.MONSTER, 5, 3, 4);
-        add(Biomes.HELL, "piglin", EnumCreatureType.MONSTER, 15, 4, 4);
+        // Piglins follow their stream's own switch (piglins.spawn); add() skips one already registered.
+        if (ModConfig.piglins.spawn) {
+            add(crimson, "piglin", EnumCreatureType.MONSTER, 5, 3, 4);
+            add(Biomes.HELL, "piglin", EnumCreatureType.MONSTER, 15, 4, 4);
+        }
         // Striders (stream R) already spawn in nether wastes; 1.16 has them in all five.
         if (ModConfig.striders.spawn) {
             for (NetherBiomes.Kind kind : NetherBiomes.Kind.values()) {

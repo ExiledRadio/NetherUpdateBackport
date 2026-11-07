@@ -1,1 +1,8 @@
 block.smithing_table.use
+item.crossbow.loading_end
+item.crossbow.loading_middle
+item.crossbow.loading_start
+item.crossbow.quick_charge_1
+item.crossbow.quick_charge_2
+item.crossbow.quick_charge_3
+item.crossbow.shoot

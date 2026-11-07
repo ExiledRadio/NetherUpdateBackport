@@ -1,0 +1,41 @@
+{
+  "parent": "netherupdatebackport:item/crossbow_base",
+  "textures": {
+    "layer0": "netherupdatebackport:items/crossbow_standby"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "netherupdatebackport:pulling": 1
+      },
+      "model": "netherupdatebackport:item/crossbow_pulling_0"
+    },
+    {
+      "predicate": {
+        "netherupdatebackport:pulling": 1,
+        "netherupdatebackport:pull": 0.58
+      },
+      "model": "netherupdatebackport:item/crossbow_pulling_1"
+    },
+    {
+      "predicate": {
+        "netherupdatebackport:pulling": 1,
+        "netherupdatebackport:pull": 1.0
+      },
+      "model": "netherupdatebackport:item/crossbow_pulling_2"
+    },
+    {
+      "predicate": {
+        "netherupdatebackport:charged": 1
+      },
+      "model": "netherupdatebackport:item/crossbow_arrow"
+    },
+    {
+      "predicate": {
+        "netherupdatebackport:charged": 1,
+        "netherupdatebackport:firework": 1
+      },
+      "model": "netherupdatebackport:item/crossbow_firework"
+    }
+  ]
+}

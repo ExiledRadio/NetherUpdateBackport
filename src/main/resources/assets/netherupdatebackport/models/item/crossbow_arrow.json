@@ -1,0 +1,6 @@
+{
+  "parent": "netherupdatebackport:item/crossbow_base",
+  "textures": {
+    "layer0": "netherupdatebackport:items/crossbow_arrow"
+  }
+}

@@ -174,6 +174,11 @@ public final class ModConfig {
         @Config.Comment("Piglins and piglin brutes. Off, nothing is registered.")
         @Config.LangKey("config.netherupdatebackport.piglins.enabled")
         public boolean enabled = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Piglins spawn in the nether wastes, as in 1.16. Brutes spawn only in bastions.")
+        @Config.LangKey("config.netherupdatebackport.piglins.spawn")
+        public boolean spawn = true;
     }
 
     public static final class Striders {

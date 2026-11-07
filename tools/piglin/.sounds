@@ -1,0 +1,16 @@
+entity.piglin.admiring_item
+entity.piglin.ambient
+entity.piglin.angry
+entity.piglin.celebrate
+entity.piglin.converted_to_zombified
+entity.piglin.death
+entity.piglin.hurt
+entity.piglin.jealous
+entity.piglin.retreat
+entity.piglin.step
+entity.piglin_brute.ambient
+entity.piglin_brute.angry
+entity.piglin_brute.converted_to_zombified
+entity.piglin_brute.death
+entity.piglin_brute.hurt
+entity.piglin_brute.step
