@@ -1835,5 +1835,136 @@
       "netherupdatebackport:mob/zoglin/step5"
     ],
     "subtitle": "subtitles.netherupdatebackport.entity.zoglin.step"
+  },
+  "entity.strider.ambient": {
+    "sounds": [
+      "netherupdatebackport:mob/strider/idle1",
+      "netherupdatebackport:mob/strider/idle2",
+      "netherupdatebackport:mob/strider/idle3",
+      "netherupdatebackport:mob/strider/idle4",
+      "netherupdatebackport:mob/strider/idle5",
+      "netherupdatebackport:mob/strider/idle6"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.strider.idle"
+  },
+  "entity.strider.death": {
+    "sounds": [
+      "netherupdatebackport:mob/strider/death1",
+      "netherupdatebackport:mob/strider/death2",
+      "netherupdatebackport:mob/strider/death3",
+      "netherupdatebackport:mob/strider/death4"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.strider.death"
+  },
+  "entity.strider.eat": {
+    "sounds": [
+      "netherupdatebackport:mob/strider/eat1",
+      "netherupdatebackport:mob/strider/eat2",
+      "netherupdatebackport:mob/strider/eat3"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.strider.eat"
+  },
+  "entity.strider.happy": {
+    "sounds": [
+      "netherupdatebackport:mob/strider/happy1",
+      "netherupdatebackport:mob/strider/happy2",
+      "netherupdatebackport:mob/strider/happy3",
+      "netherupdatebackport:mob/strider/happy4",
+      "netherupdatebackport:mob/strider/happy5"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.strider.happy"
+  },
+  "entity.strider.hurt": {
+    "sounds": [
+      "netherupdatebackport:mob/strider/hurt1",
+      "netherupdatebackport:mob/strider/hurt2",
+      "netherupdatebackport:mob/strider/hurt3",
+      "netherupdatebackport:mob/strider/hurt4"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.strider.hurt"
+  },
+  "entity.strider.retreat": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/strider/retreat1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/retreat2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/retreat3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/retreat4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/retreat5",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.strider.retreat"
+  },
+  "entity.strider.saddle": {
+    "sounds": [
+      "netherupdatebackport:mob/horse/leather"
+    ]
+  },
+  "entity.strider.step": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/strider/step1",
+        "volume": 0.25
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step2",
+        "volume": 0.25
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step3",
+        "volume": 0.25
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step4",
+        "volume": 0.25
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step5",
+        "volume": 0.25
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "entity.strider.step_lava": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/strider/step_lava1",
+        "volume": 0.2
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step_lava2",
+        "volume": 0.2
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step_lava3",
+        "volume": 0.2
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step_lava4",
+        "volume": 0.2
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step_lava5",
+        "volume": 0.2
+      },
+      {
+        "name": "netherupdatebackport:mob/strider/step_lava6",
+        "volume": 0.2
+      }
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }
