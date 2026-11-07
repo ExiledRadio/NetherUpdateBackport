@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom": {
+      "model": "netherupdatebackport:blackstone_slab"
+    },
+    "half=top": {
+      "model": "netherupdatebackport:blackstone_slab_top"
+    }
+  }
+}

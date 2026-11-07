@@ -90,6 +90,14 @@ public final class ModConfig {
         @Config.Comment("Blackstone and basalt and everything made from them. Off, nothing is registered.")
         @Config.LangKey("config.netherupdatebackport.stone.enabled")
         public boolean enabled = true;
+
+        @Config.Comment("Blackstone generates in blobs in the nether, in newly generated chunks.")
+        @Config.LangKey("config.netherupdatebackport.stone.generate")
+        public boolean generate = true;
+
+        @Config.Comment("Lava over soul soil next to blue ice turns into basalt.")
+        @Config.LangKey("config.netherupdatebackport.stone.basaltGenerator")
+        public boolean basaltGenerator = true;
     }
 
     public static final class Blocks {

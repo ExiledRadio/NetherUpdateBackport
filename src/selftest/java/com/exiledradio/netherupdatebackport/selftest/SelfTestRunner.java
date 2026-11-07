@@ -44,6 +44,7 @@ public final class SelfTestRunner {
     /** Every stream's test. A stream adds its own line. */
     private static final SelfTest[] TESTS = {
             new ScaffoldSelfTest(),
+            new StoneSelfTest(),
     };
 
     private final List<String> wanted;
@@ -73,7 +74,7 @@ public final class SelfTestRunner {
             check.fail("dump: " + e);
         }
         for (SelfTest test : TESTS) {
-            if (this.wanted.contains("all") || this.wanted.contains(test.name())) {
+            if (this.wanted.contains("all") || this.wanted.contains(test.name()) || test instanceof ScaffoldSelfTest) {
                 check.section(test.name());
                 try {
                     test.run(check);

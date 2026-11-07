@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "netherupdatebackport:basalt"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:polished_basalt",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:basalt",
+        "netherupdatebackport:polished_basalt"
+      ]
+    }
+  ]
+}

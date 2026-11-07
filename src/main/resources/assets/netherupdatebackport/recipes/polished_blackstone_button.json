@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "netherupdatebackport:polished_blackstone"
+    }
+  ],
+  "result": {
+    "item": "netherupdatebackport:polished_blackstone_button"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:polished_blackstone",
+        "netherupdatebackport:polished_blackstone_button"
+      ]
+    }
+  ]
+}

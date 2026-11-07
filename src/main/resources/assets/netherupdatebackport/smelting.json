@@ -1,0 +1,9 @@
+{
+  "stone": [
+    {
+      "input": "netherupdatebackport:polished_blackstone_bricks",
+      "output": "netherupdatebackport:cracked_polished_blackstone_bricks",
+      "xp": 0.1
+    }
+  ]
+}

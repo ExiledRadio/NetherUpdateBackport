@@ -3,8 +3,10 @@ package com.exiledradio.netherupdatebackport.common;
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemSlab;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.registries.IForgeRegistry;
 
@@ -60,10 +62,35 @@ public final class Content {
         return block;
     }
 
-    /** Registers a plain {@link ItemBlock} for a block, with its model at metadata 0. */
+    /**
+     * Registers the item for a block, with its model at metadata 0: an {@link ItemSlab} for a half slab
+     * declared with {@link #slab}, else a plain {@link ItemBlock}.
+     */
     public static ItemBlock registerBlockItem(IForgeRegistry<Item> registry, Block block) {
-        ItemBlock item = new ItemBlock(block);
+        Block full = SLABS.get(block);
+        ItemBlock item = full != null ? new ItemSlab(block, (BlockSlab) block, (BlockSlab) full) : new ItemBlock(block);
         return blockItem(registry, block, item);
+    }
+
+    /** half slab -> its double */
+    private static final Map<Block, Block> SLABS = new LinkedHashMap<Block, Block>();
+
+    /**
+     * Registers a slab pair: the half as {@code name}, the double as {@code name} with {@code _slab}
+     * turned into {@code _double_slab} (no item; Village &amp; Pillage's naming). Their one-value
+     * {@code variant} property is hidden from the blockstate files.
+     */
+    public static BlockSlab slab(IForgeRegistry<Block> registry, String name, BlockSlab half, BlockSlab full, @Nullable String tool) {
+        block(registry, name, half, tool);
+        block(registry, doubleSlabName(name), full, tool);
+        SLABS.put(half, full);
+        ignore(half, "variant");
+        ignore(full, "variant");
+        return half;
+    }
+
+    public static String doubleSlabName(String slab) {
+        return slab.substring(0, slab.length() - "_slab".length()) + "_double_slab";
     }
 
     /** Registers a given item for a block, under the block's name, with its model at metadata 0. */

@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "netherupdatebackport:block/blackstone_top",
+    "side": "netherupdatebackport:block/blackstone"
+  }
+}

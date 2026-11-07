@@ -33,6 +33,9 @@ def candidates(key):
     parts = key.split(".")
     if key.startswith("tile.%s." % M) and key.endswith(".name"):
         name = ".".join(parts[2:-1])
+        if name.endswith("_double_slab"):
+            # A double slab (no item of its own) is named as its slab.
+            name = name[:-len("_double_slab")] + "_slab"
         return ["block.minecraft." + name, "item.minecraft." + name]
     if key.startswith("item.%s." % M) and key.endswith(".name"):
         name = ".".join(parts[2:-1])
