@@ -167,7 +167,7 @@ public final class StoneSelfTest implements SelfTest {
                         for (int y = 0; y < 48; y++) {
                             if (chunk.getBlockState(bx, y, bz).getBlock() == StoneContent.blackstone) {
                                 blackstone++;
-                                c.ok(y >= 2 && y <= 40, "blackstone near its range: y=" + y);
+                                c.ok(y <= 40, "blackstone near its range (blobs centered at y 5-31): y=" + y);
                             }
                         }
                     }

@@ -50,6 +50,9 @@ public final class NetherUpdateBackport {
     public void preInit(FMLPreInitializationEvent event) {
         NetworkHandler.init();
         com.exiledradio.netherupdatebackport.common.Triggers.init();
+        com.exiledradio.netherupdatebackport.owned.OwnedContent.preInit();
+        net.minecraftforge.fml.common.network.NetworkRegistry.INSTANCE.registerGuiHandler(this,
+                new com.exiledradio.netherupdatebackport.common.GuiHandler());
 
         // Client-only setup lives in a class a dedicated server never loads. The call names no client
         // type, so this class verifies on a server - a guarded method here would not.
@@ -68,7 +71,6 @@ public final class NetherUpdateBackport {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        com.exiledradio.netherupdatebackport.hoglin.HoglinContent.postInit();
         com.exiledradio.netherupdatebackport.strider.StriderContent.postInit();
     }
 

@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "netherupdatebackport:blocks/smithing_table_front",
+    "down": "netherupdatebackport:blocks/smithing_table_bottom",
+    "up": "netherupdatebackport:blocks/smithing_table_top",
+    "north": "netherupdatebackport:blocks/smithing_table_front",
+    "east": "netherupdatebackport:blocks/smithing_table_side",
+    "south": "netherupdatebackport:blocks/smithing_table_front",
+    "west": "netherupdatebackport:blocks/smithing_table_side"
+  }
+}

@@ -127,18 +127,6 @@ public final class NetheriteSelfTest implements SelfTest {
         ItemStack in = new ItemStack(NetheriteContent.ingot);
         Crafting.expect(c, Crafting.grid(3, 3, in, in, in, in, in, in, in, in, in), new ItemStack(NetheriteContent.netheriteBlock), "9 make a block");
 
-        // The crafting fallback (no smithing table in this test game) -------------------------------------------
-        c.ok(!NetheriteContent.hasSmithingTable(), "this test game has no smithing table");
-        ItemStack sword = new ItemStack(Items.DIAMOND_SWORD);
-        sword.setItemDamage(100);
-        sword.setStackDisplayName("Old Faithful");
-        EnchantmentHelper.setEnchantments(Collections.singletonMap(Enchantments.SHARPNESS, 3), sword);
-        ItemStack made = net.minecraft.item.crafting.CraftingManager.findMatchingResult(Crafting.grid(2, 1, sword, in), world);
-        c.eq(item("netherite_sword"), made.getItem(), "a diamond sword and an ingot make a netherite sword");
-        c.eq(3, EnchantmentHelper.getEnchantmentLevel(Enchantments.SHARPNESS, made), "keeping Sharpness III");
-        c.eq("Old Faithful", made.getDisplayName(), "and its name");
-        c.eq(100, made.getItemDamage(), "and its damage");
-
         // Smithing (Backport Core's registry, read by Village & Pillage's table) ------------------------------
         int ours = 0;
         for (SmithingUpgrades.Upgrade u : SmithingUpgrades.list()) {

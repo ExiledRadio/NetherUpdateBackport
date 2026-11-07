@@ -51,6 +51,7 @@ public final class SelfTestRunner {
             new NetheriteSelfTest(),
             new HoglinSelfTest(),
             new StriderSelfTest(),
+            new OwnedSelfTest(),
     };
 
     private final List<String> wanted;

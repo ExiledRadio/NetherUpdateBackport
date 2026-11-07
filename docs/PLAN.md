@@ -18,7 +18,7 @@ index (`tools/assets.py`); none of 1.16's nether textures changed after 1.16.
 | --- | --- |
 | Every new block, item, mob, enchantment, music disc, particle and advancement; 1.16's changes to zombie pigmen, fire, the nether's music and sounds, and smaller block rules | Data packs, custom dimensions and biomes from JSON, the jigsaw block, the attribute rename, new gamerules and commands: technical, 1.12.2 cannot take them and players never see them |
 | Netherite upgrades on Village & Pillage's smithing table (Rule 2) | The smithing table itself (Village & Pillage owns it; see N) |
-| The four nether biomes and the structures, **once the user decides** (see *Still open*) | Social-interactions screen, chat-delay and other options-menu changes |
+| The four nether biomes and the structures (see *Decided*) | Social-interactions screen, chat-delay and other options-menu changes |
 
 ## Content owned by another mod of the family
 
@@ -28,10 +28,10 @@ hanging signs, say) find ours. This mod *uses* these older things and never regi
 
 | Owner | Thing | How we use it |
 | --- | --- | --- |
-| Village & Pillage (`villagerbackport`) | Smithing table | Netherite upgrades registered through Backport Core's `SmithingUpgrades.add`, which the table reads. Without the table installed: a shapeless crafting fallback (diamond item + netherite ingot, keeps damage, enchantments and name), switch `netherite.craftingFallback`, on by default. |
+| Village & Pillage (`villagerbackport`) | Smithing table | Netherite upgrades registered through Backport Core's `SmithingUpgrades.add`, which the table reads. Without Village & Pillage: an identical copy of its table (`owned`, Rule 1), with 1.16's upgrade screen. |
 | Village & Pillage | Campfire | The soul campfire is our own block, written after the campfire's code pattern (same tile layout, cooking, signal smoke over hay, dousing). When the campfire's owner is installed, its campfire recipes are read so both cook the same things. |
 | Village & Pillage | Lantern, chain-less | Soul lantern is ours; it hangs from our chain. |
-| Village & Pillage | Crossbow | Piglins carry the owner's crossbow and shoot with it when installed; without it the ranged piglins carry golden swords instead (the wiki's 50/50 becomes all-sword). |
+| Village & Pillage | Crossbow | Piglins carry the owner's crossbow when installed; without it, an identical copy of the owner's crossbow (`owned`, Rule 1), so half of them carry crossbows as in vanilla. |
 | Village & Pillage | Composter | 1.16's compostables (fungi, roots, sprouts, vines, wart blocks, shroomlight) through `common/Compat.compost`. |
 | Village & Pillage | Loom, banner patterns | The Snout (piglin) banner pattern from bastion chests, registered with the owner's pattern list when installed; otherwise the item exists but has no loom. |
 | Village & Pillage | Blue ice | The basalt generator (lava beside blue ice over soul soil) uses the owner's blue ice, or Update Aquatic's copy, looked up through `BlockOwnership.resolve`. |
@@ -60,6 +60,7 @@ No stream calls another's classes; when one needs another's item it looks it up 
 | V | Nether biomes | `biome` | `biomes` | none | 60-64 | 25832 | **the user's answer** |
 | X | Structures | `structure` | `structures` | 30-34 | 65-69 | 25833 | **the user's answer**, Backport Core |
 | Fm | Future MC pairs | `common` (integrator) | `compat` | none | none | 25834 | S, U, F, L, N |
+| Ow | Owner copies (smithing table, crossbow) | `owned` | none (registered exactly when the owner is absent) | 40-44 | 70-74 | 25835 | nothing |
 
 Ports: 25820 on `main`, `25820 + row` in a stream's worktree (row = the table order above). Entity ids are
 this mod's own `EntityRegistry.registerModEntity` numbers. Enchantments, potions and sounds have no numbers
@@ -134,8 +135,8 @@ to collide on.
   piece, enchantability 15), repaired with ingots.
 - Netherite items and their dropped item entities **float on lava and never burn** (our own `EntityItem`
   subclass through `Item.createEntity`; entity id 1).
-- **Smithing** (Rule 2): `SmithingUpgrades.add(diamond_x, ingot, netherite_x, MOD_ID)` for all nine pieces
-  from pre-init; the crafting fallback when no smithing table is installed (see above).
+- **Smithing** (Rule 2): `SmithingUpgrades.add(diamond_x, ingot, netherite_x, MOD_ID)` for all nine pieces,
+  read by Village & Pillage's table or this mod's copy of it (stream Ow).
 - Generation (decoration only): ancient debris, 1.16.2's two placements (one 1-3 vein at y 8-24 and one 1-2
   vein at y 8-119 per chunk, hidden: never exposed to air).
 - Advancements: *Hidden in the Depths*, *Cover Me in Debris*, *Serious Dedication* (husbandry).
@@ -146,8 +147,7 @@ to collide on.
   drops porkchops and leather, flees from warped fungus, respawn anchors and nether portals; zombifies into
   a zoglin in the overworld after 15 s). **Cooked porkchop** drop when on fire.
 - **Zoglin** (attacks everything that is not a creeper or zoglin, undead).
-- Spawning in crimson forests belongs to V; without V, a small rate in the nether behind
-  `hoglins.spawnWithoutBiomes` (default off; see *Still open*).
+- Spawning in crimson forests, where vanilla puts them, belongs to V.
 - Advancement *Make a Wish?* is piglin's; *The Parrots and the Bats* gains hoglins (breeding).
 
 ### P. Piglins and piglin brutes
@@ -205,12 +205,12 @@ to collide on.
 
 ### V. Nether biomes (still open)
 
-See *Still open* below. Package `biome`. Built after the user decides.
+Proposal A (see *Decided* below). Package `biome`. Built after the mobs.
 
 ### X. Structures (still open)
 
 Bastion remnants (four kinds, their loot), nether fossils (soul sand valleys), ruined portals (overworld,
-nether and their variants, crying obsidian and gold blocks, their loot). See *Still open*.
+nether and their variants, crying obsidian and gold blocks, their loot). Bastions take fortress slots (see *Decided*).
 
 ### Fm. Future MC pairs
 
@@ -221,7 +221,7 @@ once S, U, F, L and N exist this mod contributes its pairs to Backport Core's ta
 (`FutureMcTable.contributor`, `DuplicateBlocks.register`), with states recorded by `/futuremc dump` in a dev
 instance that has Future MC, and `/futuremc check` reporting 0 mismatches.
 
-## Still open (the user's call)
+## Decided (formerly *Still open*)
 
 ### 1. The four nether biomes: decided 2026-11-07, Proposal A
 
@@ -260,23 +260,21 @@ spawns and 1.16's own mob spawning by biome all see one biome, and the per-colum
 Either way the 1.16 mobs' biome spawns (hoglins and piglins in crimson forests, endermen in warped forests,
 ghasts and skeletons in soul sand valleys, magma cubes in basalt deltas) come with this stream.
 
-### 2. Structures: bastions, nether fossils, ruined portals
+### 2. Structures: decided 2026-11-07
 
-All three are 1.16 structure templates (1.16 NBT, jigsaw pools for bastions). They need Backport Core's modern
-structure template loader (already requested by Update Aquatic's stream S) plus two things only this mod
-needs, written in `docs/CORE_REQUESTS.md`: a **jigsaw assembler** (bastions are four jigsaw pools) and a
-**nether terrain adapter** (a nether column has several floors, so "height" is a floor search below a
-ceiling). Proposal: bastions in every nether biome but basalt deltas, sharing 1.16's region roll with
-fortresses; nether fossils in soul sand valleys (or with B, soul sand valley regions); ruined portals in the
-overworld (on every terrain Core adapts) and nether. Behind `structures.bastions`, `.fossils`, `.ruinedPortals`.
-Questions: should bastions take nether-fortress slots (1.16: one or the other per region) or be added beside
-fortresses, so packs that rely on fortress density keep it?
+Bastions take nether-fortress slots, as in 1.16 (one or the other per region). Nether fossils and ruined portals
+where vanilla puts them. Needs Backport Core's template loader, a jigsaw assembler and nether heights
+(`docs/CORE_REQUESTS.md`); stream X starts once Core has them.
 
-### 3. Smaller ones (defaults chosen, change if wanted)
+### 3. Smaller ones: decided 2026-11-07
 
-- No smithing table installed: crafting-grid netherite upgrades (on by default).
-- Piglins without the owner's crossbow: golden swords only.
-- Hoglins without the biomes: they don't spawn at all unless `hoglins.spawnWithoutBiomes` is on.
+- The mod works fully on its own: owner copies (Rule 1), never crafting stand-ins. The crafting-grid netherite
+  fallback is gone; the smithing table copy replaces it (stream Ow, done). Piglins get a copy of the crossbow.
+- Hoglins spawn only where vanilla puts them (crimson forests, stream V); no nether-wide switch.
+- **Closest to vanilla, always** (the user's standing rule): our own ASM coremod is allowed where vanilla parity
+  needs it, each patch in `docs/PATCHES.md`, no MixinBooter. Approximations made before this rule that a patch
+  could now fix are listed there.
+- The display name is still the user's to choose; the working name stays.
 
 ## Waterlogging (later pass, through Backport Core's adapter)
 
