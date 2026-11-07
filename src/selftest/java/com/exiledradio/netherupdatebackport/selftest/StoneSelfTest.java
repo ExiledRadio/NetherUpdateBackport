@@ -167,7 +167,10 @@ public final class StoneSelfTest implements SelfTest {
                         for (int y = 0; y < 48; y++) {
                             if (chunk.getBlockState(bx, y, bz).getBlock() == StoneContent.blackstone) {
                                 blackstone++;
-                                c.ok(y <= 40, "blackstone near its range (blobs centered at y 5-31): y=" + y);
+                                // Only in nether wastes: basalt deltas (stream V) also have blackstone floors and blobs.
+                                if (chunk.getBiome(new BlockPos(bx, y, bz), nether.getBiomeProvider()) == net.minecraft.init.Biomes.HELL) {
+                                    c.ok(y <= 40, "blackstone near its range (blobs centered at y 5-31): y=" + y);
+                                }
                             }
                         }
                     }

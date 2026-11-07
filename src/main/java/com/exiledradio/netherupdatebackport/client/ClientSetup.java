@@ -44,6 +44,7 @@ public final class ClientSetup {
         com.exiledradio.netherupdatebackport.fungus.client.FungusClient.init();
         com.exiledradio.netherupdatebackport.changes.client.ChangesClient.init();
         com.exiledradio.netherupdatebackport.mobs.client.MobsClient.init();
+        com.exiledradio.netherupdatebackport.biome.client.BiomeClient.init();
     }
 
     @SubscribeEvent

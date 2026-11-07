@@ -54,6 +54,7 @@ public final class SelfTestRunner {
             new OwnedSelfTest(),
             new ChangesSelfTest(),
             new MobsSelfTest(),
+            new BiomeSelfTest(),
     };
 
     private final List<String> wanted;

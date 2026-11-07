@@ -74,6 +74,7 @@ public final class NetherUpdateBackport {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         com.exiledradio.netherupdatebackport.strider.StriderContent.postInit();
+        com.exiledradio.netherupdatebackport.biome.BiomeContent.postInit();
     }
 
     @Mod.EventHandler

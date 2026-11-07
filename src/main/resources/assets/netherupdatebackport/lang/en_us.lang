@@ -172,6 +172,13 @@ subtitles.netherupdatebackport.entity.strider.retreat=Strider retreats
 container.upgrade=Upgrade Gear
 tile.netherupdatebackport.smithing_table.name=Smithing Table
 
+# --- biome ---
+biome.netherupdatebackport.basalt_deltas=Basalt Deltas
+biome.netherupdatebackport.crimson_forest=Crimson Forest
+biome.netherupdatebackport.nether_wastes=Nether Wastes
+biome.netherupdatebackport.soul_sand_valley=Soul Sand Valley
+biome.netherupdatebackport.warped_forest=Warped Forest
+
 # --- config ---
 config.netherupdatebackport.stone=Blackstone and Basalt
 config.netherupdatebackport.blocks=Smaller Blocks
@@ -234,7 +241,11 @@ config.netherupdatebackport.changes.hoes.tooltip=Hoes are the tool for leaves, h
 config.netherupdatebackport.changes.lavaFog=Lava fog
 config.netherupdatebackport.changes.lavaFog.tooltip=In lava you see 5 blocks with Fire Resistance and 1 without.
 config.netherupdatebackport.biomes.enabled=Enabled
-config.netherupdatebackport.biomes.enabled.tooltip=The four new nether biomes in newly generated nether chunks. Not built yet.
+config.netherupdatebackport.biomes.enabled.tooltip=The crimson forest, warped forest, soul sand valley and basalt deltas, in nether chunks generated from now on, laid out as in 1.16 for the world's seed. Chunks generated before stay nether wastes. Off, nothing is registered.
+config.netherupdatebackport.biomes.weights=Weights
+config.netherupdatebackport.biomes.weights.tooltip=How much room each nether biome takes, as 'biome=number': 1 is 1.16's (and keeps the map the same as 1.16's for the seed), more grows a biome, less shrinks it, 0 removes it. Biomes are nether_wastes, crimson_forest, warped_forest, soul_sand_valley and basalt_deltas.
+config.netherupdatebackport.biomes.overrideOtherMods=Override other mods
+config.netherupdatebackport.biomes.overrideOtherMods.tooltip=When another mod has already replaced the nether (with biomes of its own), the 1.16 biomes step aside. On, they replace that mod's nether instead.
 config.netherupdatebackport.structures.enabled=Enabled
 config.netherupdatebackport.structures.enabled.tooltip=Bastion remnants, nether fossils and ruined portals in newly generated chunks. Not built yet.
 config.netherupdatebackport.compat.futureMcDuplicates=Duplicate Blocks
