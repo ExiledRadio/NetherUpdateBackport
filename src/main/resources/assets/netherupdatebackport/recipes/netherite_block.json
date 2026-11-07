@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherupdatebackport:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:netherite_block"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:netherite_block",
+        "netherupdatebackport:netherite_ingot"
+      ]
+    }
+  ]
+}

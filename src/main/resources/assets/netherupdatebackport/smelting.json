@@ -11,6 +11,13 @@
       "xp": 1.0
     }
   ],
+  "netherite": [
+    {
+      "input": "netherupdatebackport:ancient_debris",
+      "output": "netherupdatebackport:netherite_scrap",
+      "xp": 2.0
+    }
+  ],
   "stone": [
     {
       "input": "netherupdatebackport:polished_blackstone_bricks",

@@ -1344,5 +1344,212 @@
       }
     ],
     "subtitle": "subtitles.netherupdatebackport.particle.soul_escape"
+  },
+  "block.ancient_debris.break": {
+    "sounds": [
+      "netherupdatebackport:block/ancient_debris/break1",
+      "netherupdatebackport:block/ancient_debris/break2",
+      "netherupdatebackport:block/ancient_debris/break3",
+      "netherupdatebackport:block/ancient_debris/break4",
+      "netherupdatebackport:block/ancient_debris/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.ancient_debris.step": {
+    "sounds": [
+      "netherupdatebackport:block/basalt/step1",
+      "netherupdatebackport:block/basalt/step2",
+      "netherupdatebackport:block/basalt/step3",
+      "netherupdatebackport:block/basalt/step4",
+      "netherupdatebackport:block/basalt/step5",
+      "netherupdatebackport:block/basalt/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.ancient_debris.place": {
+    "sounds": [
+      "netherupdatebackport:block/ancient_debris/break1",
+      "netherupdatebackport:block/ancient_debris/break2",
+      "netherupdatebackport:block/ancient_debris/break3",
+      "netherupdatebackport:block/ancient_debris/break4",
+      "netherupdatebackport:block/ancient_debris/break5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.ancient_debris.hit": {
+    "sounds": [
+      "netherupdatebackport:block/basalt/step1",
+      "netherupdatebackport:block/basalt/step2",
+      "netherupdatebackport:block/basalt/step3",
+      "netherupdatebackport:block/basalt/step4",
+      "netherupdatebackport:block/basalt/step5",
+      "netherupdatebackport:block/basalt/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.ancient_debris.fall": {
+    "sounds": [
+      "netherupdatebackport:block/basalt/step1",
+      "netherupdatebackport:block/basalt/step2",
+      "netherupdatebackport:block/basalt/step3",
+      "netherupdatebackport:block/basalt/step4",
+      "netherupdatebackport:block/basalt/step5",
+      "netherupdatebackport:block/basalt/step6"
+    ]
+  },
+  "block.netherite_block.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/netherite/break1",
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break1",
+        "pitch": 0.9,
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break2",
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break2",
+        "pitch": 0.9,
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break3",
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break3",
+        "pitch": 0.9,
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break4",
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break4",
+        "pitch": 0.9,
+        "volume": 0.95
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.netherite_block.step": {
+    "sounds": [
+      "netherupdatebackport:block/netherite/step1",
+      "netherupdatebackport:block/netherite/step2",
+      "netherupdatebackport:block/netherite/step3",
+      "netherupdatebackport:block/netherite/step4",
+      "netherupdatebackport:block/netherite/step5",
+      "netherupdatebackport:block/netherite/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.netherite_block.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/netherite/break1",
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break1",
+        "pitch": 0.9,
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break2",
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break2",
+        "pitch": 0.9,
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break3",
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break3",
+        "pitch": 0.9,
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break4",
+        "volume": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/netherite/break4",
+        "pitch": 0.9,
+        "volume": 0.95
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.netherite_block.hit": {
+    "sounds": [
+      "netherupdatebackport:block/netherite/step1",
+      "netherupdatebackport:block/netherite/step2",
+      "netherupdatebackport:block/netherite/step3",
+      "netherupdatebackport:block/netherite/step4",
+      "netherupdatebackport:block/netherite/step5",
+      "netherupdatebackport:block/netherite/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.netherite_block.fall": {
+    "sounds": [
+      "netherupdatebackport:block/netherite/step1",
+      "netherupdatebackport:block/netherite/step2",
+      "netherupdatebackport:block/netherite/step3",
+      "netherupdatebackport:block/netherite/step4",
+      "netherupdatebackport:block/netherite/step5",
+      "netherupdatebackport:block/netherite/step6"
+    ]
+  },
+  "item.armor.equip_netherite": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/armor/equip_netherite1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:item/armor/equip_netherite1",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:item/armor/equip_netherite2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:item/armor/equip_netherite2",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:item/armor/equip_netherite3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:item/armor/equip_netherite3",
+        "pitch": 0.9,
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:item/armor/equip_netherite4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:item/armor/equip_netherite4",
+        "pitch": 0.9,
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.armor.equip_netherite"
   }
 }
