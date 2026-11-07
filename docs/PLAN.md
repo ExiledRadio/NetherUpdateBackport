@@ -325,3 +325,8 @@ As Update Aquatic's plan, unchanged:
 4. Fm once the blocks exist (they do; needs a dev game with Future MC for `/futuremc dump`).
 5. V (Proposal A, decided) after the mobs; X after the user's answer on bastions and fortresses, and once Core has
    the template loader.
+
+### 4. Music file size: decided 2026-11-07
+
+Vanilla's own music files ship unchanged, at full quality (the user: "Keep full quality"). Rubedo, Chrysopoeia and
+So Below are about 16 MB each, so the jar is about 95 MB. Never re-encode them to save space.
