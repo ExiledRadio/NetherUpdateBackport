@@ -322,8 +322,8 @@ As Update Aquatic's plan, unchanged:
 
 1. Plan and scaffold: **done** (`aeee11e`).
 2. Blocks first: S, U, F, L, N: **done**, each merged into `main` (see `docs/streams/`).
-3. Mobs: H **done**; then R (needs a lava-walking path processor: 1.12.2's walk processor has no "stand on a
-   fluid"), P, Z. Then M and C.
+3. Mobs: H and R **done**; then P (piglins and brutes: 1.16.5's `PiglinTasks` brain, bartering, gold anger,
+   hunting, celebrating), Z. Then M and C.
 4. Fm once the blocks exist (they do; needs a dev game with Future MC for `/futuremc dump`).
 5. V (Proposal A, decided) after the mobs; X after the user's answer on bastions and fortresses, and once Core has
    the template loader.
