@@ -34,6 +34,8 @@ def candidates(key):
         # A modern vanilla key used as it is (advancement titles, messages 1.12.2 lacks).
         return [key]
     parts = key.split(".")
+    if key.startswith("entity.%s." % M) and key.endswith(".name"):
+        return ["entity.minecraft." + ".".join(parts[2:-1])]
     if key.startswith("enchantment.%s." % M):
         return ["enchantment.minecraft." + key.split(".", 2)[2]]
     if key.startswith("tile.%s." % M) and key.endswith(".name"):

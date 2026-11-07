@@ -49,6 +49,7 @@ public final class SelfTestRunner {
             new FungusSelfTest(),
             new SoulSelfTest(),
             new NetheriteSelfTest(),
+            new HoglinSelfTest(),
     };
 
     private final List<String> wanted;

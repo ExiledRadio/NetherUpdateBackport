@@ -171,6 +171,12 @@ public final class ModConfig {
         @Config.Comment("Hoglins and zoglins. Off, nothing is registered.")
         @Config.LangKey("config.netherupdatebackport.hoglins.enabled")
         public boolean enabled = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Hoglins spawn anywhere in the nether, at 1.16's crimson forest rate. In 1.16 they spawn only in crimson",
+                "forests; until this mod's nether biomes exist, they otherwise come only from spawn eggs and spawners."})
+        @Config.LangKey("config.netherupdatebackport.hoglins.spawnWithoutBiomes")
+        public boolean spawnWithoutBiomes = false;
     }
 
     public static final class Piglins {
