@@ -1,0 +1,8 @@
+{
+  "parent": "netherupdatebackport:block/slab",
+  "textures": {
+    "bottom": "netherupdatebackport:block/blackstone_top",
+    "top": "netherupdatebackport:block/blackstone_top",
+    "side": "netherupdatebackport:block/blackstone"
+  }
+}

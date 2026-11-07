@@ -61,6 +61,7 @@ public final class NetherUpdateBackport {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         com.exiledradio.netherupdatebackport.common.Compat.init();
+        com.exiledradio.netherupdatebackport.common.Smelting.init();
     }
 
     @Mod.EventHandler

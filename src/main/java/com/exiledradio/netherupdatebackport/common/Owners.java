@@ -70,4 +70,23 @@ public final class Owners {
         Block block = ForgeRegistries.BLOCKS.getValue(Content.id(name));
         return block == null || !Content.id(name).equals(block.getRegistryName()) ? null : block;
     }
+
+    /**
+     * @return the first of these blocks that is registered ({@code "mod:name"} each), or null: for a block
+     * this mod only uses and several mods may provide, owner first
+     */
+    @Nullable
+    public static Block first(String... ids) {
+        for (String name : ids) {
+            ResourceLocation id = new ResourceLocation(name);
+            Block block = ForgeRegistries.BLOCKS.getValue(id);
+            if (block != null && id.equals(block.getRegistryName())) {
+                return block;
+            }
+        }
+        return null;
+    }
+
+    /** Blue ice for the basalt generator: Village &amp; Pillage's, Update Aquatic's copy, or another mod's. */
+    public static final String[] BLUE_ICE = {VILLAGE_AND_PILLAGE + ":blue_ice", UPDATE_AQUATIC + ":blue_ice", "futuremc:blue_ice"};
 }

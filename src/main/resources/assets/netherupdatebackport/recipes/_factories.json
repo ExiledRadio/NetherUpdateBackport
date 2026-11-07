@@ -1,0 +1,5 @@
+{
+  "conditions": {
+    "items": "com.exiledradio.netherupdatebackport.common.StreamCondition"
+  }
+}

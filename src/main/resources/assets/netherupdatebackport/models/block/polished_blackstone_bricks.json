@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "netherupdatebackport:block/polished_blackstone_bricks"
+  }
+}

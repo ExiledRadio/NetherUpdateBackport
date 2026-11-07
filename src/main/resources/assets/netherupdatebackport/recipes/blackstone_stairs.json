@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherupdatebackport:blackstone"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:blackstone_stairs",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:blackstone",
+        "netherupdatebackport:blackstone_stairs"
+      ]
+    }
+  ]
+}

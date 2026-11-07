@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "netherupdatebackport:polished_blackstone_bricks"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:polished_blackstone_brick_slab",
+    "data": 0,
+    "count": 6
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:polished_blackstone_brick_slab",
+        "netherupdatebackport:polished_blackstone_bricks"
+      ]
+    }
+  ]
+}

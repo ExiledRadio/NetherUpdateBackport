@@ -1,1 +1,101 @@
-{}
+{
+  "block.basalt.break": {
+    "sounds": [
+      "netherupdatebackport:block/basalt/break1",
+      "netherupdatebackport:block/basalt/break2",
+      "netherupdatebackport:block/basalt/break3",
+      "netherupdatebackport:block/basalt/break4",
+      "netherupdatebackport:block/basalt/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.basalt.step": {
+    "sounds": [
+      "netherupdatebackport:block/basalt/step1",
+      "netherupdatebackport:block/basalt/step2",
+      "netherupdatebackport:block/basalt/step3",
+      "netherupdatebackport:block/basalt/step4",
+      "netherupdatebackport:block/basalt/step5",
+      "netherupdatebackport:block/basalt/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.basalt.place": {
+    "sounds": [
+      "netherupdatebackport:block/basalt/break1",
+      "netherupdatebackport:block/basalt/break2",
+      "netherupdatebackport:block/basalt/break3",
+      "netherupdatebackport:block/basalt/break4",
+      "netherupdatebackport:block/basalt/break5"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.basalt.hit": {
+    "sounds": [
+      "netherupdatebackport:block/basalt/step1",
+      "netherupdatebackport:block/basalt/step2",
+      "netherupdatebackport:block/basalt/step3",
+      "netherupdatebackport:block/basalt/step4",
+      "netherupdatebackport:block/basalt/step5",
+      "netherupdatebackport:block/basalt/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.basalt.fall": {
+    "sounds": [
+      "netherupdatebackport:block/basalt/step1",
+      "netherupdatebackport:block/basalt/step2",
+      "netherupdatebackport:block/basalt/step3",
+      "netherupdatebackport:block/basalt/step4",
+      "netherupdatebackport:block/basalt/step5",
+      "netherupdatebackport:block/basalt/step6"
+    ]
+  },
+  "block.gilded_blackstone.break": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/break1",
+      "netherupdatebackport:block/nether_ore/break2",
+      "netherupdatebackport:block/nether_ore/break3",
+      "netherupdatebackport:block/nether_ore/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.gilded_blackstone.step": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.gilded_blackstone.place": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/break1",
+      "netherupdatebackport:block/nether_ore/break2",
+      "netherupdatebackport:block/nether_ore/break3",
+      "netherupdatebackport:block/nether_ore/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.gilded_blackstone.hit": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.gilded_blackstone.fall": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ]
+  }
+}
