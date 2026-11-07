@@ -47,6 +47,7 @@ public final class SelfTestRunner {
             new StoneSelfTest(),
             new BlocksSelfTest(),
             new FungusSelfTest(),
+            new SoulSelfTest(),
     };
 
     private final List<String> wanted;

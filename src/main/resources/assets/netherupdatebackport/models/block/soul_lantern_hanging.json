@@ -1,0 +1,6 @@
+{
+  "parent": "netherupdatebackport:block/template_hanging_lantern",
+  "textures": {
+    "lantern": "netherupdatebackport:block/soul_lantern"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#",
+    "S"
+  ],
+  "key": {
+    "X": [
+      {
+        "item": "minecraft:coal",
+        "data": 0
+      },
+      {
+        "item": "minecraft:coal",
+        "data": 1
+      }
+    ],
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "S": [
+      {
+        "item": "minecraft:soul_sand"
+      },
+      {
+        "item": "netherupdatebackport:soul_soil"
+      }
+    ]
+  },
+  "result": {
+    "item": "netherupdatebackport:soul_torch",
+    "count": 4
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:soul_soil",
+        "netherupdatebackport:soul_torch"
+      ]
+    }
+  ]
+}
