@@ -154,6 +154,20 @@ subtitles.netherupdatebackport.entity.zoglin.death=Zoglin dies
 subtitles.netherupdatebackport.entity.zoglin.hurt=Zoglin hurts
 subtitles.netherupdatebackport.entity.zoglin.step=Zoglin steps
 
+# --- strider ---
+advancements.nether.ride_strider.description=Ride a Strider with a Warped Fungus on a Stick
+advancements.nether.ride_strider.title=This Boat Has Legs
+advancements.nether.ride_strider_in_overworld_lava.description=Take a Strider for a loooong ride on a lava lake in the Overworld
+advancements.nether.ride_strider_in_overworld_lava.title=Feels like home
+entity.netherupdatebackport.strider.name=Strider
+item.netherupdatebackport.warped_fungus_on_a_stick.name=Warped Fungus on a Stick
+subtitles.netherupdatebackport.entity.strider.death=Strider dies
+subtitles.netherupdatebackport.entity.strider.eat=Strider eats
+subtitles.netherupdatebackport.entity.strider.happy=Strider warbles
+subtitles.netherupdatebackport.entity.strider.hurt=Strider hurts
+subtitles.netherupdatebackport.entity.strider.idle=Strider chirps
+subtitles.netherupdatebackport.entity.strider.retreat=Strider retreats
+
 # --- config ---
 config.netherupdatebackport.stone=Blackstone and Basalt
 config.netherupdatebackport.blocks=Smaller Blocks
@@ -207,6 +221,8 @@ config.netherupdatebackport.piglins.enabled=Enabled
 config.netherupdatebackport.piglins.enabled.tooltip=Piglins and piglin brutes. Off, nothing is registered.
 config.netherupdatebackport.striders.enabled=Enabled
 config.netherupdatebackport.striders.enabled.tooltip=Striders and the warped fungus on a stick. Off, nothing is registered.
+config.netherupdatebackport.striders.spawn=Spawn
+config.netherupdatebackport.striders.spawn.tooltip=Striders spawn on lava across the nether, as in 1.16.
 config.netherupdatebackport.mobs.enabled=Enabled
 config.netherupdatebackport.mobs.enabled.tooltip=1.16's changes to existing mobs.
 config.netherupdatebackport.music.enabled=Enabled

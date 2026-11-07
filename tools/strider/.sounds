@@ -1,0 +1,9 @@
+entity.strider.ambient
+entity.strider.death
+entity.strider.eat
+entity.strider.happy
+entity.strider.hurt
+entity.strider.retreat
+entity.strider.saddle
+entity.strider.step
+entity.strider.step_lava

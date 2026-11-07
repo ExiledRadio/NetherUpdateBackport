@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# ",
+    " X"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:fishing_rod"
+    },
+    "X": {
+      "item": "netherupdatebackport:warped_fungus"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:warped_fungus_on_a_stick"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:warped_fungus",
+        "netherupdatebackport:warped_fungus_on_a_stick"
+      ]
+    }
+  ]
+}

@@ -191,6 +191,11 @@ public final class ModConfig {
         @Config.Comment("Striders and the warped fungus on a stick. Off, nothing is registered.")
         @Config.LangKey("config.netherupdatebackport.striders.enabled")
         public boolean enabled = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Striders spawn on lava across the nether, as in 1.16.")
+        @Config.LangKey("config.netherupdatebackport.striders.spawn")
+        public boolean spawn = true;
     }
 
     public static final class Mobs {

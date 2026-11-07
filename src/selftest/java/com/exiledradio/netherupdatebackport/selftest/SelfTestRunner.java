@@ -50,6 +50,7 @@ public final class SelfTestRunner {
             new SoulSelfTest(),
             new NetheriteSelfTest(),
             new HoglinSelfTest(),
+            new StriderSelfTest(),
     };
 
     private final List<String> wanted;
