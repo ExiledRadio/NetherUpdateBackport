@@ -1,6 +1,6 @@
 # Stream N: netherite
 
-Package `netherite`. Config `netherite` (`enabled`, `generate`, `craftingFallback`). Entity id 1 (fireproof item).
+Package `netherite`. Config `netherite` (`enabled`, `generate`). The crafting fallback was removed 2026-11-07 for the smithing table copy. Entity id 1 (fireproof item).
 
 ## Changelog section
 
@@ -8,7 +8,7 @@ Package `netherite`. Config `netherite` (`enabled`, `generate`, `craftingFallbac
     Smelt it into **netherite scrap**; 4 scrap and 4 gold ingots make a **netherite ingot**; 9 ingots a **netherite
     block** (a beacon base; the ingot pays a beacon).
 *   **Netherite tools and armor**: upgrade diamond gear with a netherite ingot at the smithing table, keeping its
-    enchantments and name. With no smithing table installed, the same upgrade works in the crafting grid.
+    enchantments and name. Without Village & Pillage this mod brings an identical smithing table of its own.
 *   Netherite items never burn and float up through lava when dropped.
 *   Advancements *Hidden in the Depths*, *Cover Me in Debris*, *Serious Dedication*; *Country Lode, Take Me Home*
     (stream U's) now appears.
@@ -21,9 +21,7 @@ Package `netherite`. Config `netherite` (`enabled`, `generate`, `craftingFallbac
     knockback resistance 0.1 per piece added as an attribute (1.12.2's armor material has no field for it).
 *   **Smithing (Rule 2)**: the nine upgrades are added to Backport Core's `SmithingUpgrades` at init, which Village
     & Pillage's smithing table reads. Village & Pillage 2.3.0 (before Core) also finds them by its name rules
-    (`diamond_x` -> `netherite_x` in a mod with a netherite ingot). **Crafting fallback** (`NetheriteUpgradeRecipe`)
-    registered only when Village & Pillage is absent: diamond piece + ingot, its tag (enchantments, name, repair cost)
-    and damage carried over.
+    (`diamond_x` -> `netherite_x` in a mod with a netherite ingot). Without Village & Pillage, stream Ow's identical copy of its smithing table does the upgrade.
 *   **Fireproof drops**: every netherite item makes an `EntityFireproofItem` through Forge's `Item.createEntity`. It
     ignores all fire damage (1.16's `canBeHurtBy`), and in lava moves as 1.16.5's `ItemEntity`: no gravity, sideways
     motion x0.95, a slight rise; 1.12.2's random bounce of items entering lava is undone. 1.12.2 still plays its
@@ -42,8 +40,7 @@ Package `netherite`. Config `netherite` (`enabled`, `generate`, `craftingFallbac
     piece's points and durability; toughness 3; 0.1 knockback resistance; repaired with ingots.
 *   A netherite ingot dropped into lava becomes the fireproof item, survives 5 seconds in it, and rises when still
     under the surface; a gold ingot in the same lava burns.
-*   Smelting debris (2 experience); ingot and block recipes; the crafting fallback makes a netherite sword keeping
-    Sharpness III, a custom name and its damage.
+*   Smelting debris (2 experience); ingot and block recipes. The upgrade itself is tested in stream Ow.
 *   Backport Core's smithing registry lists all nine; `find(diamond pickaxe, our ingot)` gives our pickaxe.
 *   Advancements loaded (including stream U's *Country Lode*); 36 new nether chunks hold ancient debris, none
     touching air.

@@ -17,13 +17,11 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
@@ -41,7 +39,7 @@ import java.util.Map;
  * <p>Numbers from 1.16.5: ancient debris 30/1200 and the netherite block 50/1200 (both diamond pickaxe, so
  * explosions never break them); the netherite block is a beacon base and the ingot a beacon payment. Upgrades
  * from diamond go through the smithing table (Backport Core's {@link SmithingUpgrades}, read by Village &amp;
- * Pillage's table), or, with no smithing table installed, the crafting grid ({@link NetheriteUpgradeRecipe}).
+ * Pillage's table, or this mod's identical copy of it when Village &amp; Pillage is absent: {@code owned}).
  */
 @Mod.EventBusSubscriber(modid = NetherUpdateBackport.MOD_ID)
 public final class NetheriteContent {
@@ -132,24 +130,6 @@ public final class NetheriteContent {
         event.getRegistry().register(EntityEntryBuilder.create().entity(EntityFireproofItem.class)
                 .id(Content.id("fireproof_item"), 1).name(NetherUpdateBackport.MOD_ID + ".fireproof_item")
                 .tracker(64, 20, true).build());
-    }
-
-    /** The crafting fallback, registered only when no smithing table is installed (and the switch is on). */
-    @SubscribeEvent
-    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-        if (!enabled() || !ModConfig.netherite.craftingFallback || hasSmithingTable()) {
-            return;
-        }
-        for (Map.Entry<Item, Item> e : UPGRADES.entrySet()) {
-            NetheriteUpgradeRecipe recipe = new NetheriteUpgradeRecipe(e.getKey(), ingot, new ItemStack(e.getValue()));
-            recipe.setRegistryName(Content.id(e.getValue().getRegistryName().getPath() + "_from_crafting"));
-            event.getRegistry().register(recipe);
-        }
-    }
-
-    /** @return true when a smithing table is in the game: Village &amp; Pillage's (the family's owner of it) */
-    public static boolean hasSmithingTable() {
-        return Loader.isModLoaded(Owners.VILLAGE_AND_PILLAGE);
     }
 
     /** Called from init: the smithing upgrades, for whichever smithing table reads Backport Core's registry. */

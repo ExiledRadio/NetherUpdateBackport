@@ -5,22 +5,18 @@ import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
 import com.exiledradio.netherupdatebackport.common.Content;
 import com.exiledradio.netherupdatebackport.common.Sounds;
 
-import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.EntityEntryBuilder;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 /**
  * Stream H: hoglins and zoglins. Entity ids 10 (hoglin) and 11 (zoglin); spawn eggs in 1.16's colors.
  *
- * <p>1.16 spawns hoglins only in crimson forests, which are stream V's. Until then they come from spawn eggs,
- * spawners and other mods, and from the nether at large only with {@code hoglins.spawnWithoutBiomes}.
+ * <p>1.16 spawns hoglins only in crimson forests (stream V registers that spawn with the biome), as vanilla does.
  */
 @Mod.EventBusSubscriber(modid = NetherUpdateBackport.MOD_ID)
 public final class HoglinContent {
@@ -58,14 +54,5 @@ public final class HoglinContent {
                 .name(NetherUpdateBackport.MOD_ID + ".zoglin").tracker(80, 3, true).egg(0xC66E55, 0xE6E6E6).build());
         LootTableList.register(EntityHoglin.LOOT);
         LootTableList.register(EntityZoglin.LOOT);
-    }
-
-    /** Called from post-init: the optional nether-wide spawning (1.16's crimson forest rate). */
-    public static void postInit() {
-        if (!enabled() || !ModConfig.hoglins.spawnWithoutBiomes) {
-            return;
-        }
-        Biome hell = net.minecraft.init.Biomes.HELL;
-        EntityRegistry.addSpawn(EntityHoglin.class, 9, 3, 4, EnumCreatureType.MONSTER, hell);
     }
 }

@@ -1966,5 +1966,22 @@
       }
     ],
     "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.smithing_table.use": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/smithing_table/smithing_table1",
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:block/smithing_table/smithing_table2",
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:block/smithing_table/smithing_table3",
+        "stream": false
+      }
+    ]
   }
 }

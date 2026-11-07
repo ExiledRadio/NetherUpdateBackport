@@ -1,6 +1,6 @@
 # Stream H: hoglins and zoglins
 
-Package `hoglin`. Config `hoglins` (`enabled`, `spawnWithoutBiomes`). Entity ids 10 (hoglin) and 11 (zoglin).
+Package `hoglin`. Config `hoglins` (`enabled`). Entity ids 10 (hoglin) and 11 (zoglin).
 
 ## Changelog section
 
@@ -9,8 +9,7 @@ Package `hoglin`. Config `hoglins` (`enabled`, `spawnWithoutBiomes`). Entity ids
     fight one of them is in. Breed them with crimson fungus; babies follow the adults. Taken out of the nether they
     shake, and after 15 seconds turn into **zoglins**. They drop porkchops (cooked if they die burning) and leather.
 *   **Zoglins**: undead hoglins that attack anything nearby but creepers and each other. They drop rotten flesh.
-*   Spawn eggs for both. (Hoglins spawn in crimson forests, which come with the nether biomes; until then only from
-    eggs and spawners, or anywhere in the nether with `hoglins.spawnWithoutBiomes`.)
+*   Spawn eggs for both. Hoglins spawn in crimson forests, as in vanilla; that comes with the nether biomes.
 
 ## How it works
 
@@ -49,4 +48,4 @@ Package `hoglin`. Config `hoglins` (`enabled`, `spawnWithoutBiomes`). Entity ids
 *   Anything visual: the model, its animation, baby proportions, shaking; sounds playing.
 *   Live AI over time in a real world (pathing away from repellents, herd fights, retreating from piglins, which
     need stream P).
-*   Natural spawning (stream V; or the `spawnWithoutBiomes` switch).
+*   Natural spawning (stream V).
