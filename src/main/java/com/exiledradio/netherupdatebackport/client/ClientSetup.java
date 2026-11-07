@@ -37,6 +37,7 @@ public final class ClientSetup {
 
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new ClientSetup());
+        com.exiledradio.netherupdatebackport.blocks.client.BlocksClient.init();
     }
 
     @SubscribeEvent

@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "power=0": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=1": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=2": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=3": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=4": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=5": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=6": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=7": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=8": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=9": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=10": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=11": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=12": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=13": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=14": {
+      "model": "netherupdatebackport:target"
+    },
+    "power=15": {
+      "model": "netherupdatebackport:target"
+    }
+  }
+}

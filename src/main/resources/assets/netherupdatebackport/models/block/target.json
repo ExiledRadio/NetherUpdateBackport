@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "netherupdatebackport:block/target_top",
+    "side": "netherupdatebackport:block/target_side"
+  }
+}

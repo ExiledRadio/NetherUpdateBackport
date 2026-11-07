@@ -30,6 +30,9 @@ SPECIAL = {
 def candidates(key):
     if key in SPECIAL:
         return [SPECIAL[key]]
+    if key in assets.VANILLA_LANG:
+        # A modern vanilla key used as it is (advancement titles, messages 1.12.2 lacks).
+        return [key]
     parts = key.split(".")
     if key.startswith("tile.%s." % M) and key.endswith(".name"):
         name = ".".join(parts[2:-1])

@@ -45,6 +45,7 @@ public final class SelfTestRunner {
     private static final SelfTest[] TESTS = {
             new ScaffoldSelfTest(),
             new StoneSelfTest(),
+            new BlocksSelfTest(),
     };
 
     private final List<String> wanted;

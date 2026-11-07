@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherupdatebackport:target"
+    },
+    "title": {
+      "translate": "advancements.adventure.bullseye.title"
+    },
+    "description": {
+      "translate": "advancements.adventure.bullseye.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bullseye": {
+      "trigger": "netherupdatebackport:event",
+      "conditions": {
+        "event": "target_bullseye"
+      }
+    }
+  },
+  "parent": "minecraft:adventure/shoot_arrow"
+}

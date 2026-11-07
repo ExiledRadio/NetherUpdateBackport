@@ -97,5 +97,344 @@
       "netherupdatebackport:block/nether_ore/step4",
       "netherupdatebackport:block/nether_ore/step5"
     ]
+  },
+  "block.chain.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/chain/break1",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/chain/break2",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/chain/break3",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/chain/break4",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.chain.step": {
+    "sounds": [
+      "netherupdatebackport:block/chain/step1",
+      "netherupdatebackport:block/chain/step2",
+      "netherupdatebackport:block/chain/step3",
+      "netherupdatebackport:block/chain/step4",
+      "netherupdatebackport:block/chain/step5",
+      "netherupdatebackport:block/chain/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.chain.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/chain/break1",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/chain/break2",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/chain/break3",
+        "volume": 0.5
+      },
+      {
+        "name": "netherupdatebackport:block/chain/break4",
+        "volume": 0.5
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.chain.hit": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/chain/step1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/chain/step2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/chain/step3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/chain/step4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/chain/step5",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/chain/step6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.chain.fall": {
+    "sounds": [
+      "netherupdatebackport:block/chain/step1",
+      "netherupdatebackport:block/chain/step2",
+      "netherupdatebackport:block/chain/step3",
+      "netherupdatebackport:block/chain/step4",
+      "netherupdatebackport:block/chain/step5",
+      "netherupdatebackport:block/chain/step6"
+    ]
+  },
+  "block.nether_bricks.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break5",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.nether_bricks.step": {
+    "sounds": [
+      "netherupdatebackport:block/nether_bricks/step1",
+      "netherupdatebackport:block/nether_bricks/step2",
+      "netherupdatebackport:block/nether_bricks/step3",
+      "netherupdatebackport:block/nether_bricks/step4",
+      "netherupdatebackport:block/nether_bricks/step5",
+      "netherupdatebackport:block/nether_bricks/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.nether_bricks.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break5",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:block/nether_bricks/break6",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.nether_bricks.hit": {
+    "sounds": [
+      "netherupdatebackport:block/nether_bricks/step1",
+      "netherupdatebackport:block/nether_bricks/step2",
+      "netherupdatebackport:block/nether_bricks/step3",
+      "netherupdatebackport:block/nether_bricks/step4",
+      "netherupdatebackport:block/nether_bricks/step5",
+      "netherupdatebackport:block/nether_bricks/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.nether_bricks.fall": {
+    "sounds": [
+      "netherupdatebackport:block/nether_bricks/step1",
+      "netherupdatebackport:block/nether_bricks/step2",
+      "netherupdatebackport:block/nether_bricks/step3",
+      "netherupdatebackport:block/nether_bricks/step4",
+      "netherupdatebackport:block/nether_bricks/step5",
+      "netherupdatebackport:block/nether_bricks/step6"
+    ]
+  },
+  "block.nether_gold_ore.break": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/break1",
+      "netherupdatebackport:block/nether_ore/break2",
+      "netherupdatebackport:block/nether_ore/break3",
+      "netherupdatebackport:block/nether_ore/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.nether_gold_ore.step": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.nether_gold_ore.place": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/break1",
+      "netherupdatebackport:block/nether_ore/break2",
+      "netherupdatebackport:block/nether_ore/break3",
+      "netherupdatebackport:block/nether_ore/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.nether_gold_ore.hit": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.nether_gold_ore.fall": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ]
+  },
+  "block.lodestone.break": {
+    "sounds": [
+      "netherupdatebackport:dig/stone1",
+      "netherupdatebackport:dig/stone2",
+      "netherupdatebackport:dig/stone3",
+      "netherupdatebackport:dig/stone4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.lodestone.step": {
+    "sounds": [
+      "netherupdatebackport:step/stone1",
+      "netherupdatebackport:step/stone2",
+      "netherupdatebackport:step/stone3",
+      "netherupdatebackport:step/stone4",
+      "netherupdatebackport:step/stone5",
+      "netherupdatebackport:step/stone6"
+    ]
+  },
+  "block.lodestone.place": {
+    "sounds": [
+      "netherupdatebackport:block/lodestone/place1",
+      "netherupdatebackport:block/lodestone/place2",
+      "netherupdatebackport:block/lodestone/place3",
+      "netherupdatebackport:block/lodestone/place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.lodestone.hit": {
+    "sounds": [
+      "netherupdatebackport:step/stone1",
+      "netherupdatebackport:step/stone2",
+      "netherupdatebackport:step/stone3",
+      "netherupdatebackport:step/stone4",
+      "netherupdatebackport:step/stone5",
+      "netherupdatebackport:step/stone6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.lodestone.fall": {
+    "sounds": [
+      "netherupdatebackport:step/stone1",
+      "netherupdatebackport:step/stone2",
+      "netherupdatebackport:step/stone3",
+      "netherupdatebackport:step/stone4",
+      "netherupdatebackport:step/stone5",
+      "netherupdatebackport:step/stone6"
+    ]
+  },
+  "block.respawn_anchor.charge": {
+    "sounds": [
+      "netherupdatebackport:block/respawn_anchor/charge1",
+      "netherupdatebackport:block/respawn_anchor/charge2",
+      "netherupdatebackport:block/respawn_anchor/charge3"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.block.respawn_anchor.charge"
+  },
+  "block.respawn_anchor.set_spawn": {
+    "sounds": [
+      "netherupdatebackport:block/respawn_anchor/set_spawn1",
+      "netherupdatebackport:block/respawn_anchor/set_spawn2",
+      "netherupdatebackport:block/respawn_anchor/set_spawn3"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.block.respawn_anchor.set_spawn"
+  },
+  "block.respawn_anchor.deplete": {
+    "sounds": [
+      "netherupdatebackport:block/respawn_anchor/deplete1",
+      "netherupdatebackport:block/respawn_anchor/deplete2"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.block.respawn_anchor.deplete"
+  },
+  "block.respawn_anchor.ambient": {
+    "sounds": [
+      {
+        "attenuation_distance": 7,
+        "name": "netherupdatebackport:block/respawn_anchor/ambient1"
+      },
+      {
+        "attenuation_distance": 7,
+        "name": "netherupdatebackport:block/respawn_anchor/ambient2"
+      },
+      {
+        "attenuation_distance": 7,
+        "name": "netherupdatebackport:block/respawn_anchor/ambient3"
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.block.respawn_anchor.ambient"
+  },
+  "item.lodestone_compass.lock": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/lodestone/lock1",
+        "pitch": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/lodestone/lock1",
+        "pitch": 0.95
+      },
+      {
+        "name": "netherupdatebackport:block/lodestone/lock2",
+        "pitch": 0.85
+      },
+      {
+        "name": "netherupdatebackport:block/lodestone/lock2",
+        "pitch": 0.95
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.lodestone_compass.lock"
   }
 }

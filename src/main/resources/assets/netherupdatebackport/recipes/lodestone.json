@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "S#S",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stonebrick",
+      "data": 3
+    },
+    "#": {
+      "item": "netherupdatebackport:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:lodestone"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:lodestone",
+        "netherupdatebackport:netherite_ingot"
+      ]
+    }
+  ]
+}

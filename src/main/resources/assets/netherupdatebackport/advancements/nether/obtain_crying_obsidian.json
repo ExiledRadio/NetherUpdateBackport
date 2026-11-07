@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherupdatebackport:crying_obsidian"
+    },
+    "title": {
+      "translate": "advancements.nether.obtain_crying_obsidian.title"
+    },
+    "description": {
+      "translate": "advancements.nether.obtain_crying_obsidian.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "crying_obsidian": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "netherupdatebackport:crying_obsidian"
+          }
+        ]
+      }
+    }
+  },
+  "parent": "minecraft:nether/root"
+}

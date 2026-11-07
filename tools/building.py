@@ -248,3 +248,44 @@ def name_lines(names, kind="tile"):
         key = ("block.minecraft." if kind == "tile" else "item.minecraft.") + n
         lines.append("%s.%s.%s.name=%s" % (kind, MODID, n, assets.VANILLA_LANG[key]))
     return lines
+
+
+def event(name):
+    """@return a criterion for common/Triggers' event, fired by our code."""
+    return {"trigger": "%s:event" % MODID, "conditions": {"event": name}}
+
+
+def obtain(*paths):
+    """@return a 1.12.2 inventory_changed criterion for any of our items."""
+    return {"trigger": "minecraft:inventory_changed",
+            "conditions": {"items": [{"item": "%s:%s" % (MODID, p)} for p in paths]}}
+
+
+def port_advancement(path, ours, criteria, requirements=None):
+    """Ports data/minecraft/advancements/<path>.json from 1.18 into ours with 1.12.2 criteria.
+
+    The icon becomes ours or 1.12.2's; title and description keep 1.18's translation keys (their English
+    is returned as lang lines, so every language comes from Mojang's files); the parent stays vanilla's
+    when 1.12.2 has it, else becomes ours under the same path. 1.16's rewards (recipe unlocks) are dropped.
+    @return the en_us.lang lines for its title and description
+    """
+    data = assets.jar_json("data/minecraft/advancements/%s.json" % path)
+    display = dict(data["display"])
+    icon = display["icon"]
+    display["icon"] = item(icon["item"], ours, set())
+    out = {"display": display, "criteria": criteria}
+    if requirements:
+        out["requirements"] = requirements
+    parent = data.get("parent")
+    if parent:
+        ppath = parent.split(":", 1)[1]
+        if ("assets/minecraft/advancements/%s.json" % ppath) in assets.OLD_NAMES:
+            out["parent"] = parent
+        else:
+            out["parent"] = "%s:%s" % (MODID, ppath)
+    assets.write_json("advancements/%s.json" % path, out)
+    lines = []
+    for part in ("title", "description"):
+        key = display[part]["translate"]
+        lines.append("%s=%s" % (key, assets.VANILLA_LANG[key]))
+    return lines

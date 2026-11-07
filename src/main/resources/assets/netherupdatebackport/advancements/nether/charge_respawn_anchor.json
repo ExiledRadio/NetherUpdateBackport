@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherupdatebackport:respawn_anchor"
+    },
+    "title": {
+      "translate": "advancements.nether.charge_respawn_anchor.title"
+    },
+    "description": {
+      "translate": "advancements.nether.charge_respawn_anchor.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "charge_respawn_anchor": {
+      "trigger": "netherupdatebackport:event",
+      "conditions": {
+        "event": "charge_respawn_anchor_max"
+      }
+    }
+  },
+  "parent": "netherupdatebackport:nether/obtain_crying_obsidian"
+}

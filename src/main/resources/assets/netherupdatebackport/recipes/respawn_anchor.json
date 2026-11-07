@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OOO",
+    "GGG",
+    "OOO"
+  ],
+  "key": {
+    "O": {
+      "item": "netherupdatebackport:crying_obsidian"
+    },
+    "G": {
+      "item": "minecraft:glowstone"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:respawn_anchor"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:crying_obsidian",
+        "netherupdatebackport:respawn_anchor"
+      ]
+    }
+  ]
+}

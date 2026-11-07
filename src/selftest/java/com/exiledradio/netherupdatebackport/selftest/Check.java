@@ -88,6 +88,15 @@ public final class Check {
                 }
             }
         }
+        // The test world is kept between runs: drop the last run's pending block ticks and entities here too,
+        // or a tick scheduled for a block of the last run fires on (or blocks) this run's block.
+        this.world.getPendingBlockUpdates(new net.minecraft.world.gen.structure.StructureBoundingBox(x, 60, z, x + 31, 159, z + 31), true);
+        for (net.minecraft.entity.Entity e : this.world.getEntitiesWithinAABB(net.minecraft.entity.Entity.class,
+                new net.minecraft.util.math.AxisAlignedBB(x, 60, z, x + 32, 160, z + 32))) {
+            if (!(e instanceof net.minecraft.entity.player.EntityPlayer)) {
+                e.setDead();
+            }
+        }
         return corner;
     }
 
