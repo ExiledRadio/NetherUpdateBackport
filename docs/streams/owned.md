@@ -1,14 +1,17 @@
 # Stream Ow: owner copies
 
 Package `owned`. No config: the copies are registered exactly when their owner, Village & Pillage
-(`villagerbackport`), is absent (Rule 1, and the family's "every mod works on its own"). Not yet: the crossbow copy
-(with stream P).
+(`villagerbackport`), is absent (Rule 1, and the family's "every mod works on its own"). The crossbow copy came
+with stream P (entity ids 40-42; see `piglins.md`).
 
 ## Changelog section
 
 *   Without Village & Pillage, this mod adds the **smithing table** (2 iron ingots and 4 planks) with 1.16's
     upgrade screen: a diamond tool or armor piece and a netherite ingot make the netherite piece, keeping its
     enchantments, name and damage.
+
+*   Without Village & Pillage (and without another mod's crossbow), the **crossbow** with Quick Charge, Multishot and
+    Piercing, which piglins carry.
 
 ## How it works
 
@@ -23,6 +26,14 @@ Package `owned`. No config: the copies are registered exactly when their owner, 
     they spawn where vanilla puts them (stream V).
 *   **For Village & Pillage's maintainer** (not done here): when Village & Pillage is added to a world that had this
     copy, rename `netherupdatebackport:smithing_table` to its own (same state, same metadata).
+
+*   **The crossbow** (stream P): an identical copy of Village & Pillage's `ItemCrossbow`, `CrossbowEnchantment`, its
+    arrow, spectral arrow and firework projectiles, `Piercing` and `CrossbowClient` (first-person and loaded poses),
+    copied from the owner's source with the names changed; models, textures, sounds and recipe copied from its
+    resources by `tools/owned/copy_from_owner.py`. Registered when Village & Pillage is absent and neither Future MC nor
+    Crossbows Backport is installed (the owner's own `compat.crossbow = AUTO` rule). Ids `netherupdatebackport:crossbow`,
+    `quick_charge`, `multishot`, `piercing`, `crossbow_arrow` (40), `crossbow_spectral_arrow` (41), `crossbow_firework`
+    (42). The owner's four crossbow advancements are not copied. The books show in this mod's tab.
 
 ## Tested headlessly
 

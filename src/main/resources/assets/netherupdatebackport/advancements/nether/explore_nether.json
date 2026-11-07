@@ -1,0 +1,67 @@
+{
+  "display": {
+    "icon": {
+      "item": "netherupdatebackport:netherite_boots"
+    },
+    "title": {
+      "translate": "advancements.nether.explore_nether.title"
+    },
+    "description": {
+      "translate": "advancements.nether.explore_nether.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "minecraft:nether_wastes": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "biome": "minecraft:hell"
+      }
+    },
+    "minecraft:soul_sand_valley": {
+      "trigger": "netherupdatebackport:event",
+      "conditions": {
+        "event": "visit_soul_sand_valley"
+      }
+    },
+    "minecraft:warped_forest": {
+      "trigger": "netherupdatebackport:event",
+      "conditions": {
+        "event": "visit_warped_forest"
+      }
+    },
+    "minecraft:crimson_forest": {
+      "trigger": "netherupdatebackport:event",
+      "conditions": {
+        "event": "visit_crimson_forest"
+      }
+    },
+    "minecraft:basalt_deltas": {
+      "trigger": "netherupdatebackport:event",
+      "conditions": {
+        "event": "visit_basalt_deltas"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "minecraft:nether_wastes"
+    ],
+    [
+      "minecraft:soul_sand_valley"
+    ],
+    [
+      "minecraft:warped_forest"
+    ],
+    [
+      "minecraft:crimson_forest"
+    ],
+    [
+      "minecraft:basalt_deltas"
+    ]
+  ],
+  "parent": "netherupdatebackport:nether/ride_strider"
+}

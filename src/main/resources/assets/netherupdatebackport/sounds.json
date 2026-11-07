@@ -1983,5 +1983,622 @@
         "stream": false
       }
     ]
+  },
+  "item.crossbow.shoot": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot1",
+        "volume": 0.8,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot1",
+        "volume": 0.9,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot1",
+        "pitch": 0.9,
+        "volume": 0.9,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot2",
+        "volume": 0.8,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot2",
+        "volume": 0.9,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot2",
+        "pitch": 0.9,
+        "volume": 0.9,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot3",
+        "volume": 0.8,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot3",
+        "volume": 0.9,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/shoot3",
+        "pitch": 0.9,
+        "volume": 0.9,
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.crossbow.shoot"
+  },
+  "item.crossbow.loading_start": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_start",
+        "volume": 0.3,
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.crossbow.charge"
+  },
+  "item.crossbow.loading_middle": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle1",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle1",
+        "pitch": 0.95,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle1",
+        "pitch": 1.2,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle2",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle2",
+        "pitch": 0.9,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle2",
+        "pitch": 1.05,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle3",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle3",
+        "pitch": 0.9,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle3",
+        "pitch": 1.05,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_middle4",
+        "volume": 0.65,
+        "stream": false
+      }
+    ]
+  },
+  "item.crossbow.loading_end": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/crossbow/loading_end",
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.crossbow.load"
+  },
+  "item.crossbow.quick_charge_1": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick1_1",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick1_1",
+        "pitch": 0.9,
+        "volume": 0.5,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick1_2",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick1_2",
+        "pitch": 0.95,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick1_3",
+        "volume": 0.65,
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.crossbow.charge"
+  },
+  "item.crossbow.quick_charge_2": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick2_1",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick2_1",
+        "pitch": 0.95,
+        "volume": 0.5,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick2_2",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick2_2",
+        "pitch": 0.95,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick2_2",
+        "pitch": 1.05,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick2_3",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick2_3",
+        "pitch": 0.9,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick2_3",
+        "pitch": 1.05,
+        "volume": 0.65,
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.crossbow.charge"
+  },
+  "item.crossbow.quick_charge_3": {
+    "category": "player",
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick3_1",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick3_1",
+        "pitch": 0.95,
+        "volume": 0.5,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick3_2",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick3_2",
+        "pitch": 0.95,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick3_2",
+        "pitch": 1.05,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick3_3",
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick3_3",
+        "pitch": 0.9,
+        "volume": 0.65,
+        "stream": false
+      },
+      {
+        "name": "netherupdatebackport:item/crossbow/quick_charge/quick3_3",
+        "pitch": 1.05,
+        "volume": 0.65,
+        "stream": false
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.item.crossbow.charge"
+  },
+  "entity.piglin.admiring_item": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/admire1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/admire2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/celebrate2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/celebrate4",
+        "volume": 0.85
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.admiring_item"
+  },
+  "entity.piglin.ambient": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/idle1",
+        "volume": 0.66
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/idle2",
+        "volume": 0.66
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/idle3",
+        "volume": 0.66
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/idle4",
+        "volume": 0.66
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/idle5",
+        "volume": 0.66
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.ambient"
+  },
+  "entity.piglin.angry": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/angry1",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/angry2",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/angry3",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/angry4",
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.angry"
+  },
+  "entity.piglin.celebrate": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/celebrate1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/celebrate2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/celebrate3",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/celebrate4",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.celebrate"
+  },
+  "entity.piglin.converted_to_zombified": {
+    "sounds": [
+      "netherupdatebackport:mob/piglin/converted1",
+      "netherupdatebackport:mob/piglin/converted2"
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.converted_to_zombified"
+  },
+  "entity.piglin.death": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/death1",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/death2",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/death3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/death4",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.death"
+  },
+  "entity.piglin.hurt": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/hurt1",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/hurt2",
+        "volume": 0.7
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/hurt3",
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.hurt"
+  },
+  "entity.piglin.jealous": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/jealous1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/jealous2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/jealous3",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/jealous4",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/jealous5",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.jealous"
+  },
+  "entity.piglin.retreat": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/retreat1",
+        "volume": 0.65
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/retreat2",
+        "volume": 0.65
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/retreat3",
+        "volume": 0.65
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/retreat4",
+        "volume": 0.65
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.retreat"
+  },
+  "entity.piglin.step": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/step1",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/step2",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/step3",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/step4",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/step5",
+        "volume": 0.75
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin.step"
+  },
+  "entity.piglin_brute.ambient": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle1",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle3",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle4",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle5",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle6",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle7",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle8",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/idle9",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin_brute.ambient"
+  },
+  "entity.piglin_brute.angry": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/angry1",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/angry2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/angry3",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/angry4",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/angry5",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin_brute.angry"
+  },
+  "entity.piglin_brute.converted_to_zombified": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin/converted1",
+        "pitch": 0.9
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin/converted2",
+        "pitch": 0.9
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin_brute.converted_to_zombified"
+  },
+  "entity.piglin_brute.death": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/death1",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/death2",
+        "volume": 0.8
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/death3",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin_brute.death"
+  },
+  "entity.piglin_brute.hurt": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/hurt1",
+        "volume": 0.64
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/hurt2",
+        "volume": 0.64
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/hurt3",
+        "volume": 0.64
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/hurt4",
+        "volume": 0.65
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin_brute.hurt"
+  },
+  "entity.piglin_brute.step": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/step1",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/step2",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/step3",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/step4",
+        "volume": 0.75
+      },
+      {
+        "name": "netherupdatebackport:mob/piglin_brute/step5",
+        "volume": 0.75
+      }
+    ],
+    "subtitle": "subtitles.netherupdatebackport.entity.piglin_brute.step"
   }
 }
