@@ -1,5 +1,4 @@
 # Ukrainian - our own text; vanilla names come from Mojang (tools/lang/build_langs.py)
-itemGroup.netherupdatebackport=Nether Update Backport
 config.netherupdatebackport.stone=Чорнокамінь і базальт
 config.netherupdatebackport.blocks=Дрібні блоки
 config.netherupdatebackport.fungus=Багряне та химерне

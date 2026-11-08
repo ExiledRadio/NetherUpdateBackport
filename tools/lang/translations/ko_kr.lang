@@ -1,5 +1,4 @@
 # Korean - our own text; vanilla names come from Mojang (tools/lang/build_langs.py)
-itemGroup.netherupdatebackport=Nether Update Backport
 config.netherupdatebackport.stone=흑암과 현무암
 config.netherupdatebackport.blocks=작은 블록
 config.netherupdatebackport.fungus=진홍빛과 뒤틀린 식물

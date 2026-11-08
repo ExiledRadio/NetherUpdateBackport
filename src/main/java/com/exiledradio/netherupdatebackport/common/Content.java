@@ -1,5 +1,6 @@
 package com.exiledradio.netherupdatebackport.common;
 
+import com.exiledradio.backportcore.creative.CreativePlacement;
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
 
 import net.minecraft.block.Block;
@@ -20,7 +21,7 @@ import java.util.Map;
 /**
  * The one way every stream names and registers its blocks and items.
  *
- * <p>Going through here means a block always gets its translation key, creative tab and harvest tool
+ * <p>Going through here means a block always gets its translation key, vanilla creative tab and harvest tool
  * the same way, and the client always gets a model request for every item: {@code client.ClientSetup}
  * registers every entry in {@link #itemModels()} and nothing else, so an item can never end up
  * without a model because a stream forgot its client class. It holds names only, never client types,
@@ -53,7 +54,6 @@ public final class Content {
     public static <B extends Block> B block(IForgeRegistry<Block> registry, String name, B block, @Nullable String tool) {
         block.setRegistryName(id(name));
         block.setTranslationKey(NetherUpdateBackport.MOD_ID + "." + name);
-        block.setCreativeTab(ModCreativeTab.TAB);
         if (tool != null) {
             block.setHarvestLevel(tool, 0);
         }
@@ -96,6 +96,14 @@ public final class Content {
     /** Registers a given item for a block, under the block's name, with its model at metadata 0. */
     public static <I extends Item> I blockItem(IForgeRegistry<Item> registry, Block block, I item) {
         item.setRegistryName(block.getRegistryName());
+        // In vanilla's tab, next to the vanilla block of the same name (Backport Core's creative placement).
+        // Only a block with an item is placed: one without has no place in the creative menu. An ItemBlock
+        // shows its block's tab; another item (a door's) has its own.
+        if (item instanceof ItemBlock) {
+            CreativePlacement.place(block);
+        } else {
+            CreativePlacement.place(item);
+        }
         registry.register(item);
         model(item, 0, block.getRegistryName().getPath());
         return item;
@@ -105,7 +113,7 @@ public final class Content {
     public static <I extends Item> I item(IForgeRegistry<Item> registry, String name, I item) {
         item.setRegistryName(id(name));
         item.setTranslationKey(NetherUpdateBackport.MOD_ID + "." + name);
-        item.setCreativeTab(ModCreativeTab.TAB);
+        CreativePlacement.place(item);
         registry.register(item);
         model(item, 0, name);
         return item;

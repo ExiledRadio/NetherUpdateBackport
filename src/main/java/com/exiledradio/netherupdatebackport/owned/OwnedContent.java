@@ -3,7 +3,6 @@ package com.exiledradio.netherupdatebackport.owned;
 import com.exiledradio.backportcore.smithing.SmithingUpgrades;
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
 import com.exiledradio.netherupdatebackport.common.Content;
-import com.exiledradio.netherupdatebackport.common.ModCreativeTab;
 import com.exiledradio.netherupdatebackport.common.Owners;
 import com.exiledradio.netherupdatebackport.common.Sounds;
 
@@ -141,11 +140,9 @@ public final class OwnedContent {
         }
         EnumEnchantmentType type = EnumHelper.addEnchantmentType("NETHERUPDATEBACKPORT_CROSSBOW",
                 item -> item instanceof ItemCrossbow);
-        // The books of the three show in this mod's tab, as the owner shows them in its own.
-        EnumEnchantmentType[] had = ModCreativeTab.TAB.getRelevantEnchantmentTypes();
-        EnumEnchantmentType[] more = Arrays.copyOf(had, had.length + 1);
-        more[had.length] = type;
-        ModCreativeTab.TAB.setRelevantEnchantmentTypes(more);
+        // The books of the three show in Combat with the bow's, as in vanilla.
+        com.exiledradio.backportcore.creative.CreativePlacement.addEnchantmentType(
+                net.minecraft.creativetab.CreativeTabs.COMBAT, type);
 
         // Village & Pillage's (current Java's) numbers.
         quickCharge = new CrossbowEnchantment("quick_charge", Enchantment.Rarity.UNCOMMON, type, 3, 12, 20);

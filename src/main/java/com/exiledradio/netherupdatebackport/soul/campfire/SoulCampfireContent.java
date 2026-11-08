@@ -1,7 +1,6 @@
 package com.exiledradio.netherupdatebackport.soul.campfire;
 
 import com.exiledradio.netherupdatebackport.ModConfig;
-import com.exiledradio.netherupdatebackport.common.ModCreativeTab;
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
 
 import net.minecraft.block.Block;

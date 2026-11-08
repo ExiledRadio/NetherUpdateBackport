@@ -33,7 +33,7 @@ import org.apache.logging.log4j.Logger;
         name = NetherUpdateBackport.MOD_NAME,
         version = NetherUpdateBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.2.0,);required-after:fluidlogged_api@[3.3.3,)"
+        dependencies = "required-after:backportcore@[1.3.0,);required-after:fluidlogged_api@[3.3.3,)"
 )
 public final class NetherUpdateBackport {
 
@@ -48,6 +48,9 @@ public final class NetherUpdateBackport {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        // This mod's spawn eggs in Miscellaneous where vanilla lists each mob's (Backport Core's creative
+        // placement).
+        com.exiledradio.backportcore.creative.CreativePlacement.placeSpawnEggs(MOD_ID);
         // 1.16's overworld structure placement numbers, for Backport Core's table (seed parity with 1.16.5).
         com.exiledradio.netherupdatebackport.worldgen.Placement116.register();
         NetworkHandler.init();

@@ -1,5 +1,4 @@
 # Chinese (Traditional) - our own text; vanilla names come from Mojang (tools/lang/build_langs.py)
-itemGroup.netherupdatebackport=Nether Update Backport
 config.netherupdatebackport.stone=黑石與玄武岩
 config.netherupdatebackport.blocks=小型方塊
 config.netherupdatebackport.fungus=緋紅與扭曲

@@ -1,5 +1,4 @@
 # The English each translations/<code>.lang entry was made from. Written by build_langs.py snapshot.
-itemGroup.netherupdatebackport=Nether Update Backport
 config.netherupdatebackport.stone=Blackstone and Basalt
 config.netherupdatebackport.blocks=Smaller Blocks
 config.netherupdatebackport.fungus=Crimson and Warped
