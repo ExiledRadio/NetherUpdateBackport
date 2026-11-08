@@ -79,3 +79,17 @@ items below. This mod's workarounds were removed when stream X merged; it relies
 *   For information: hiding a duplicate does not stop its world generation. This mod takes the other mod's ancient
     debris generator out of `GameRegistry` by class name; a `DuplicateBlocks.registerGenerator(theirClassName)` in
     Core would do it for every family mod.
+
+## 7. Found by the waterlogging stream (Core 1.2.0)
+
+*   **Fluidlogged API's whitelist is asked before `Waterloggable`.** Its built-in `whitelist.jsonc` covers every block
+    extending a vanilla stair, slab, wall, fence, trapdoor, sign, fence gate, door, button or pressure plate, with any
+    fluid and with flowing fluid (`TRUE_FOR_SIDE`), and its `FluidloggableEvent` handler answers ALLOW before the
+    block is asked. So a family block of those shapes takes lava and flowing water whatever its `Waterloggable` says
+    (Update Aquatic's prismarine stairs too). Wanted: Core's own `FluidloggableEvent` handler at `HIGHEST` for
+    `Waterloggable` blocks, refusing non-water always and non-source water unless the block opts in (default: refuse,
+    as 1.13+ vanilla). Here: `common/WaterRules`, for this mod's blocks only (it also refuses water for our
+    non-`Waterloggable` blocks of those shapes: fence gates, doors, buttons, pressure plates).
+*   **Source forming**: 1.13+ forms a source in a waterloggable block between two sources. With
+    `nonSourceFluidlogging` on, Fluidlogged API asks with the flowing state first, which the rule above refuses, so
+    no source forms. Core could form it itself (an end-of-tick check, as Update Aquatic's `RequiredWater`).
