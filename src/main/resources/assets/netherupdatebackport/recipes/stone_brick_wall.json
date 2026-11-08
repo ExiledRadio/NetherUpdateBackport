@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stonebrick",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:stone_brick_wall",
+    "count": 6
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:stone_brick_wall"
+      ]
+    }
+  ]
+}

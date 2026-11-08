@@ -67,10 +67,10 @@ public final class MusicContent {
                 new ItemMusicDisc(NetherUpdateBackport.MOD_ID + ".pigstep", disc, PIGSTEP_SIGNAL));
     }
 
-    /** Pigstep in nether fortress chests, until stream X puts it in bastions. */
+    /** Pigstep in nether fortress chests, off by default: 1.16 puts it in bastions only (stream X). */
     @SubscribeEvent
     public static void lootLoad(LootTableLoadEvent event) {
-        if (pigstep == null || !ModConfig.music.pigstepInFortressChests
+        if (pigstep == null || !ModConfig.music.pigstepInFortresses
                 || !LootTableList.CHESTS_NETHER_BRIDGE.equals(event.getName())) {
             return;
         }

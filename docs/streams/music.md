@@ -1,12 +1,13 @@
 # Stream M: music and sounds
 
-Package `music` (client: `music/client`). Config `music` (`enabled`, `pigstepInFortressChests`, `biomeMusic`,
+Package `music` (client: `music/client`). Config `music` (`enabled`, `pigstepInFortresses`, `biomeMusic`,
 `biomeAmbience`). No entity ids, no packets. Patch P2 (`asm/JukeboxTransformer`, see `docs/PATCHES.md`).
 
 ## Changelog section
 
 *   **Pigstep**, Lena Raine's music disc. It plays in a jukebox like any other disc, and a comparator reads 13 from
-    it. Until bastions exist, it can be found in nether fortress chests, as often as in a bastion's chests (5 in 89).
+    it. It is found in bastion chests, as in 1.16; an option (off by default) also puts it in nether fortress chests,
+    as often as in a bastion's (5 in 89).
 *   **1.16's nether music**: each nether biome has its own tracks. *Rubedo* plays in nether wastes, *Chrysopoeia*
     in crimson forests, and *So Below* in soul sand valleys and basalt deltas, along with the four old nether
     tracks. Warped forests have no music, as in vanilla. The nether's music now comes every 10 to 20 minutes, like
@@ -27,7 +28,7 @@ Package `music` (client: `music/client`). Config `music` (`enabled`, `pigstepInF
     twelve ids, and 1.16's `creeper_drop_music_discs` tag leaves Pigstep out too.
 *   **Fortress chests**: a `LootTableLoadEvent` pool on `chests/nether_bridge` (`netherupdatebackport:pigstep`).
     It rolls once, with Pigstep at weight 5 and nothing at weight 84, which is 1.16's `bastion_other` chance (5 of
-    89). Behind `music.pigstepInFortressChests` (default on), read when loot tables load.
+    89). Behind `music.pigstepInFortresses` (default off since bastions merged: 1.16 has Pigstep in bastions only; a new key, so 0.1.0's `pigstepInFortressChests = true` does not carry over), read when loot tables load.
 *   **Which music** (`music/MusicChoice`): the music-choosing logic, alone in one class with no client types:
     *   `Track` is 1.16's `BackgroundMusicSelector`: an event, min and max delay, and whether it replaces.
     *   `MENU` (20-600, replaces), `CREATIVE` and `GAME` (12000-24000, no), `CREDITS` and `END_BOSS` (0, replace),

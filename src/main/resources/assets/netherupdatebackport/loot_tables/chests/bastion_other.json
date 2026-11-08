@@ -1,0 +1,576 @@
+{
+  "pools": [
+    {
+      "name": "pool0",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:diamond_pickaxe",
+          "weight": 6,
+          "entryName": "diamond_pickaxe",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:diamond_shovel",
+          "weight": 6,
+          "entryName": "diamond_shovel"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 6,
+          "entryName": "crossbow",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "villagerbackport:crossbow",
+                "netherupdatebackport:crossbow",
+                "futuremc:crossbow",
+                "crossbows:crossbow"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "villagerbackport:crossbow",
+                "netherupdatebackport:crossbow",
+                "futuremc:crossbow",
+                "crossbows:crossbow"
+              ]
+            },
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 12,
+          "entryName": "ancient_debris",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "netherupdatebackport:ancient_debris"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "netherupdatebackport:ancient_debris"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 4,
+          "entryName": "netherite_scrap",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "netherupdatebackport:netherite_scrap"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "netherupdatebackport:netherite_scrap"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:spectral_arrow",
+          "weight": 10,
+          "entryName": "spectral_arrow",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 10.0,
+                "max": 22.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 9,
+          "entryName": "piglin_banner_pattern",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "netherupdatebackport:piglin_banner_pattern"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "netherupdatebackport:piglin_banner_pattern"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 5,
+          "entryName": "music_disc_pigstep",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "netherupdatebackport:music_disc_pigstep"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "netherupdatebackport:music_disc_pigstep"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_carrot",
+          "weight": 12,
+          "entryName": "golden_carrot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 6.0,
+                "max": 17.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_apple",
+          "weight": 9,
+          "entryName": "golden_apple"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:book",
+          "weight": 10,
+          "entryName": "book",
+          "functions": [
+            {
+              "function": "netherupdatebackport:enchant_randomly",
+              "enchantments": [
+                "netherupdatebackport:soul_speed"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pool1",
+      "rolls": 2,
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:iron_sword",
+          "weight": 2,
+          "entryName": "iron_sword",
+          "functions": [
+            {
+              "function": "set_damage",
+              "damage": {
+                "min": 0.1,
+                "max": 0.9
+              }
+            },
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_block",
+          "weight": 2,
+          "entryName": "iron_block"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_boots",
+          "weight": 1,
+          "entryName": "golden_boots",
+          "functions": [
+            {
+              "function": "netherupdatebackport:enchant_randomly",
+              "enchantments": [
+                "netherupdatebackport:soul_speed"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_axe",
+          "weight": 1,
+          "entryName": "golden_axe",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_block",
+          "weight": 2,
+          "entryName": "gold_block"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 1,
+          "entryName": "crossbow",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "villagerbackport:crossbow",
+                "netherupdatebackport:crossbow",
+                "futuremc:crossbow",
+                "crossbows:crossbow"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "villagerbackport:crossbow",
+                "netherupdatebackport:crossbow",
+                "futuremc:crossbow",
+                "crossbows:crossbow"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_ingot",
+          "weight": 2,
+          "entryName": "gold_ingot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1.0,
+                "max": 6.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_ingot",
+          "weight": 2,
+          "entryName": "iron_ingot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1.0,
+                "max": 6.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_sword",
+          "weight": 1,
+          "entryName": "golden_sword"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_chestplate",
+          "weight": 1,
+          "entryName": "golden_chestplate"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_helmet",
+          "weight": 1,
+          "entryName": "golden_helmet"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_leggings",
+          "weight": 1,
+          "entryName": "golden_leggings"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_boots",
+          "weight": 1,
+          "entryName": "golden_boots_2"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 2,
+          "entryName": "crying_obsidian",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "netherupdatebackport:crying_obsidian"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "netherupdatebackport:crying_obsidian"
+              ]
+            },
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pool2",
+      "rolls": {
+        "min": 3.0,
+        "max": 4.0
+      },
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 2,
+          "entryName": "gilded_blackstone",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "netherupdatebackport:gilded_blackstone"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "netherupdatebackport:gilded_blackstone"
+              ]
+            },
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1.0,
+                "max": 5.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 1,
+          "entryName": "chain",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "netherupdatebackport:chain"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "netherupdatebackport:chain"
+              ]
+            },
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2.0,
+                "max": 10.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:magma_cream",
+          "weight": 2,
+          "entryName": "magma_cream",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2.0,
+                "max": 6.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:bone_block",
+          "weight": 1,
+          "entryName": "bone_block",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 3.0,
+                "max": 6.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_nugget",
+          "weight": 1,
+          "entryName": "iron_nugget",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2.0,
+                "max": 8.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:obsidian",
+          "weight": 1,
+          "entryName": "obsidian",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 4.0,
+                "max": 6.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_nugget",
+          "weight": 1,
+          "entryName": "gold_nugget",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2.0,
+                "max": 8.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:string",
+          "weight": 1,
+          "entryName": "string",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 4.0,
+                "max": 6.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:arrow",
+          "weight": 2,
+          "entryName": "arrow",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 5.0,
+                "max": 17.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:cooked_porkchop",
+          "weight": 1,
+          "entryName": "cooked_porkchop"
+        }
+      ]
+    },
+    {
+      "name": "advancement",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 1,
+          "entryName": "none"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "netherupdatebackport:advancement_event",
+          "event": "loot_bastion_other"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+{
+  "pools": [
+    {
+      "name": "pool0",
+      "rolls": {
+        "min": 4.0,
+        "max": 8.0
+      },
+      "entries": [
+        {
+          "type": "item",
+          "name": "minecraft:obsidian",
+          "weight": 40,
+          "entryName": "obsidian",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1.0,
+                "max": 2.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:flint",
+          "weight": 40,
+          "entryName": "flint",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1.0,
+                "max": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_nugget",
+          "weight": 40,
+          "entryName": "iron_nugget",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 9.0,
+                "max": 18.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:flint_and_steel",
+          "weight": 40,
+          "entryName": "flint_and_steel"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:fire_charge",
+          "weight": 40,
+          "entryName": "fire_charge"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_apple",
+          "weight": 15,
+          "entryName": "golden_apple"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_nugget",
+          "weight": 15,
+          "entryName": "gold_nugget",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 4.0,
+                "max": 24.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_sword",
+          "weight": 15,
+          "entryName": "golden_sword",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_axe",
+          "weight": 15,
+          "entryName": "golden_axe",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_hoe",
+          "weight": 15,
+          "entryName": "golden_hoe",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_shovel",
+          "weight": 15,
+          "entryName": "golden_shovel",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_pickaxe",
+          "weight": 15,
+          "entryName": "golden_pickaxe",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_boots",
+          "weight": 15,
+          "entryName": "golden_boots",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_chestplate",
+          "weight": 15,
+          "entryName": "golden_chestplate",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_helmet",
+          "weight": 15,
+          "entryName": "golden_helmet",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_leggings",
+          "weight": 15,
+          "entryName": "golden_leggings",
+          "functions": [
+            {
+              "function": "enchant_randomly"
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:speckled_melon",
+          "weight": 5,
+          "entryName": "glistering_melon_slice",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 4.0,
+                "max": 12.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_horse_armor",
+          "weight": 5,
+          "entryName": "golden_horse_armor"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:light_weighted_pressure_plate",
+          "weight": 5,
+          "entryName": "light_weighted_pressure_plate"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_carrot",
+          "weight": 5,
+          "entryName": "golden_carrot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 4.0,
+                "max": 12.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:clock",
+          "weight": 5,
+          "entryName": "clock"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_ingot",
+          "weight": 5,
+          "entryName": "gold_ingot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 2.0,
+                "max": 8.0
+              }
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 1,
+          "entryName": "bell",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "villagerbackport:bell",
+                "futuremc:bell"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "villagerbackport:bell",
+                "futuremc:bell"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:golden_apple",
+          "weight": 1,
+          "entryName": "enchanted_golden_apple",
+          "functions": [
+            {
+              "function": "set_data",
+              "data": 1
+            }
+          ]
+        },
+        {
+          "type": "item",
+          "name": "minecraft:gold_block",
+          "weight": 1,
+          "entryName": "gold_block",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1.0,
+                "max": 2.0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "pool1",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "empty",
+          "weight": 1,
+          "entryName": "empty"
+        },
+        {
+          "type": "item",
+          "name": "minecraft:stick",
+          "weight": 2,
+          "entryName": "lodestone",
+          "conditions": [
+            {
+              "condition": "netherupdatebackport:item_exists",
+              "items": [
+                "netherupdatebackport:lodestone"
+              ]
+            }
+          ],
+          "functions": [
+            {
+              "function": "netherupdatebackport:set_item",
+              "items": [
+                "netherupdatebackport:lodestone"
+              ]
+            },
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

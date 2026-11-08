@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:torch"
+    },
+    "X": {
+      "type": "forge:ore_dict",
+      "ore": "nuggetIron"
+    }
+  },
+  "result": {
+    "item": "netherupdatebackport:lantern"
+  },
+  "conditions": [
+    {
+      "type": "netherupdatebackport:items",
+      "items": [
+        "netherupdatebackport:lantern"
+      ]
+    }
+  ]
+}

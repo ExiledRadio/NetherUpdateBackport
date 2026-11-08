@@ -43,3 +43,27 @@ Ruined portals also need `TerrainHeights` in the overworld (already in Core) and
 
 Blocks of this mod that 1.16 makes waterloggable are listed in `PLAN.md` (*Waterlogging*). They implement
 Core's `Waterloggable` once it exists. **Until then:** not waterloggable.
+
+## 5. Found by stream X against vanilla 1.16.5 (Core 1.2.0)
+
+**Done** on Core's `nether-fixes` branch (version still 1.2.0; not yet merged into Core `main`): the first four
+items below. This mod's workarounds were removed when stream X merged; it relies on Core for them now.
+
+*   **Nether ruined portals are 25 apart, not 40.** 1.16.5's `DimensionSettings.nether` puts
+    `RUINED_PORTAL -> (25, 10, 34222645)` into the nether's own structure settings. `VanillaPlacements.V1_16_5.RUINED_PORTAL`
+    says "every ruined portal, overworld and nether alike" and is (40, 15). Wanted: a `RUINED_PORTAL_NETHER` constant (and
+    the oracle comparing the nether's settings). Here: `RuinedPortals.NETHER_PLACEMENT`.
+*   **A template of nothing but jigsaws places nothing.** `ModernTemplate.place` returns when `blocks` and `entities` are
+    empty, before its jigsaw loop, so `bastion/blocks/gold` (a gold block), `bastion/blocks/air` and
+    `bastion/treasure/extensions/empty` (basalt) are missing from every bastion. Here: `BastionPiece.placeLoneJigsaws`.
+*   **A flattened block named without properties resolves to its first Flattening entry.** `block_age` writes
+    `minecraft:stone_slab` (1.16's default state: a bottom half) and Core resolves it to `double_stone_slab`; any
+    `replacedBy` or `final_state` naming a 1.12.2 block bare has the same problem. Wanted: missing properties taken from
+    the block's 1.13 default. Here: explicit mappings for `stone_slab`, `stone_brick_slab`, `smooth_stone_slab`.
+*   **A source mod's slab ignores `type`.** `ModernPalette`'s source lookup carries properties by name, so 1.12.2-style
+    slabs (a half with `half`, a separate `_double_slab`) get bottom halves for `type=top` and `type=double`; that
+    includes Village & Pillage's slabs, which Core lists as a source. Wanted: the family's slab convention in Core. Here:
+    `StructurePalette.slab` for the slabs these structures use.
+*   For information: 1.16.5's ruined portal files keep one jigsaw block in the floor (final state netherrack) and
+    vanilla places it as a jigsaw block; Core places the final state, which is all 1.12.2 can do.
+

@@ -1,28 +1,22 @@
 package com.exiledradio.netherupdatebackport.piglin;
 
 import com.exiledradio.netherupdatebackport.common.Content;
+import com.exiledradio.netherupdatebackport.common.LootFunctions;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentData;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.JsonUtils;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.conditions.LootConditionManager;
-import net.minecraft.world.storage.loot.functions.LootFunction;
-import net.minecraft.world.storage.loot.functions.LootFunctionManager;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.Collections;
@@ -52,8 +46,8 @@ public final class Bartering {
     static void register() {
         LootTableList.register(TABLE);
         LootConditionManager.registerCondition(new Registered.Serializer());
-        LootFunctionManager.registerFunction(new SetItem.Serializer());
-        LootFunctionManager.registerFunction(new EnchantRandomly.Serializer());
+        // set_item and enchant_randomly are shared with stream X's chests.
+        LootFunctions.register();
     }
 
     /** @return one barter's worth of items for this piglin */
@@ -127,95 +121,6 @@ public final class Bartering {
             @Override
             public Registered deserialize(JsonObject json, JsonDeserializationContext context) {
                 return new Registered(names(json, "items"), names(json, "enchantments"));
-            }
-        }
-    }
-
-    /** {@code netherupdatebackport:set_item}: becomes the named item (by name, at use), keeping count and tags. */
-    static final class SetItem extends LootFunction {
-        final String item;
-        final int data;
-
-        SetItem(LootCondition[] conditions, String item, int data) {
-            super(conditions);
-            this.item = item;
-            this.data = data;
-        }
-
-        @Override
-        public ItemStack apply(ItemStack stack, Random rand, LootContext context) {
-            Item to = ForgeRegistries.ITEMS.getValue(new ResourceLocation(this.item));
-            if (to == null || to == Items.AIR) {
-                return ItemStack.EMPTY;
-            }
-            ItemStack out = new ItemStack(to, stack.getCount(), this.data);
-            out.setTagCompound(stack.getTagCompound());
-            return out;
-        }
-
-        static final class Serializer extends LootFunction.Serializer<SetItem> {
-            Serializer() {
-                super(Content.id("set_item"), SetItem.class);
-            }
-
-            @Override
-            public void serialize(JsonObject json, SetItem value, JsonSerializationContext context) {
-                json.addProperty("item", value.item);
-                json.addProperty("data", value.data);
-            }
-
-            @Override
-            public SetItem deserialize(JsonObject json, JsonDeserializationContext context, LootCondition[] conditions) {
-                return new SetItem(conditions, JsonUtils.getString(json, "item"), JsonUtils.getInt(json, "data", 0));
-            }
-        }
-    }
-
-    /**
-     * {@code netherupdatebackport:enchant_randomly}: vanilla's {@code enchant_randomly} with enchantments named
-     * at use rather than at load (a book becomes an enchanted book), so a switched-off stream's enchantment does not
-     * fail the table.
-     */
-    static final class EnchantRandomly extends LootFunction {
-        final String[] enchantments;
-
-        EnchantRandomly(LootCondition[] conditions, String[] enchantments) {
-            super(conditions);
-            this.enchantments = enchantments;
-        }
-
-        @Override
-        public ItemStack apply(ItemStack stack, Random rand, LootContext context) {
-            if (this.enchantments.length == 0) {
-                return stack;
-            }
-            Enchantment e = ForgeRegistries.ENCHANTMENTS.getValue(new ResourceLocation(this.enchantments[rand.nextInt(this.enchantments.length)]));
-            if (e == null) {
-                return stack;
-            }
-            int level = MathHelper.getInt(rand, e.getMinLevel(), e.getMaxLevel());
-            if (stack.getItem() == Items.BOOK) {
-                ItemStack book = new ItemStack(Items.ENCHANTED_BOOK);
-                ItemEnchantedBook.addEnchantment(book, new EnchantmentData(e, level));
-                return book;
-            }
-            stack.addEnchantment(e, level);
-            return stack;
-        }
-
-        static final class Serializer extends LootFunction.Serializer<EnchantRandomly> {
-            Serializer() {
-                super(Content.id("enchant_randomly"), EnchantRandomly.class);
-            }
-
-            @Override
-            public void serialize(JsonObject json, EnchantRandomly value, JsonSerializationContext context) {
-                json.add("enchantments", array(value.enchantments));
-            }
-
-            @Override
-            public EnchantRandomly deserialize(JsonObject json, JsonDeserializationContext context, LootCondition[] conditions) {
-                return new EnchantRandomly(conditions, names(json, "enchantments"));
             }
         }
     }

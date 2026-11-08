@@ -7,10 +7,15 @@ import com.exiledradio.netherupdatebackport.common.ModCreativeTab;
 import com.exiledradio.netherupdatebackport.common.Owners;
 import com.exiledradio.netherupdatebackport.common.Sounds;
 
+import com.exiledradio.netherupdatebackport.common.shape.BlockNetherSlab;
+import com.exiledradio.netherupdatebackport.common.shape.Shapes;
+
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundEvent;
@@ -27,9 +32,10 @@ import java.util.Arrays;
 
 /**
  * Copies of things another family mod owns, registered only when the owner is absent (Rule 1), so this mod
- * works fully on its own: Village &amp; Pillage's smithing table (for netherite) and its crossbow (for piglins).
- * Same registry paths, states and metadata as the owner's, under this mod's id, so the owner can rename them in
- * place when it is added to a world.
+ * works fully on its own: Village &amp; Pillage's smithing table (for netherite), its crossbow (for piglins), and its
+ * lantern, smooth quartz slab, stone brick wall and mossy stone brick stairs, slab and wall (for 1.16's bastions and
+ * ruined portals). Same registry paths, states and metadata as the owner's, under this mod's id, so the owner can
+ * rename them in place when it is added to a world.
  *
  * <h2>The crossbow</h2>
  * Village &amp; Pillage's {@code ItemCrossbow}, its three enchantments (Quick Charge, Multishot, Piercing) and its
@@ -51,6 +57,14 @@ public final class OwnedContent {
             Sounds.event("item.crossbow.quick_charge_2"), Sounds.event("item.crossbow.quick_charge_3")};
 
     public static Block smithingTable;
+    /** Village &amp; Pillage's blocks that 1.16's bastions use (stream X): lantern, smooth quartz slab, stone brick wall. */
+    public static Block lantern;
+    public static Block smoothQuartzSlab;
+    public static Block stoneBrickWall;
+    /** And what 1.16's {@code block_age} turns ruined portals' stone bricks into: the mossy stairs, slab and wall. */
+    public static Block mossyStoneBrickStairs;
+    public static Block mossyStoneBrickSlab;
+    public static Block mossyStoneBrickWall;
 
     @Nullable
     public static ItemCrossbow crossbow;
@@ -86,6 +100,21 @@ public final class OwnedContent {
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
         if (copies()) {
             smithingTable = Content.block(event.getRegistry(), "smithing_table", new BlockSmithingTable(), "axe");
+            lantern = Content.block(event.getRegistry(), "lantern", new BlockLantern(), "pickaxe");
+            // Village & Pillage's smooth quartz slab: strength from its smooth quartz, a copy of 1.12.2's quartz block.
+            IBlockState quartz = Blocks.QUARTZ_BLOCK.getDefaultState();
+            BlockNetherSlab.Half half = new BlockNetherSlab.Half(Blocks.QUARTZ_BLOCK, quartz, 0.8F, 0.8F);
+            BlockNetherSlab.Double full = new BlockNetherSlab.Double(Blocks.QUARTZ_BLOCK, quartz, 0.8F, 0.8F, half);
+            smoothQuartzSlab = Content.slab(event.getRegistry(), "smooth_quartz_slab", half, full, "pickaxe");
+            stoneBrickWall = Content.block(event.getRegistry(), "stone_brick_wall", new Shapes.Wall(Blocks.STONEBRICK), "pickaxe");
+            Content.multipart(stoneBrickWall);
+            IBlockState mossy = Blocks.STONEBRICK.getStateFromMeta(1);
+            mossyStoneBrickStairs = Content.block(event.getRegistry(), "mossy_stone_brick_stairs", new Shapes.Stairs(mossy), "pickaxe");
+            BlockNetherSlab.Half mossyHalf = new BlockNetherSlab.Half(Blocks.STONEBRICK, mossy, 1.5F, 6.0F);
+            BlockNetherSlab.Double mossyFull = new BlockNetherSlab.Double(Blocks.STONEBRICK, mossy, 1.5F, 6.0F, mossyHalf);
+            mossyStoneBrickSlab = Content.slab(event.getRegistry(), "mossy_stone_brick_slab", mossyHalf, mossyFull, "pickaxe");
+            mossyStoneBrickWall = Content.block(event.getRegistry(), "mossy_stone_brick_wall", new Shapes.Wall(Blocks.STONEBRICK), "pickaxe");
+            Content.multipart(mossyStoneBrickWall);
         }
     }
 
@@ -93,6 +122,12 @@ public final class OwnedContent {
     public static void registerItems(RegistryEvent.Register<Item> event) {
         if (smithingTable != null) {
             Content.registerBlockItem(event.getRegistry(), smithingTable);
+            Content.registerBlockItem(event.getRegistry(), lantern);
+            Content.registerBlockItem(event.getRegistry(), smoothQuartzSlab);
+            Content.registerBlockItem(event.getRegistry(), stoneBrickWall);
+            Content.registerBlockItem(event.getRegistry(), mossyStoneBrickStairs);
+            Content.registerBlockItem(event.getRegistry(), mossyStoneBrickSlab);
+            Content.registerBlockItem(event.getRegistry(), mossyStoneBrickWall);
         }
         if (crossbowCopy()) {
             crossbow = Content.item(event.getRegistry(), "crossbow", new ItemCrossbow());

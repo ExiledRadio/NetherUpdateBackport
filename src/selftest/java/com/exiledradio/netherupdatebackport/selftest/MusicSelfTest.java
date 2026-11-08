@@ -5,6 +5,7 @@ import com.exiledradio.netherupdatebackport.asm.JukeboxTransformer;
 import com.exiledradio.netherupdatebackport.biome.NetherBiomes;
 import com.exiledradio.netherupdatebackport.music.ItemMusicDisc;
 import com.exiledradio.netherupdatebackport.music.MusicChoice;
+import com.exiledradio.netherupdatebackport.ModConfig;
 import com.exiledradio.netherupdatebackport.music.MusicContent;
 import com.exiledradio.netherupdatebackport.music.MusicPlayer;
 import com.exiledradio.netherupdatebackport.music.NetherAmbience;
@@ -146,8 +147,23 @@ public final class MusicSelfTest implements SelfTest {
     // ------------------------------------------------------------------------------------------
 
     private static void loot(Check c) {
+        boolean was = ModConfig.music.pigstepInFortresses;
+        c.ok(!was, "music.pigstepInFortresses defaults off (1.16 has Pigstep in bastions only)");
+        c.ok(c.world.getLootTableManager().getLootTableFromLocation(LootTableList.CHESTS_NETHER_BRIDGE)
+                .getPool(MusicContent.PIGSTEP_POOL) == null, "by default, fortress chests have no Pigstep pool");
+        ModConfig.music.pigstepInFortresses = true;
+        try {
+            c.world.getLootTableManager().reloadLootTables();
+            lootOn(c);
+        } finally {
+            ModConfig.music.pigstepInFortresses = was;
+            c.world.getLootTableManager().reloadLootTables();
+        }
+    }
+
+    private static void lootOn(Check c) {
         LootTable table = c.world.getLootTableManager().getLootTableFromLocation(LootTableList.CHESTS_NETHER_BRIDGE);
-        if (!c.ok(table.getPool(MusicContent.PIGSTEP_POOL) != null, "fortress chests have the Pigstep pool")) {
+        if (!c.ok(table.getPool(MusicContent.PIGSTEP_POOL) != null, "with the option on, fortress chests have the Pigstep pool")) {
             return;
         }
         Random random = new Random(1234L);
