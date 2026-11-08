@@ -124,6 +124,41 @@ fails the whole advancement, which is why they are events now).
 *   *Oh Shiny* from a real thrown item (the thrower lookup by name), and from a real player's right-click.
 *   The release jar in a real instance.
 
+## Playtest report: "piglins run from a fight too often" (2026-11-08)
+
+Checked against 1.16.5 in order: repellents (within 8 blocks across, 4 up or down; only soul fire, soul torches, soul lanterns and lit soul
+campfires), hoglin outnumbering (only while avoiding a hoglin), avoid timing, and the gold-armor and anger
+priorities. All match. The retreats seen in game are vanilla rules:
+
+*   A piglin hunts a hoglin once its hunt cooldown (30-120 s from spawning, or after the last hunt) runs out, even
+    mid-fight with a player, and a herd that outnumbers it sends it running.
+*   A crossbow bolt that hits a hoglin turns the herd on the piglin, which then flees the herd.
+
+Follow-up the same day (the player had soul fire and soul torches near the fight): the repellent rule checked again.
+The blocks are 1.16.5's `piglin_repellents` tag (soul fire, soul torch and wall torch, soul lantern) plus a soul
+campfire only while lit; found 8 blocks across and 4 up or down. The retreat is 1.16's `RunAwayTask` in the idle
+and celebrate activities, so it has no timer: the piglin walks to a spot up to 16 blocks away and keeps doing so
+while one is within 8 blocks. A fighting piglin does not run from one (1.16's fight activity has no repellent
+task). One gap fixed: with the other mod that adds 1.16 blocks installed, its soul torch and soul lantern stand in
+for ours (`FutureMcPairs`) but did not repel; they do now, as blocks and as items piglins will not pick up.
+
+Two real differences from 1.16.5, fixed:
+
+*   A hoglin hit by a second attacker switched to it even when that one was much farther away. 1.16 keeps the
+    current target unless the new one is within 4 blocks of it (`isOtherTargetMuchFurtherAwayThanCurrentAttackTarget`),
+    so stray bolts no longer pull a whole herd off the player onto the piglin.
+*   A crossbow piglin walked up to its target until it could see it, then stopped; 1.16's `MoveToTargetTask` stops
+    within the crossbow range less 1 (7 blocks), and it shoots within 8.
+
+Self-test `piglinfight` (fresh piglins with vanilla's spawn cooldown, a survival player without gold, 400 ticks, a
+crossbow and a sword piglin per scenario): plain, hit back, a soul torch placed mid-fight more than 8 blocks off,
+the player holding a soul torch, a group of piglins, a zombified piglin far off, a player circling, hoglins behind
+the piglin, and a piglin free to hunt (it hunts the hoglin). Each fights more than half the time, never retreats,
+the crossbow fires at least twice, and hits land (one for a crossbow against the circling player; none asked of the
+sword piglin there, which a running player outpaces). A soul torch 5 blocks off sends an idle piglin away; every state of each repellent is found at 8 across and 4 up (an unlit campfire is not), none at 9 across or 5 up, and a torch, fire or jack o'lantern never. Two
+checks of `piglins` read the repellent memory and the run-away walk target on a fixed tick, which raced the AI in
+full runs; they now wait for the tick that sets them.
+
 ## Integrator
 
 *   One shared-file line each: `NetherUpdateBackport.init` (`PiglinContent.init()`), `ClientSetup.init` (crossbow copy
