@@ -1,5 +1,7 @@
 package com.exiledradio.netherupdatebackport.fungus;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.BlockStandingSign;
 import net.minecraft.block.BlockWallSign;
@@ -44,7 +46,7 @@ public final class NetherSigns {
     public static class Tile extends TileEntitySign {
     }
 
-    public static final class Standing extends BlockStandingSign {
+    public static final class Standing extends BlockStandingSign implements Waterloggable {
         public final NetherWood wood;
 
         Standing(NetherWood wood) {
@@ -70,7 +72,7 @@ public final class NetherSigns {
         }
     }
 
-    public static final class Wall extends BlockWallSign {
+    public static final class Wall extends BlockWallSign implements Waterloggable {
         public final NetherWood wood;
 
         Wall(NetherWood wood) {

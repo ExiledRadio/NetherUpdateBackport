@@ -1,5 +1,7 @@
 package com.exiledradio.netherupdatebackport.common.shape;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockButtonStone;
 import net.minecraft.block.BlockButtonWood;
@@ -71,7 +73,7 @@ public final class Shapes {
     }
 
     /** Stairs made of a block; strength and sound come from it, as vanilla's. */
-    public static final class Stairs extends BlockStairs {
+    public static final class Stairs extends BlockStairs implements Waterloggable {
         public Stairs(IBlockState base) {
             super(base);
             this.useNeighborBrightness = true;
@@ -85,7 +87,7 @@ public final class Shapes {
      * built the same way. Vanilla's {@code variant} property (cobblestone or mossy) comes with it and is
      * pinned to its first value and hidden from the blockstate files.
      */
-    public static final class Wall extends BlockWall {
+    public static final class Wall extends BlockWall implements Waterloggable {
         public Wall(Block base) {
             super(base);
         }
@@ -179,7 +181,7 @@ public final class Shapes {
     }
 
     /** A trapdoor. */
-    public static final class Trapdoor extends net.minecraft.block.BlockTrapDoor {
+    public static final class Trapdoor extends net.minecraft.block.BlockTrapDoor implements Waterloggable {
         public Trapdoor(Material material, SoundType sound, float hardness) {
             super(material);
             strength(this, hardness, hardness);
@@ -191,7 +193,7 @@ public final class Shapes {
      * A wooden fence. It joins every other wooden fence (vanilla's join only fences of their own
      * material, which these share: {@code Material.WOOD}) and fence gates.
      */
-    public static final class Fence extends net.minecraft.block.BlockFence {
+    public static final class Fence extends net.minecraft.block.BlockFence implements Waterloggable {
         public Fence(Material material, MapColor color, SoundType sound, float hardness, float blast) {
             super(material, color);
             strength(this, hardness, blast);
