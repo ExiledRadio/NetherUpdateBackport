@@ -132,11 +132,16 @@ entity or packet ids. Proposal A of *Decided* item 1.
 *   `StoneSelfTest`'s "blackstone only near its blob range" check now looks at nether wastes columns only: basalt
     deltas have blackstone floors.
 
+## Checked against vanilla 1.16.5 (after the merge, 2026-11-07)
+
+Stream X's oracle (`tools/structure/oracle/StructureOracle.java`, Mojang's own 1.16.5 classes) also writes
+`biomes_1165.txt.gz`: for seeds 0, 12345, -7346534567, 8675309 and 3257840388504953787, every 4 blocks over 2048 x 2048
+blocks around 0, 0, vanilla's noise biome (`MultiNoiseBiomeSource`, NETHER preset) and block biome at y 64
+(`BiomeManager` with the nether dimension's own zoomer). `BiomeSelfTest.parity` compares `noiseKind`, `blockKind` and
+the biomes `chunk()` stores: **1,310,720 cells each way, 0 differences** (all five biomes occur).
+
 ## Not tested
 
-*   Bit-for-bit agreement with vanilla 1.16.5 or cubiomes: the self-test writes `eclipse/selftest-nether-biomes-<seed>.txt`
-    (256 x 256 cells at 4-block resolution, quart -128..127, 1.16 numeric ids) for six seeds, ready for
-    `tools/seedcheck`, but no oracle was run here.
 *   Anything visual: fog colors, particles, surfaces as seen in a client; music and ambience (stream M).
 *   Natural mob spawning over time in the new biomes.
 *   Living alongside another mod's nether (the step-aside decision is tested on vanilla's and the overworld's types).

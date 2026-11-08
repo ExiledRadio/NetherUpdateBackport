@@ -67,9 +67,17 @@ import java.util.zip.GZIPOutputStream;
  * Everything is vanilla's real code path: the nether's multi-noise biome source and noise generator, the overworld's
  * layered biome source, ChunkGenerator.createStructures' biome check (the noise biome at the chunk's middle quart),
  * ConfiguredStructureFeature.generate, and the pieces' own template placement into an empty world.
+ *
+ * <p>And the nether's biomes themselves (biomes_1165.txt.gz), for stream V's biome source: for each seed, every 4 blocks
+ * over 2048 x 2048 blocks, the noise biome ({@code MultiNoiseBiomeSource.getNoiseBiome}, what structures read) and the
+ * block biome at y 64 ({@code BiomeManager.getBiome} with the nether dimension's own zoomer and obfuscated seed, what
+ * World.getBiome gives and a 1.12.2 column stores).
  */
 public final class StructureOracle {
-    static final long[] SEEDS = {0L, 12345L, -7346534567L, 8675309L};
+    static final long[] SEEDS = {0L, 12345L, -7346534567L, 8675309L, 3257840388504953787L};
+    /** The biome grid: quart cells from -256 to 255 on both axes, so 2048 x 2048 blocks around 0, 0. */
+    static final int BIOME_Q0 = -256;
+    static final int BIOME_N = 512;
 
     static RegistryAccess.RegistryHolder access;
     static Registry<Biome> biomes;
@@ -268,7 +276,60 @@ public final class StructureOracle {
             }
         }
         storage.close();
+        biomes(out);
         System.out.println("oracle written: " + wholeBastions.size() + " bastions, " + wholePortals.size() + " portals block for block");
+    }
+
+    /** One letter per nether biome: n(ether wastes), s(oul sand valley), c(rimson), w(arped), b(asalt deltas). */
+    static char letter(Biome biome) {
+        String path = biomes.getKey(biome).getPath();
+        switch (path) {
+            case "nether_wastes":
+                return 'n';
+            case "soul_sand_valley":
+                return 's';
+            case "crimson_forest":
+                return 'c';
+            case "warped_forest":
+                return 'w';
+            case "basalt_deltas":
+                return 'b';
+            default:
+                throw new IllegalStateException("not a nether biome: " + path);
+        }
+    }
+
+    static void biomes(File out) throws Exception {
+        net.minecraft.world.level.biome.BiomeZoomer zoomer = access.registryOrThrow(Registry.DIMENSION_TYPE_REGISTRY)
+                .get(net.minecraft.world.level.dimension.DimensionType.NETHER_LOCATION).getBiomeZoomer();
+        try (PrintWriter w = gzWriter(new File(out, "biomes_1165.txt.gz"))) {
+            w.println("# nether biomes of 1.16.5, one letter per 4 blocks (n s c w b: wastes, soul sand valley, crimson, warped, deltas)");
+            w.println("# '= seed mode q0 n' then n rows (z) of n letters (x); cell (i, j) is quart (q0 + i, q0 + j), block (4 * that)");
+            w.println("# mode noise: MultiNoiseBiomeSource.getNoiseBiome(qx, 0, qz); mode block64: BiomeManager.getBiome(4qx, 64, 4qz)");
+            for (long seed : SEEDS) {
+                BiomeSource source = MultiNoiseBiomeSource.Preset.NETHER.biomeSource(biomes, seed);
+                net.minecraft.world.level.biome.BiomeManager manager = new net.minecraft.world.level.biome.BiomeManager(source,
+                        net.minecraft.world.level.biome.BiomeManager.obfuscateSeed(seed), zoomer);
+                StringBuilder row = new StringBuilder(BIOME_N);
+                w.println("= " + seed + " noise " + BIOME_Q0 + " " + BIOME_N);
+                for (int j = 0; j < BIOME_N; j++) {
+                    row.setLength(0);
+                    for (int i = 0; i < BIOME_N; i++) {
+                        row.append(letter(source.getNoiseBiome(BIOME_Q0 + i, 0, BIOME_Q0 + j)));
+                    }
+                    w.println(row);
+                }
+                w.println("= " + seed + " block64 " + BIOME_Q0 + " " + BIOME_N);
+                BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+                for (int j = 0; j < BIOME_N; j++) {
+                    row.setLength(0);
+                    for (int i = 0; i < BIOME_N; i++) {
+                        row.append(letter(manager.getBiome(pos.set((BIOME_Q0 + i) * 4, 64, (BIOME_Q0 + j) * 4))));
+                    }
+                    w.println(row);
+                }
+            }
+        }
     }
 
     /** The start piece's template: one of the four bastion kinds. */

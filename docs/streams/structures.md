@@ -93,18 +93,23 @@ fortress slots.
 ## Seed parity: checked against vanilla 1.16.5 itself
 
 `tools/structure/oracle/StructureOracle.java` runs Mojang's 1.16.5 server classes (the remapped server jar of Core's
-`tools/vanilla-oracle`) for seeds 0, 12345, -7346534567 and 8675309: the nether's multi-noise biome source and noise
+`tools/vanilla-oracle`) for seeds 0, 12345, -7346534567, 8675309 and (since the merge) 3257840388504953787: the nether's multi-noise biome source and noise
 generator, the overworld's layered biome source and generator, `createStructures`' biome check,
 `ConfiguredStructureFeature.generate`, and the pieces' own template placement into an empty world. Its answers ship
 with the self-test (`src/selftest/resources/.../oracle/`, compiled into test builds only).
 
-*   Bastion / fortress / empty (basalt deltas) slots: **6400 regions, 0 differences** (3299 bastions, 2485 fortresses,
-    616 empty); the noise biome at every slot is 1.16.5's; in a seed-12345 world Core's `startAt` with this stream's rule
+*   Bastion / fortress / empty (basalt deltas) slots: **8000 regions over 5 seeds, 0 differences** (4 seeds: 6400
+    regions, 3299 bastions, 2485 fortresses, 616 empty); the noise biome at every slot is 1.16.5's; in a seed-12345 world Core's `startAt` with this stream's rule
     agrees in all 1600.
 *   Ruined portals: every candidate chunk (5696 regions, both dimensions); **5696 starts, 0 differences** in type,
     placement, template, rotation, mirror, air pocket, mossiness, overgrowth, vines, blackstone, column and box; the
     height before the corner test is the same in all 4096 nether starts; the variant table for all 61 vanilla 1.12.2
     biomes.
+*   Ruined portal types from this mod's own biomes (since the merge): every nether candidate is a nether portal, as in
+    1.16.5. Overworld candidates take their type from 1.12.2's own biome layers, which this mod does not touch: 1991 of
+    2000 agree with 1.16.5; the 9 others sit where 1.12.2's layers give another biome than 1.16.5's (ice spikes for
+    snowy mountains, giant spruce taiga for taiga, savanna and mesa for their shattered and wooded variants, a beach for
+    an ocean). Matching those needs 1.16's overworld biome layers, which are not this mod's.
 *   Nether fossils: **10668 soul sand valley candidates, 0 differences**; column, template and rotation of all 5465
     fossils.
 *   **Block for block**: 4 whole bastions (one of each kind, 57289-121395 blocks each) and 18 ruined portals (9 overworld,

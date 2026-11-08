@@ -53,6 +53,7 @@ public final class BiomeSelfTest implements SelfTest {
     public void run(Check c) throws Exception {
         registration(c);
         noise(c);
+        parity(c);
         dumps(c);
         features(c);
         generation(c);
@@ -234,6 +235,107 @@ public final class BiomeSelfTest implements SelfTest {
         }
         c.eq(0, crimson, "weight 0 removes crimson forests");
         c.ok(warped > warpedBefore * 3 / 2, "weight 3 grows warped forests: " + warpedBefore + " -> " + warped);
+    }
+
+    /** The oracle's letter for a biome (tools/structure/oracle, StructureOracle.letter). */
+    private static char letter(NetherBiomes.Kind kind) {
+        switch (kind) {
+            case SOUL_SAND_VALLEY:
+                return 's';
+            case CRIMSON_FOREST:
+                return 'c';
+            case WARPED_FOREST:
+                return 'w';
+            case BASALT_DELTAS:
+                return 'b';
+            default:
+                return 'n';
+        }
+    }
+
+    /**
+     * Against vanilla 1.16.5 itself: biomes_1165.txt.gz is what Mojang's own MultiNoiseBiomeSource (NETHER preset) and
+     * BiomeManager (the nether's zoomer) give, every 4 blocks over 2048 x 2048 blocks, for each oracle seed. Compared
+     * three ways: the noise biome ({@code noiseKind}, what structures read), the block biome at y 64 ({@code
+     * blockKind}), and the biome a chunk actually stores ({@code chunk()}, the cached path chunk generation uses).
+     */
+    private static void parity(Check c) throws Exception {
+        java.io.InputStream in = BiomeSelfTest.class.getResourceAsStream("/assets/" + NetherUpdateBackport.MOD_ID + "/oracle/biomes_1165.txt.gz");
+        if (!c.ok(in != null, "the 1.16.5 biome oracle is in this test build")) {
+            return;
+        }
+        long cells = 0;
+        long noiseWrong = 0;
+        long blockWrong = 0;
+        long storedWrong = 0;
+        int seeds = 0;
+        String first = "";
+        Map<Character, Integer> tally = new HashMap<Character, Integer>();
+        try (java.io.BufferedReader r = new java.io.BufferedReader(new java.io.InputStreamReader(new java.util.zip.GZIPInputStream(in),
+                java.nio.charset.StandardCharsets.UTF_8))) {
+            String line;
+            NetherBiomeSource src = null;
+            long seed = 0;
+            String mode = "";
+            int q0 = 0;
+            int row = 0;
+            while ((line = r.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty() || line.startsWith("#")) {
+                    continue;
+                }
+                if (line.startsWith("=")) {
+                    String[] h = line.split(" ");
+                    long s = Long.parseLong(h[1]);
+                    if (src == null || s != seed) {
+                        seed = s;
+                        src = new NetherBiomeSource(seed, Collections.<NetherBiomes.Kind, Float>emptyMap(), false);
+                        seeds++;
+                    }
+                    mode = h[2];
+                    q0 = Integer.parseInt(h[3]);
+                    row = 0;
+                    continue;
+                }
+                int qz = q0 + row;
+                for (int i = 0; i < line.length(); i++) {
+                    int qx = q0 + i;
+                    char want = line.charAt(i);
+                    if (mode.equals("noise")) {
+                        cells++;
+                        tally.merge(want, 1, Integer::sum);
+                        if (letter(src.noiseKind(qx, 0, qz)) != want) {
+                            if (noiseWrong++ == 0 && first.isEmpty()) {
+                                first = seed + " noise quart " + qx + "," + qz + " want " + want + " got " + letter(src.noiseKind(qx, 0, qz));
+                            }
+                        }
+                    } else {
+                        int x = qx * 4;
+                        int z = qz * 4;
+                        if (letter(src.blockKind(x, 64, z)) != want) {
+                            if (blockWrong++ == 0 && first.isEmpty()) {
+                                first = seed + " block " + x + ",64," + z + " want " + want + " got " + letter(src.blockKind(x, 64, z));
+                            }
+                        }
+                        NetherBiomes.Kind stored = NetherBiomes.of(src.chunk(x >> 4, z >> 4)[(z & 15) << 4 | (x & 15)]);
+                        if (letter(stored == null ? NetherBiomes.Kind.NETHER_WASTES : stored) != want) {
+                            if (storedWrong++ == 0 && first.isEmpty()) {
+                                first = seed + " stored " + x + "," + z + " want " + want + " got " + stored;
+                            }
+                        }
+                    }
+                }
+                row++;
+            }
+        }
+        NetherUpdateBackport.LOGGER.info("SELFTEST INFO biome parity with 1.16.5: {} seeds, {} cells of 4 blocks each way ({} x {} blocks per seed), "
+                + "noise {} differ, block (y 64) {} differ, stored {} differ; oracle letters {} {}", seeds, cells, 2048, 2048, noiseWrong, blockWrong,
+                storedWrong, tally, first);
+        c.ok(seeds >= 5 && cells == (long) seeds * 512 * 512, "the oracle covers " + seeds + " seeds of 512 x 512 cells: " + cells);
+        c.ok(tally.size() == 5, "all five nether biomes occur in the oracle: " + tally);
+        c.eq(0L, noiseWrong, "seed parity: the nether's noise biomes are 1.16.5's in every cell " + first);
+        c.eq(0L, blockWrong, "seed parity: the nether's block biomes (y 64) are 1.16.5's every 4 blocks " + first);
+        c.eq(0L, storedWrong, "seed parity: the biome a nether chunk stores is 1.16.5's at y 64, every 4 blocks " + first);
     }
 
     /** Grids for the seed check against seed tools (cubiomes at scale 4): eclipse/selftest-nether-biomes-<seed>.txt. */

@@ -80,7 +80,7 @@ import java.util.zip.GZIPInputStream;
  */
 public final class StructureSelfTest implements SelfTest {
 
-    static final long[] SEEDS = {0L, 12345L, -7346534567L, 8675309L};
+    static final long[] SEEDS = {0L, 12345L, -7346534567L, 8675309L, 3257840388504953787L};
     /** A marker the comparisons fill a structure's box with first: where vanilla places nothing, it must stay. */
     static final IBlockState MARKER = Blocks.SPONGE.getDefaultState();
 
@@ -316,7 +316,7 @@ public final class StructureSelfTest implements SelfTest {
 
     private static void slots(Check c) throws Exception {
         List<String[]> lines = oracle("slots_1165.txt");
-        c.ok(lines.size() == 4 * 1600, "oracle: " + lines.size() + " slot lines");
+        c.ok(lines.size() == SEEDS.length * 1600, "oracle: " + lines.size() + " slot lines");
         Map<Long, NetherBiomeSource> sources = new HashMap<Long, NetherBiomeSource>();
         int bastions = 0;
         int fortresses = 0;
@@ -350,7 +350,7 @@ public final class StructureSelfTest implements SelfTest {
             }
         }
         info(c, wrong == 0 && bastions > 1000 && fortresses > 1000 && none > 100, "seed parity: bastions, fortresses and empty slots in exactly 1.16.5's chunks: "
-                + bastions + " bastions, " + fortresses + " fortresses, " + none + " basalt delta slots over 4 seeds; " + wrong + " differ " + first);
+                + bastions + " bastions, " + fortresses + " fortresses, " + none + " basalt delta slots over " + SEEDS.length + " seeds; " + wrong + " differ " + first);
         c.eq(0, biomeWrong, "the noise biome at every slot is 1.16.5's");
         // In this world, through the installed rule.
         WorldServer nether = nether(c);
@@ -376,7 +376,7 @@ public final class StructureSelfTest implements SelfTest {
 
     private static void portals(Check c) throws Exception {
         List<String[]> lines = oracle("portals_1165.txt");
-        c.ok(lines.size() == 4 * (400 + 1024), "oracle: " + lines.size() + " ruined portal lines");
+        c.ok(lines.size() == SEEDS.length * (400 + 1024), "oracle: " + lines.size() + " ruined portal lines");
         WorldServer nether = nether(c);
         int candidates = 0;
         int candidateWrong = 0;
@@ -387,12 +387,48 @@ public final class StructureSelfTest implements SelfTest {
         int below = 0;
         String first = "";
         Map<String, Integer> types = new LinkedHashMap<String, Integer>();
+        // Which ruined portal a candidate gets comes from the biome at its middle quart: in the nether always "nether";
+        // in the overworld 1.12.2's own 1:4 biome layer, for each oracle seed (no world needed).
+        Map<Long, net.minecraft.world.biome.BiomeProvider> overworlds = new HashMap<Long, net.minecraft.world.biome.BiomeProvider>();
+        int typeChecked = 0;
+        int overworldChecked = 0;
+        int netherTypeWrong = 0;
+        int portalTypeWrong = 0;
+        int sameBiome = 0;
+        String firstType = "";
         for (String[] l : lines) {
             long seed = Long.parseLong(l[0]);
             boolean inNether = l[1].equals("nether");
             int x = Integer.parseInt(l[2]);
             int z = Integer.parseInt(l[3]);
             candidates++;
+            String ourType;
+            String ourBiome = "";
+            if (inNether) {
+                ourType = RuinedPortals.Type.NETHER.id();
+            } else {
+                net.minecraft.world.biome.BiomeProvider p = overworlds.computeIfAbsent(seed, s -> new net.minecraft.world.biome.BiomeProvider(
+                        new net.minecraft.world.storage.WorldInfo(new net.minecraft.world.WorldSettings(s, net.minecraft.world.GameType.SURVIVAL, true, false,
+                                net.minecraft.world.WorldType.DEFAULT), "oracle")));
+                Biome b = p.getBiomesForGeneration(null, (x << 2) + 2, (z << 2) + 2, 1, 1)[0];
+                RuinedPortals.Type t = RuinedPortals.typeOf(b);
+                ourType = t == null ? "none" : t.id();
+                ourBiome = String.valueOf(b.getRegistryName()) + "#" + Biome.getIdForBiome(b);
+                if (b.getRegistryName() != null && b.getRegistryName().toString().equals(l[4])) {
+                    sameBiome++;
+                }
+            }
+            typeChecked++;
+            if (!inNether) {
+                overworldChecked++;
+            }
+            if (!ourType.equals(l[5]) && inNether) {
+                netherTypeWrong++;
+            } else if (!ourType.equals(l[5])) {
+                if (portalTypeWrong++ < 12) {
+                    firstType += "[" + l[0] + " " + l[2] + "," + l[3] + " " + l[4] + " " + l[5] + " / ours " + ourType + " " + ourBiome + "] ";
+                }
+            }
             ChunkPos want = (inNether ? RuinedPortals.NETHER_PLACEMENT : VanillaPlacements.V1_16_5.RUINED_PORTAL).candidate(seed, x, z);
             if (want.x != x || want.z != z) {
                 candidateWrong++;
@@ -427,10 +463,17 @@ public final class StructureSelfTest implements SelfTest {
                 }
             }
         }
-        c.eq(0, candidateWrong, "seed parity: ruined portal candidate chunks are 1.16.5's (" + candidates + " regions over 4 seeds, both dimensions)");
+        c.eq(0, candidateWrong, "seed parity: ruined portal candidate chunks are 1.16.5's (" + candidates + " regions over " + SEEDS.length + " seeds, both dimensions)");
         info(c, decided > 4000 && decisionWrong == 0, "seed parity: every ruined portal start decides as 1.16.5's (placement, template, rotation, mirror, air pocket, "
                 + "mossiness, column): " + decided + " starts " + types + ", " + decisionWrong + " differ " + first);
         c.eq(0, boxWrong, "every ruined portal's box is 1.16.5's");
+        c.eq(0, netherTypeWrong, "seed parity: every nether ruined portal candidate is a nether portal, as 1.16.5's");
+        // The overworld's type follows its biome, and the overworld's biomes are 1.12.2's own layers (this mod does not
+        // touch them): where those differ from 1.16.5's (rare variants, coasts), so does the portal type.
+        NetherUpdateBackport.LOGGER.info("SELFTEST INFO overworld ruined portal types from 1.12.2's own biomes: {} of {} candidates over {} seeds differ from "
+                + "1.16.5 (biome name the same in {}; 1.13 renamed or added the rest): {}", portalTypeWrong, overworldChecked, SEEDS.length, sameBiome, firstType);
+        c.ok(typeChecked == lines.size() && portalTypeWrong * 100 < overworldChecked, "overworld ruined portal types follow 1.12.2's biomes and agree with "
+                + "1.16.5 in over 99% of candidates: " + (overworldChecked - portalTypeWrong) + "/" + overworldChecked);
         c.eq(0, firstYWrong, "nether portals: 1.16.5's height is never above the random's (the corner test only lowers it)");
         NetherUpdateBackport.LOGGER.info("SELFTEST INFO nether portals left where the random put them by 1.16.5's corner test: {}", below);
         // The variant table against 1.16.5's biomes, through 1.12.2's ids.
@@ -501,7 +544,7 @@ public final class StructureSelfTest implements SelfTest {
             }
         }
         info(c, candidates > 4000 && listWrong == 0, "seed parity: nether fossils start in exactly 1.16.5's soul sand valley chunks: " + candidates
-                + " over 4 seeds, " + listWrong + " differ");
+                + " over " + SEEDS.length + " seeds, " + listWrong + " differ");
         info(c, valid > 3000 && wrong == 0, "seed parity: every fossil's column, template and rotation are 1.16.5's: " + valid + " fossils, " + wrong
                 + " differ " + first);
     }
