@@ -1,5 +1,4 @@
 # Spanish (Mexico) - our own text; vanilla names come from Mojang (tools/lang/build_langs.py)
-itemGroup.netherupdatebackport=Nether Update Backport
 config.netherupdatebackport.stone=Piedra negra y basalto
 config.netherupdatebackport.blocks=Bloques menores
 config.netherupdatebackport.fungus=Carmesí y distorsionado

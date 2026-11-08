@@ -1,5 +1,4 @@
 # Polish - our own text; vanilla names come from Mojang (tools/lang/build_langs.py)
-itemGroup.netherupdatebackport=Nether Update Backport
 config.netherupdatebackport.stone=Czernit i bazalt
 config.netherupdatebackport.blocks=Mniejsze bloki
 config.netherupdatebackport.fungus=Szkarłatne i spaczone

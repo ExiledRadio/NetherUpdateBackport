@@ -48,6 +48,9 @@ public final class NetherUpdateBackport {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        // This mod's spawn eggs in Miscellaneous where vanilla lists each mob's (Backport Core's creative
+        // placement).
+        com.exiledradio.backportcore.creative.CreativePlacement.placeSpawnEggs(MOD_ID);
         // 1.16's overworld structure placement numbers, for Backport Core's table (seed parity with 1.16.5).
         com.exiledradio.netherupdatebackport.worldgen.Placement116.register();
         NetworkHandler.init();

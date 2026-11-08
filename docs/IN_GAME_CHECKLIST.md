@@ -53,3 +53,12 @@ Self-tests: `runServer -Pselftest=lookfeel` (assets, warning keys, vanilla text 
       With Update Aquatic too: under water in an ocean the underwater tracks.
 - [ ] **Text**: "You Died!", "Saved Hotbars", "Swap Item With Offhand" (1.16's wording through Core, whatever else
       is installed).
+
+## Creative tabs (with Backport Core 1.1.0)
+
+The places are in `docs/CREATIVE_TABS.md`; a dev client already checked the lists and the search tab.
+
+- [ ] There is no tab for this mod; every vanilla tab keeps its icon, name, background and scroll bar.
+- [ ] A few places: crimson and warped stems after the dark oak log, the nylium after coarse dirt, netherite block after the diamond block, blackstone at the end of Building Blocks, soul torch before the infested stone, netherite tools after the diamond ones, the hoglin egg after the guardian egg, Pigstep after the last music disc.
+- [ ] The search tab finds the mod's items, and JEI lists them. The lodestone compass is not in the creative menu, as in vanilla.
+- [ ] With another update backport installed too, its items and this mod's sit together by kind (stripped logs, slabs).

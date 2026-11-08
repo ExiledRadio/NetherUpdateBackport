@@ -1,5 +1,4 @@
 # Japanese - our own text; vanilla names come from Mojang (tools/lang/build_langs.py)
-itemGroup.netherupdatebackport=Nether Update Backport
 config.netherupdatebackport.stone=ブラックストーンと玄武岩
 config.netherupdatebackport.blocks=小さなブロック
 config.netherupdatebackport.fungus=真紅と歪んだ植物
