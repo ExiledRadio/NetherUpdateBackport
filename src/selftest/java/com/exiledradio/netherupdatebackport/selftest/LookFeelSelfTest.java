@@ -63,10 +63,37 @@ public final class LookFeelSelfTest implements SelfTest {
         Contribution v1162 = Presentation.contribution("1.16.2");
         c.ok(v116 != null && v116.owners().contains(ID), "1.16 is registered by " + ID + ": " + v116);
         c.ok(v1162 != null && v1162.owners().contains(ID), "1.16.2 is registered by " + ID + ": " + v1162);
-        // On its own (this dev server) 1.16.2 is the newest version: 1.16 wins every single-slot piece.
-        c.eq(GameVersion.parse("1.16.2"), Presentation.newest(), "the newest installed version");
+        Contribution v1164 = Presentation.contribution("1.16.4");
+        c.ok(v1164 != null && v1164.owners().contains(ID), "1.16.4 is registered by " + ID + " (the Accessibility Guide)");
+        // On its own (this dev server) 1.16.4 is the newest version: 1.16 wins every single-slot piece.
+        c.eq(GameVersion.parse("1.16.4"), Presentation.newest(), "the newest installed version");
         c.ok(Presentation.isAtLeast("1.16"), "isAtLeast(1.16)");
         c.eq(LoadingRevision.DATA_1_16, Presentation.loadingRevision(), "the world-loading screen revision");
+        // The single slots Core finished (Core 1.2.0): 1.16.5's assets, text and warning.
+        String[][] assets = {
+                {"textures/gui/title/minecraft.png", "textures/gui/title/minecraft.png", "256x256"},
+                {"textures/gui/title/mojangstudios.png", "textures/gui/title/mojangstudios.png", null},
+                {"textures/gui/widgets.png", "textures/gui/widgets.png", "256x256"},
+                {"textures/gui/checkbox.png", "textures/gui/checkbox.png", "64x64"},
+        };
+        for (String[] a : assets) {
+            ResourceLocation src = Presentation.asset(a[0]);
+            c.eq(new ResourceLocation(ID, a[1]), src, "Core serves vanilla's " + a[0] + " from 1.16's");
+            int[] size;
+            try {
+                size = src == null ? null : pngSize(src);
+            } catch (IOException e) {
+                size = null;
+            }
+            c.ok(size != null && (a[2] == null || a[2].equals(size[0] + "x" + size[1])), a[1] + " is in the jar: " + Arrays.toString(size));
+        }
+        c.eq(new ResourceLocation(ID, "textures/gui/accessibility.png"), Presentation.titleAccessibilityIcon(), "the title screen's Accessibility icon");
+        String[] warn = Presentation.multiplayerWarning();
+        c.ok(warn != null && "multiplayerWarning.header".equals(warn[0]) && "multiplayerWarning.check".equals(warn[2]),
+                "the multiplayer warning uses vanilla's keys: " + Arrays.toString(warn));
+        c.ok(Presentation.vanillaTexts().contains(new ResourceLocation(ID, "vanilla_text")), "1.16's vanilla text is registered");
+        c.eq(com.exiledradio.backportcore.presentation.VanillaRevisions.Startup.STUDIOS_1_16,
+                com.exiledradio.backportcore.presentation.VanillaRevisions.startup(), "the startup screen is 1.16's");
     }
 
     private static void panorama(Check c) throws IOException {
@@ -122,8 +149,6 @@ public final class LookFeelSelfTest implements SelfTest {
         }
         Object[][] want = {
                 {LookAndFeel.ENTITY_DISTANCE, OptionScreen.VIDEO, "1.16", "options.entityDistanceScaling"},
-                {LookAndFeel.DISTORTION_VIDEO, OptionScreen.VIDEO, "1.16.2", "options.screenEffectScale"},
-                {LookAndFeel.FOV_EFFECTS_VIDEO, OptionScreen.VIDEO, "1.16.2", "options.fovEffectScale"},
                 {LookAndFeel.DISTORTION, OptionScreen.ACCESSIBILITY, "1.16.2", "options.screenEffectScale"},
                 {LookAndFeel.FOV_EFFECTS, OptionScreen.ACCESSIBILITY, "1.16.2", "options.fovEffectScale"},
         };
@@ -143,28 +168,26 @@ public final class LookFeelSelfTest implements SelfTest {
         c.eq(1.0, LookAndFeel.FOV_EFFECTS.defaultValue(), "FOV Effects default");
 
         List<String> video = ids(Presentation.optionsOn(OptionScreen.VIDEO));
-        int d = video.indexOf(LookAndFeel.DISTORTION_VIDEO.id());
+        int d = video.indexOf(LookAndFeel.DISTORTION.id());
         int e = video.indexOf(LookAndFeel.ENTITY_DISTANCE.id());
-        int f = video.indexOf(LookAndFeel.FOV_EFFECTS_VIDEO.id());
-        c.ok(d >= 0 && e >= 0 && f >= 0, "Video Settings shows all three: " + video);
-        c.eq("ENTITY_SHADOWS", LookAndFeel.DISTORTION_VIDEO.after(), "Distortion Effects follows Entity Shadows");
-        c.eq(LookAndFeel.DISTORTION_VIDEO.id(), LookAndFeel.ENTITY_DISTANCE.after(), "Entity Distance follows Distortion Effects");
-        c.eq(LookAndFeel.ENTITY_DISTANCE.id(), LookAndFeel.FOV_EFFECTS_VIDEO.after(), "FOV Effects follows Entity Distance");
+        int f = video.indexOf(LookAndFeel.FOV_EFFECTS.id());
+        c.ok(d >= 0 && e >= 0 && f >= 0, "Video Settings shows all three (one option on two screens): " + video);
+        c.eq("ENTITY_SHADOWS", LookAndFeel.DISTORTION.after(), "Distortion Effects follows Entity Shadows");
+        c.eq(LookAndFeel.DISTORTION.id(), LookAndFeel.ENTITY_DISTANCE.after(), "Entity Distance follows Distortion Effects");
+        c.eq(LookAndFeel.ENTITY_DISTANCE.id(), LookAndFeel.FOV_EFFECTS.after(), "FOV Effects follows Entity Distance");
         List<String> access = ids(Presentation.optionsOn(OptionScreen.ACCESSIBILITY));
         int ad = access.indexOf(LookAndFeel.DISTORTION.id());
         int af = access.indexOf(LookAndFeel.FOV_EFFECTS.id());
         c.ok(ad >= 0 && af == ad + 1, "Accessibility Settings shows Distortion Effects then FOV Effects: " + access);
-
-        // The two buttons of each setting move together.
-        LookAndFeel.DISTORTION.set(0.5);
-        c.eq(0.5, LookAndFeel.DISTORTION_VIDEO.get(), "Distortion Effects on Video follows Accessibility");
-        LookAndFeel.FOV_EFFECTS_VIDEO.set(0.25);
-        c.eq(0.25, LookAndFeel.FOV_EFFECTS.get(), "FOV Effects on Accessibility follows Video");
+        c.ok(LookAndFeel.DISTORTION.alsoOn().contains(OptionScreen.VIDEO) && LookAndFeel.FOV_EFFECTS.alsoOn().contains(OptionScreen.VIDEO),
+                "both are also on Video Settings (no mirrored copies)");
+        c.eq("options.off", LookAndFeel.DISTORTION.zeroKey(), "Distortion Effects reads OFF at zero");
+        c.eq("options.off", LookAndFeel.FOV_EFFECTS.zeroKey(), "FOV Effects reads OFF at zero");
+        c.eq("options.screenEffectScale.tooltip", LookAndFeel.DISTORTION.tooltipKey(), "Distortion Effects' tooltip");
+        c.eq("options.fovEffectScale.tooltip", LookAndFeel.FOV_EFFECTS.tooltipKey(), "FOV Effects' tooltip");
+        LookAndFeel.FOV_EFFECTS.set(0.25);
         c.eq(0.5F, LookAndFeel.fovEffectScale(), "FOV Effects at 25% scales by its root, 0.5 (1.16.2's sqrt)");
-        LookAndFeel.DISTORTION.reset();
         LookAndFeel.FOV_EFFECTS.reset();
-        c.eq(1.0, LookAndFeel.DISTORTION_VIDEO.get(), "reset reaches the mirror");
-        c.eq(1.0, LookAndFeel.FOV_EFFECTS_VIDEO.get(), "reset reaches the mirror (FOV)");
     }
 
     private static List<String> ids(List<PresentationOption> options) {
@@ -247,38 +270,56 @@ public final class LookFeelSelfTest implements SelfTest {
             {"options.screenEffectScale", "Distortion Effects"},
             {"options.fovEffectScale", "FOV Effects"},
             {"debug.gamemodes.help", "F3 + F4 = Open game mode switcher"},
+            {"options.screenEffectScale.tooltip", null},
+    };
+
+    /** Vanilla's own keys as 1.16.5 words them: Core's vanilla text (vanilla_text/), newest version wins. */
+    private static final String[][] VANILLA = {
             {"deathScreen.title", "You Died!"},
             {"key.swapHands", "Swap Item With Offhand"},
             {"itemGroup.hotbar", "Saved Hotbars"},
             {"multiplayer.status.client_out_of_date", "Incompatible version!"},
             {"debug.creative_spectator.help", "F3 + N = Cycle previous gamemode <-> spectator"},
+            {"multiplayerWarning.header", "Caution: Third-Party Online Play"},
     };
 
     private static final String[] LANGUAGES = {"de_de", "es_ar", "es_es", "es_mx", "es_uy", "es_ve", "fr_fr", "it_it", "ja_jp",
             "ko_kr", "nl_nl", "pl_pl", "pt_br", "ru_ru", "tr_tr", "uk_ua", "zh_cn", "zh_tw"};
 
     private static void lang(Check c) throws IOException {
-        Map<String, String> en = langFile("en_us");
+        Map<String, String> en = langFile("lang", "en_us");
+        Map<String, String> ven = langFile("vanilla_text", "en_us");
         for (String[] kv : LANG) {
-            c.eq(kv[1], en.get(kv[0]), "en_us " + kv[0]);
+            c.ok(kv[1] == null ? en.containsKey(kv[0]) : kv[1].equals(en.get(kv[0])), "en_us " + kv[0] + ": " + en.get(kv[0]));
+        }
+        for (String[] kv : VANILLA) {
+            c.eq(kv[1], ven.get(kv[0]), "vanilla_text en_us " + kv[0]);
+            c.ok(!en.containsKey(kv[0]), kv[0] + " is not in the mod's own lang (load order would decide it)");
         }
         for (String code : LANGUAGES) {
-            Map<String, String> l = langFile(code);
+            Map<String, String> l = langFile("lang", code);
+            Map<String, String> v = langFile("vanilla_text", code);
             int have = 0;
             for (String[] kv : LANG) {
                 if (l.get(kv[0]) != null && !l.get(kv[0]).isEmpty()) {
                     have++;
                 }
             }
-            c.eq(LANG.length, have, code + " has the 1.16 option, F3 and reworded vanilla keys");
+            for (String[] kv : VANILLA) {
+                if (v.get(kv[0]) != null && !v.get(kv[0]).isEmpty()) {
+                    have++;
+                }
+            }
+            c.eq(LANG.length + VANILLA.length, have, code + " has the 1.16 option and F3 keys, and 1.16.5's vanilla text");
+            c.eq(ven.size(), v.size(), code + "'s vanilla text has every key");
         }
     }
 
     // ------------------------------------------------------------------------------------------
 
-    private static Map<String, String> langFile(String code) throws IOException {
+    private static Map<String, String> langFile(String folder, String code) throws IOException {
         Map<String, String> out = new HashMap<String, String>();
-        for (String line : lines(new ResourceLocation(ID, "lang/" + code + ".lang"))) {
+        for (String line : lines(new ResourceLocation(ID, folder + "/" + code + ".lang"))) {
             int eq = line.indexOf('=');
             if (eq > 0 && !line.startsWith("#")) {
                 out.put(line.substring(0, eq), line.substring(eq + 1));

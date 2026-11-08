@@ -177,7 +177,6 @@ biome.netherupdatebackport.soul_sand_valley=영혼 모래 골짜기
 biome.netherupdatebackport.warped_forest=뒤틀린 숲
 
 # --- mobs ---
-entity.PigZombie.name=좀비화 피글린
 subtitles.netherupdatebackport.entity.zombified_piglin.ambient=좀비화 피글린이 꿀꿀거림
 subtitles.netherupdatebackport.entity.zombified_piglin.angry=좀비화 피글린이 화난 듯 꿀꿀거림
 subtitles.netherupdatebackport.entity.zombified_piglin.death=좀비화 피글린이 죽음
@@ -338,44 +337,6 @@ debug.gamemodes.press_f4=[ F4 ]
 debug.gamemodes.select_next=%s 다음
 
 # Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-createWorld.customize.presets.share=사전 설정을 공유하고 싶나요? 아래의 상자를 이용하세요!
-deathScreen.spectate=세계 관전
-deathScreen.title=죽었습니다!
-deathScreen.title.hardcore=게임 오버!
-deathScreen.titleScreen=타이틀 화면
-debug.creative_spectator.error=권한이 없어 게임 모드를 변경할 수 없습니다
-debug.creative_spectator.help=F3 + N = 이전 게임 모드 <-> 관전 모드 변경
-debug.cycle_renderdistance.help=F3 + F = 렌더 거리 변경 (Shift로 반대 방향)
-gui.recipebook.moreRecipes=우클릭하여 더 보기
-gui.recipebook.toggleRecipes.all=모두 표시 중
-gui.recipebook.toggleRecipes.craftable=제작 가능한 아이템 표시 중
-gui.toMenu=서버 목록으로 돌아가기
-gui.toTitle=타이틀 화면으로 돌아가기
-inventory.hotbarInfo=%1$s + %2$s을(를) 눌러 단축 바를 저장할 수 있습니다
-inventory.hotbarSaved=아이템 단축 바가 저장되었습니다 (%1$s + %2$s 키로 불러오기)
-itemGroup.hotbar=저장된 단축 바
-key.loadToolbarActivator=단축 바 불러오기
-key.saveToolbarActivator=단축 바 저장
-key.swapHands=다른 손과 아이템 맞바꾸기
-mount.onboard=내리려면 %1$s을(를) 누르세요
-multiplayer.disconnect.outdated_client=클라이언트가 호환되지 않습니다! %s을(를) 사용해 주세요
-multiplayer.disconnect.outdated_server=클라이언트가 호환되지 않습니다! %s을(를) 사용해 주세요
-multiplayer.downloadingStats=통계 받아오는 중...
-multiplayer.status.client_out_of_date=호환되지 않는 버전입니다!
-multiplayer.status.server_out_of_date=호환되지 않는 버전입니다!
-options.chat.scale=대화 문자 크기
-options.narrator.all=모두 읽기
-options.narrator.chat=대화만 읽기
-options.narrator.notavailable=사용 불가
-options.narrator.system=시스템 메시지만 읽기
-selectServer.direct=직접 연결
-selectWorld.gameMode.adventure.line1=서바이벌 모드와 비슷하지만, 블록들을
-selectWorld.gameMode.adventure.line2=임의의 자리에 놓거나 부술 수 없습니다
-selectWorld.gameMode.hardcore.line1=서바이벌 모드와 비슷하지만 가장 어려운 난이도로 고정되며,
-selectWorld.gameMode.hardcore.line2=한 번 죽으면 부활할 수 없습니다
-selectWorld.gameMode.survival.line1=자원을 찾고, 제작할 수 있으며
-selectWorld.gameMode.survival.line2=레벨, 생명력, 배고픔이 있습니다
-selectWorld.mapFeatures.info=마을, 난파선 등
-selectWorld.tooltip.snapshot1=이 스냅숏에서 세계를 불러오기 전에
-selectWorld.tooltip.snapshot2=먼저 백업하는 것을 잊지 마세요.
-sign.edit=표지판 문구 편집
+options.screenEffectScale.tooltip=멀미와 네더 차원문의 화면 왜곡 효과 강도.\n수치를 낮추면, 멀미 효과는 초록색 오버레이로 대체됩니다.
+options.fovEffectScale.tooltip=게임플레이 효과에 따라 시야가 얼마나 변하는지 조절합니다.
+options.accessibility.link=접근성 안내

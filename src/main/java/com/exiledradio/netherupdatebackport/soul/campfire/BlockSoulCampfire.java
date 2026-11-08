@@ -59,7 +59,7 @@ import java.util.Random;
  * Three properties, all kept in metadata: {@code facing} (the way the logs lie, and which slot is
  * which), {@code lit}, and {@code signal_fire} - true while a hay bale sits directly underneath, which
  * sends the smoke up three times as high. 1.16's fourth, {@code waterlogged}, is not a property here: the
- * water is Fluidlogged API's, through Backport Core's {@link Waterloggable} (see {@code common/WaterRules}).
+ * water is Fluidlogged API's, through Backport Core's {@link Waterloggable} (and Backport Core's 1.13+ rules, {@code waterlog/WaterRules}).
  *
  * <h2>Water (1.16.5's {@code CampfireBlock})</h2>
  * <ul>

@@ -51,6 +51,88 @@ public final class LookAndFeelClient {
         }
         MinecraftForge.EVENT_BUS.register(new LookAndFeelClient());
         MinecraftForge.EVENT_BUS.register(new PreviousGameMode());
+        com.exiledradio.backportcore.presentation.client.DebugText.add("1.16", "spawn counts, targeted block coordinates", LookAndFeelClient::debugText);
+    }
+
+    /** For the client self-test. */
+    public static volatile int debugEdits;
+
+    /**
+     * 1.16.5's {@code DebugScreenOverlay} edits of the F3 text (20w18a): "Looking at" leaves the left column, the
+     * right column's targeted block gets a "Targeted Block: x, y, z" heading (underlined), and in singleplayer the
+     * left column gains the spawn line after Local Difficulty: "SC: " the chunks the last spawn pass could use, then
+     * each spawn category's count by its initial (1.12.2's four: monster, creature, ambient, water creature).
+     */
+    static void debugText(com.exiledradio.backportcore.presentation.client.DebugText.Lines lines) {
+        Minecraft mc = lines.mc;
+        // 1.12.2's "Looking at: ", or 1.13's "Looking at block: " and "Looking at liquid: " when 1.13's step ran.
+        for (int looking; (looking = com.exiledradio.backportcore.presentation.client.DebugText.Lines.find(lines.left, "Looking at")) >= 0; ) {
+            lines.left.remove(looking);
+        }
+        net.minecraft.util.math.RayTraceResult hit = mc.objectMouseOver;
+        if (hit != null && hit.typeOfHit == net.minecraft.util.math.RayTraceResult.Type.BLOCK && hit.getBlockPos() != null && mc.world != null) {
+            net.minecraft.util.math.BlockPos pos = hit.getBlockPos();
+            String name = String.valueOf(net.minecraft.block.Block.REGISTRY.getNameForObject(mc.world.getBlockState(pos).getBlock()));
+            String heading = net.minecraft.util.text.TextFormatting.UNDERLINE + "Targeted Block: " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
+            int at = lines.right.indexOf(name);
+            if (at > 0) {
+                String before = lines.right.get(at - 1);
+                if (before != null && before.contains("Targeted Block")) {
+                    lines.right.set(at - 1, heading);
+                } else {
+                    lines.right.add(at, heading);
+                }
+            }
+        }
+        // 1.13's "Targeted Fluid" heading (when its step ran) gets the fluid's coordinates too.
+        int fluid = com.exiledradio.backportcore.presentation.client.DebugText.Lines.find(lines.right,
+                net.minecraft.util.text.TextFormatting.UNDERLINE + "Targeted Fluid");
+        if (fluid >= 0 && mc.getRenderViewEntity() != null && mc.world != null) {
+            net.minecraft.entity.Entity eye = mc.getRenderViewEntity();
+            net.minecraft.util.math.Vec3d from = eye.getPositionEyes(lines.partialTicks);
+            net.minecraft.util.math.Vec3d look = eye.getLook(lines.partialTicks);
+            net.minecraft.util.math.RayTraceResult wet = mc.world.rayTraceBlocks(from, from.add(look.x * 20.0, look.y * 20.0, look.z * 20.0), true, false, false);
+            if (wet != null && wet.getBlockPos() != null) {
+                net.minecraft.util.math.BlockPos p = wet.getBlockPos();
+                lines.right.set(fluid, net.minecraft.util.text.TextFormatting.UNDERLINE + "Targeted Fluid: " + p.getX() + ", " + p.getY() + ", " + p.getZ());
+            }
+        }
+        net.minecraft.server.integrated.IntegratedServer server = mc.getIntegratedServer();
+        int difficulty = com.exiledradio.backportcore.presentation.client.DebugText.Lines.find(lines.left, "Local Difficulty: ");
+        if (server != null && mc.player != null && difficulty >= 0) {
+            String spawn = spawnLine(server.getWorld(mc.player.dimension));
+            if (spawn != null) {
+                lines.left.add(difficulty + 1, spawn);
+            }
+        }
+        debugEdits++;
+    }
+
+    private static java.lang.reflect.Field spawner;
+    private static java.lang.reflect.Field eligible;
+
+    /** @return "SC: n, M: a, C: b, A: c, W: d" for the integrated server's world, or null */
+    static String spawnLine(net.minecraft.world.WorldServer world) {
+        if (world == null) {
+            return null;
+        }
+        try {
+            if (spawner == null) {
+                spawner = net.minecraftforge.fml.relauncher.ReflectionHelper.findField(net.minecraft.world.WorldServer.class, "entitySpawner", "field_175742_R");
+                eligible = net.minecraftforge.fml.relauncher.ReflectionHelper.findField(net.minecraft.world.WorldEntitySpawner.class,
+                        "eligibleChunksForSpawning", "field_77193_b");
+            }
+            int chunks = ((java.util.Set<?>) eligible.get(spawner.get(world))).size();
+            StringBuilder s = new StringBuilder("SC: ").append(chunks);
+            for (net.minecraft.entity.EnumCreatureType type : new net.minecraft.entity.EnumCreatureType[] {
+                    net.minecraft.entity.EnumCreatureType.MONSTER, net.minecraft.entity.EnumCreatureType.CREATURE,
+                    net.minecraft.entity.EnumCreatureType.AMBIENT, net.minecraft.entity.EnumCreatureType.WATER_CREATURE}) {
+                s.append(", ").append(Character.toUpperCase(type.name().charAt(0))).append(": ").append(world.countEntities(type, true));
+            }
+            return s.toString();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     /** 1.16.5 {@code KeyboardHandler}, F3+F4. */

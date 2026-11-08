@@ -136,7 +136,13 @@ public final class FutureMcPairs {
 
         DuplicateBlocks.register(NetherUpdateBackport.MOD_ID, FutureMcTable.FUTURE_MC, () -> ModConfig.compat.duplicates,
                 FutureMcPairs::blockPairs);
-        DuplicateBlocks.registerItems(FutureMcPairs::hiddenItems);
+        // Backport Core hides each item, the other mod's Kotlin items too (whose setCreativeTab refuses null), and
+        // removes their recipes.
+        DuplicateBlocks.registerItems(FutureMcPairs::itemsToHide);
+        // Ours checks DuplicateBlocks itself (AncientDebrisGeneration), so with theirs kept it stops on its own;
+        // with ours kept, Core takes theirs out of Forge's list in post-init.
+        DuplicateBlocks.registerGenerator(NetherUpdateBackport.MOD_ID, FutureMcTable.FUTURE_MC, () -> ModConfig.compat.duplicates,
+                THEIR_DEBRIS_GENERATOR);
     }
 
     /** @return the items without a block that {@code compat.duplicates} hides, all of them */
@@ -155,75 +161,6 @@ public final class FutureMcPairs {
         }
         return hide;
     }
-
-    /**
-     * Items hidden here rather than by Backport Core: theirs whose {@code setCreativeTab} refuses null (a non-null
-     * parameter in the language it is written in), which would throw out of Core's {@code hideFromCreative} and stop
-     * the game loading. Their tab is cleared through the field, and their recipes are removed here
-     * ({@code docs/CORE_REQUESTS.md}, section 6).
-     */
-    static final Set<Item> HIDDEN_HERE = new LinkedHashSet<Item>();
-
-    /** What Backport Core hides: {@link #itemsToHide}, less those that must be hidden here. */
-    static Collection<Item> hiddenItems() {
-        List<Item> forCore = new ArrayList<Item>();
-        for (Item item : itemsToHide()) {
-            if (HIDDEN_HERE.contains(item)) {
-                continue;
-            }
-            try {
-                // Core sets this too; doing it first finds the items that refuse.
-                item.setCreativeTab(null);
-                forCore.add(item);
-            } catch (RuntimeException refused) {
-                clearTab(item);
-                HIDDEN_HERE.add(item);
-            }
-        }
-        return forCore;
-    }
-
-    private static void clearTab(Item item) {
-        try {
-            ReflectionHelper.findField(Item.class, "tabToDisplayOn", "field_77701_a").set(item, null);
-        } catch (ReflectiveOperationException | RuntimeException e) {
-            NetherUpdateBackport.LOGGER.warn("Could not take {} out of the creative menu.", item.getRegistryName(), e);
-        }
-    }
-
-    /** As Backport Core's, for {@link #HIDDEN_HERE}: after every mod's recipes, and again from post-init. */
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public static void removeRecipes(RegistryEvent.Register<IRecipe> event) {
-        hiddenItems();
-        removeRecipes(event.getRegistry());
-    }
-
-    private static void removeRecipes(IForgeRegistry<IRecipe> registry) {
-        if (HIDDEN_HERE.isEmpty() || !(registry instanceof IForgeRegistryModifiable)) {
-            return;
-        }
-        List<ResourceLocation> doomed = new ArrayList<ResourceLocation>();
-        for (IRecipe recipe : registry) {
-            ItemStack output = recipe.getRecipeOutput();
-            if (!output.isEmpty() && HIDDEN_HERE.contains(output.getItem())) {
-                doomed.add(recipe.getRegistryName());
-            }
-        }
-        for (ResourceLocation name : doomed) {
-            ((IForgeRegistryModifiable<IRecipe>) registry).remove(name);
-        }
-        int smelting = 0;
-        for (Iterator<Map.Entry<ItemStack, ItemStack>> it = FurnaceRecipes.instance().getSmeltingList().entrySet().iterator(); it.hasNext(); ) {
-            if (HIDDEN_HERE.contains(it.next().getValue().getItem())) {
-                it.remove();
-                smelting++;
-            }
-        }
-        if (!doomed.isEmpty() || smelting > 0) {
-            NetherUpdateBackport.LOGGER.info("Removed {} recipes and {} smelting recipes for hidden duplicates: {}", doomed.size(), smelting, doomed);
-        }
-    }
-
     /** @return the item registered under exactly this mod id and name, or null */
     @Nullable
     static Item item(String modId, String name) {
@@ -240,12 +177,10 @@ public final class FutureMcPairs {
     }
 
     /**
-     * From the mod's post-init, after Backport Core's (which removes the hidden items' smelting): one ancient
-     * debris generator, and the hidden debris smelting into the visible scrap.
+     * From the mod's post-init, after Backport Core's (which removes the hidden items' smelting and the hidden
+     * mod's debris generator): the hidden debris smelts into the visible scrap.
      */
     public static void postInit() {
-        hiddenItems();
-        removeRecipes(ForgeRegistries.RECIPES);
         DuplicateBlocks.Keep keep = ModConfig.compat.duplicates;
         if (keep == DuplicateBlocks.Keep.BOTH || !Loader.isModLoaded(FutureMcTable.FUTURE_MC)) {
             return;
@@ -255,46 +190,10 @@ public final class FutureMcPairs {
         if (ourDebris == null || theirDebris == null) {
             return;
         }
-        // Ours checks DuplicateBlocks itself (AncientDebrisGeneration), so with theirs kept it stops on its own.
-        if (keep == DuplicateBlocks.Keep.OURS) {
-            int removed = removeGenerators(THEIR_DEBRIS_GENERATOR);
-            NetherUpdateBackport.LOGGER.info("Another mod's ancient debris is hidden; removed {} of its debris generators.", removed);
-        }
         Item hidden = Item.getItemFromBlock(keep == DuplicateBlocks.Keep.OURS ? theirDebris : ourDebris);
         Item scrap = item(keep == DuplicateBlocks.Keep.OURS ? NetherUpdateBackport.MOD_ID : FutureMcTable.FUTURE_MC, "netherite_scrap");
         if (scrap != null && FurnaceRecipes.instance().getSmeltingResult(new ItemStack(hidden)).isEmpty()) {
             GameRegistry.addSmelting(hidden, new ItemStack(scrap), 2.0F);
         }
-    }
-
-    /** Takes world generators of this class out of Forge's list. */
-    @SuppressWarnings("unchecked")
-    static int removeGenerators(String className) {
-        int removed = 0;
-        try {
-            Field setField = GameRegistry.class.getDeclaredField("worldGenerators");
-            Field indexField = GameRegistry.class.getDeclaredField("worldGeneratorIndex");
-            Field sortedField = GameRegistry.class.getDeclaredField("sortedGeneratorList");
-            setField.setAccessible(true);
-            indexField.setAccessible(true);
-            sortedField.setAccessible(true);
-            Collection<IWorldGenerator> set = (Collection<IWorldGenerator>) setField.get(null);
-            Map<IWorldGenerator, Integer> index = (Map<IWorldGenerator, Integer>) indexField.get(null);
-            for (Iterator<IWorldGenerator> it = set.iterator(); it.hasNext(); ) {
-                IWorldGenerator generator = it.next();
-                if (generator.getClass().getName().equals(className)) {
-                    it.remove();
-                    index.remove(generator);
-                    removed++;
-                }
-            }
-            if (removed > 0) {
-                // Rebuilt from the set the next time a chunk is decorated.
-                sortedField.set(null, null);
-            }
-        } catch (ReflectiveOperationException | RuntimeException e) {
-            NetherUpdateBackport.LOGGER.warn("Could not take out another mod's world generator {}.", className, e);
-        }
-        return removed;
     }
 }

@@ -177,7 +177,6 @@ biome.netherupdatebackport.soul_sand_valley=Vale de areia das almas
 biome.netherupdatebackport.warped_forest=Floresta distorcida
 
 # --- mobs ---
-entity.PigZombie.name=Piglin-Zumbificado
 subtitles.netherupdatebackport.entity.zombified_piglin.ambient=Piglin-Zumbificado grunhe
 subtitles.netherupdatebackport.entity.zombified_piglin.angry=Piglin-Zumbificado grunhe furiosamente
 subtitles.netherupdatebackport.entity.zombified_piglin.death=Piglin-Zumbificado morre
@@ -338,44 +337,6 @@ debug.gamemodes.press_f4=[ F4 ]
 debug.gamemodes.select_next=%s seguinte
 
 # Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-createWorld.customize.presets.share=Deseja compartilhar o seu modelo? Use o campo abaixo!
-deathScreen.spectate=Espectar mundo
-deathScreen.title=Você morreu!
-deathScreen.title.hardcore=Fim do jogo!
-deathScreen.titleScreen=Menu principal
-debug.creative_spectator.error=Você não tem permissão para trocar o modo de jogo
-debug.creative_spectator.help=F3 + N = Alternar entre o modo de jogo anterior ↔ Espectador
-debug.cycle_renderdistance.help=F3 + F = Alternar alcances visuais (Shift para inverter)
-gui.recipebook.moreRecipes=Clique com o botão direito para ver mais
-gui.recipebook.toggleRecipes.all=Todas
-gui.recipebook.toggleRecipes.craftable=Fabricáveis
-gui.toMenu=Voltar à lista de servidores
-gui.toTitle=Voltar ao menu principal
-inventory.hotbarInfo=Salve a barra rápida com %1$s + %2$s
-inventory.hotbarSaved=Barra rápida salva (restaure-a com %1$s + %2$s)
-itemGroup.hotbar=Barras rápidas salvas
-key.loadToolbarActivator=Carregar barra rápida
-key.saveToolbarActivator=Salvar barra rápida
-key.swapHands=Trocar item com a mão secundária
-mount.onboard=Pressione %1$s para descer
-multiplayer.disconnect.outdated_client=Cliente incompatível! Use a versão %s
-multiplayer.disconnect.outdated_server=Cliente incompatível! Use a versão %s
-multiplayer.downloadingStats=Obtendo estatísticas...
-multiplayer.status.client_out_of_date=Versão incompatível!
-multiplayer.status.server_out_of_date=Versão incompatível!
-options.chat.scale=Tamanho do texto do chat
-options.narrator.all=Narrar tudo
-options.narrator.chat=Narrar chat
-options.narrator.notavailable=Indisponível
-options.narrator.system=Narrar sistema
-selectServer.direct=Conexão direta
-selectWorld.gameMode.adventure.line1=Igual ao Modo Sobrevivência, mas os blocos
-selectWorld.gameMode.adventure.line2=não podem ser colocados ou removidos
-selectWorld.gameMode.hardcore.line1=Igual ao Modo Sobrevivência, bloqueado
-selectWorld.gameMode.hardcore.line2=na dificuldade máxima e uma só vida
-selectWorld.gameMode.survival.line1=Busque recursos, fabrique ferramentas,
-selectWorld.gameMode.survival.line2=suba de nível e coma para sobreviver
-selectWorld.mapFeatures.info=Vilas, naufrágios etc.
-selectWorld.tooltip.snapshot1=Lembre-se de fazer uma cópia desse mundo
-selectWorld.tooltip.snapshot2=antes de carregá-lo na Snapshot.
-sign.edit=Editar mensagem da placa
+options.screenEffectScale.tooltip=Define a intensidade da distorção da tela causada por Náusea e Portais do Nether.\nEm valores mais baixos, o efeito de Náusea é substituído por um contorno verde.
+options.fovEffectScale.tooltip=Define a intensidade da mudança do campo visual causada por ações e efeitos do jogo.
+options.accessibility.link=Guia de acessibilidade
