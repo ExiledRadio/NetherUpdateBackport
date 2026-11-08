@@ -122,6 +122,23 @@ portal's height and a fossil's come from each game's own terrain (1.12.2's nethe
 1.16's). In this world (seed 12345) 7 of 9 nether portals and 8 of 9 overworld portals came out at 1.16.5's height, 0
 of 6 fossils. The extras around a portal follow the terrain too.
 
+## Overworld seed parity with 1.16.5 (seed-parity round 2)
+
+With this mod installed, the overworld follows 1.16.5's structure rules through Backport Core 1.2.0's placement
+table (`worldgen/Placement116`, newest installed version wins): shipwrecks 24/4, ocean ruins 20/8, the other grids
+as before, every single-biome start check reading the 1:4 cell at (4x + 2, 4z + 2) (`ChunkGenerator.createStructures`),
+the outposts' village clearance on the village grid only, and strongholds without the bamboo jungles (1.16.5's
+overworld biome source does not list them as possible). Core adds 1.15's block-scale zoom and 1.16's two layer
+neighbor rules (patches P10, P11). Ruined portals name their type for the seed dump (`RuinedPortals.variantAt`).
+
+Measured with Core's `Oracle1165OW` (Mojang's 1.16.5 overworld: biome maps over 2,048 blocks at both scales, every
+structure start over 8,192 blocks including overworld ruined portals by type, 128 strongholds, spawn biome search,
+slime chunks) against `OverworldDump` on a real server, 6 seeds (and 2 in large biomes): with Update Aquatic,
+Village & Pillage and Buzzy Bees installed, **0 differences**. This mod alone matches everything it can own: the 9
+ruined portal type mismatches of the first round are gone (they were 1.12.2's unseeded hills noise, now seeded by
+Core); what is left needs the other backports' content (ocean temperatures and ocean structures, bamboo jungles,
+snowy tundra villages, outposts), see `seed-parity-round2-handover.md`.
+
 ## Tested headlessly
 
 `-Pselftest=structure`: **pass=243 fail=0** (seed 12345; also pass=241 fail=0 with a random seed, which skips this
