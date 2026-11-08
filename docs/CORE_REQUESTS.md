@@ -67,3 +67,15 @@ items below. This mod's workarounds were removed when stream X merged; it relies
 *   For information: 1.16.5's ruined portal files keep one jigsaw block in the floor (final state netherrack) and
     vanilla places it as a jigsaw block; Core places the final state, which is all 1.12.2 can do.
 
+
+## 6. Found by stream Fm (Core 1.2.0)
+
+*   **`DuplicateBlocks.hideFromCreative` stops the game on the other mod's Kotlin items.** Its `ModeledItem` (netherite
+    ingot and scrap, and its bamboo, banner pattern, crossbow, fish bucket, scaffolding, seagrass and trident items)
+    overrides `setCreativeTab` with a non-null parameter, so `item.setCreativeTab(null)` throws
+    `IllegalArgumentException: tab` from Core's init and the server crashes. Wanted: catch per item and clear
+    `Item.tabToDisplayOn` (`field_77701_a`) instead. Here: `FutureMcPairs` hides those two items itself and keeps
+    them out of what it hands Core. Village & Pillage's scaffolding pair may hit the same thing.
+*   For information: hiding a duplicate does not stop its world generation. This mod takes the other mod's ancient
+    debris generator out of `GameRegistry` by class name; a `DuplicateBlocks.registerGenerator(theirClassName)` in
+    Core would do it for every family mod.

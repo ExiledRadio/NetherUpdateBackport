@@ -1,0 +1,79 @@
+{
+  "ancient_debris": {
+    "0": {}
+  },
+  "chain": {
+    "0": {}
+  },
+  "netherite_block": {
+    "0": {}
+  },
+  "soul_soil": {
+    "0": {}
+  },
+  "soul_fire_lantern": {
+    "0": {
+      "hanging": "false"
+    },
+    "1": {
+      "hanging": "true"
+    }
+  },
+  "soul_fire_torch": {
+    "1": {
+      "facing": "east"
+    },
+    "2": {
+      "facing": "west"
+    },
+    "3": {
+      "facing": "south"
+    },
+    "4": {
+      "facing": "north"
+    },
+    "5": {
+      "facing": "up"
+    }
+  },
+  "lantern": {
+    "0": {
+      "hanging": "false"
+    },
+    "1": {
+      "hanging": "true"
+    }
+  },
+  "smithing_table": {
+    "2": {
+      "facing": "north"
+    },
+    "3": {
+      "facing": "south"
+    },
+    "4": {
+      "facing": "west"
+    },
+    "5": {
+      "facing": "east"
+    }
+  },
+  "stone_brick_wall": {
+    "0": {
+      "east": "false",
+      "north": "false",
+      "south": "false",
+      "up": "false",
+      "west": "false"
+    }
+  },
+  "mossy_stone_brick_wall": {
+    "0": {
+      "east": "false",
+      "north": "false",
+      "south": "false",
+      "up": "false",
+      "west": "false"
+    }
+  }
+}
