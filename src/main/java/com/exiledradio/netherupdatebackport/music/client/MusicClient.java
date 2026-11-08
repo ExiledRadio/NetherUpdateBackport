@@ -14,13 +14,14 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 
 /**
- * Client side of stream M: installs 1.16's music ticker ({@link Music116Ticker}) and runs the nether biomes'
- * ambience ({@link BiomeSounds}).
+ * Client side of stream M: hands 1.16's music choice to Backport Core's music owner ({@link Music116Step}, Core's
+ * ticker plays it) and runs the nether biomes' ambience ({@link BiomeSounds}).
  */
 public final class MusicClient {
 
-    private boolean tickerTried;
     private BiomeSounds ambience;
+    private int lastDimension;
+    private boolean inWorld;
 
     private MusicClient() {
     }
@@ -28,18 +29,29 @@ public final class MusicClient {
     public static void init() {
         if (MusicContent.enabled()) {
             MinecraftForge.EVENT_BUS.register(new MusicClient());
+            if (ModConfig.music.biomeMusic) {
+                com.exiledradio.backportcore.presentation.client.GameMusic.add("1.16", "nether biomes, gentler switching", new Music116Step());
+            }
         }
     }
 
-    /** The ticker goes in on the first client tick, after every mod has loaded (so one that replaced it is seen). */
+    /** 1.16's {@code ClientPlayNetHandler.handleRespawn}: a new dimension stops the music (and 5 s more to wait). */
     @SubscribeEvent
     public void clientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase != TickEvent.Phase.START || this.tickerTried) {
+        if (event.phase != TickEvent.Phase.START || !ModConfig.music.biomeMusic) {
             return;
         }
-        this.tickerTried = true;
-        if (ModConfig.music.biomeMusic) {
-            Music116Ticker.install(Minecraft.getMinecraft());
+        Minecraft mc = Minecraft.getMinecraft();
+        if (mc.player != null) {
+            int dimension = mc.player.dimension;
+            if (this.inWorld && dimension != this.lastDimension
+                    && mc.getMusicTicker() instanceof com.exiledradio.backportcore.presentation.client.GameMusic.CoreTicker) {
+                ((com.exiledradio.backportcore.presentation.client.GameMusic.CoreTicker) mc.getMusicTicker()).stopMusic();
+            }
+            this.lastDimension = dimension;
+            this.inWorld = true;
+        } else {
+            this.inWorld = false;
         }
     }
 

@@ -8,6 +8,7 @@ import com.exiledradio.backportcore.presentation.client.PanoramaRenderer;
 import com.exiledradio.backportcore.presentation.client.TitleSplashes;
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
 import com.exiledradio.netherupdatebackport.asm.LookTransformer;
+import com.exiledradio.netherupdatebackport.lookfeel.LookAndFeel;
 import com.exiledradio.netherupdatebackport.lookfeel.client.LookAndFeelClient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiCreateWorld;
@@ -122,7 +123,7 @@ public final class ClientLookFeelTest {
         ok(LookTransformer.appliedP3, "P3 (Distortion Effects) patched EntityRenderer");
         ok(LookTransformer.appliedP4, "P4 (Entity Distance) patched RenderGlobal");
 
-        // Lang: this mod's text wins over vanilla 1.12.2's for the keys 1.16 reworded.
+        // Lang: 1.16's wording of vanilla's keys (Core's vanilla text) and this mod's own.
         String[][] lang = {
                 {"options.entityDistanceScaling", "Entity Distance"},
                 {"options.screenEffectScale", "Distortion Effects"},
@@ -143,6 +144,57 @@ public final class ClientLookFeelTest {
             } catch (Exception e) {
                 ok(false, tex + " loads: " + e);
             }
+        }
+
+        // Core's single slots (Core 1.2.0's finished presentation module), the newest version's.
+        try {
+            String pack = mc.getResourceManager().getResource(new ResourceLocation("textures/gui/title/minecraft.png")).getResourcePackName();
+            ok("backportcore:vanilla_by_version".equals(pack), "the title logo is served by Core's vanilla-asset pack: " + pack);
+        } catch (Exception e) {
+            ok(false, "the title logo loads: " + e);
+        }
+        ok(Presentation.asset("textures/gui/title/mojangstudios.png") != null, "a Mojang Studios logo is registered");
+        byte[] composed = com.exiledradio.backportcore.presentation.client.VanillaAssetPack.composedLang("en_us");
+        ok(composed != null && composed.length > 100, "Core composes vanilla text for en_us from " + Presentation.vanillaTexts() + ": "
+                + (composed == null ? "null" : composed.length + " bytes") + "; class loader sees the file: "
+                + (com.exiledradio.backportcore.presentation.client.VanillaAssetPack.class.getClassLoader()
+                        .getResource("assets/netherupdatebackport/vanilla_text/en_us.lang")));
+        ok(com.exiledradio.backportcore.presentation.VanillaRevisions.startup() == com.exiledradio.backportcore.presentation.VanillaRevisions.Startup.STUDIOS_1_16,
+                "the startup screen is 1.16's");
+        ok(com.exiledradio.backportcore.presentation.client.StartupScreen.lastDrawn == com.exiledradio.backportcore.presentation.VanillaRevisions.Startup.STUDIOS_1_16
+                && com.exiledradio.backportcore.presentation.client.StartupScreen.frames > 0,
+                "the startup screen drew 1.16's revision as loading ended: " + com.exiledradio.backportcore.presentation.client.StartupScreen.frames);
+        ok("Caution: Third-Party Online Play".equals(I18n.format("multiplayerWarning.header")), "the multiplayer warning is 1.16's: "
+                + I18n.format("multiplayerWarning.header"));
+        ok("Saved Hotbars".equals(I18n.format("itemGroup.hotbar")), "vanilla text comes through Core (itemGroup.hotbar)");
+        ok(com.exiledradio.backportcore.presentation.client.GameMusic.names().contains("1.16 nether biomes, gentler switching"),
+                "1.16's music step is registered with Core: " + com.exiledradio.backportcore.presentation.client.GameMusic.names());
+        ok(mc.getMusicTicker() instanceof com.exiledradio.backportcore.presentation.client.GameMusic.CoreTicker,
+                "Core's music ticker plays: " + mc.getMusicTicker().getClass().getName());
+        ok(com.exiledradio.backportcore.presentation.client.DebugText.steps().names(newest).contains("1.16 spawn counts, targeted block coordinates"),
+                "1.16's F3 text step is registered: " + com.exiledradio.backportcore.presentation.client.DebugText.steps().names(newest));
+        ok(com.exiledradio.backportcore.presentation.VanillaRevisions.whiteButtonText(), "1.15's white button text holds at 1.16");
+        try {
+            com.exiledradio.backportcore.presentation.client.OptionsListScreen access =
+                    com.exiledradio.backportcore.presentation.client.OptionsListScreen.accessibility(mc.currentScreen);
+            mc.displayGuiScreen(access);
+            @SuppressWarnings("unchecked")
+            List<net.minecraft.client.gui.GuiButton> buttons = (List<net.minecraft.client.gui.GuiButton>)
+                    net.minecraftforge.fml.relauncher.ReflectionHelper.findField(GuiScreen.class, "buttonList", "field_146292_n").get(access);
+            boolean guide = false;
+            int distortion = 0;
+            for (net.minecraft.client.gui.GuiButton b : buttons) {
+                guide |= "Accessibility Guide".equals(b.displayString);
+                if (b instanceof com.exiledradio.backportcore.presentation.client.OptionWidgets.OptionButton
+                        && ((com.exiledradio.backportcore.presentation.client.OptionWidgets.OptionButton) b).option() == LookAndFeel.DISTORTION) {
+                    distortion++;
+                }
+            }
+            ok(guide, "1.16.4's Accessibility Guide is on Accessibility Settings");
+            ok(distortion == 1, "Distortion Effects shows once on Accessibility Settings");
+            mc.displayGuiScreen(new GuiMainMenu());
+        } catch (Exception e) {
+            ok(false, "Accessibility Settings opens: " + e);
         }
 
         // Singleplayer: Create New World when there is no world, the world list otherwise.

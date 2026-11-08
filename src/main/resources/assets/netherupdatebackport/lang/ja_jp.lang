@@ -177,7 +177,6 @@ biome.netherupdatebackport.soul_sand_valley=ソウルサンドの谷
 biome.netherupdatebackport.warped_forest=歪んだ森
 
 # --- mobs ---
-entity.PigZombie.name=ゾンビピグリン
 subtitles.netherupdatebackport.entity.zombified_piglin.ambient=ゾンビピグリンがうめく
 subtitles.netherupdatebackport.entity.zombified_piglin.angry=ゾンビピグリンが怒ってうめく
 subtitles.netherupdatebackport.entity.zombified_piglin.death=ゾンビピグリンが死ぬ
@@ -338,44 +337,6 @@ debug.gamemodes.press_f4=［F4］
 debug.gamemodes.select_next=%sで次を選択
 
 # Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-createWorld.customize.presets.share=プリセットを共有する場合、この入力欄をご使用ください
-deathScreen.spectate=ワールドを観覧
-deathScreen.title=死んでしまった！
-deathScreen.title.hardcore=ゲームオーバー！
-deathScreen.titleScreen=タイトル画面
-debug.creative_spectator.error=ゲームモードを変更する権限がありません
-debug.creative_spectator.help=F3 + N = 直前のゲームモードとスペクテイターモードを切り替え
-debug.cycle_renderdistance.help=F3 + F = 描画距離を変更（Shift同時押しで逆方向）
-gui.recipebook.moreRecipes=右クリックで他を表示
-gui.recipebook.toggleRecipes.all=すべてのアイテムを表示中
-gui.recipebook.toggleRecipes.craftable=クラフト可能なアイテムを表示中
-gui.toMenu=サーバーリストへ戻る
-gui.toTitle=タイトル画面へ戻る
-inventory.hotbarInfo=%1$s+%2$sでホットバーを保存します
-inventory.hotbarSaved=アイテムホットバーを保存しました（%1$s+%2$sで復元）
-itemGroup.hotbar=保存したホットバー
-key.loadToolbarActivator=ホットバーの読み込み
-key.saveToolbarActivator=ホットバーの保存
-key.swapHands=アイテムをオフハンドと交換
-mount.onboard=%1$sで降りる
-multiplayer.disconnect.outdated_client=クライアントのバージョンが対応していません。%sを使用してください
-multiplayer.disconnect.outdated_server=クライアントのバージョンが対応していません。%sを使用してください
-multiplayer.downloadingStats=統計情報を取得中…
-multiplayer.status.client_out_of_date=バージョンが対応していません！
-multiplayer.status.server_out_of_date=バージョンが対応していません！
-options.chat.scale=チャットの文字サイズ
-options.narrator.all=すべて読み上げ
-options.narrator.chat=チャットの読み上げ
-options.narrator.notavailable=利用不可
-options.narrator.system=システムの読み上げ
-selectServer.direct=ダイレクト接続
-selectWorld.gameMode.adventure.line1=サバイバルと同じですが、ブロックを
-selectWorld.gameMode.adventure.line2=置いたり破壊することはできません
-selectWorld.gameMode.hardcore.line1=サバイバルモードと同じですが、最高難易度に固定
-selectWorld.gameMode.hardcore.line2=されていて、命はたったひとつだけ
-selectWorld.gameMode.survival.line1=資材を探し、道具を作り、レベルを
-selectWorld.gameMode.survival.line2=貯める必要があり、体力、空腹の要素がある
-selectWorld.mapFeatures.info=村、難破船など
-selectWorld.tooltip.snapshot1=このワールドを読み込む前に
-selectWorld.tooltip.snapshot2=バックアップを取ることを推奨します。
-sign.edit=看板の編集
+options.screenEffectScale.tooltip=吐き気とネザーポータルに入った時に起こる画面の歪み効果の強さを変更します。\n設定の値を小さくすると、吐き気の歪み効果は緑色のオーバーレイに置き換えられます。
+options.fovEffectScale.tooltip=ゲーム内の効果により視野がどの程度変化するかを設定できます。
+options.accessibility.link=アクセシビリティについて

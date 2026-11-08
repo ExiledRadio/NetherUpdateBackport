@@ -177,7 +177,6 @@ biome.netherupdatebackport.soul_sand_valley=Dolina dusz
 biome.netherupdatebackport.warped_forest=Spaczony las
 
 # --- mobs ---
-entity.PigZombie.name=Zzombifikowany piglin
 subtitles.netherupdatebackport.entity.zombified_piglin.ambient=Zzombifikowany piglin burczy
 subtitles.netherupdatebackport.entity.zombified_piglin.angry=Zzombifikowany piglin wściekle burczy
 subtitles.netherupdatebackport.entity.zombified_piglin.death=Zzombifikowany piglin ginie
@@ -338,44 +337,6 @@ debug.gamemodes.press_f4=[ F4 ]
 debug.gamemodes.select_next=%s — następny
 
 # Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-createWorld.customize.presets.share=Chcesz się podzielić swoim szablonem z innymi? Użyj pola poniżej!
-deathScreen.spectate=Obserwuj świat
-deathScreen.title=Nie żyjesz!
-deathScreen.title.hardcore=Koniec gry!
-deathScreen.titleScreen=Ekran tytułowy
-debug.creative_spectator.error=Nie można zmienić trybu gry; brak uprawnień
-debug.creative_spectator.help=F3 + N = Przełącz poprzedni tryb gry <-> tryb widza
-debug.cycle_renderdistance.help=F3 + F = Zwiększ odległość renderowania (Shift, aby zmniejszyć)
-gui.recipebook.moreRecipes=Naciśnij prawy przycisk myszy, aby zobaczyć więcej
-gui.recipebook.toggleRecipes.all=Pokazuje wszystkie
-gui.recipebook.toggleRecipes.craftable=Pokazuje wytwarzalne
-gui.toMenu=Wróć do listy serwerów
-gui.toTitle=Wróć do menu głównego
-inventory.hotbarInfo=Zapisz pasek szybkiego wyboru klawiszami %1$s + %2$s
-inventory.hotbarSaved=Zapisano pasek szybkiego wyboru (przywróć klawiszami %1$s + %2$s)
-itemGroup.hotbar=Zapisane paski szybkiego wyboru
-key.loadToolbarActivator=Załaduj pasek szybkiego wyboru
-key.saveToolbarActivator=Zapisz pasek szybkiego wyboru
-key.swapHands=Przerzuć przedmiot do drugiej ręki
-mount.onboard=Kliknij %1$s, aby wysiąść
-multiplayer.disconnect.outdated_client=Niezgodny klient! Proszę użyć %s
-multiplayer.disconnect.outdated_server=Niezgodny klient! Proszę użyć %s
-multiplayer.downloadingStats=Odbieranie statystyk…
-multiplayer.status.client_out_of_date=Niezgodna wersja!
-multiplayer.status.server_out_of_date=Niezgodna wersja!
-options.chat.scale=Rozmiar tekstu czatu
-options.narrator.all=Czyta wszystko
-options.narrator.chat=Czyta czat
-options.narrator.notavailable=Niedostępny
-options.narrator.system=Czyta system
-selectServer.direct=Połącz od razu
-selectWorld.gameMode.adventure.line1=Zasady jak w trybie przetrwania, lecz bloki nie mogą
-selectWorld.gameMode.adventure.line2=być stawiane ani niszczone
-selectWorld.gameMode.hardcore.line1=Taki sam jak tryb przetrwania, ale zablokowany na najwyższym
-selectWorld.gameMode.hardcore.line2=poziomie trudności i tylko jedno życie
-selectWorld.gameMode.survival.line1=Szukaj surowców, twórz, zdobywaj
-selectWorld.gameMode.survival.line2=poziomy, dbaj o zdrowie i pełny żołądek
-selectWorld.mapFeatures.info=Wioski, wraki statków itd.
-selectWorld.tooltip.snapshot1=Nie zapomnij wykonać kopii zapasowej tego świata,
-selectWorld.tooltip.snapshot2=zanim załadujesz go w tym snapshocie.
-sign.edit=Edytuj treść tabliczki
+options.screenEffectScale.tooltip=Moc efektu zniekształcenia powodowanego przez nudności i portale do Netheru.\nPrzy niższych wartościach efekt nudności zostaje zastąpiony zieloną nakładką.
+options.fovEffectScale.tooltip=Wpływa na stopień efektów zmiany pola widzenia w czasie rozgrywki.
+options.accessibility.link=Wskazówki ułatwień dostępu

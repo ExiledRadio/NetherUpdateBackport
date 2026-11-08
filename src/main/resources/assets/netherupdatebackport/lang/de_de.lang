@@ -177,7 +177,6 @@ biome.netherupdatebackport.soul_sand_valley=Seelensandtal
 biome.netherupdatebackport.warped_forest=Wirrwald
 
 # --- mobs ---
-entity.PigZombie.name=Zombifizierter Piglin
 subtitles.netherupdatebackport.entity.zombified_piglin.ambient=Zombifizierter Piglin grunzt
 subtitles.netherupdatebackport.entity.zombified_piglin.angry=Zombifizierter Piglin grunzt verärgert
 subtitles.netherupdatebackport.entity.zombified_piglin.death=Zombifizierter Piglin stirbt
@@ -338,44 +337,6 @@ debug.gamemodes.press_f4=[ F4 ]
 debug.gamemodes.select_next=%s Nächster
 
 # Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-createWorld.customize.presets.share=Möchtest du deine Vorlage mit jemandem teilen? Benutze das Eingabefeld!
-deathScreen.spectate=Welt beobachten
-deathScreen.title=Du bist gestorben!
-deathScreen.title.hardcore=Game over!
-deathScreen.titleScreen=Hauptmenü
-debug.creative_spectator.error=Spielmodus kann nicht geändert werden; keine Berechtigung
-debug.creative_spectator.help=F3 + N = Zwischen vorherigem Spielmodus und Zuschauermodus wechseln
-debug.cycle_renderdistance.help=F3 + F = Sichtweite erhöhen (Umschalt zum Verringern)
-gui.recipebook.moreRecipes=Rechtsklick für mehr
-gui.recipebook.toggleRecipes.all=Alles wird angezeigt
-gui.recipebook.toggleRecipes.craftable=Herstellbares wird angezeigt
-gui.toMenu=Zurück zur Serverauswahl
-gui.toTitle=Zurück zum Hauptmenü
-inventory.hotbarInfo=Schnellzugriffsleiste mit %1$s + %2$s speichern
-inventory.hotbarSaved=Schnellzugriffsleiste gespeichert (mit %1$s + %2$s wiederherstellen)
-itemGroup.hotbar=Gespeicherte Schnellzugriffsleisten
-key.loadToolbarActivator=Schnellzugriffsleiste laden
-key.saveToolbarActivator=Schnellzugriffsleiste speichern
-key.swapHands=Gegenstand mit Zweithand tauschen
-mount.onboard=Drücke %1$s, um abzusteigen
-multiplayer.disconnect.outdated_client=Inkompatibler Client! Verwende bitte %s
-multiplayer.disconnect.outdated_server=Inkompatibler Client! Verwende bitte %s
-multiplayer.downloadingStats=Statistiken werden abgerufen …
-multiplayer.status.client_out_of_date=Inkompatible Version!
-multiplayer.status.server_out_of_date=Inkompatible Version!
-options.chat.scale=Chat‐Textgröße
-options.narrator.all=Liest alles
-options.narrator.chat=Liest Chat
-options.narrator.notavailable=Nicht verfügbar
-options.narrator.system=Liest System
-selectServer.direct=Direktverbindung
-selectWorld.gameMode.adventure.line1=Wie der Überlebensmodus, Blöcke können jedoch
-selectWorld.gameMode.adventure.line2=nicht platziert oder zerstört werden
-selectWorld.gameMode.hardcore.line1=Überlebensmodus auf der höchsten
-selectWorld.gameMode.hardcore.line2=Schwierigkeit mit endgültigem Tod
-selectWorld.gameMode.survival.line1=Suche nach Ressourcen, baue Werkzeuge, sammle
-selectWorld.gameMode.survival.line2=Erfahrung, Gesundheit und Hunger
-selectWorld.mapFeatures.info=Dörfer, Schiffswracks usw.
-selectWorld.tooltip.snapshot1=Vergiss nicht, diese Welt zu sichern,
-selectWorld.tooltip.snapshot2=bevor du sie in dieser Version öffnest.
-sign.edit=Schildbeschriftung bearbeiten
+options.screenEffectScale.tooltip=Stärke von Übelkeits‐ und Netherportal‐Verzerrungseffekten.\nBei niedrigeren Werten wird der Übelkeitseffekt durch eine grüne Überlagerung ersetzt.
+options.fovEffectScale.tooltip=Steuert, wie stark das Sichtfeld durch Spielmechanikeffekte verändert wird.
+options.accessibility.link=Barrierefreiheitsleitfaden

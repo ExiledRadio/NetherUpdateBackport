@@ -177,7 +177,6 @@ biome.netherupdatebackport.soul_sand_valley=Ruh Kumu Vadisi
 biome.netherupdatebackport.warped_forest=Çarpık Orman
 
 # --- mobs ---
-entity.PigZombie.name=Zombileşmiş Piglin
 subtitles.netherupdatebackport.entity.zombified_piglin.ambient=Zombileşmiş Piglin hırıldıyor
 subtitles.netherupdatebackport.entity.zombified_piglin.angry=Zombileşmiş Piglin öfkeyle hırıldıyor
 subtitles.netherupdatebackport.entity.zombified_piglin.death=Zombileşmiş Piglin öldü
@@ -338,44 +337,6 @@ debug.gamemodes.press_f4=[ F4 ]
 debug.gamemodes.select_next=%s Sonraki
 
 # Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-createWorld.customize.presets.share=Hazır ayarlarını birileriyle paylaşmak ister misin? Aşağıdaki kutuyu kullan!
-deathScreen.spectate=Dünyayı Seyret
-deathScreen.title=Öldün!
-deathScreen.title.hardcore=Oyun Bitti!
-deathScreen.titleScreen=Ana Menü
-debug.creative_spectator.error=Yetki olmadığı için oyun modu değiştirilemiyor
-debug.creative_spectator.help=F3 + N = Önceki oyun modu <-> seyirci arasında geçiş yap
-debug.cycle_renderdistance.help=F3 + F = Görüş mesafesini değiştir (Ters çevirmek için shift tuşunu kullanın)
-gui.recipebook.moreRecipes=Dahası için Sağ Tıklayın
-gui.recipebook.toggleRecipes.all=Tamamı Gösteriliyor
-gui.recipebook.toggleRecipes.craftable=Üretilebilenler Gösteriliyor
-gui.toMenu=Sunucu Listesine Dön
-gui.toTitle=Ana Menüye Dön
-inventory.hotbarInfo=%1$s + %2$s ile araç çubuğunu kaydedebilirsiniz
-inventory.hotbarSaved=Eşya araç çubuğu kaydedildi (%1$s + %2$s ile geri yükleyebilirsiniz)
-itemGroup.hotbar=Kaydedilen Araç Çubukları
-key.loadToolbarActivator=Araç Çubuğu Yükleme Etkinleştiricisi
-key.saveToolbarActivator=Araç Çubuğu Kaydetme Etkinleştiricisi
-key.swapHands=Eşyayı Elden Ele Değiştirme
-mount.onboard=İnmek için %1$s tuşuna basın
-multiplayer.disconnect.outdated_client=Uyumsuz istemci! Lütfen %s kullanın
-multiplayer.disconnect.outdated_server=Uyumsuz istemci! Lütfen %s kullanın
-multiplayer.downloadingStats=İstatistikler alınıyor...
-multiplayer.status.client_out_of_date=Uyumsuz sürüm!
-multiplayer.status.server_out_of_date=Uyumsuz sürüm!
-options.chat.scale=Sohbet Metni Boyutu
-options.narrator.all=Tümü
-options.narrator.chat=Sohbet
-options.narrator.notavailable=Mevcut Değil
-options.narrator.system=Sistem
-selectServer.direct=Doğrudan Bağlantı
-selectWorld.gameMode.adventure.line1=Hayatta Kalma modu ile aynı ama bloklar
-selectWorld.gameMode.adventure.line2=eklenemez veya kaldırılamaz
-selectWorld.gameMode.hardcore.line1=Hayatta Kalma modu ile aynı, zorluk zorda
-selectWorld.gameMode.hardcore.line2=kilitli ve sadece bir canın var
-selectWorld.gameMode.survival.line1=Kaynak ara, üretim yap, seviye
-selectWorld.gameMode.survival.line2=kazan, sağlık ve açlık
-selectWorld.mapFeatures.info=Köyler, Gemi Enkazları vb.
-selectWorld.tooltip.snapshot1=Bu dünyayı bu test sürümünde yüklemeden önce
-selectWorld.tooltip.snapshot2=yedeklemeyi unutmayın.
-sign.edit=Tabela İletisini Düzenle
+options.screenEffectScale.tooltip=Bulantı ve Nether portalı ekran çarpıtma efekt şiddetleri.\nDüşük seviyelerde bulantı efekti yerini yeşil bir önyüze bırakır.
+options.fovEffectScale.tooltip=Görüş alanının oynanış etkileriyle ne kadar değişebileceğini kontrol eder.
+options.accessibility.link=Erişilebilirlik Kılavuzu

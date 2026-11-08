@@ -125,3 +125,15 @@ screen Core owns, so they wait for Core:
     "Saved Hotbars", "Direct Connection" ...). That works while versions reword different keys; if two ever reword
     the same key, resource-domain order decides, not the version. Wanted later: Core applying vanilla text
     overrides newest-version-wins. Nothing overlaps among 1.13 to 1.16 today.
+
+## Done in Backport Core 1.2.0 (core-finish, 2026-11-08)
+
+Sections 6, 7 and 8 are done in Core, and this mod uses them (branch `nu-lookfeel2`):
+*   6: `DuplicateBlocks` hides items that refuse a null tab itself (`hideItem`), and `registerGenerator` takes the
+    other mod's debris generator out; `FutureMcPairs` no longer hides or removes anything itself.
+*   7: Core's `waterlog/WaterRules` (water sources only for `Waterloggable` blocks, nothing for the family's other
+    stairs-like shapes) and `SourceForming`; this mod's `common/WaterRules` is gone.
+*   8: title logo, Mojang Studios startup screen, the multiplayer warning, Core's chat options (Line Spacing,
+    Chat Delay), the Accessibility Guide (1.16.4 registered for it), OFF at zero and tooltips, one option on two
+    screens (the `_video` mirrors are gone), the F3 text pipeline, vanilla text by version (`vanilla_text/`), and
+    the in-game music owner (`music/client/Music116Step`; this mod's own ticker is gone).

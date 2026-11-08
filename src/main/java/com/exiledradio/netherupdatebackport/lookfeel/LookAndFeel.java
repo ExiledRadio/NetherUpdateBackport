@@ -25,7 +25,10 @@ import net.minecraft.util.ResourceLocation;
  *       nothing is registered for it.</li>
  * </ul>
  * Menu music did not change in 1.16 (sounds.json's {@code music.menu} is menu1 to menu4 in 1.12.2 and 1.16.5).
- * Vanilla text 1.16 reworded (Saved Hotbars, Swap Item With Offhand, "You Died!" ...) is in the lang file.
+ * Also, from 1.16.5's jar, as Core's single slots: the title logo and the Mojang Studios startup screen (20w21a),
+ * 1.15's button texture (unchanged in 1.16) and the check box, the title screen's Accessibility icon, the
+ * multiplayer warning's 1.16 wording, and vanilla's own text as 1.16.5 words it ({@code vanilla_text/}: Saved
+ * Hotbars, Swap Item With Offhand, "You Died!" ...). 1.16.4 registers too, for its Accessibility Guide button.
  */
 public final class LookAndFeel {
 
@@ -42,9 +45,6 @@ public final class LookAndFeel {
     public static final SliderOption DISTORTION = new SliderOption(ID + ":screen_effect_scale",
             "options.screenEffectScale", OptionScreen.ACCESSIBILITY, 0.0, 1.0, 0.0, 1.0);
 
-    /** The same setting on Video Settings, where vanilla also has it. Kept equal to {@link #DISTORTION}. */
-    public static final SliderOption DISTORTION_VIDEO = new SliderOption(ID + ":screen_effect_scale_video",
-            "options.screenEffectScale", OptionScreen.VIDEO, 0.0, 1.0, 0.0, 1.0);
 
     /**
      * 1.16.2's FOV Effects (Accessibility Settings), 0 to 100%. As vanilla's, the slider shows the square of the
@@ -54,9 +54,6 @@ public final class LookAndFeel {
     public static final SliderOption FOV_EFFECTS = new SliderOption(ID + ":fov_effect_scale",
             "options.fovEffectScale", OptionScreen.ACCESSIBILITY, 0.0, 1.0, 0.0, 1.0);
 
-    /** The same setting on Video Settings. Kept equal to {@link #FOV_EFFECTS}. */
-    public static final SliderOption FOV_EFFECTS_VIDEO = new SliderOption(ID + ":fov_effect_scale_video",
-            "options.fovEffectScale", OptionScreen.VIDEO, 0.0, 1.0, 0.0, 1.0);
 
     private static boolean registered;
 
@@ -73,24 +70,31 @@ public final class LookAndFeel {
         v116.panorama(ID + ":textures/gui/title/background/panorama_")
                 .panoramaOverlay(new ResourceLocation(ID, "textures/gui/title/background/panorama_overlay.png"))
                 .addSplashes(new ResourceLocation(ID, "texts/splashes_added.txt"))
-                .removeSplashes(new ResourceLocation(ID, "texts/splashes_removed.txt"));
+                .removeSplashes(new ResourceLocation(ID, "texts/splashes_removed.txt"))
+                .titleLogo(new ResourceLocation(ID, "textures/gui/title/minecraft.png"))
+                .startupLogo("textures/gui/title/mojangstudios.png", new ResourceLocation(ID, "textures/gui/title/mojangstudios.png"))
+                .replaceAsset("textures/gui/widgets.png", new ResourceLocation(ID, "textures/gui/widgets.png"))
+                .replaceAsset("textures/gui/checkbox.png", new ResourceLocation(ID, "textures/gui/checkbox.png"))
+                .titleAccessibilityIcon(new ResourceLocation(ID, "textures/gui/accessibility.png"))
+                .multiplayerWarning("multiplayerWarning.header", "multiplayerWarning.message", "multiplayerWarning.check")
+                .vanillaText(new ResourceLocation(ID, "vanilla_text"));
         // Video Settings in 1.16.5: ... Entity Shadows, Distortion Effects, Entity Distance, FOV Effects.
-        v116.option(ENTITY_DISTANCE.after(DISTORTION_VIDEO.id()));
+        v116.option(ENTITY_DISTANCE.after(DISTORTION.id()));
 
+        // 1.16.2-pre1: both on Accessibility Settings (where 1.16.5's list ends with them) and on Video Settings.
+        // At zero they read OFF (1.16.5's genericValueLabel(OPTION_OFF)); each has its tooltip.
+        DISTORTION.zeroKey("options.off");
+        DISTORTION.tooltip("options.screenEffectScale.tooltip");
+        DISTORTION.alsoOn(OptionScreen.VIDEO);
+        FOV_EFFECTS.zeroKey("options.off");
+        FOV_EFFECTS.tooltip("options.fovEffectScale.tooltip");
+        FOV_EFFECTS.alsoOn(OptionScreen.VIDEO);
         Contribution v1162 = Presentation.version("1.16.2");
-        v1162.option(DISTORTION_VIDEO.after("ENTITY_SHADOWS"))
-                .option(FOV_EFFECTS_VIDEO.after(ENTITY_DISTANCE.id()))
-                // Accessibility Settings in 1.16.5 ends with Distortion Effects, then FOV Effects.
-                .option(DISTORTION)
-                .option(FOV_EFFECTS);
-        mirror(DISTORTION, DISTORTION_VIDEO);
-        mirror(FOV_EFFECTS, FOV_EFFECTS_VIDEO);
-    }
+        v1162.option(DISTORTION.after("ENTITY_SHADOWS"))
+                .option(FOV_EFFECTS.after(ENTITY_DISTANCE.id()));
 
-    /** Two buttons for one setting: a change on either screen moves the other. */
-    private static void mirror(final SliderOption a, final SliderOption b) {
-        a.onChange(v -> b.set(v));
-        b.onChange(v -> a.set(v));
+        // 1.16.4: the Accessibility Guide button on Accessibility Settings (Core's), and "Incompatible version!".
+        Presentation.version("1.16.4");
     }
 
     /** @return the scale 1.16.2 applies to field-of-view changes: the root of the FOV Effects slider */

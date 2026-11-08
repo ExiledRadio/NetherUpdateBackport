@@ -177,7 +177,6 @@ biome.netherupdatebackport.soul_sand_valley=Долина піску душ
 biome.netherupdatebackport.warped_forest=Химерний ліс
 
 # --- mobs ---
-entity.PigZombie.name=Зомбований піґлін
 subtitles.netherupdatebackport.entity.zombified_piglin.ambient=Зомбований піґлін реве
 subtitles.netherupdatebackport.entity.zombified_piglin.angry=Зомбований піґлін злісно реве
 subtitles.netherupdatebackport.entity.zombified_piglin.death=Зомбований піґлін гине
@@ -338,44 +337,6 @@ debug.gamemodes.press_f4=[ F4 ]
 debug.gamemodes.select_next=%s — далі
 
 # Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-createWorld.customize.presets.share=Хочете поділитися шаблоном з кимось? Використайте поле нижче!
-deathScreen.spectate=Спостерігати за світом
-deathScreen.title=Ви загинули!
-deathScreen.title.hardcore=Кінець гри!
-deathScreen.titleScreen=Головне меню
-debug.creative_spectator.error=Неможливо перемкнути режим гри: немає прав
-debug.creative_spectator.help=F3 + N = Перемкнути попередній режим гри <-> спостерігач
-debug.cycle_renderdistance.help=F3 + F = Збільшити відстань промальовування (Shift щоб зменшити)
-gui.recipebook.moreRecipes=Натисніть ПКМ, щоб переглянути більше
-gui.recipebook.toggleRecipes.all=Усі
-gui.recipebook.toggleRecipes.craftable=Доступні для майстрування
-gui.toMenu=Повернутися до списку серверів
-gui.toTitle=Назад до головного меню
-inventory.hotbarInfo=Зберегти панель швидкого доступу — %1$s + %2$s
-inventory.hotbarSaved=Панель швидкого доступу збережено (відновити — %1$s + %2$s)
-itemGroup.hotbar=Збережені панелі швидкого доступу
-key.loadToolbarActivator=Завантажити панель швидкого доступу
-key.saveToolbarActivator=Зберегти панель швидкого доступу
-key.swapHands=Поміняти місцями предмети в руках
-mount.onboard=Натисніть %1$s, щоб спішитися
-multiplayer.disconnect.outdated_client=Несумісний клієнт! Будь ласка, використовуйте %s
-multiplayer.disconnect.outdated_server=Несумісний клієнт! Будь ласка, використовуйте %s
-multiplayer.downloadingStats=Отримання статистики…
-multiplayer.status.client_out_of_date=Несумісна версія!
-multiplayer.status.server_out_of_date=Несумісна версія!
-options.chat.scale=Розмір тексту
-options.narrator.all=Озвучує все
-options.narrator.chat=Озвучує чат
-options.narrator.notavailable=Недоступний
-options.narrator.system=Озвучує систему
-selectServer.direct=Пряме з’єднання
-selectWorld.gameMode.adventure.line1=Подібний до режиму виживання, але
-selectWorld.gameMode.adventure.line2=блоки не можна ставити чи руйнувати
-selectWorld.gameMode.hardcore.line1=Подібний до режиму виживання, але з
-selectWorld.gameMode.hardcore.line2=найвищою складністю і тільки одним життям
-selectWorld.gameMode.survival.line1=Шукайте ресурси, майструйте, отримуйте
-selectWorld.gameMode.survival.line2=рівні, стежте за здоров’ям і голодом
-selectWorld.mapFeatures.info=Села, уламки кораблів тощо
-selectWorld.tooltip.snapshot1=Не забудьте зробити резервну копію цього світу,
-selectWorld.tooltip.snapshot2=перш ніж ви завантажите його в цьому знімку.
-sign.edit=Редагування тексту таблички
+options.screenEffectScale.tooltip=Сила ефектів запаморочення та спотворення екрана від порталу Незеру.\nЗа низьких значень ефект запаморочення замінюється зеленим підсвічуванням.
+options.fovEffectScale.tooltip=Керує тим, наскільки ігрові ефекти можуть змінювати поле зору.
+options.accessibility.link=Посібник із доступности

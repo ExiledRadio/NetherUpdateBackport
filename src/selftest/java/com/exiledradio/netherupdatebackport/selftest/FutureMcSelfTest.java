@@ -141,9 +141,8 @@ public final class FutureMcSelfTest implements SelfTest {
     }
 
     private static int removeGenerators(String className) throws Exception {
-        java.lang.reflect.Method m = FutureMcPairs.class.getDeclaredMethod("removeGenerators", String.class);
-        m.setAccessible(true);
-        return (Integer) m.invoke(null, className);
+        // Backport Core's (CORE_REQUESTS 6), which FutureMcPairs registers the other mod's generator with.
+        return DuplicateBlocks.removeGenerators(className);
     }
 
     @SuppressWarnings("unchecked")

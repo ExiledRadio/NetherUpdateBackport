@@ -177,7 +177,6 @@ biome.netherupdatebackport.soul_sand_valley=Долина песка душ
 biome.netherupdatebackport.warped_forest=Искажённый лес
 
 # --- mobs ---
-entity.PigZombie.name=Зомбифицированный пиглин
 subtitles.netherupdatebackport.entity.zombified_piglin.ambient=Зомбифицированный пиглин хрюкает
 subtitles.netherupdatebackport.entity.zombified_piglin.angry=Зомбифицированный пиглин сердито хрюкает
 subtitles.netherupdatebackport.entity.zombified_piglin.death=Зомбифицированный пиглин погибает
@@ -338,44 +337,6 @@ debug.gamemodes.press_f4=[ F4 ]
 debug.gamemodes.select_next=%s — дальше
 
 # Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-createWorld.customize.presets.share=Хотите поделиться своим шаблоном? Используйте поле ниже!
-deathScreen.spectate=Наблюдение за миром
-deathScreen.title=Вы умерли!
-deathScreen.title.hardcore=Конец игры!
-deathScreen.titleScreen=Главное меню
-debug.creative_spectator.error=Невозможно сменить режим игры — недостаточно полномочий
-debug.creative_spectator.help=F3 + N = Смена режима игры: предыдущий <-> наблюдатель
-debug.cycle_renderdistance.help=F3 + F = Увеличить дальность прорисовки (Shift для уменьшения)
-gui.recipebook.moreRecipes=Ещё варианты — правый клик
-gui.recipebook.toggleRecipes.all=Все рецепты
-gui.recipebook.toggleRecipes.craftable=Доступно к созданию
-gui.toMenu=К списку серверов
-gui.toTitle=В главное меню
-inventory.hotbarInfo=Сохраните инструменты, используя %1$s + %2$s
-inventory.hotbarSaved=Инструменты сохранены (восстановить — %1$s + %2$s)
-itemGroup.hotbar=Сохранённые инструменты
-key.loadToolbarActivator=Загрузить инструменты
-key.saveToolbarActivator=Сохранить инструменты
-key.swapHands=Заменить предмет во второй руке
-mount.onboard=Нажмите %1$s, чтобы спешиться
-multiplayer.disconnect.outdated_client=Клиент несовместим! Используйте %s
-multiplayer.disconnect.outdated_server=Клиент несовместим! Используйте %s
-multiplayer.downloadingStats=Загрузка статистики...
-multiplayer.status.client_out_of_date=Несовместимая версия!
-multiplayer.status.server_out_of_date=Несовместимая версия!
-options.chat.scale=Размер
-options.narrator.all=Озвучивает всё
-options.narrator.chat=Озвучивает чат
-options.narrator.notavailable=Недоступен
-options.narrator.system=Сообщения системы
-selectServer.direct=По адресу
-selectWorld.gameMode.adventure.line1=Подобен режиму выживания, однако блоки нельзя
-selectWorld.gameMode.adventure.line2=ни устанавливать, ни разрушать
-selectWorld.gameMode.hardcore.line1=То же, что и режим выживания, но с наибольшей
-selectWorld.gameMode.hardcore.line2=сложностью и только одной жизнью
-selectWorld.gameMode.survival.line1=Ищите ресурсы, мастерите, поднимайте свой
-selectWorld.gameMode.survival.line2=уровень, следите за здоровьем и голодом
-selectWorld.mapFeatures.info=Деревни, клады и т. п.
-selectWorld.tooltip.snapshot1=Не забудьте сделать резервную копию мира
-selectWorld.tooltip.snapshot2=прежде чем загрузить его в этой версии.
-sign.edit=Редактирование таблички
+options.screenEffectScale.tooltip=Сила эффектов головокружения и искажения от портала Незера.\nПри низких значениях эффект головокружения заменяется зелёным подсвечиванием.
+options.fovEffectScale.tooltip=Управляет тем, насколько сильно поле зрения может изменяться с помощью эффектов игрового процесса.
+options.accessibility.link=Узнать больше

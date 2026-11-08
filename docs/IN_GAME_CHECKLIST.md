@@ -31,3 +31,25 @@ P3/P4 on MCP and SRG classes, lang) and `gradlew runClient -Pselftest=client` (t
       Controls "Swap Item With Offhand", server list "Direct Connection" and "Incompatible version!", the mount
       message "Press Shift to Dismount", and in another language (e.g. Español) the same from Mojang's files.
 - [ ] Menu music is unchanged (1.16 kept menu1 to menu4).
+
+## Lf2. 1.16's pieces in Backport Core's finished presentation module (Core 1.2.0)
+
+Self-tests: `runServer -Pselftest=lookfeel` (assets, warning keys, vanilla text in 18 languages) and
+`runClient -Pselftest=client` (Core's pack serves the logo, 1.16 text through Core, music and F3 steps, the guide).
+
+- [ ] **Startup**: as loading ends, the red (0xEF323D) Mojang Studios screen with the white logo and a full white
+      bar shows for a second, then fades over the title screen. 1.16.5's logo halves line up.
+- [ ] **Title logo**: 1.16.5's redrawn "Minecraft" logo; the title screen fades in (logo, splash, buttons after the
+      panorama) on the first start. The Accessibility icon sits right of Options/Quit and opens Accessibility Settings.
+- [ ] **Buttons**: white labels, white outline when hovered (1.15's widgets, kept in 1.16).
+- [ ] **Multiplayer** from the title screen: "Caution: Third-Party Online Play" first, Proceed / Back and the
+      check box; ticked, it never shows again.
+- [ ] **Accessibility Settings**: ends with Distortion Effects and FOV Effects (also on Video Settings, the same
+      value on both), "OFF" at zero, a tooltip on hover; Accessibility Guide bottom left beside Done (1.16.4).
+      Line Spacing and Chat Delay change the chat (Core's); "[+N pending lines]" while held back.
+- [ ] **F3**: no "Looking at" line; "Targeted Block: x, y, z" heading on the right; in singleplayer
+      "SC: n, M: a, C: b, A: c, W: d" under Local Difficulty.
+- [ ] **Music**: the nether biomes' tracks; switching game mode does not cut the music; a new dimension stops it.
+      With Update Aquatic too: under water in an ocean the underwater tracks.
+- [ ] **Text**: "You Died!", "Saved Hotbars", "Swap Item With Offhand" (1.16's wording through Core, whatever else
+      is installed).
