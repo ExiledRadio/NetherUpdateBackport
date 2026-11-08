@@ -1118,6 +1118,8 @@ public final class PiglinTasks {
         if (repellentItems == null) {
             Set<Item> s = new HashSet<Item>();
             addOurs(s, "soul_torch", "soul_lantern", "soul_campfire");
+            // The other mod's soul torch and lantern stand in for ours when both are installed (FutureMcPairs).
+            addNamed(s, "futuremc:soul_fire_torch", "futuremc:soul_fire_lantern");
             s.remove(Items.AIR);
             repellentItems = s;
         }
@@ -1128,10 +1130,17 @@ public final class PiglinTasks {
     static boolean isRepellentBlock(IBlockState state) {
         Block b = state.getBlock();
         ResourceLocation id = b.getRegistryName();
-        if (id == null || !Content.id("x").getNamespace().equals(id.getNamespace())) {
+        if (id == null) {
             return false;
         }
         String path = id.getPath();
+        if ("futuremc".equals(id.getNamespace())) {
+            // Its soul torch and lantern stand in for ours when both are installed (FutureMcPairs).
+            return "soul_fire_torch".equals(path) || "soul_fire_lantern".equals(path);
+        }
+        if (!Content.id("x").getNamespace().equals(id.getNamespace())) {
+            return false;
+        }
         if ("soul_campfire".equals(path)) {
             for (net.minecraft.block.properties.IProperty<?> prop : state.getPropertyKeys()) {
                 if ("lit".equals(prop.getName())) {

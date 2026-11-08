@@ -244,5 +244,53 @@ public final class PiglinFightSelfTest implements SelfTest {
         double end = p.getDistanceSq(at.add(5, 0, 0));
         c.ok(end > start + 4, "a soul torch 5 blocks off sends an idle piglin away: from " + Math.sqrt(start) + " to " + Math.sqrt(end));
         p.setDead();
+        w.setBlockToAir(at.add(5, 0, 0));
+
+        // 1.16.5's piglin_repellents tag (soul fire, soul torch and wall torch, soul lantern) and a lit soul
+        // campfire, found 8 blocks across and 4 up or down; nothing else.
+        BlockPos probe = at.add(0, 1, 0);
+        String[] repellents = {"soul_fire", "soul_torch", "soul_lantern", "soul_campfire"};
+        // Solid blocks under and around the corner spot, so a torch of any facing stays put.
+        for (net.minecraft.util.EnumFacing f : net.minecraft.util.EnumFacing.values()) {
+            if (f != net.minecraft.util.EnumFacing.UP) {
+                w.setBlockState(probe.add(8, 4, -8).offset(f), net.minecraft.init.Blocks.NETHERRACK.getDefaultState(), 2 | 16);
+            }
+        }
+        for (String name : repellents) {
+            net.minecraft.block.Block b = Owners.ourBlock(name);
+            if (b == null) {
+                continue;
+            }
+            for (net.minecraft.block.state.IBlockState s : b.getBlockState().getValidStates()) {
+                boolean lit = true;
+                for (net.minecraft.block.properties.IProperty<?> prop : s.getPropertyKeys()) {
+                    if ("lit".equals(prop.getName())) {
+                        lit = Boolean.TRUE.equals(s.getValue(prop));
+                    }
+                }
+                w.setBlockState(probe.add(8, 4, -8), s, 2 | 16);
+                c.eq(s, w.getBlockState(probe.add(8, 4, -8)), name + " stays where it is set");
+                boolean found = probe.add(8, 4, -8).equals(com.exiledradio.netherupdatebackport.piglin.PiglinTasks.findNearestRepellent(w, probe));
+                c.eq(lit, found, name + " " + s + " 8 across and 4 up repels: " + found);
+            }
+            w.setBlockToAir(probe.add(8, 4, -8));
+            w.setBlockState(probe.add(9, 0, 0), b.getDefaultState(), 2 | 16);
+            w.setBlockState(probe.add(0, 5, 0), b.getDefaultState(), 2 | 16);
+            c.ok(com.exiledradio.netherupdatebackport.piglin.PiglinTasks.findNearestRepellent(w, probe) == null,
+                    name + " 9 across or 5 up does not repel");
+            w.setBlockToAir(probe.add(9, 0, 0));
+            w.setBlockToAir(probe.add(0, 5, 0));
+        }
+        net.minecraft.block.state.IBlockState[] others = {net.minecraft.init.Blocks.TORCH.getDefaultState(),
+                net.minecraft.init.Blocks.FIRE.getDefaultState(), net.minecraft.init.Blocks.LIT_PUMPKIN.getDefaultState()};
+        for (net.minecraft.block.state.IBlockState s : others) {
+            w.setBlockState(probe.add(2, 0, 0), s, 2 | 16);
+            c.ok(com.exiledradio.netherupdatebackport.piglin.PiglinTasks.findNearestRepellent(w, probe) == null, s + " does not repel");
+            w.setBlockToAir(probe.add(2, 0, 0));
+        }
+        if (Owners.ours("soul_torch") != null) {
+            c.ok(com.exiledradio.netherupdatebackport.piglin.PiglinTasks.isRepellentItem(new ItemStack(Owners.ours("soul_torch"))),
+                    "the soul torch item is a repellent item (piglins will not pick it up)");
+        }
     }
 }
