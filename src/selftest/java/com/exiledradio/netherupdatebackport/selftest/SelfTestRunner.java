@@ -62,6 +62,7 @@ public final class SelfTestRunner {
             new FutureMcSelfTest(),
             new WaterlogSelfTest(),
             new LookFeelSelfTest(),
+            new LocateSelfTest(),
     };
 
     private final List<String> wanted;

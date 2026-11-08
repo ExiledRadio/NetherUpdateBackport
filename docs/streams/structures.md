@@ -17,6 +17,10 @@ fortress slots.
 *   **Nether fossils** in soul sand valleys.
 *   For a given seed, bastions, fortresses, ruined portals and fossils start in exactly the chunks vanilla 1.16 puts
     them, so seed maps for 1.16 show them right.
+*   **`/locate structure`** (Backport Core's, as in current Java) finds them: `minecraft:bastion_remnant`,
+    `minecraft:fortress`, `minecraft:nether_fossil`, and each ruined portal by its kind (`minecraft:ruined_portal`,
+    `_desert`, `_jungle`, `_swamp`, `_mountain`, `_ocean`, `_nether`), or `#minecraft:ruined_portal` for any. It
+    picks the same one current Java would for the seed, including ones not generated yet.
 *   *Those Were the Days* and *War Pigs* can be earned.
 *   Without Village & Pillage, this mod adds the lantern, smooth quartz slab, stone brick wall and mossy stone brick
     stairs, slab and wall that bastions and ruined portals are built with.

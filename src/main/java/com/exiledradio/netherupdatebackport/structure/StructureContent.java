@@ -1,5 +1,6 @@
 package com.exiledradio.netherupdatebackport.structure;
 
+import com.exiledradio.backportcore.locate.StructureLocate;
 import com.exiledradio.backportcore.structure.JigsawPools;
 import com.exiledradio.backportcore.structure.ModernPalette;
 import com.exiledradio.backportcore.structure.NetherStructureSlots;
@@ -90,6 +91,29 @@ public final class StructureContent {
         ScatteredStructure.register(Structures.NETHER_FOSSIL,
                 world -> netherFossils() && world.provider.getDimension() == -1 ? new NetherFossils() : null);
         StructureEvents.init();
+        registerLocate();
+    }
+
+    /** Today's ruined portal ids, standard first. */
+    static final String[] RUINED_PORTAL_IDS = {"minecraft:ruined_portal", "minecraft:ruined_portal_desert",
+            "minecraft:ruined_portal_jungle", "minecraft:ruined_portal_swamp", "minecraft:ruined_portal_mountain",
+            "minecraft:ruined_portal_ocean", "minecraft:ruined_portal_nether"};
+
+    /**
+     * Backport Core's {@code /locate structure}, under today's ids: bastions and nether fossils, and the seven ruined
+     * portals by the type each start is built as (tag {@code #minecraft:ruined_portal}). Fortresses are Core's.
+     */
+    static void registerLocate() {
+        StructureLocate.scattered("minecraft:nether_complexes", Structures.BASTION_REMNANT, null, "minecraft:bastion_remnant");
+        StructureLocate.scattered("minecraft:nether_fossils", Structures.NETHER_FOSSIL, null, "minecraft:nether_fossil");
+        StructureLocate.scattered("minecraft:ruined_portals", Structures.RUINED_PORTAL,
+                (world, structure, x, z) -> ruinedPortalId(structure.variantAt(world, x, z)), RUINED_PORTAL_IDS);
+        StructureLocate.tag("minecraft:ruined_portal", RUINED_PORTAL_IDS);
+    }
+
+    /** @return today's id of a ruined portal type ({@link RuinedPortals.Type#id}); a start with no type is built standard */
+    static String ruinedPortalId(String type) {
+        return type == null || RuinedPortals.Type.STANDARD.id().equals(type) ? RUINED_PORTAL_IDS[0] : "minecraft:ruined_portal_" + type;
     }
 
     /**
