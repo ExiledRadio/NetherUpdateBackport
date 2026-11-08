@@ -145,3 +145,26 @@ the biomes `chunk()` stores: **1,310,720 cells each way, 0 differences** (all fi
 *   Anything visual: fog colors, particles, surfaces as seen in a client; music and ambience (stream M).
 *   Natural mob spawning over time in the new biomes.
 *   Living alongside another mod's nether (the step-aside decision is tested on vanilla's and the overworld's types).
+
+## Fix 2026-11-08: dark patches over the lava sea
+
+**Changelog:** Fixed dark, blob-shaped patches over the nether's lava sea.
+
+**Cause:** 1.12.2 never runs a block-light pass for chunks in a world without sky light (`Chunk.checkLight` does
+nothing in the nether). Lava, fire and glowstone placed by decoration are lit only by their own placement, which
+`World.checkLightFor` skips when the 17 blocks around are not all loaded; decoration writes into neighbor chunks
+(its 2x2 area at +8), so features near an unloaded edge stayed dark for good, in the shape of the feature (deltas,
+springs, fire patches; vanilla 1.12.2's own lava springs leave a few too). Current Java lights every chunk.
+
+**Fix:** `biome/NetherLightRepair`: every chunk a nether population can write into, and every nether chunk loaded
+from a save (so older worlds are repaired as they are visited), is queued; at the end of a tick, once its
+surroundings are loaded, light sources whose stored light is below their own value are relit, so is any
+see-through block beside one that is darker than it allows, and the chunk is resent to players who already have it.
+16 chunks per tick per world.
+
+**Tested** (`-Pselftest=lavalight`, `LavaLightSelfTest`): 100 freshly generated nether chunks, scanned one chunk in
+from the edge after the game's chunk ticks and the repair: 0 dark (light under 13) air blocks over 14332 open lava
+blocks. Before the fix: 77 dark of 8832, mostly a blob in a soul sand valley next to basalt deltas; vanilla's
+generator alone (biomes and ores off): 15 scattered dark of 2410. All streams: pass=8125 fail=0.
+
+**Not tested:** the client's view (the resend is server code); the user's own save loading the repair.

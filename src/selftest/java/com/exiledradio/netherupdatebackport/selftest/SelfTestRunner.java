@@ -43,6 +43,7 @@ public final class SelfTestRunner {
 
     /** Every stream's test. A stream adds its own line. */
     private static final SelfTest[] TESTS = {
+            new LavaLightSelfTest(),
             new ScaffoldSelfTest(),
             new StoneSelfTest(),
             new BlocksSelfTest(),
