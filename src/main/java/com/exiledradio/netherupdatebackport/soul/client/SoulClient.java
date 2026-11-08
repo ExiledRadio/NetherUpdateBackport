@@ -50,21 +50,35 @@ public final class SoulClient {
     }
 
     private static final class Flame extends ParticleFlame {
+        /**
+         * False while vanilla's flame constructor runs: it sets a texture index, which 1.12 only allows on
+         * layer 0, so reporting the atlas layer (1) that early threw "Invalid call to Particle.setMiscTex".
+         */
+        private boolean atlas;
+
         Flame(World world, double x, double y, double z, double vx, double vy, double vz) {
             super(world, x, y, z, vx, vy, vz);
+            this.atlas = true;
             setParticleTexture(flame);
         }
 
         @Override
         public int getFXLayer() {
-            return 1;
+            return this.atlas ? 1 : 0;
         }
     }
 
     /** 1.16's {@code SoulParticle}: rises slowly, its eleven frames played over its life. */
     private static final class Soul extends ParticleFlame {
+        /**
+         * False while vanilla's flame constructor runs: it sets a texture index, which 1.12 only allows on
+         * layer 0, so reporting the atlas layer (1) that early threw "Invalid call to Particle.setMiscTex".
+         */
+        private boolean atlas;
+
         Soul(World world, double x, double y, double z, double vx, double vy, double vz) {
             super(world, x, y, z, vx, vy, vz);
+            this.atlas = true;
             this.particleScale *= 1.5F;
             setParticleTexture(SOUL[0]);
         }
@@ -78,7 +92,7 @@ public final class SoulClient {
 
         @Override
         public int getFXLayer() {
-            return 1;
+            return this.atlas ? 1 : 0;
         }
     }
 }
