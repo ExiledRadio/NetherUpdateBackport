@@ -159,6 +159,17 @@ public final class RuinedPortals extends ScatteredStructure {
         return Type.STANDARD;
     }
 
+    /**
+     * Seed maps tell ruined portals apart by their type (the biome's configured ruined portal): Backport Core's
+     * seed-parity dump names starts {@code ruined_portal_<type>} with it.
+     */
+    @Override
+    @Nullable
+    public String variantAt(World world, int chunkX, int chunkZ) {
+        Type type = type(world, chunkX, chunkZ);
+        return type == null ? null : type.id();
+    }
+
     @Override
     protected StructureStart getStructureStart(int chunkX, int chunkZ) {
         Type type = type(this.world, chunkX, chunkZ);
