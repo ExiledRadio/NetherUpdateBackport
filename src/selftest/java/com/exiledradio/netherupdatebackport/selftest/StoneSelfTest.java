@@ -158,18 +158,28 @@ public final class StoneSelfTest implements SelfTest {
             }
         }
         int blackstone = 0;
+        int ores = 0;
+        int other = 0;
+        int wastesAbove40 = 0;
         for (int x = 0; x <= 1; x++) {
             for (int z = 0; z <= 1; z++) {
                 Chunk chunk = nether.getChunk(cx + x, cz + z);
                 c.ok(chunk.isTerrainPopulated(), "nether chunk " + (cx + x) + "," + (cz + z) + " is populated");
                 for (int bx = 0; bx < 16; bx++) {
                     for (int bz = 0; bz < 16; bz++) {
+                        BlockPos column = new BlockPos(((cx + x) << 4) + bx, 0, ((cz + z) << 4) + bz);
+                        boolean oreOnly = oreOnly(nether, column);
                         for (int y = 0; y < 48; y++) {
                             if (chunk.getBlockState(bx, y, bz).getBlock() == StoneContent.blackstone) {
                                 blackstone++;
-                                // Only in nether wastes: basalt deltas (stream V) also have blackstone floors and blobs.
-                                if (chunk.getBiome(new BlockPos(bx, y, bz), nether.getBiomeProvider()) == net.minecraft.init.Biomes.HELL) {
-                                    c.ok(y <= 40, "blackstone near its range (blobs centered at y 5-31): y=" + y);
+                                if (oreOnly && !inStructure(nether, column.up(y))) {
+                                    ores++;
+                                    c.ok(y <= 40, "blackstone near its range (blobs centered at y 5-31): y=" + y + " at " + column);
+                                } else {
+                                    other++;
+                                    if (y > 40 && nether.getBiome(column) == net.minecraft.init.Biomes.HELL) {
+                                        wastesAbove40++;
+                                    }
                                 }
                             }
                         }
@@ -177,7 +187,40 @@ public final class StoneSelfTest implements SelfTest {
                 }
             }
         }
-        c.ok(blackstone > 0, "freshly generated nether chunks have blackstone: " + blackstone);
+        String counts = "freshly generated nether chunks have blackstone: " + blackstone + " (" + ores + " where only the ore reaches, "
+                + other + " near basalt deltas or in a structure, " + wastesAbove40 + " of those above y 40 in nether wastes columns)";
+        c.ok(blackstone > 0, counts);
+        com.exiledradio.netherupdatebackport.NetherUpdateBackport.LOGGER.info("SELFTEST INFO {}", counts);
+    }
+
+    /**
+     * True when only {@code ore_blackstone} can put blackstone in this column: it is nether wastes (vanilla's hell),
+     * and no populate area that is decorated as basalt deltas reaches it. 1.16.5's deltas place {@code
+     * blackstone_blobs} (25 per chunk, y 0-127, radius 3-7) over their whole decorated chunk, whatever the biome of
+     * each column, and up to 7 blocks into the next: so in vanilla too, blackstone stands above y 40 in nether wastes
+     * beside the deltas. A 1.12.2 populate area {@code (ax, az)} covers blocks {@code 16 * ax + 8} to {@code + 23}.
+     */
+    private static boolean oreOnly(WorldServer nether, BlockPos column) {
+        if (nether.getBiome(column) != net.minecraft.init.Biomes.HELL) {
+            return false;
+        }
+        for (int ax = Math.floorDiv(column.getX() - 30, 16); ax <= Math.floorDiv(column.getX() - 1, 16); ax++) {
+            for (int az = Math.floorDiv(column.getZ() - 30, 16); az <= Math.floorDiv(column.getZ() - 1, 16); az++) {
+                if (com.exiledradio.netherupdatebackport.biome.BiomeContent.decorationKind(nether, ax, az)
+                        == com.exiledradio.netherupdatebackport.biome.NetherBiomes.Kind.BASALT_DELTAS) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /** Bastions and nether ruined portals are built of blackstone at any height (stream X). */
+    private static boolean inStructure(WorldServer nether, BlockPos pos) {
+        return com.exiledradio.backportcore.structure.ScatteredStructure.isInside(nether,
+                com.exiledradio.backportcore.structure.Structures.BASTION_REMNANT, pos)
+                || com.exiledradio.backportcore.structure.ScatteredStructure.isInside(nether,
+                com.exiledradio.backportcore.structure.Structures.RUINED_PORTAL, pos);
     }
 
     private static void basaltGenerator(Check c, WorldServer world, BlockPos floor) throws Exception {

@@ -241,7 +241,7 @@ public final class BiomeContent {
     // ------------------------------------------------------------------------------------------
 
     /** @return the biome a nether chunk is decorated as: the one at its +16 corner, as {@code ChunkGeneratorHell}. */
-    static NetherBiomes.Kind decorationKind(net.minecraft.world.World world, int chunkX, int chunkZ) {
+    public static NetherBiomes.Kind decorationKind(net.minecraft.world.World world, int chunkX, int chunkZ) {
         NetherBiomes.Kind kind = NetherBiomes.of(world.getBiome(new BlockPos((chunkX << 4) + 16, 0, (chunkZ << 4) + 16)));
         return kind == null ? NetherBiomes.Kind.NETHER_WASTES : kind;
     }

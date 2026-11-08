@@ -1,6 +1,8 @@
 package com.exiledradio.netherupdatebackport.stone;
 
 import com.exiledradio.netherupdatebackport.ModConfig;
+import com.exiledradio.netherupdatebackport.biome.BiomeContent;
+import com.exiledradio.netherupdatebackport.biome.NetherBiomes;
 
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;
@@ -15,7 +17,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import java.util.Random;
 
 /**
- * Blackstone blobs in the nether: 1.16's {@code ore_blackstone}, which every nether biome has.
+ * Blackstone blobs in the nether: 1.16's {@code ore_blackstone}, which every nether biome but the basalt deltas has
+ * ({@code DefaultBiomeFeatures.addNetherDefaultOres}; the deltas have their own {@code blackstone_blobs}, stream V).
  *
  * <p>Two blobs of up to 33 blocks per chunk, replacing netherrack, at a height from 5 to 31
  * ({@code TopSolidRangeConfig(5, 10, 37)}). Decoration only: nothing about the terrain changes, and
@@ -26,6 +29,9 @@ final class BlackstoneGeneration implements IWorldGenerator {
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
         if (!ModConfig.stone.generate || world.provider.getDimensionType() != DimensionType.NETHER) {
+            return;
+        }
+        if (NetherBiomes.active(world) && BiomeContent.decorationKind(world, chunkX, chunkZ) == NetherBiomes.Kind.BASALT_DELTAS) {
             return;
         }
         WorldGenMinable blob = new WorldGenMinable(StoneContent.blackstone.getDefaultState(), 33, BlockMatcher.forBlock(Blocks.NETHERRACK));
