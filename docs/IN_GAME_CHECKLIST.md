@@ -54,7 +54,7 @@ Self-tests: `runServer -Pselftest=lookfeel` (assets, warning keys, vanilla text 
 - [ ] **Text**: "You Died!", "Saved Hotbars", "Swap Item With Offhand" (1.16's wording through Core, whatever else
       is installed).
 
-## Creative tabs (with Backport Core 1.3.0)
+## Creative tabs (with Backport Core 1.1.0)
 
 The places are in `docs/CREATIVE_TABS.md`; a dev client already checked the lists and the search tab.
 
