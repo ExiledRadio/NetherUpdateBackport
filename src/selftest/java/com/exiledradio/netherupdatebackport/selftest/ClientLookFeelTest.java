@@ -197,6 +197,34 @@ public final class ClientLookFeelTest {
             ok(false, "Accessibility Settings opens: " + e);
         }
 
+        // The family's combined check: with the 1.13, 1.14 and 1.15 backports beside this one, 1.16 wins each single
+        // slot and the lists are the union.
+        boolean others = net.minecraftforge.fml.common.Loader.isModLoaded("updateaquaticbackport")
+                && net.minecraftforge.fml.common.Loader.isModLoaded("villagerbackport") && net.minecraftforge.fml.common.Loader.isModLoaded("buzzybeesbackport");
+        NetherUpdateBackport.LOGGER.info("LOOKFEEL combined: others installed {}; assets {}; vanilla text {}; music {}; F3 text {}",
+                others, Presentation.assets(), Presentation.vanillaTexts(), com.exiledradio.backportcore.presentation.client.GameMusic.names(),
+                com.exiledradio.backportcore.presentation.client.DebugText.steps().names(newest));
+        if (others) {
+            String id = NetherUpdateBackport.MOD_ID;
+            ok(id.equals(Presentation.asset("textures/gui/widgets.png").getNamespace()), "combined: widgets.png is 1.16's (over 1.15's)");
+            ok(id.equals(Presentation.asset("textures/gui/checkbox.png").getNamespace()), "combined: checkbox.png is 1.16's (over 1.15.2's)");
+            ok(id.equals(Presentation.titleAccessibilityIcon().getNamespace()), "combined: the title Accessibility icon is 1.16's (over 1.14's and 1.15's)");
+            ok("buzzybeesbackport".equals(Presentation.asset("textures/gui/title/mojang.png").getNamespace()),
+                    "combined: mojang.png is the newest that ships it (1.15.2's), though 1.16 draws mojangstudios.png");
+            ok("Caution: Third-Party Online Play".equals(I18n.format("multiplayerWarning.header")), "combined: the warning's 1.16 wording beats 1.15.2's");
+            ok("Chat Text Opacity".equals(I18n.format("options.chat.opacity")), "combined: 1.14's vanilla text is there too");
+            ok("Left Button".equals(I18n.format("key.mouse.left")), "combined: 1.13's vanilla text is there too");
+            ok("Open in Browser".equals(I18n.format("chat.link.open")), "combined: 1.15's vanilla text is there too");
+            ok(Presentation.vanillaTexts().size() == 4, "combined: four versions' vanilla text, oldest first: " + Presentation.vanillaTexts());
+            List<String> music = com.exiledradio.backportcore.presentation.client.GameMusic.names();
+            ok(music.indexOf("1.13 under water") >= 0 && music.indexOf("1.13 under water") < music.indexOf("1.16 nether biomes, gentler switching"),
+                    "combined: the music steps are 1.13's then 1.16's: " + music);
+            List<String> f3 = com.exiledradio.backportcore.presentation.client.DebugText.steps().names(newest);
+            ok(f3.equals(java.util.Arrays.asList("1.13 targeted block, fluid and entity", "1.14.2 server chunk cache", "1.15 no chunk updates",
+                    "1.16 spawn counts, targeted block coordinates")), "combined: the F3 text steps run in version order: " + f3);
+            ok(com.exiledradio.backportcore.presentation.client.GameMusic.underWater() != null, "combined: 1.16's music rules see 1.13's underwater event");
+        }
+
         // Singleplayer: Create New World when there is no world, the world list otherwise.
         GuiScreen menu = mc.currentScreen;
         boolean empty = LookAndFeelClient.noWorlds(mc);
