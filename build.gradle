@@ -72,6 +72,8 @@ if (selftest) {
 } else {
     jar {
         exclude 'com/exiledradio/netherupdatebackport/selftest/**'
+        // A test build's oracle answers, should build/resources still hold them (or their folder).
+        exclude 'assets/netherupdatebackport/oracle', 'assets/netherupdatebackport/oracle/**'
     }
 }
 
