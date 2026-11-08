@@ -58,6 +58,7 @@ public final class SelfTestRunner {
             new PiglinSelfTest(),
             new MusicSelfTest(),
             new StructureSelfTest(),
+            new LookFeelSelfTest(),
     };
 
     private final List<String> wanted;
