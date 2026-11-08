@@ -34,7 +34,8 @@ CATEGORIES = {
 
 # Field names that read badly split into words.
 NAMES = {
-    "futureMcDuplicates": "Duplicate Blocks",
+    "duplicates": "Duplicate Blocks",
+    "convertRemoved": "Convert when removed",
 }
 
 
@@ -56,7 +57,7 @@ def main():
     for key, name in CATEGORIES.items():
         lines.append("config.%s.%s=%s" % (assets.MODID, key, name))
     # Each annotated field: a run of annotations, then 'public <type> <name> ='.
-    for block in re.finditer(r"((?:\s*@Config\.\w+(?:\((?:[^()]|\([^()]*\))*\))?)+)\s*public\s+(?!static)[\w<>\[\]]+\s+(\w+)\s*=",
+    for block in re.finditer(r"((?:\s*@Config\.\w+(?:\((?:[^()]|\([^()]*\))*\))?)+)\s*public\s+(?!static)[\w<>\[\].]+\s+(\w+)\s*=",
                              text):
         annotations, field = block.group(1), block.group(2)
         key = re.search(r'@Config\.LangKey\("([^"]+)"\)', annotations)

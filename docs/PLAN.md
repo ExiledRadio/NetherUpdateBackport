@@ -219,7 +219,9 @@ Future MC 0.2.21 (which the user's Dregora packs run) registers most of 1.16's b
 gilded blackstone, nether gold ore, nether sprouts, shroomlight, netherite block and more). Following Rule 3,
 once S, U, F, L and N exist this mod contributes its pairs to Backport Core's table
 (`FutureMcTable.contributor`, `DuplicateBlocks.register`), with states recorded by `/futuremc dump` in a dev
-instance that has Future MC, and `/futuremc check` reporting 0 mismatches.
+instance that has Future MC, and `/futuremc check` reporting 0 mismatches. **Done** (`docs/streams/futuremc.md`): it
+registers far fewer of 1.16's blocks than this list (ancient debris, chain, netherite block, soul soil, soul lantern and
+torch in a real game; the blackstone set only in a deobfuscated one); 10 pairs, 0 mismatches on a real server.
 
 ## Decided (formerly *Still open*)
 
@@ -322,7 +324,7 @@ As Update Aquatic's plan, unchanged:
 2. Blocks first: S, U, F, L, N: **done**, each merged into `main` (see `docs/streams/`).
 3. Mobs: H and R **done**; then P (piglins and brutes: 1.16.5's `PiglinTasks` brain, bartering, gold anger,
    hunting, celebrating), Z. Then M and C.
-4. Fm once the blocks exist (they do; needs a dev game with Future MC for `/futuremc dump`).
+4. Fm: **done** (states from its jar, checked with `/futuremc dump` on a real server).
 5. V (Proposal A, decided) after the mobs; X after the user's answer on bastions and fortresses, and once Core has
    the template loader.
 

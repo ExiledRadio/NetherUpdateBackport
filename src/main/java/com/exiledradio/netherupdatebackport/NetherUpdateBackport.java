@@ -53,6 +53,7 @@ public final class NetherUpdateBackport {
         com.exiledradio.netherupdatebackport.owned.OwnedContent.preInit();
         com.exiledradio.netherupdatebackport.mobs.MobsContent.preInit();
         com.exiledradio.netherupdatebackport.structure.StructureContent.preInit();
+        com.exiledradio.netherupdatebackport.common.FutureMcPairs.preInit();
         net.minecraftforge.fml.common.network.NetworkRegistry.INSTANCE.registerGuiHandler(this,
                 new com.exiledradio.netherupdatebackport.common.GuiHandler());
 
@@ -78,6 +79,7 @@ public final class NetherUpdateBackport {
     public void postInit(FMLPostInitializationEvent event) {
         com.exiledradio.netherupdatebackport.strider.StriderContent.postInit();
         com.exiledradio.netherupdatebackport.biome.BiomeContent.postInit();
+        com.exiledradio.netherupdatebackport.common.FutureMcPairs.postInit();
     }
 
     @Mod.EventHandler

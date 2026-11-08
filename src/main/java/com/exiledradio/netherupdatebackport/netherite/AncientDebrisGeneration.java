@@ -1,5 +1,6 @@
 package com.exiledradio.netherupdatebackport.netherite;
 
+import com.exiledradio.backportcore.duplicate.DuplicateBlocks;
 import com.exiledradio.netherupdatebackport.ModConfig;
 import com.exiledradio.netherupdatebackport.common.Owners;
 
@@ -31,7 +32,9 @@ final class AncientDebrisGeneration implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator generator, IChunkProvider provider) {
-        if (!ModConfig.netherite.generate || world.provider.getDimensionType() != DimensionType.NETHER) {
+        // With another mod's debris kept visible (compat.duplicates THEIRS), only that one generates.
+        if (!ModConfig.netherite.generate || world.provider.getDimensionType() != DimensionType.NETHER
+                || DuplicateBlocks.isHidden(NetheriteContent.ancientDebris)) {
             return;
         }
         int x = chunkX * 16 + 8;
