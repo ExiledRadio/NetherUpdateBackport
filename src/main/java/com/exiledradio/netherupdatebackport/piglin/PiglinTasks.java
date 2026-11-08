@@ -244,8 +244,8 @@ public final class PiglinTasks {
             p.getMoveHelper().strafe(-0.75F, 0.0F);
             p.rotationYaw = p.rotationYawHead;
         }
-        // MoveToTargetTask(1.0).
-        if (isWithinAttackRange(p, target) && sees) {
+        // MoveToTargetTask(1.0): stops within BrainUtil.isWithinAttackRange(mob, target, 1) - a crossbow's 8 less 1.
+        if (isWithinAttackRange(p, target, 1) && sees) {
             if (p.hasWalkTarget()) {
                 p.eraseWalkTarget();
             }
@@ -260,7 +260,7 @@ public final class PiglinTasks {
             p.memories.setFor(Mem.ATTACK_COOLING_DOWN, true, 20);
         }
         // ShootTargetTask.
-        if (hasCrossbow(p) && sees && isWithinAttackRange(p, target)) {
+        if (hasCrossbow(p) && sees && isWithinAttackRange(p, target, 0)) {
             p.setLookTarget(target);
             p.tickShooting(target);
         } else {
@@ -1037,10 +1037,10 @@ public final class PiglinTasks {
         return Crossbows.isCrossbow(e.getHeldItemMainhand()) || Crossbows.isCrossbow(e.getHeldItemOffhand());
     }
 
-    /** 1.16's {@code BrainUtil.isWithinAttackRange}: a crossbow's 8 blocks, else melee reach. */
-    static boolean isWithinAttackRange(AbstractPiglin p, EntityLivingBase target) {
+    /** 1.16's {@code BrainUtil.isWithinAttackRange(mob, target, cooldown)}: a crossbow's 8 blocks less cooldown, else melee reach. */
+    static boolean isWithinAttackRange(AbstractPiglin p, EntityLivingBase target, int cooldown) {
         if (Crossbows.isCrossbow(p.getHeldItemMainhand())) {
-            return p.getDistance(target) < 8.0;
+            return p.getDistance(target) < 8.0 - cooldown;
         }
         return p.isWithinMeleeAttackRange(target);
     }

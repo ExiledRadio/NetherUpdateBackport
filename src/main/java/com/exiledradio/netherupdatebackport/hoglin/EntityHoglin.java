@@ -198,12 +198,19 @@ public class EntityHoglin extends EntityAnimal implements IMob {
             if (isChild()) {
                 setAvoid(by);
             } else if (!(this.avoid != null && isPiglin(by)) && !(by instanceof EntityHoglin)
-                    && !(by instanceof EntityPlayer && (((EntityPlayer) by).isCreative() || ((EntityPlayer) by).isSpectator()))) {
+                    && !(by instanceof EntityPlayer && (((EntityPlayer) by).isCreative() || ((EntityPlayer) by).isSpectator()))
+                    && !otherTargetMuchFurtherAway(by)) {
                 setAttackTarget(by);
                 broadcastAttack(by);
             }
         }
         return hurt;
+    }
+
+    /** 1.16's {@code BrainUtil.isOtherTargetMuchFurtherAwayThanCurrentAttackTarget(hoglin, other, 4)}. */
+    boolean otherTargetMuchFurtherAway(EntityLivingBase other) {
+        EntityLivingBase current = getAttackTarget();
+        return current != null && getDistanceSq(other) > getDistanceSq(current) + 16.0;
     }
 
     void broadcastAttack(EntityLivingBase target) {

@@ -473,7 +473,13 @@ public final class PiglinSelfTest implements SelfTest {
         c.eq(zp, q.memories.get(Mem.NEAREST_VISIBLE_ZOMBIFIED), "it sees the zombified piglin");
         c.eq(zp, q.memories.get(Mem.AVOID_TARGET), "and avoids it");
         c.eq(PiglinTasks.Activity.AVOID, q.activity(), "the avoid activity");
-        c.ok(q.hasWalkTarget() || !q.getNavigator().noPath(), "walking away");
+        // RunAwayTask picks its walk target on a tick of its own; give it a few.
+        boolean walking = q.hasWalkTarget() || !q.getNavigator().noPath();
+        for (int i = 0; i < 10 && !walking; i++) {
+            tick(q, 1);
+            walking = q.hasWalkTarget() || !q.getNavigator().noPath();
+        }
+        c.ok(walking, "walking away");
         zp.setDead();
         q.setDead();
 
@@ -482,7 +488,11 @@ public final class PiglinSelfTest implements SelfTest {
             EntityPiglin r = spawnPiglin(world, area.add(20, 0, 20), false);
         r.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.GOLDEN_SWORD));
             world.setBlockState(area.add(25, 0, 20), Owners.ourBlock("soul_lantern").getDefaultState(), 2 | 16);
-            tick(r, 21);
+            // Read the memory when the sensor first sets it: once the piglin has run more than 8 blocks off, the
+            // next scan rightly forgets it.
+            for (int i = 0; i < 21 && r.memories.get(Mem.NEAREST_REPELLENT) == null; i++) {
+                tick(r, 1);
+            }
             c.eq(area.add(25, 0, 20), r.memories.get(Mem.NEAREST_REPELLENT), "a soul lantern 5 blocks off repels it");
             c.ok(PiglinTasks.findNearestRepellent(world, area.add(25, 0, 0)) == null, "nothing repels from 20 blocks");
             r.setDead();
