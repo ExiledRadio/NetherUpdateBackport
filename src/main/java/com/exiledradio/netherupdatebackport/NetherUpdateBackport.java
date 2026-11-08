@@ -49,6 +49,7 @@ public final class NetherUpdateBackport {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         NetworkHandler.init();
+        com.exiledradio.netherupdatebackport.lookfeel.LookAndFeel.preInit();
         com.exiledradio.netherupdatebackport.common.Triggers.init();
         com.exiledradio.netherupdatebackport.owned.OwnedContent.preInit();
         com.exiledradio.netherupdatebackport.mobs.MobsContent.preInit();

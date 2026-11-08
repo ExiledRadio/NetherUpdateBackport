@@ -326,3 +326,55 @@ config.netherupdatebackport.compat.duplicates=Duplicate Blocks
 config.netherupdatebackport.compat.duplicates.tooltip=When another installed mod adds the same 1.16 blocks and items: OURS hides the other mod's, THEIRS hides ours, BOTH hides nothing. Only the visible ancient debris generates.
 config.netherupdatebackport.compat.convertRemoved=Convert when removed
 config.netherupdatebackport.compat.convertRemoved.tooltip=Convert blocks and items left behind by another mod that added them, when that mod is removed from a world.
+
+# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
+options.entityDistanceScaling=Entity Distance
+options.screenEffectScale=Distortion Effects
+options.fovEffectScale=FOV Effects
+debug.gamemodes.help=F3 + F4 = Open game mode switcher
+debug.gamemodes.error=Unable to open game mode switcher; no permission
+debug.gamemodes.press_f4=[ F4 ]
+debug.gamemodes.select_next=%s Next
+
+# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
+createWorld.customize.presets.share=Want to share your preset with someone? Use the box below!
+deathScreen.spectate=Spectate World
+deathScreen.title=You Died!
+deathScreen.title.hardcore=Game Over!
+deathScreen.titleScreen=Title Screen
+debug.creative_spectator.error=Unable to switch gamemode; no permission
+debug.creative_spectator.help=F3 + N = Cycle previous gamemode <-> spectator
+debug.cycle_renderdistance.help=F3 + F = Cycle render distance (shift to invert)
+gui.recipebook.moreRecipes=Right Click for More
+gui.recipebook.toggleRecipes.all=Showing All
+gui.recipebook.toggleRecipes.craftable=Showing Craftable
+gui.toMenu=Back to Server List
+gui.toTitle=Back to Title Screen
+inventory.hotbarInfo=Save hotbar with %1$s+%2$s
+inventory.hotbarSaved=Item hotbar saved (restore with %1$s+%2$s)
+itemGroup.hotbar=Saved Hotbars
+key.loadToolbarActivator=Load Hotbar Activator
+key.saveToolbarActivator=Save Hotbar Activator
+key.swapHands=Swap Item With Offhand
+mount.onboard=Press %1$s to Dismount
+multiplayer.disconnect.outdated_client=Incompatible client! Please use %s
+multiplayer.disconnect.outdated_server=Incompatible client! Please use %s
+multiplayer.downloadingStats=Retrieving statistics...
+multiplayer.status.client_out_of_date=Incompatible version!
+multiplayer.status.server_out_of_date=Incompatible version!
+options.chat.scale=Chat Text Size
+options.narrator.all=Narrates All
+options.narrator.chat=Narrates Chat
+options.narrator.notavailable=Not Available
+options.narrator.system=Narrates System
+selectServer.direct=Direct Connection
+selectWorld.gameMode.adventure.line1=Same as Survival Mode, but blocks can't
+selectWorld.gameMode.adventure.line2=be added or removed
+selectWorld.gameMode.hardcore.line1=Same as Survival Mode, locked at hardest
+selectWorld.gameMode.hardcore.line2=difficulty, and one life only
+selectWorld.gameMode.survival.line1=Search for resources, craft, gain
+selectWorld.gameMode.survival.line2=levels, health and hunger
+selectWorld.mapFeatures.info=Villages, dungeons etc.
+selectWorld.tooltip.snapshot1=Don't forget to back up this world
+selectWorld.tooltip.snapshot2=before you load it in this snapshot.
+sign.edit=Edit Sign Message

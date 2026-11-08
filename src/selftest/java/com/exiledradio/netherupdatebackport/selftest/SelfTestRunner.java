@@ -60,6 +60,7 @@ public final class SelfTestRunner {
             new StructureSelfTest(),
             new FutureMcSelfTest(),
             new WaterlogSelfTest(),
+            new LookFeelSelfTest(),
     };
 
     private final List<String> wanted;

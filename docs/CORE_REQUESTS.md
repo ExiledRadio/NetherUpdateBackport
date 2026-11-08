@@ -93,3 +93,35 @@ items below. This mod's workarounds were removed when stream X merged; it relies
 *   **Source forming**: 1.13+ forms a source in a waterloggable block between two sources. With
     `nonSourceFluidlogging` on, Fluidlogged API asks with the flowing state first, which the rule above refuses, so
     no source forms. Core could form it itself (an end-of-tick check, as Update Aquatic's `RequiredWater`).
+
+## 8. Look and feel (stream Lf): pieces Core's `presentation` module does not cover yet
+
+Stream Lf registers 1.16 and 1.16.2 with `Presentation.version`. These 1.16 items are single-slot or need a
+screen Core owns, so they wait for Core:
+
+*   **Title logo and the startup screen (20w21a).** 1.16 redrew `textures/gui/title/minecraft.png` and replaced the
+    red Mojang screen's logo with `mojangstudios.png`. Wanted: `Contribution.titleLogo(rl)` and
+    `startupLogo(rl)`, newest wins. This mod would ship both from the 1.16.5 jar. **Until then:** 1.12.2's logos.
+*   **Multiplayer warning screen.** 1.15.2 added "Online play is not rated" before the server list; 1.16 reworded it
+    to "Caution: Third-Party Online Play". One screen, newest wins, with its "Do not show this screen again" flag
+    (`skipMultiplayerWarning`). Wanted: `Contribution.multiplayerWarning(titleKey, contentKey)`. **Until then:** no
+    warning screen (as 1.12.2).
+*   **Chat: Line Spacing and Chat Delay (1.16, Accessibility and Chat Settings).** Both change how
+    `GuiNewChat` lays out and releases lines, which needs one owner of the chat renderer. Wanted: Core owning the
+    chat hooks (line height, a delayed queue) with the two options. **Until then:** not shown.
+*   **Accessibility Guide button (1.16.4)** at the bottom of Accessibility Settings (opens
+    `https://aka.ms/MinecraftJavaAccessibility`). Wanted: an action-button entry on Core's own screens.
+*   **Option polish.** Vanilla shows "Distortion Effects: OFF" and "FOV Effects: OFF" at 0 (`options.*.off`) and
+    since 1.16-pre1 a tooltip per option (`options.screenEffectScale.tooltip`, `options.fovEffectScale.tooltip`).
+    Wanted: `SliderOption.zeroKey(key)` and `PresentationOption.tooltip(key)`. **Until then:** "0%" and no tooltip.
+*   **One option on two screens.** Distortion Effects and FOV Effects sit on Video and on Accessibility Settings.
+    Wanted: `option.alsoOn(OptionScreen.VIDEO)`. **Until then:** two options per setting
+    (`..._video` ids) kept equal by `onChange` (`lookfeel/LookAndFeel.mirror`).
+*   **Debug screen text.** 1.16 changed F3's left column (mob spawning line, coordinates on Targeted Block and
+    Targeted Fluid, "Looking at" removed). 1.13 and later versions change the same lines, so they need one owner
+    applying each version's edits in order. Wanted: a debug-text pipeline like `FogPipeline`. **Until then:**
+    1.12.2's lines.
+*   **Vanilla text by version.** Each backport rewords 1.12.2's own keys in its lang file (here: "You Died!",
+    "Saved Hotbars", "Direct Connection" ...). That works while versions reword different keys; if two ever reword
+    the same key, resource-domain order decides, not the version. Wanted later: Core applying vanilla text
+    overrides newest-version-wins. Nothing overlaps among 1.13 to 1.16 today.
