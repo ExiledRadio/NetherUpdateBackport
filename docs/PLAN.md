@@ -61,7 +61,7 @@ No stream calls another's classes; when one needs another's item it looks it up 
 | X | Structures | `structure` | `structures` | 30-34 | 65-69 | 25833 | **the user's answer**, Backport Core |
 | Fm | Future MC pairs | `common` (integrator) | `compat` | none | none | 25834 | S, U, F, L, N |
 | Ow | Owner copies (smithing table, crossbow) | `owned` | none (registered exactly when the owner is absent) | 40-44 | 70-74 | 25835 | nothing |
-| Lf | Look and feel (panorama, splashes, options, F3 keys) | `lookfeel` | none (Backport Core's `presentation` settings) | none | none | 25940 | Backport Core 1.2.0 |
+| Lf | Look and feel (panorama, splashes, options, F3 keys) | `lookfeel` | none (Backport Core's `presentation` settings) | none | none | 25940 | Backport Core 1.1.0 |
 
 Ports: 25820 on `main`, `25820 + row` in a stream's worktree (row = the table order above). Entity ids are
 this mod's own `EntityRegistry.registerModEntity` numbers. Enchantments, potions and sounds have no numbers
@@ -197,7 +197,7 @@ to collide on.
 
 ### Lf. Look and feel (1.16's non-content changes)
 
-Registered with Backport Core's `presentation` module (Core 1.2.0), which shows the newest installed version's
+Registered with Backport Core's `presentation` module (Core 1.1.0), which shows the newest installed version's
 pieces. Research: `family-notes/RESEARCH_NON_CONTENT_CHANGES.md`, section 1.16. What is in, what is out and why:
 `docs/IN_GAME_CHECKLIST.md` (section Lf) and `docs/CORE_REQUESTS.md` (item 6).
 

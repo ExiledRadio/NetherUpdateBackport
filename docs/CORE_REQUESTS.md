@@ -44,9 +44,9 @@ Ruined portals also need `TerrainHeights` in the overworld (already in Core) and
 Blocks of this mod that 1.16 makes waterloggable are listed in `PLAN.md` (*Waterlogging*). They implement
 Core's `Waterloggable` once it exists. **Until then:** not waterloggable.
 
-## 5. Found by stream X against vanilla 1.16.5 (Core 1.2.0)
+## 5. Found by stream X against vanilla 1.16.5 (Core 1.1.0)
 
-**Done** on Core's `nether-fixes` branch (version still 1.2.0; not yet merged into Core `main`): the first four
+**Done** on Core's `nether-fixes` branch (version still 1.1.0; not yet merged into Core `main`): the first four
 items below. This mod's workarounds were removed when stream X merged; it relies on Core for them now.
 
 *   **Nether ruined portals are 25 apart, not 40.** 1.16.5's `DimensionSettings.nether` puts
@@ -68,7 +68,7 @@ items below. This mod's workarounds were removed when stream X merged; it relies
     vanilla places it as a jigsaw block; Core places the final state, which is all 1.12.2 can do.
 
 
-## 6. Found by stream Fm (Core 1.2.0)
+## 6. Found by stream Fm (Core 1.1.0)
 
 *   **`DuplicateBlocks.hideFromCreative` stops the game on the other mod's Kotlin items.** Its `ModeledItem` (netherite
     ingot and scrap, and its bamboo, banner pattern, crossbow, fish bucket, scaffolding, seagrass and trident items)
@@ -80,7 +80,7 @@ items below. This mod's workarounds were removed when stream X merged; it relies
     debris generator out of `GameRegistry` by class name; a `DuplicateBlocks.registerGenerator(theirClassName)` in
     Core would do it for every family mod.
 
-## 7. Found by the waterlogging stream (Core 1.2.0)
+## 7. Found by the waterlogging stream (Core 1.1.0)
 
 *   **Fluidlogged API's whitelist is asked before `Waterloggable`.** Its built-in `whitelist.jsonc` covers every block
     extending a vanilla stair, slab, wall, fence, trapdoor, sign, fence gate, door, button or pressure plate, with any
@@ -126,7 +126,7 @@ screen Core owns, so they wait for Core:
     the same key, resource-domain order decides, not the version. Wanted later: Core applying vanilla text
     overrides newest-version-wins. Nothing overlaps among 1.13 to 1.16 today.
 
-## Done in Backport Core 1.2.0 (core-finish, 2026-11-08)
+## Done in Backport Core 1.1.0 (core-finish, 2026-11-08)
 
 Sections 6, 7 and 8 are done in Core, and this mod uses them (branch `nu-lookfeel2`):
 *   6: `DuplicateBlocks` hides items that refuse a null tab itself (`hideItem`), and `registerGenerator` takes the

@@ -2,7 +2,7 @@
 
 Things only a person in a real game can confirm. Each line says what to look at and what vanilla does.
 
-## Lf. 1.16's look and feel (with Backport Core 1.2.0)
+## Lf. 1.16's look and feel (with Backport Core 1.1.0)
 
 Self-tests: `gradlew runServer -Pselftest=lookfeel` (registration, assets, splash pool, options, hooks, patches
 P3/P4 on MCP and SRG classes, lang) and `gradlew runClient -Pselftest=client` (title screen, log only).
@@ -32,7 +32,7 @@ P3/P4 on MCP and SRG classes, lang) and `gradlew runClient -Pselftest=client` (t
       message "Press Shift to Dismount", and in another language (e.g. Español) the same from Mojang's files.
 - [ ] Menu music is unchanged (1.16 kept menu1 to menu4).
 
-## Lf2. 1.16's pieces in Backport Core's finished presentation module (Core 1.2.0)
+## Lf2. 1.16's pieces in Backport Core's finished presentation module (Core 1.1.0)
 
 Self-tests: `runServer -Pselftest=lookfeel` (assets, warning keys, vanilla text in 18 languages) and
 `runClient -Pselftest=client` (Core's pack serves the logo, 1.16 text through Core, music and F3 steps, the guide).

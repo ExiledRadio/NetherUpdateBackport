@@ -73,7 +73,7 @@ public class BastionPiece extends JigsawPiece {
         String mob = piglinTemplate();
         if (mob == null) {
             // Jigsaw-only templates (blocks/gold, blocks/air, treasure/extensions/empty) place their final states
-            // through Core (1.2.0, stream X's request).
+            // through Core (1.1.0, stream X's request).
             super.addComponentParts(world, random, chunk);
             return true;
         }

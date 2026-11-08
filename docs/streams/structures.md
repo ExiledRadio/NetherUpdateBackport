@@ -1,7 +1,7 @@
 # Stream X: structures
 
 Package `structure`; owner copies in `owned`. Config `structures` (`enabled`, `bastions`, `ruinedPortals`,
-`netherFossils`). No entity or packet ids used. Backport Core **1.2.0**. *Decided* item 2: bastions take nether
+`netherFossils`). No entity or packet ids used. Backport Core **1.1.0**. *Decided* item 2: bastions take nether
 fortress slots.
 
 ## Changelog section
@@ -38,7 +38,7 @@ fortress slots.
     under `worldgen/`; `JigsawPools.source` and `ModernPalette.source` name this mod.
 *   **Blocks** (`StructurePalette`): this mod's blocks are named as 1.16 names them, so the source serves the blackstone
     and basalt families (S) and crying obsidian (U). Chain is mapped as `minecraft:iron_chain` (U's). Slabs need
-    nothing since Core 1.2.0's fix (stream X's request): Core reads `type` into the family's `_slab` / `_double_slab`
+    nothing since Core 1.1.0's fix (stream X's request): Core reads `type` into the family's `_slab` / `_double_slab`
     pairs (S's blackstone slabs; Village & Pillage's smooth quartz, mossy stone brick and 1.14 stone slabs, or the
     copies) and a slab named without a type, as `block_age` writes `minecraft:stone_slab`, as its default bottom
     half. Lanterns, stone brick walls and the mossy stone brick stairs and wall come from Village & Pillage (a Core
@@ -57,7 +57,7 @@ fortress slots.
     (registered at init only for registered entities: hoglin, piglin, piglin brute), the template's `CannotBeHunted` and
     `PersistenceRequired` read, 1.16's one-in-five baby.
 *   **Jigsaw-only pieces**: `bastion/blocks/gold`, `blocks/air` and `treasure/extensions/empty` are a lone jigsaw whose
-    final state is the block; Core 1.2.0's `ModernTemplate.place` places them since its fix (stream X's request; the
+    final state is the block; Core 1.1.0's `ModernTemplate.place` places them since its fix (stream X's request; the
     branch's own `placeLoneJigsaws` was removed at the merge).
 *   **Ruined portals** (`RuinedPortals`, `RuinedPortalPiece`, `PortalExtras`): one kind, a per-world instance.
     Overworld `VanillaPlacements.V1_16_5.RUINED_PORTAL` (40, 15, 34222645); **nether
@@ -124,7 +124,7 @@ of 6 fossils. The extras around a portal follow the terrain too.
 
 ## Overworld seed parity with 1.16.5 (seed-parity round 2)
 
-With this mod installed, the overworld follows 1.16.5's structure rules through Backport Core 1.2.0's placement
+With this mod installed, the overworld follows 1.16.5's structure rules through Backport Core 1.1.0's placement
 table (`worldgen/Placement116`, newest installed version wins): shipwrecks 24/4, ocean ruins 20/8, the other grids
 as before, every single-biome start check reading the 1:4 cell at (4x + 2, 4z + 2) (`ChunkGenerator.createStructures`),
 the outposts' village clearance on the village grid only, and strongholds without the bamboo jungles (1.16.5's
@@ -172,7 +172,7 @@ world's slot comparison); `-Pselftest=all`: **pass=6907 fail=0**;
 
 ## For the integrator
 
-*   **Backport Core 1.2.0** is required (`core_version=1.2.0`, `required-after:backportcore@[1.2.0,)`).
+*   **Backport Core 1.1.0** is required (`core_version=1.1.0`, `required-after:backportcore@[1.1.0,)`).
 *   `build.gradle`: a test build adds `src/selftest/resources` (the oracle answers) to the resources; a release jar has
     none of them (checked).
 *   Merge notes: `tools/owned/copy_from_owner.py` and `owned/OwnedContent.java` gained the structure blocks (stream P
@@ -182,5 +182,5 @@ world's slot comparison); `-Pselftest=all`: **pass=6907 fail=0**;
     default off (1.16 has Pigstep in bastions only).
 *   Stream P: `BastionMobs.spawn` is called with the template names `crossbow_piglin`, `sword_piglin`, `melee_piglin`,
     `melee_piglin_always`.
-*   For Backport Core (see `docs/CORE_REQUESTS.md`, section 5): fixed on Core's `nether-fixes` branch (still 1.2.0);
+*   For Backport Core (see `docs/CORE_REQUESTS.md`, section 5): fixed on Core's `nether-fixes` branch (still 1.1.0);
     this mod's workarounds were removed at the merge.

@@ -146,7 +146,7 @@ public final class ClientLookFeelTest {
             }
         }
 
-        // Core's single slots (Core 1.2.0's finished presentation module), the newest version's.
+        // Core's single slots (Core 1.1.0's finished presentation module), the newest version's.
         try {
             String pack = mc.getResourceManager().getResource(new ResourceLocation("textures/gui/title/minecraft.png")).getResourcePackName();
             ok("backportcore:vanilla_by_version".equals(pack), "the title logo is served by Core's vanilla-asset pack: " + pack);

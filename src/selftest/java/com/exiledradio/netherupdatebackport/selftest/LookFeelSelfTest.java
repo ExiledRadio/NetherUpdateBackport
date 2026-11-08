@@ -69,7 +69,7 @@ public final class LookFeelSelfTest implements SelfTest {
         c.eq(GameVersion.parse("1.16.4"), Presentation.newest(), "the newest installed version");
         c.ok(Presentation.isAtLeast("1.16"), "isAtLeast(1.16)");
         c.eq(LoadingRevision.DATA_1_16, Presentation.loadingRevision(), "the world-loading screen revision");
-        // The single slots Core finished (Core 1.2.0): 1.16.5's assets, text and warning.
+        // The single slots Core finished (Core 1.1.0): 1.16.5's assets, text and warning.
         String[][] assets = {
                 {"textures/gui/title/minecraft.png", "textures/gui/title/minecraft.png", "256x256"},
                 {"textures/gui/title/mojangstudios.png", "textures/gui/title/mojangstudios.png", null},

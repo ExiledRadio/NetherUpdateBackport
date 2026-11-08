@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
  *   <li>This mod's blocks are named as 1.16 names them, so listing it as a source serves most: the blackstone and
  *       basalt families (S), crying obsidian and nether gold ore (U), and so on.</li>
  *   <li>Chain: Core reads a file's {@code minecraft:chain} by today's name, {@code minecraft:iron_chain}; U's chain.</li>
- *   <li>Slabs: Core 1.2.0 reads {@code type} into the family's 1.12.2 slabs (a {@code _slab} with {@code half}, a
+ *   <li>Slabs: Core 1.1.0 reads {@code type} into the family's 1.12.2 slabs (a {@code _slab} with {@code half}, a
  *       separate {@code _double_slab}) and a slab named without a type as its default, a bottom half. So this mod's
  *       blackstone slabs (S), Village &amp; Pillage's smooth quartz, mossy stone brick and 1.14 stone slabs (or this
  *       mod's copies without it) and 1.12.2's own stone and stone brick slabs need no mapping here.</li>

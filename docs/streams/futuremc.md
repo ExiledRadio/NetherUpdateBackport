@@ -44,7 +44,7 @@ absent (`owned`): those copies pair with its blocks too.
     scaffold), 0 failed. Every recorded state of all 10 blocks converts with nothing dropped; each block and 13 items
     convert to ours (a worn sword keeps its damage); every pair's half of ours exists; nothing of ours is hidden
     without the other mod; the generator removal on a stand-in generator.
-*   Real server (`G:\NetherTest\fmserver`: Forge 2860, Backport Core 1.2.0, Fluidlogged API 3.3.3, the other mod
+*   Real server (`G:\NetherTest\fmserver`: Forge 2860, Backport Core 1.1.0, Fluidlogged API 3.3.3, the other mod
     0.2.21 with its Kotlin library, this mod's release jar, no Village & Pillage):
     *   boots; Core hid 10 blocks and removed 8 of their recipes; this mod hid the two items above and removed their
         2 recipes and 1 smelting recipe; their debris generator removed;
