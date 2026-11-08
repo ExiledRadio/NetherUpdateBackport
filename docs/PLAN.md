@@ -61,6 +61,7 @@ No stream calls another's classes; when one needs another's item it looks it up 
 | X | Structures | `structure` | `structures` | 30-34 | 65-69 | 25833 | **the user's answer**, Backport Core |
 | Fm | Future MC pairs | `common` (integrator) | `compat` | none | none | 25834 | S, U, F, L, N |
 | Ow | Owner copies (smithing table, crossbow) | `owned` | none (registered exactly when the owner is absent) | 40-44 | 70-74 | 25835 | nothing |
+| Lf | Look and feel (panorama, splashes, options, F3 keys) | `lookfeel` | none (Backport Core's `presentation` settings) | none | none | 25940 | Backport Core 1.2.0 |
 
 Ports: 25820 on `main`, `25820 + row` in a stream's worktree (row = the table order above). Entity ids are
 this mod's own `EntityRegistry.registerModEntity` numbers. Enchantments, potions and sounds have no numbers
@@ -194,6 +195,23 @@ to collide on.
   Forge's `PlaySoundEvent`/music hooks; per biome once V exists, the 1.16 set everywhere before that.
 - Nether ambience (per-biome loops and additions) once V exists.
 
+### Lf. Look and feel (1.16's non-content changes)
+
+Registered with Backport Core's `presentation` module (Core 1.2.0), which shows the newest installed version's
+pieces. Research: `family-notes/RESEARCH_NON_CONTENT_CHANGES.md`, section 1.16. What is in, what is out and why:
+`docs/IN_GAME_CHECKLIST.md` (section Lf) and `docs/CORE_REQUESTS.md` (item 6).
+
+- `Presentation.version("1.16")`: the nether panorama (1.16.5's six faces from the asset index), its clear
+  `panorama_overlay.png`, the splash changes (1.15.2 to 1.16.5's `splashes.txt`: 41 added, 14 removed), Entity
+  Distance (P4), F3+F4's game mode switcher and F3+N's previous-mode toggle. The "Reading world data" loading
+  screen comes from Core's table for 1.16.
+- `Presentation.version("1.16.2")`: Distortion Effects (P3 plus the nausea overlay) and FOV Effects, on Video and
+  Accessibility Settings.
+- Singleplayer opens Create New World when there is no world (1.16's `WorldSelectionList`).
+- Vanilla text 1.16 reworded on keys 1.12.2 also has (Saved Hotbars, You Died!, Direct Connection ...) is in
+  `en_us.lang`, with the 18 languages from Mojang's files (`tools/lang/build_langs.py`).
+- Menu music: unchanged in 1.16 (menu1 to menu4 in 1.12.2 and 1.16.5). The nether music is stream M's.
+
 ### C. Smaller changes
 
 - Hoes are the tool for leaves, hay bales, wart blocks, sponges, dried kelp blocks and targets (harvest tool on
@@ -219,7 +237,9 @@ Future MC 0.2.21 (which the user's Dregora packs run) registers most of 1.16's b
 gilded blackstone, nether gold ore, nether sprouts, shroomlight, netherite block and more). Following Rule 3,
 once S, U, F, L and N exist this mod contributes its pairs to Backport Core's table
 (`FutureMcTable.contributor`, `DuplicateBlocks.register`), with states recorded by `/futuremc dump` in a dev
-instance that has Future MC, and `/futuremc check` reporting 0 mismatches.
+instance that has Future MC, and `/futuremc check` reporting 0 mismatches. **Done** (`docs/streams/futuremc.md`): it
+registers far fewer of 1.16's blocks than this list (ancient debris, chain, netherite block, soul soil, soul lantern and
+torch in a real game; the blackstone set only in a deobfuscated one); 10 pairs, 0 mismatches on a real server.
 
 ## Decided (formerly *Still open*)
 
@@ -280,7 +300,8 @@ where vanilla puts them. Needs Backport Core's template loader, a jigsaw assembl
 
 Blocks 1.16 made waterloggable that this mod adds: chain, soul lantern, soul campfire, every slab, stair and
 wall (blackstone, polished blackstone, polished blackstone bricks, crimson, warped), crimson and warped
-fences, trapdoors, signs and wall signs. Left non-waterloggable until Core's adapter exists.
+fences, trapdoors, signs and wall signs. **Done** (`docs/streams/waterlog.md`): Core's `Waterloggable` on each, and
+`common/WaterRules` putting 1.16.5's source-only rule back over Fluidlogged API's defaults.
 
 ## Shared files and rules
 
@@ -322,7 +343,7 @@ As Update Aquatic's plan, unchanged:
 2. Blocks first: S, U, F, L, N: **done**, each merged into `main` (see `docs/streams/`).
 3. Mobs: H and R **done**; then P (piglins and brutes: 1.16.5's `PiglinTasks` brain, bartering, gold anger,
    hunting, celebrating), Z. Then M and C.
-4. Fm once the blocks exist (they do; needs a dev game with Future MC for `/futuremc dump`).
+4. Fm: **done** (states from its jar, checked with `/futuremc dump` on a real server).
 5. V (Proposal A, decided) after the mobs; X after the user's answer on bastions and fortresses, and once Core has
    the template loader.
 

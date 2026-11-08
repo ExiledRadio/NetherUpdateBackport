@@ -51,10 +51,12 @@ public final class NetherUpdateBackport {
         // 1.16's overworld structure placement numbers, for Backport Core's table (seed parity with 1.16.5).
         com.exiledradio.netherupdatebackport.worldgen.Placement116.register();
         NetworkHandler.init();
+        com.exiledradio.netherupdatebackport.lookfeel.LookAndFeel.preInit();
         com.exiledradio.netherupdatebackport.common.Triggers.init();
         com.exiledradio.netherupdatebackport.owned.OwnedContent.preInit();
         com.exiledradio.netherupdatebackport.mobs.MobsContent.preInit();
         com.exiledradio.netherupdatebackport.structure.StructureContent.preInit();
+        com.exiledradio.netherupdatebackport.common.FutureMcPairs.preInit();
         net.minecraftforge.fml.common.network.NetworkRegistry.INSTANCE.registerGuiHandler(this,
                 new com.exiledradio.netherupdatebackport.common.GuiHandler());
 
@@ -80,6 +82,7 @@ public final class NetherUpdateBackport {
     public void postInit(FMLPostInitializationEvent event) {
         com.exiledradio.netherupdatebackport.strider.StriderContent.postInit();
         com.exiledradio.netherupdatebackport.biome.BiomeContent.postInit();
+        com.exiledradio.netherupdatebackport.common.FutureMcPairs.postInit();
     }
 
     @Mod.EventHandler

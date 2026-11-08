@@ -55,3 +55,9 @@ Package `soul` (and `soul/campfire`). Config `soul` (`enabled`, `soulFire`, `cam
 *   The soul campfire reading Village & Pillage's recipes (needs that mod in the dev game).
 *   Soul Speed can still come from 1.12.2's random enchanted books (vanilla's loot function and the vanilla
     librarian trade pick from every enchantment; 1.16 leaves out undiscoverable ones). Not patched.
+
+## Waterlogging (later pass)
+
+The soul campfire is waterloggable since the waterlogging stream (`docs/streams/waterlog.md`): placed in water it is
+unlit, water puts a lit one out, a waterlogged one cannot be lit, and the water bucket now waterlogs it instead of
+only putting it out. The soul lantern holds water too.

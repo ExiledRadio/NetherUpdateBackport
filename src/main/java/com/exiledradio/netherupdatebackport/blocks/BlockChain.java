@@ -1,5 +1,6 @@
 package com.exiledradio.netherupdatebackport.blocks;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
 import com.exiledradio.netherupdatebackport.common.shape.Shapes;
 
 import net.minecraft.block.SoundType;
@@ -21,7 +22,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * <p>Its ends report a small centre, so lanterns and other blocks that hang from or stand on a thin centre
  * (vanilla's {@code CENTER_SMALL}) attach to it.
  */
-public final class BlockChain extends Shapes.Pillar {
+public final class BlockChain extends Shapes.Pillar implements Waterloggable {
 
     private static final AxisAlignedBB Y = new AxisAlignedBB(6.5 / 16, 0, 6.5 / 16, 9.5 / 16, 1, 9.5 / 16);
     private static final AxisAlignedBB Z = new AxisAlignedBB(6.5 / 16, 6.5 / 16, 0, 9.5 / 16, 9.5 / 16, 1);

@@ -287,10 +287,14 @@ public final class ModConfig {
 
     public static final class Compat {
         @Config.RequiresMcRestart
-        @Config.Comment({"When another installed mod adds the same 1.16 block: OURS hides the other mod's, THEIRS hides",
-                "ours, BOTH keeps both."})
-        @Config.LangKey("config.netherupdatebackport.compat.futureMcDuplicates")
-        public String futureMcDuplicates = "OURS";
+        @Config.Comment({"When another installed mod adds the same 1.16 blocks and items: OURS hides the other mod's,",
+                "THEIRS hides ours, BOTH hides nothing. Only the visible ancient debris generates."})
+        @Config.LangKey("config.netherupdatebackport.compat.duplicates")
+        public com.exiledradio.backportcore.duplicate.DuplicateBlocks.Keep duplicates = com.exiledradio.backportcore.duplicate.DuplicateBlocks.Keep.OURS;
+
+        @Config.Comment("Convert blocks and items left behind by another mod that added them, when that mod is removed from a world.")
+        @Config.LangKey("config.netherupdatebackport.compat.convertRemoved")
+        public boolean convertRemoved = true;
     }
 
     // ------------------------------------------------------------------------------------------

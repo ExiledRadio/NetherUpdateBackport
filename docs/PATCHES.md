@@ -58,6 +58,42 @@ looks for.
 *   **Tested** (`-Pselftest=music`): applied; a jukebox with Pigstep gives 13 and a comparator beside it outputs 13;
     13, cat and wait still give 1, 2 and 12; an empty jukebox 0.
 
+### P3. Distortion Effects: the portal and nausea wobble
+
+*   **Class**: `net.minecraft.client.renderer.EntityRenderer`, method `setupCameraTransform(FI)V` (`func_78479_a`).
+    **Transformer**: `asm/LookTransformer`. **Hook**: `lookfeel/LookHooks.portalWobble`. **Stream**: Lf.
+*   **Vanilla 1.16.2+**: `GameRenderer.renderLevel` multiplies the wobble strength
+    (`lerp(partialTicks, oPortalTime, portalTime)`) by `screenEffectScale` twice before it rotates and stretches
+    the view.
+*   **Why a patch**: the strength is a local of `setupCameraTransform`, used right after it is computed; Forge's
+    `CameraSetup` event fires later (in `orientCamera`), after the wobble's rotations are on the matrix stack.
+*   **What changes**: the value of `prevTimeInPortal + (timeInPortal - prevTimeInPortal) * partialTicks` goes through
+    `LookHooks.portalWobble(f)` before it is stored. No jump, no new local. At 100% (the default) the hook returns
+    the value unchanged. The green nausea overlay 1.16.2 shows instead of the lost wobble is drawn on
+    `RenderGameOverlayEvent.Pre(ALL)`, without a patch.
+*   **Fails safe**: if the method is missing, `prevTimeInPortal` is not read exactly twice, or no `FSTORE` ends the
+    expression before another call or label, nothing is patched and `P3 ... patch skipped` is logged; the wobble
+    stays 1.12.2's at any setting.
+*   **Tested** (`-Pselftest=lookfeel`): the patch put through the dev jar's MCP-named class and Forge's SRG-named
+    `forge-1.12.2-14.23.5.2847-srgBin.jar` adds exactly one hook call, inside `setupCameraTransform`, and every
+    method passes ASM's `BasicVerifier`; the hook scales by the square (50% gives a quarter). `runClient
+    -Pselftest=client`: applied when the client loads the class.
+
+### P4. Entity Distance
+
+*   **Class**: `net.minecraft.client.renderer.RenderGlobal`, method `setupTerrain` (`func_174970_a`). **Transformer**:
+    `asm/LookTransformer`. **Hook**: `lookfeel/LookHooks.entityDistance`. **Stream**: Lf.
+*   **Vanilla 1.16**: `LevelRenderer.renderLevel` sets `Entity.setViewScale(clamp(renderDistance / 8, 1, 2.5) *
+    entityDistanceScaling)`.
+*   **Why a patch**: 1.12.2 sets the same weight (`Entity.setRenderDistanceWeight`, a private static) in
+    `setupTerrain` every frame and reads it while culling entities in the same frame; no event runs in between.
+*   **What changes**: the argument of the method's one `Entity.setRenderDistanceWeight` call goes through
+    `LookHooks.entityDistance(w)`. At 100% (the default) it is unchanged.
+*   **Fails safe**: method missing, or not exactly one such call: skipped (`P4 ... patch skipped`); entities are
+    drawn at 1.12.2's distance.
+*   **Tested**: as P3 (dev and SRG classes, one hook call in `setupTerrain`, `BasicVerifier`; 200% doubles the
+    weight; applied in the dev client).
+
 ## Candidates: approximations made without patches that a patch would make vanilla
 
 | Where | What vanilla 1.16 does | What this mod does now | Patch |
