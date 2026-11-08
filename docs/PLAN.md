@@ -282,7 +282,8 @@ where vanilla puts them. Needs Backport Core's template loader, a jigsaw assembl
 
 Blocks 1.16 made waterloggable that this mod adds: chain, soul lantern, soul campfire, every slab, stair and
 wall (blackstone, polished blackstone, polished blackstone bricks, crimson, warped), crimson and warped
-fences, trapdoors, signs and wall signs. Left non-waterloggable until Core's adapter exists.
+fences, trapdoors, signs and wall signs. **Done** (`docs/streams/waterlog.md`): Core's `Waterloggable` on each, and
+`common/WaterRules` putting 1.16.5's source-only rule back over Fluidlogged API's defaults.
 
 ## Shared files and rules
 

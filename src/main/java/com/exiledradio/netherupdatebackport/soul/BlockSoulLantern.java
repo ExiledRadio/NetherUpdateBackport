@@ -1,5 +1,7 @@
 package com.exiledradio.netherupdatebackport.soul;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -25,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * standing otherwise; it needs a centre to rest on or hang from (a full face, a fence or wall post, a chain's
  * end) and breaks when that goes. Its own block, not Village &amp; Pillage's lantern (that is 1.14's).
  */
-public final class BlockSoulLantern extends Block {
+public final class BlockSoulLantern extends Block implements Waterloggable {
 
     public static final PropertyBool HANGING = PropertyBool.create("hanging");
 

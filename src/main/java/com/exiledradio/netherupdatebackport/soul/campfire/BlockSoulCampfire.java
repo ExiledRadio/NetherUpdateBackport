@@ -1,5 +1,8 @@
 package com.exiledradio.netherupdatebackport.soul.campfire;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+import com.exiledradio.backportcore.waterlog.Waterlogging;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
@@ -55,9 +58,17 @@ import java.util.Random;
  * <h2>State</h2>
  * Three properties, all kept in metadata: {@code facing} (the way the logs lie, and which slot is
  * which), {@code lit}, and {@code signal_fire} - true while a hay bale sits directly underneath, which
- * sends the smoke up three times as high. 1.14's fourth, {@code waterlogged}, has nothing to mean in
- * 1.12.2; pouring water on the campfire puts it out instead (see below), which is what waterlogging a
- * lit one does.
+ * sends the smoke up three times as high. 1.16's fourth, {@code waterlogged}, is not a property here: the
+ * water is Fluidlogged API's, through Backport Core's {@link Waterloggable} (see {@code common/WaterRules}).
+ *
+ * <h2>Water (1.16.5's {@code CampfireBlock})</h2>
+ * <ul>
+ * <li>Placed into a water source it is waterlogged and unlit.</li>
+ * <li>Water coming in (a water bucket, a command, a source forming) puts a lit one out with the hiss
+ * ({@code entity.generic.extinguish_fire}) and the smoke burst; what is cooking stays.</li>
+ * <li>A waterlogged campfire cannot be lit: flint and steel and fire charges act as on any block (fire in
+ * front), burning arrows and fireballs do nothing.</li>
+ * </ul>
  *
  * <h2>What it does, from minecraft.wiki (current Java)</h2>
  * <ul>
@@ -77,7 +88,7 @@ import java.util.Random;
  * </ul>
  *
  */
-public class BlockSoulCampfire extends Block implements ITileEntityProvider {
+public class BlockSoulCampfire extends Block implements ITileEntityProvider, Waterloggable {
 
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool LIT = PropertyBool.create("lit");
@@ -144,13 +155,16 @@ public class BlockSoulCampfire extends Block implements ITileEntityProvider {
         return meta;
     }
 
-    /** Placed lit, facing the way the player looks, a signal fire if there is hay underneath. */
+    /**
+     * Placed lit, facing the way the player looks, a signal fire if there is hay underneath; placed into a
+     * water source, unlit (1.16.5: {@code LIT = !waterlogged}).
+     */
     @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY,
                                             float hitZ, int meta, EntityLivingBase placer) {
         return getDefaultState()
                 .withProperty(FACING, placer.getHorizontalFacing())
-                .withProperty(LIT, Boolean.TRUE)
+                .withProperty(LIT, Boolean.valueOf(!Waterlogging.hasWaterSource(world, pos)))
                 .withProperty(SIGNAL_FIRE, Boolean.valueOf(isHay(world.getBlockState(pos.down()))));
     }
 
@@ -202,7 +216,9 @@ public class BlockSoulCampfire extends Block implements ITileEntityProvider {
         boolean lit = state.getValue(LIT).booleanValue();
         Item item = held.getItem();
 
-        if (!lit && item instanceof ItemFlintAndSteel) {
+        // 1.16.5's canLight: never while waterlogged; the item then lights the space in front, as on any block.
+        boolean canLight = !lit && !Waterlogging.hasWater(world, pos);
+        if (canLight && item instanceof ItemFlintAndSteel) {
             if (!world.isRemote) {
                 world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F,
                         world.rand.nextFloat() * 0.4F + 0.8F);
@@ -211,7 +227,7 @@ public class BlockSoulCampfire extends Block implements ITileEntityProvider {
             }
             return true;
         }
-        if (!lit && item instanceof ItemFireball) {
+        if (canLight && item instanceof ItemFireball) {
             if (!world.isRemote) {
                 world.playSound(null, pos, SoundEvents.ITEM_FIRECHARGE_USE, SoundCategory.BLOCKS, 1.0F,
                         (world.rand.nextFloat() - world.rand.nextFloat()) * 0.2F + 1.0F);
@@ -229,16 +245,7 @@ public class BlockSoulCampfire extends Block implements ITileEntityProvider {
             }
             return true;
         }
-        if (lit && item == Items.WATER_BUCKET) {
-            if (!world.isRemote) {
-                extinguish(world, pos, state, true);
-                if (!player.capabilities.isCreativeMode) {
-                    player.setHeldItem(hand, new ItemStack(Items.BUCKET));
-                }
-                player.addStat(StatList.getObjectUseStats(Items.WATER_BUCKET));
-            }
-            return true;
-        }
+        // A water bucket is left to the bucket: it waterlogs the campfire, which puts it out (onWaterChanged).
 
         TileEntity tile = world.getTileEntity(pos);
         if (tile instanceof TileEntitySoulCampfire && SoulCampfireRecipes.cooks(held)) {
@@ -277,9 +284,32 @@ public class BlockSoulCampfire extends Block implements ITileEntityProvider {
         }
     }
 
-    /** Lights an unlit campfire from outside: a burning arrow. */
+    /**
+     * 1.16.5's {@code placeLiquid}: water coming into a lit campfire puts it out, with the hiss and the smoke burst,
+     * keeping what is cooking.
+     */
+    @Override
+    public void onWaterChanged(World world, BlockPos pos, IBlockState state, boolean hasWater) {
+        if (!hasWater || world.isRemote) {
+            return;
+        }
+        IBlockState now = world.getBlockState(pos);
+        if (!isLit(now)) {
+            return;
+        }
+        world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        PacketSoulCampfireDowse.send(world, pos, now.getValue(SIGNAL_FIRE).booleanValue());
+        setLit(world, pos, now, false);
+        TileEntity tile = world.getTileEntity(pos);
+        if (tile instanceof TileEntitySoulCampfire) {
+            ((TileEntitySoulCampfire) tile).dowse();
+        }
+    }
+
+    /** Lights an unlit campfire from outside: a burning arrow. Never a waterlogged one. */
     public static void ignite(World world, BlockPos pos, IBlockState state) {
-        if (state.getBlock() instanceof BlockSoulCampfire && !state.getValue(LIT).booleanValue() && !world.isRemote) {
+        if (state.getBlock() instanceof BlockSoulCampfire && !state.getValue(LIT).booleanValue() && !world.isRemote
+                && !Waterlogging.hasWater(world, pos)) {
             setLit(world, pos, state, true);
         }
     }

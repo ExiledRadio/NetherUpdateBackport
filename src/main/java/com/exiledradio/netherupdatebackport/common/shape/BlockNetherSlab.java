@@ -1,5 +1,7 @@
 package com.exiledradio.netherupdatebackport.common.shape;
 
+import com.exiledradio.backportcore.waterlog.Waterloggable;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.MapColor;
@@ -37,7 +39,14 @@ import java.util.Random;
  * Strength, sound and map color come from the block the slab is made of. Fire behavior is the caller's
  * ({@code Blocks.FIRE.setFireInfo}); nether woods never burn, so they set none.
  */
-public abstract class BlockNetherSlab extends BlockSlab {
+public abstract class BlockNetherSlab extends BlockSlab implements Waterloggable {
+
+    /** 1.16.5's {@code SlabBlock}: a half slab holds water, a double slab never does. */
+    @Override
+    public boolean canHoldWater(IBlockState state, IBlockAccess world, BlockPos pos) {
+        return !isDouble();
+    }
+
 
     public static final PropertyEnum<Variant> VARIANT = PropertyEnum.create("variant", Variant.class);
 

@@ -59,6 +59,7 @@ public final class SelfTestRunner {
             new MusicSelfTest(),
             new StructureSelfTest(),
             new FutureMcSelfTest(),
+            new WaterlogSelfTest(),
     };
 
     private final List<String> wanted;
