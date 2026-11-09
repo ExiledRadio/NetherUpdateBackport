@@ -1,5 +1,6 @@
 package com.exiledradio.netherupdatebackport;
 
+import com.exiledradio.backportcore.settings.Setting;
 import net.minecraftforge.common.config.Config;
 import net.minecraftforge.common.config.ConfigManager;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -25,58 +26,72 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Config(modid = NetherUpdateBackport.MOD_ID, name = NetherUpdateBackport.MOD_ID)
 public final class ModConfig {
 
+    @Setting.Feature(icon = "netherupdatebackport:blackstone")
     @Config.LangKey("config.netherupdatebackport.stone")
     @Config.Comment("Blackstone, polished blackstone and its bricks, gilded blackstone, basalt and polished basalt.")
     public static final Stone stone = new Stone();
 
+    @Setting.Feature(icon = "netherupdatebackport:chain")
     @Config.LangKey("config.netherupdatebackport.blocks")
     @Config.Comment("Chains, crying obsidian, targets, respawn anchors, lodestones, nether gold ore, quartz bricks and the new nether bricks.")
     public static final Blocks blocks = new Blocks();
 
+    @Setting.Feature(icon = "netherupdatebackport:crimson_fungus")
     @Config.LangKey("config.netherupdatebackport.fungus")
     @Config.Comment("Crimson and warped nylium, fungi, roots, vines, wart blocks, shroomlight and both wood sets.")
     public static final Fungus fungus = new Fungus();
 
+    @Setting.Feature(icon = "netherupdatebackport:soul_lantern")
     @Config.LangKey("config.netherupdatebackport.soul")
     @Config.Comment("Soul soil, soul fire, soul torches, soul lanterns, soul campfires and Soul Speed.")
     public static final Soul soul = new Soul();
 
+    @Setting.Feature(icon = "netherupdatebackport:netherite_ingot")
     @Config.LangKey("config.netherupdatebackport.netherite")
     @Config.Comment("Ancient debris, netherite scrap and ingots, the netherite block, netherite tools and armor.")
     public static final Netherite netherite = new Netherite();
 
+    @Setting.Feature(icon = "minecraft:porkchop")
     @Config.LangKey("config.netherupdatebackport.hoglins")
     @Config.Comment("Hoglins and zoglins.")
     public static final Hoglins hoglins = new Hoglins();
 
+    @Setting.Feature(icon = "netherupdatebackport:piglin_banner_pattern")
     @Config.LangKey("config.netherupdatebackport.piglins")
     @Config.Comment("Piglins, piglin brutes, bartering and the Snout banner pattern.")
     public static final Piglins piglins = new Piglins();
 
+    @Setting.Feature(icon = "netherupdatebackport:warped_fungus_on_a_stick")
     @Config.LangKey("config.netherupdatebackport.striders")
     @Config.Comment("Striders and the warped fungus on a stick.")
     public static final Striders striders = new Striders();
 
+    @Setting.Feature(icon = "minecraft:gold_nugget")
     @Config.LangKey("config.netherupdatebackport.mobs")
     @Config.Comment("Zombie pigmen become zombified piglins, and 1.16's other changes to existing mobs.")
     public static final Mobs mobs = new Mobs();
 
+    @Setting.Feature(icon = "netherupdatebackport:music_disc_pigstep")
     @Config.LangKey("config.netherupdatebackport.music")
     @Config.Comment("The Pigstep music disc, 1.16's nether music and its ambient sounds.")
     public static final Music music = new Music();
 
+    @Setting.Feature(icon = "minecraft:iron_hoe")
     @Config.LangKey("config.netherupdatebackport.changes")
     @Config.Comment("Smaller 1.16 changes to existing blocks and items.")
     public static final Changes changes = new Changes();
 
+    @Setting.Feature(icon = "netherupdatebackport:crimson_nylium")
     @Config.LangKey("config.netherupdatebackport.biomes")
     @Config.Comment("The crimson forest, warped forest, soul sand valley and basalt deltas.")
     public static final Biomes biomes = new Biomes();
 
+    @Setting.Feature(icon = "netherupdatebackport:gilded_blackstone")
     @Config.LangKey("config.netherupdatebackport.structures")
     @Config.Comment("Bastion remnants, nether fossils and ruined portals.")
     public static final Structures structures = new Structures();
 
+    @Setting.Feature(icon = "minecraft:comparator")
     @Config.LangKey("config.netherupdatebackport.compat")
     @Config.Comment("How this mod behaves alongside other mods.")
     public static final Compat compat = new Compat();
@@ -92,6 +107,7 @@ public final class ModConfig {
         public boolean enabled = true;
 
         @Config.Comment("Blackstone generates in blobs in the nether, in newly generated chunks.")
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.stone.generate")
         public boolean generate = true;
 
@@ -107,6 +123,7 @@ public final class ModConfig {
         public boolean enabled = true;
 
         @Config.Comment("Nether gold ore generates in the nether, in newly generated chunks.")
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.blocks.generateGold")
         public boolean generateGold = true;
     }
@@ -141,10 +158,14 @@ public final class ModConfig {
         @Config.Comment({"What the soul campfire cooks besides food a furnace cooks into food, as 'modid:item' or",
                 "'modid:item=modid:result', with ':meta' to pick one variant. Not read when the campfire's own mod is",
                 "installed: the soul campfire then cooks exactly what that campfire cooks."})
+        @Config.RequiresMcRestart
+        @Setting.ListOf(Setting.Kind.ITEM)
         @Config.LangKey("config.netherupdatebackport.soul.campfireExtraFoods")
         public String[] campfireExtraFoods = {};
 
         @Config.Comment("Items the soul campfire refuses, as 'modid:item' or 'modid:item:meta'.")
+        @Config.RequiresMcRestart
+        @Setting.ListOf(Setting.Kind.ITEM)
         @Config.LangKey("config.netherupdatebackport.soul.campfireExcludedFoods")
         public String[] campfireExcludedFoods = {};
     }
@@ -156,6 +177,7 @@ public final class ModConfig {
         public boolean enabled = true;
 
         @Config.Comment("Ancient debris generates in the nether, in newly generated chunks.")
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.netherite.generate")
         public boolean generate = true;
 
@@ -215,10 +237,12 @@ public final class ModConfig {
         @Config.RequiresMcRestart
         @Config.Comment({"1.16's music: each nether biome has its own tracks, and music no longer stops when you switch game",
                 "modes or walk into another biome. Client only."})
+        @Setting.Client
         @Config.LangKey("config.netherupdatebackport.music.biomeMusic")
         public boolean biomeMusic = true;
 
         @Config.Comment("1.16's nether ambience: each nether biome's sound loop, mood sounds and additions. Client only.")
+        @Setting.Client
         @Config.LangKey("config.netherupdatebackport.music.biomeAmbience")
         public boolean biomeAmbience = true;
     }
@@ -236,6 +260,7 @@ public final class ModConfig {
         public boolean hoes = true;
 
         @Config.Comment("In lava you see 5 blocks with Fire Resistance and 1 without.")
+        @Setting.Client
         @Config.LangKey("config.netherupdatebackport.changes.lavaFog")
         public boolean lavaFog = true;
     }
@@ -244,6 +269,7 @@ public final class ModConfig {
         @Config.RequiresMcRestart
         @Config.Comment({"The crimson forest, warped forest, soul sand valley and basalt deltas, in nether chunks generated from now",
                 "on, laid out as in 1.16 for the world's seed. Chunks generated before stay nether wastes. Off, nothing is registered."})
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.biomes.enabled")
         public boolean enabled = true;
 
@@ -251,12 +277,14 @@ public final class ModConfig {
         @Config.Comment({"How much room each nether biome takes, as 'biome=number': 1 is 1.16's (and keeps the map the same as",
                 "1.16's for the seed), more grows a biome, less shrinks it, 0 removes it. Biomes are nether_wastes,",
                 "crimson_forest, warped_forest, soul_sand_valley and basalt_deltas."})
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.biomes.weights")
         public String[] weights = {"nether_wastes=1", "crimson_forest=1", "warped_forest=1", "soul_sand_valley=1", "basalt_deltas=1"};
 
         @Config.RequiresMcRestart
         @Config.Comment({"When another mod has already replaced the nether (with biomes of its own), the 1.16 biomes step aside.",
                 "On, they replace that mod's nether instead."})
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.biomes.overrideOtherMods")
         public boolean overrideOtherMods = false;
     }
@@ -265,22 +293,26 @@ public final class ModConfig {
         @Config.RequiresMcRestart
         @Config.Comment({"Bastion remnants, ruined portals and nether fossils in chunks generated from now on, where 1.16 puts them",
                 "for the world's seed. Off, none of them generate and nether fortresses stay where 1.12.2 puts them."})
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.structures.enabled")
         public boolean enabled = true;
 
         @Config.RequiresMcRestart
         @Config.Comment({"Bastion remnants in the nether. As in 1.16 they take nether fortress slots: each spot of the grid has a",
                 "bastion or a fortress, so fortresses move to 1.16's places. Off, fortresses stay where 1.12.2 puts them."})
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.structures.bastions")
         public boolean bastions = true;
 
         @Config.RequiresMcRestart
         @Config.Comment("Ruined portals in the overworld and the nether.")
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.structures.ruinedPortals")
         public boolean ruinedPortals = true;
 
         @Config.RequiresMcRestart
         @Config.Comment("Nether fossils in soul sand valleys (needs the nether biomes).")
+        @Setting.NewChunks
         @Config.LangKey("config.netherupdatebackport.structures.netherFossils")
         public boolean netherFossils = true;
     }
