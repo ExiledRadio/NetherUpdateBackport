@@ -31,9 +31,9 @@ dependencies {
     // Plain compile, never deobfCompile: flatDir matches by file name, so deobfCompile would hand
     // ForgeGradle the SRG-named jar and every Minecraft call in it would fail to link in dev.
     compile name: "BackportCore-${core_version}-dev"
-    // Fluidlogged API 3.3.3 (CurseForge 485654, file 8445863), which Backport Core 1.1.0 requires for
-    // waterlogging. Core's dev jar does not carry it. deobfCompile maps it to dev names, and FG2's
-    // GradleStart finds its coremod on the classpath. Never shade it.
+    // Fluidlogged API 3.3.3 (CurseForge 485654, file 8445863): optional, it only adds waterlogging,
+    // through Backport Core. On the dev classpath for runs and self-tests (which need it). deobfCompile maps
+    // it to dev names, and FG2's GradleStart finds its coremod on the classpath. Never shade it.
     deobfCompile 'curse.maven:fluidlogged-api-485654:8445863'
 }
 
@@ -182,3 +182,20 @@ deployToInstance.dependsOn reobfJar
 // build LAST: any run task afterwards rewrites build/libs with an unmapped jar.
 reobfJar.outputs.upToDateWhen { false }
 build.finalizedBy deployToInstance
+
+// -PnoFluidlogged: runClient and runServer without Fluidlogged API on the classpath, to play the mod as a game
+// without it. The classes are compiled as usual (against it), exactly as the release jar is.
+if (project.hasProperty('noFluidlogged')) {
+    afterEvaluate {
+        [runClient, runServer].each { task ->
+            task.classpath = task.classpath.filter { !it.name.contains('fluidlogged') }
+        }
+    }
+}
+
+// -PjoinPort=N: the dev client joins localhost:N at start, for checks against a dev server in the same run dir.
+if (project.hasProperty('joinPort')) {
+    afterEvaluate {
+        runClient.args '--server', 'localhost', '--port', project.property('joinPort').toString()
+    }
+}

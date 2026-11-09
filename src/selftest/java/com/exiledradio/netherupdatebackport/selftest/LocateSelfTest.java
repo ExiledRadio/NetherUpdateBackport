@@ -89,7 +89,10 @@ final class LocateSelfTest implements SelfTest {
 
         List<String> ids = LocateChecks.complete(server, nether, origin, "locate structure ");
         c.ok(ids.containsAll(Arrays.asList("minecraft:bastion_remnant", "minecraft:nether_fossil", "minecraft:fortress",
-                "#minecraft:ruined_portal", "minecraft:ruined_portal", "minecraft:ruined_portal_nether")), "completion lists the ids: " + ids);
+                "minecraft:ruined_portal", "minecraft:ruined_portal_nether")) && !ids.contains("#minecraft:ruined_portal"),
+                "completion lists the ids, tags only after '#' (Core df1c4b6): " + ids);
+        List<String> tags = LocateChecks.complete(server, nether, origin, "locate structure #");
+        c.ok(tags.contains("#minecraft:ruined_portal"), "after '#' it lists the tags: " + tags);
         List<String> portals = LocateChecks.complete(server, nether, origin, "locate structure ruined_portal");
         c.eq(7, portals.size(), "completion lists the seven ruined portals: " + portals);
     }
