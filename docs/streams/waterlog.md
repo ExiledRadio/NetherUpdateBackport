@@ -5,6 +5,10 @@ Fluidlogged API 3.3.3, with 1.16.5's rules. No config, no packets, no entity ids
 (new), `common/shape/Shapes` (stairs, walls, fences, trapdoors), `common/shape/BlockNetherSlab`, `fungus/NetherSigns`,
 `blocks/BlockChain`, `soul/BlockSoulLantern`, `soul/campfire/BlockSoulCampfire`.
 
+Fluidlogged API is optional (Backport Core requires it, this mod does not). Without it these blocks never hold
+water and the soul campfire works as before this stream: placed lit, and a water bucket puts a lit one out (hiss,
+smoke burst, empty bucket back). `Waterlogging.isAvailable()` picks.
+
 ## Changelog section
 
 *   **Waterlogging**: chain, soul lantern, soul campfire, every blackstone, polished blackstone, polished blackstone

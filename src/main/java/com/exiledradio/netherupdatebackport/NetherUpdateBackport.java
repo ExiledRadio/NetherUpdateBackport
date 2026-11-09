@@ -33,7 +33,7 @@ import org.apache.logging.log4j.Logger;
         name = NetherUpdateBackport.MOD_NAME,
         version = NetherUpdateBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.1.0,);required-after:fluidlogged_api@[3.3.3,)"
+        dependencies = "required-after:backportcore@[1.1.0,)"
 )
 public final class NetherUpdateBackport {
 

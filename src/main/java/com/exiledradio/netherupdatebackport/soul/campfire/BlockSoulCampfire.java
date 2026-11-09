@@ -59,9 +59,12 @@ import java.util.Random;
  * Three properties, all kept in metadata: {@code facing} (the way the logs lie, and which slot is
  * which), {@code lit}, and {@code signal_fire} - true while a hay bale sits directly underneath, which
  * sends the smoke up three times as high. 1.16's fourth, {@code waterlogged}, is not a property here: the
- * water is Fluidlogged API's, through Backport Core's {@link Waterloggable} (and Backport Core's 1.13+ rules, {@code waterlog/WaterRules}).
+ * water is Fluidlogged API's, through Backport Core's {@link Waterloggable} (and Backport Core's 1.13+ rules, {@code waterlog/fluidlogged/WaterRules}).
  *
  * <h2>Water (1.16.5's {@code CampfireBlock})</h2>
+ * Only with Fluidlogged API installed ({@link Waterlogging#isAvailable()}). Without it the campfire is never
+ * waterlogged: it is placed lit, and a water bucket used on a lit one puts it out (hiss and smoke burst) and
+ * leaves an empty bucket, as before waterlogging.
  * <ul>
  * <li>Placed into a water source it is waterlogged and unlit.</li>
  * <li>Water coming in (a water bucket, a command, a source forming) puts a lit one out with the hiss
@@ -164,7 +167,7 @@ public class BlockSoulCampfire extends Block implements ITileEntityProvider, Wat
                                             float hitZ, int meta, EntityLivingBase placer) {
         return getDefaultState()
                 .withProperty(FACING, placer.getHorizontalFacing())
-                .withProperty(LIT, Boolean.valueOf(!Waterlogging.hasWaterSource(world, pos)))
+                .withProperty(LIT, Boolean.valueOf(!Waterlogging.isAvailable() || !Waterlogging.hasWaterSource(world, pos)))
                 .withProperty(SIGNAL_FIRE, Boolean.valueOf(isHay(world.getBlockState(pos.down()))));
     }
 
@@ -245,7 +248,18 @@ public class BlockSoulCampfire extends Block implements ITileEntityProvider, Wat
             }
             return true;
         }
-        // A water bucket is left to the bucket: it waterlogs the campfire, which puts it out (onWaterChanged).
+        // With Fluidlogged API a water bucket is left to the bucket: it waterlogs the campfire, which puts it out
+        // (onWaterChanged). Without it the campfire can't hold water, so the bucket puts it out here.
+        if (lit && item == Items.WATER_BUCKET && !Waterlogging.isAvailable()) {
+            if (!world.isRemote) {
+                extinguish(world, pos, state, true);
+                if (!player.capabilities.isCreativeMode) {
+                    player.setHeldItem(hand, new ItemStack(Items.BUCKET));
+                }
+                player.addStat(StatList.getObjectUseStats(Items.WATER_BUCKET));
+            }
+            return true;
+        }
 
         TileEntity tile = world.getTileEntity(pos);
         if (tile instanceof TileEntitySoulCampfire && SoulCampfireRecipes.cooks(held)) {
