@@ -13,7 +13,7 @@ import net.minecraft.world.World;
  * <p>Fire damage of every kind is ignored (1.16's {@code canBeHurtBy}), and 1.12.2's fire-immune flag skips
  * the burning. In lava the item moves as 1.16.5's {@code ItemEntity} does: no gravity, sideways motion slowed to
  * 95%, and a slight rise, so it slows down, then floats up; 1.12.2's random bounce of items in lava is undone.
- * 1.12.2 still plays its fizz when the item enters a new lava block (1.16 is silent for these). Made by {@link Fireproof#createEntity}, so every drop of
+ * 1.12.2's fizz in lava is muted, as 1.16 is silent for these. Made by {@link Fireproof#createEntity}, so every drop of
  * these items (a player's toss, a death, a broken block) is one of these.
  */
 public final class EntityFireproofItem extends EntityItem {
@@ -66,6 +66,14 @@ public final class EntityFireproofItem extends EntityItem {
     @Override
     public boolean attackEntityFrom(net.minecraft.util.DamageSource source, float amount) {
         return !source.isFireDamage() && super.attackEntityFrom(source, amount);
+    }
+
+    /** 1.12.2's item update fizzes in lava even for items that cannot burn; 1.16 is silent for these. */
+    @Override
+    public void playSound(net.minecraft.util.SoundEvent sound, float volume, float pitch) {
+        if (sound != net.minecraft.init.SoundEvents.ENTITY_GENERIC_BURN) {
+            super.playSound(sound, volume, pitch);
+        }
     }
 
     @Override
