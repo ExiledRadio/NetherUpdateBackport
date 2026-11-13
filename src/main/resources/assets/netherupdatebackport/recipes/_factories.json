@@ -1,5 +1,8 @@
 {
   "conditions": {
     "items": "com.exiledradio.netherupdatebackport.common.StreamCondition"
+  },
+  "recipes": {
+    "nether_wood_shaped": "com.exiledradio.netherupdatebackport.common.NetherWoodRecipe$Factory"
   }
 }
