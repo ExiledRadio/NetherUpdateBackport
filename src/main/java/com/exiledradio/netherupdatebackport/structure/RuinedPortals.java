@@ -11,6 +11,7 @@ import com.exiledradio.backportcore.structure.Structures;
 import com.exiledradio.backportcore.structure.TemplatePlacement;
 import com.exiledradio.backportcore.structure.VanillaPlacements;
 import com.exiledradio.backportcore.terrain.NetherHeights;
+import com.exiledradio.backportcore.terrain.WorldHeights;
 
 import net.minecraft.init.Biomes;
 import net.minecraft.util.Mirror;
@@ -335,7 +336,7 @@ public final class RuinedPortals extends ScatteredStructure {
         int cx = box.minX + (box.maxX - box.minX + 1) / 2;
         int cz = box.minZ + (box.maxZ - box.minZ + 1) / 2;
         int k = baseHeight(world, base, cx, cz, l.placement.oceanFloor()) - 1;
-        int y = findSuitableY(random, base, l, k, box.getYSize(), box);
+        int y = findSuitableY(random, base, l, k, box.getYSize(), box, WorldHeights.minY(world) + 15);
         l.position = new BlockPos(corner.getX(), y, corner.getZ());
         if (type == Type.MOUNTAIN || type == Type.OCEAN || type == Type.STANDARD) {
             l.cold = quartBiome(world, chunkX, chunkZ).getTemperature(l.position) < 0.15F;
@@ -354,7 +355,11 @@ public final class RuinedPortals extends ScatteredStructure {
         return h == NetherHeights.UNKNOWN ? world.getSeaLevel() + 1 : h;
     }
 
-    private static int findSuitableY(Random random, @Nullable NetherHeights base, Layout l, int k, int ySpan, StructureBoundingBox box) {
+    /**
+     * {@code RuinedPortalFeature.findSuitableY}. {@code lowest} is the world's bottom + 15 (1.18's
+     * {@code getMinBuildHeight() + 15}; y 15 in a 1.16 world, y -49 in a 1.18 terrain world).
+     */
+    private static int findSuitableY(Random random, @Nullable NetherHeights base, Layout l, int k, int ySpan, StructureBoundingBox box, int lowest) {
         int i;
         switch (l.placement) {
             case IN_NETHER:
@@ -370,7 +375,7 @@ public final class RuinedPortals extends ScatteredStructure {
                 i = randomWithinInterval(random, 70, k - ySpan);
                 break;
             case UNDERGROUND:
-                i = randomWithinInterval(random, 15, k - ySpan);
+                i = randomWithinInterval(random, lowest, k - ySpan);
                 break;
             case PARTLY_BURIED:
                 i = k - ySpan + randomIntInclusive(random, 2, 8);
@@ -382,7 +387,7 @@ public final class RuinedPortals extends ScatteredStructure {
         int[][] corners = {{box.minX, box.minZ}, {box.maxX, box.minZ}, {box.minX, box.maxZ}, {box.maxX, box.maxZ}};
         boolean oceanFloor = l.placement.oceanFloor();
         int y;
-        for (y = i; y > 15; --y) {
+        for (y = i; y > lowest; --y) {
             int opaque = 0;
             for (int[] c : corners) {
                 if (opaqueAt(base, c[0], y, c[1], oceanFloor)) {

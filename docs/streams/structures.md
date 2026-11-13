@@ -70,7 +70,9 @@ fortress slots.
     biomes; every nether biome is `nether`. The start is `RuinedPortalStructure.Start.generatePieces` line for line:
     placement and settings per type, giant 5%, template, rotation, mirror, the base height at the box's middle
     (`NetherHeights.baseForWorld`: `height` for `WORLD_SURFACE_WG`, `floor` for `OCEAN_FLOOR_WG`), `findSuitableY` with
-    its 3-of-4-corners test on the base columns, `cold` from the biome's temperature there. The template places with
+    its 3-of-4-corners test on the base columns, `cold` from the biome's temperature there. The lowest y is the world's bottom
+    + 15 (1.18's `getMinBuildHeight() + 15`): y 15 in a 1.16 world, y -49 in Caves & Cliffs Backport's 1.18 terrain, where
+    underground portals go as deep as 1.18's. The template places with
     1.16's processors in 1.16's order (rules built as 1.16 JSON and read by Core, `blockAge`, `lavaSubmerged`,
     `blackstoneReplace`). Then `PortalExtras` runs 1.16's `spreadNetherrack`, `addNetherrackDripColumnsBelowPortal`,
     vines and leaves with 1.16's random (the start chunk's `setDecorationSeed`, feature index 5 of `SURFACE_STRUCTURES`,
