@@ -83,7 +83,14 @@ for n in assets.JAR.namelist():
         # Every 1.12.2 wooden thing; anything 1.12.2 lacks (barrels, looms, beds by color) raises and is skipped.
         made.append(building.port_recipe(name, OURS, our_name="nether_wood_" + name, tags=wood_tags))
     except KeyError:
-        pass
+        continue
+    # Only a grid with some nether wood in it (common/NetherWoodRecipe): vanilla's recipe has the rest, and a
+    # mod's per-wood bookshelves and chests keep theirs.
+    path = os.path.join(assets.ASSETS, "recipes", made[-1] + ".json")
+    recipe = json.load(open(path, encoding="utf-8"))
+    if recipe["type"] == "minecraft:crafting_shaped":
+        recipe["type"] = "%s:nether_wood_shaped" % M
+        assets.write_json("recipes/%s.json" % made[-1], recipe)
 
 # Names -------------------------------------------------------------------------------------------
 lines = building.name_lines(ITEM_BLOCKS)

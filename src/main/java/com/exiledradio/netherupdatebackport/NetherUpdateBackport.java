@@ -33,7 +33,9 @@ import org.apache.logging.log4j.Logger;
         name = NetherUpdateBackport.MOD_NAME,
         version = NetherUpdateBackport.VERSION,
         acceptedMinecraftVersions = "[1.12.2]",
-        dependencies = "required-after:backportcore@[1.1.0,)"
+        // Loaded before quark, so recipes are listed first: its trapdoor recipe takes any planks, and listed
+        // ahead of this mod's it turned this mod's planks into oak trapdoors instead of their own.
+        dependencies = "required-after:backportcore@[1.1.0,);before:quark"
 )
 public final class NetherUpdateBackport {
 
@@ -56,6 +58,16 @@ public final class NetherUpdateBackport {
         NetworkHandler.init();
         com.exiledradio.netherupdatebackport.lookfeel.LookAndFeel.preInit();
         com.exiledradio.netherupdatebackport.common.Triggers.init();
+        // Family Rule 1: this mod's blocks are claimed here, before any registry event. Claimed only inside the
+        // block registry event, a mod that copies one (Trails & Tales' chain) and happened to load first saw no
+        // owner and registered its copy beside ours. The registry events still claim them too; that is harmless.
+        for (String[] names : new String[][] {com.exiledradio.netherupdatebackport.blocks.BlocksContent.NAMES,
+                com.exiledradio.netherupdatebackport.fungus.FungusContent.names().toArray(new String[0]),
+                com.exiledradio.netherupdatebackport.netherite.NetheriteContent.NAMES,
+                com.exiledradio.netherupdatebackport.soul.SoulContent.NAMES,
+                com.exiledradio.netherupdatebackport.stone.StoneContent.NAMES}) {
+            com.exiledradio.backportcore.ownership.BlockOwnership.declare(MOD_ID, names);
+        }
         com.exiledradio.netherupdatebackport.owned.OwnedContent.preInit();
         com.exiledradio.netherupdatebackport.mobs.MobsContent.preInit();
         com.exiledradio.netherupdatebackport.structure.StructureContent.preInit();
