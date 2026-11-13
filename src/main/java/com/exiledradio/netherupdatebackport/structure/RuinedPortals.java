@@ -4,7 +4,10 @@ import com.exiledradio.backportcore.structure.JigsawPools;
 import com.exiledradio.backportcore.structure.ModernTemplate;
 import com.exiledradio.backportcore.structure.ScatteredPlacement;
 import com.exiledradio.backportcore.structure.ScatteredStructure;
+import com.exiledradio.backportcore.structure.StartRule;
+import com.exiledradio.backportcore.structure.StartRules;
 import com.exiledradio.backportcore.structure.StructureRandoms;
+import com.exiledradio.backportcore.structure.Structures;
 import com.exiledradio.backportcore.structure.TemplatePlacement;
 import com.exiledradio.backportcore.structure.VanillaPlacements;
 import com.exiledradio.backportcore.terrain.NetherHeights;
@@ -110,13 +113,37 @@ public final class RuinedPortals extends ScatteredStructure {
         return type(world, chunkX, chunkZ) != null;
     }
 
-    /** @return the ruined portal the biome at the chunk's middle quart lists, or null for none (the end, the void) */
+    /**
+     * @return the ruined portal the biome at the chunk's middle quart lists, or null for none (the end, the void). In
+     * a world whose generator decides where ruined portals start (Caves &amp; Cliffs Backport's 1.18 terrain, through
+     * Backport Core's {@code StartRules}), the one it names, or null where it starts none.
+     */
     @Nullable
     Type type(World world, int chunkX, int chunkZ) {
         if (this.nether) {
             return Type.NETHER;
         }
+        StartRule rule = StartRules.of(world, Structures.RUINED_PORTAL);
+        if (rule != null) {
+            return ruled(rule.startAt(chunkX, chunkZ));
+        }
         return typeOf(quartBiome(world, chunkX, chunkZ));
+    }
+
+    /** The type of today's id {@code ruined_portal} or {@code ruined_portal_<type>}, or null for none. */
+    @Nullable
+    static Type ruled(@Nullable String id) {
+        if (id == null || !id.startsWith("ruined_portal")) {
+            return null;
+        }
+        if (id.equals("ruined_portal")) {
+            return Type.STANDARD;
+        }
+        try {
+            return Type.valueOf(id.substring("ruined_portal_".length()).toUpperCase(Locale.ROOT));
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
     }
 
     /** The noise biome at the chunk's middle quart: 1.12.2's biomes at 1:4, as 1.16's {@code getNoiseBiome} reads. */
