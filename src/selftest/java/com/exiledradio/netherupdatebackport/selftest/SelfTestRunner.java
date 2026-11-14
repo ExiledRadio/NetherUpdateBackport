@@ -64,6 +64,7 @@ public final class SelfTestRunner {
             new WaterlogSelfTest(),
             new LookFeelSelfTest(),
             new LocateSelfTest(),
+            new FlatSelfTest(),
     };
 
     private final List<String> wanted;
