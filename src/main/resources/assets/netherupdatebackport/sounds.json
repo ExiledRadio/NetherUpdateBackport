@@ -1910,7 +1910,10 @@
   },
   "entity.strider.saddle": {
     "sounds": [
-      "netherupdatebackport:mob/horse/leather"
+      {
+        "name": "netherupdatebackport:mob/horse/leather",
+        "volume": 0.5
+      }
     ]
   },
   "entity.strider.step": {
