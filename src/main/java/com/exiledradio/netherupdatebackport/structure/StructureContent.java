@@ -6,6 +6,7 @@ import com.exiledradio.backportcore.structure.ModernPalette;
 import com.exiledradio.backportcore.structure.NetherStructureSlots;
 import com.exiledradio.backportcore.structure.ScatteredStructure;
 import com.exiledradio.backportcore.structure.Structures;
+import com.exiledradio.backportcore.worldgen.FlatWorlds;
 import com.exiledradio.netherupdatebackport.ModConfig;
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
 import com.exiledradio.netherupdatebackport.biome.NetherBiomeSource;
@@ -85,9 +86,11 @@ public final class StructureContent {
         MapGenStructureIO.registerStructureComponent(NetherFossils.Piece.class, "NUB_NetherFossilPiece");
         ScatteredStructure.register(Structures.BASTION_REMNANT,
                 world -> bastions() && world.provider.getDimension() == -1 ? new BastionStructure() : null);
+        // None in a superflat Overworld: no preset lists them (Core's ScatteredStructure.of asks as well).
         ScatteredStructure.register(Structures.RUINED_PORTAL, world -> !ruinedPortals() ? null
                 : world.provider.getDimension() == -1 ? new RuinedPortals(true)
-                : world.provider.getDimension() == 0 ? new RuinedPortals(false) : null);
+                : world.provider.getDimension() == 0 && FlatWorlds.structure(world, Structures.RUINED_PORTAL) ? new RuinedPortals(false)
+                : null);
         ScatteredStructure.register(Structures.NETHER_FOSSIL,
                 world -> netherFossils() && world.provider.getDimension() == -1 ? new NetherFossils() : null);
         StructureEvents.init();

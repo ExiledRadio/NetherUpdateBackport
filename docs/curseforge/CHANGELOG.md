@@ -1,3 +1,7 @@
+# Unreleased
+
+*   Superflat worlds get no ruined portals, with or without decoration, as no superflat preset lists them. The Nether keeps them. Needs Backport Core 1.3.0 or newer.
+
 # 1.0.0
 
 First release: all of 1.16 Nether Update on 1.12.2. Needs Backport Core 1.1.0 or newer. Fluidlogged API comes through Backport Core and only adds waterlogging.

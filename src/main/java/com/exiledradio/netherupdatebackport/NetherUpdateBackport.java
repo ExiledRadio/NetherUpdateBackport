@@ -35,7 +35,7 @@ import org.apache.logging.log4j.Logger;
         acceptedMinecraftVersions = "[1.12.2]",
         // Loaded before quark, so recipes are listed first: its trapdoor recipe takes any planks, and listed
         // ahead of this mod's it turned this mod's planks into oak trapdoors instead of their own.
-        dependencies = "required-after:backportcore@[1.2.0,);before:quark"
+        dependencies = "required-after:backportcore@[1.3.0,);before:quark"
 )
 public final class NetherUpdateBackport {
 
