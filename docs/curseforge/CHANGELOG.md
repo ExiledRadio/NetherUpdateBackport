@@ -16,6 +16,6 @@ First release: all of 1.16 Nether Update on 1.12.2. Needs Backport Core 1.1.0 or
 *   The Snout banner pattern, every 1.16 advancement for the content above, and waterlogging where 1.16 has it.
 *   1.16's look and feel through Backport Core: the nether panorama, splashes, logo, Mojang Studios loading screen, and the new options.
 *   Seed maps set to 1.16 show the nether's biomes and structures where they really are.
-*   Worlds that had another mod's 1.16 blocks and items keep them, converted to this mod's.
+*   Worlds that used another mod's chains, soul torches, soul lanterns, soul soil, ancient debris, netherite and Pigstep keep them, converted to this mod's.
 *   Every setting is on Backport Core's settings screen, under Mod Options.
 *   Eighteen languages.

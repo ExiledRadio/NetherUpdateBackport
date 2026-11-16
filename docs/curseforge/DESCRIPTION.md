@@ -4,7 +4,7 @@ All of 1.16 Nether Update, on Minecraft 1.12.2. It needs Backport Core on the cl
 
 > 💬 [Join the Discord](https://discord.gg/kxQvMDJBTN) for bug reports and questions.
 
-![A crimson forest with hoglins](PENDING:nu-crimson-forest-hoglins)
+![A warped forest lit by a lavafall](PENDING:nu-warped-forest-2)
 
 ## Biomes
 
@@ -14,9 +14,8 @@ Biomes only appear in nether chunks you haven't explored yet.
 
 | | |
 | --- | --- |
-| ![A warped forest](PENDING:nu-warped-forest) | ![The basalt deltas](PENDING:nu-basalt-deltas) |
-
-![A soul sand valley](PENDING:nu-soul-sand-valley)
+| ![A crimson forest with hoglins](PENDING:nu-crimson-forest-hoglins) | ![A warped forest with endermen](PENDING:nu-warped-forest) |
+| ![A soul sand valley](PENDING:nu-soul-sand-valley) | ![The basalt deltas](PENDING:nu-basalt-deltas) |
 
 ## Mobs
 
@@ -64,7 +63,7 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 With Village & Pillage Backport, netherite uses its smithing table, piglins carry its crossbow, and its composter takes the new plants.
 
-Worlds that had another mod's 1.16 blocks keep them, converted to this mod's.
+Worlds that used another mod's chains, soul torches, soul lanterns, soul soil, ancient debris or netherite keep them, converted to this mod's.
 
 ## Requirements
 
@@ -72,6 +71,6 @@ Minecraft 1.12.2 with Forge 14.23.5.2847 or newer, and [Backport Core](https://w
 
 ***
 
-Also by me: [Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport), all of 1.14 on 1.12.2, and [Enchantment Recipes](https://www.curseforge.com/minecraft/mc-mods/rlcraft-enchantment-recipes), which lets you craft enchanted books from mod materials.
+Also by me: [Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport), all of 1.14 on 1.12.2, [Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport), all of 1.13 on 1.12.2, [Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport), all of 1.15 on 1.12.2, and [Enchantment Recipes](https://www.curseforge.com/minecraft/mc-mods/rlcraft-enchantment-recipes), which lets you craft enchanted books from mod materials.
 
 Not affiliated with Mojang. Source: [github.com/ExiledRadio/NetherUpdateBackport](https://github.com/ExiledRadio/NetherUpdateBackport)
