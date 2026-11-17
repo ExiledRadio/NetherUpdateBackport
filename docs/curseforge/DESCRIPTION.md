@@ -4,7 +4,7 @@ All of 1.16 Nether Update, on Minecraft 1.12.2. It needs Backport Core on the cl
 
 > 💬 [Join the Discord](https://discord.gg/kxQvMDJBTN) for bug reports and questions.
 
-![A warped forest lit by a lavafall](PENDING:nu-warped-forest-2)
+![A warped forest](https://media.forgecdn.net/attachments/2182/83/nu-warped-forest-2-jpg.jpg)
 
 ## Biomes
 
@@ -12,10 +12,10 @@ The nether gets 1.16's four new biomes: the crimson forest, the warped forest, t
 
 Biomes only appear in nether chunks you haven't explored yet.
 
-| | |
-| --- | --- |
-| ![A crimson forest with hoglins](PENDING:nu-crimson-forest-hoglins) | ![A warped forest with endermen](PENDING:nu-warped-forest) |
-| ![A soul sand valley](PENDING:nu-soul-sand-valley) | ![The basalt deltas](PENDING:nu-basalt-deltas) |
+|                                                                                                                                  |                                                                                                                         |
+| -------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://media.forgecdn.net/attachments/2182/76/nu-crimson-forest-hoglins-jpg.jpg" alt="A crimson forest with hoglins"> | <img src="https://media.forgecdn.net/attachments/2182/73/nu-warped-forest-jpg.jpg" alt="A warped forest with endermen"> |
+| <img src="https://media.forgecdn.net/attachments/2182/80/nu-soul-sand-valley-jpg.jpg" alt="A soul sand valley">                  | <img src="https://media.forgecdn.net/attachments/2182/74/nu-basalt-deltas-jpg.jpg" alt="The basalt deltas">             |
 
 ## Mobs
 
@@ -27,7 +27,7 @@ Striders walk on lava. Saddle one and steer it with a warped fungus on a stick.
 
 Zombie pigmen are now zombified piglins, with 1.16's look and anger rules. Existing farms keep working.
 
-![Riding a strider over lava](PENDING:nu-strider-lava)
+![Riding a strider over lava](https://media.forgecdn.net/attachments/2182/81/nu-strider-lava-jpg.jpg)
 
 ## Structures
 
@@ -35,9 +35,9 @@ Bastion remnants come in all four kinds, built from Mojang's own files, with the
 
 `/locate structure` finds all of them.
 
-![Piglins guarding a bastion](PENDING:nu-bastion-piglins)
+![Piglins guarding a bastion](https://media.forgecdn.net/attachments/2182/75/nu-bastion-piglins-jpg.jpg)
 
-![A ruined portal](PENDING:nu-ruined-portal)
+![A ruined portal](https://media.forgecdn.net/attachments/2182/78/nu-ruined-portal-jpg.jpg)
 
 ## Netherite
 
@@ -45,7 +45,7 @@ Ancient debris hides deep in the nether. Smelt it into scrap, combine 4 scrap wi
 
 Without Village & Pillage Backport, this mod brings its own smithing table.
 
-![Netherite armor beside ancient debris](PENDING:nu-netherite)
+![Netherite armor beside ancient debris](https://media.forgecdn.net/attachments/2182/77/nu-netherite-jpg.jpg)
 
 ## Blocks
 
@@ -57,13 +57,23 @@ You also get Pigstep, Soul Speed, hoes that mine faster, clearer lava with Fire 
 
 Every feature can be turned off in Backport Core's settings screen, under Mod Options.
 
-![Nether Update Backport's settings](PENDING:nu-settings)
+![Nether Update Backport's settings](https://media.forgecdn.net/attachments/2182/79/nu-settings-jpg.jpg)
 
-## Works with
+## Compatibility
 
-With Village & Pillage Backport, netherite uses its smithing table, piglins carry its crossbow, and its composter takes the new plants.
+**[Village & Pillage Backport](https://www.curseforge.com/minecraft/mc-mods/villager-backport)**: netherite upgrades use its smithing table, piglins carry its crossbow and love its bell, and bastions and ruined portals use its lanterns, walls and crossbows. The composter takes the new plants, the soul campfire cooks what its campfire cooks, wither roses grow on soul soil, and its scaffolding is climbable like vines. Without it, this mod brings its own smithing table, lantern, crossbow, smooth quartz slab and stone brick walls.
 
-Worlds that used another mod's chains, soul torches, soul lanterns, soul soil, ancient debris or netherite keep them, converted to this mod's.
+**[Update Aquatic Backport](https://www.curseforge.com/minecraft/mc-mods/update-aquatic-backport)**: hoes mine its dried kelp blocks fast, and its blue ice works in the basalt generator.
+
+**[Buzzy Bees Backport](https://www.curseforge.com/minecraft/mc-mods/buzzy-bees-backport)**: angry bees forgive a player who dies, with the `forgiveDeadPlayers` setting.
+
+**[Caves & Cliffs Backport](https://www.curseforge.com/minecraft/mc-mods/caves-cliffs-backport)**: basalt smelts into smooth basalt, striders freeze in powder snow, mineshafts hang chains, and a doused soul campfire keeps its food. In its 1.18 worlds, ruined portals follow 1.18's placement.
+
+**[Wild Update Backport](https://www.curseforge.com/minecraft/mc-mods/wild-update-backport)**: ancient city chests can hold soul torches.
+
+**[Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport)**: crimson and warped hanging signs, the snout and netherite upgrade templates in bastions, and the piglin head.
+
+Worlds that had another mod's 1.16 blocks keep them, converted to this mod's.
 
 ## Requirements
 
