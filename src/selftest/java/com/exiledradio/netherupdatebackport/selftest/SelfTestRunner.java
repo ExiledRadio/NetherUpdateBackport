@@ -81,31 +81,55 @@ public final class SelfTestRunner {
         MinecraftForge.EVENT_BUS.register(new SelfTestRunner(Arrays.asList(which.split(","))));
     }
 
+    /** The tests still to run, one per server tick from tick 20; null before the first. */
+    private java.util.Iterator<SelfTest> queue;
+    private Check check;
+
+    /**
+     * One test per server tick, so no tick holds the whole suite: the watchdog ends the server at a tick longer than
+     * {@code max-tick-time} (60 s), which the suite as one tick comes near on a busy or E-core-only machine. Each test
+     * still runs within one tick, and each new area is cleared of the last's entities and pending block ticks.
+     */
     @SubscribeEvent
     public void tick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END || ++this.ticks != 20) {
+        if (event.phase != TickEvent.Phase.END || ++this.ticks < 20) {
             return;
         }
         MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
-        WorldServer world = server.getWorld(0);
-        Check check = new Check(world);
-        try {
-            dumpStates(server.getFile("selftest-states.txt"));
-            dumpItems(server.getFile("selftest-items.txt"));
-        } catch (Exception e) {
-            check.fail("dump: " + e);
-        }
-        for (SelfTest test : TESTS) {
-            if (this.wanted.contains("all") || this.wanted.contains(test.name()) || test instanceof ScaffoldSelfTest) {
-                check.section(test.name());
-                try {
-                    test.run(check);
-                } catch (Throwable t) {
-                    NetherUpdateBackport.LOGGER.error("SELFTEST {} threw", test.name(), t);
-                    check.fail(test.name() + " threw " + t);
+        if (this.queue == null) {
+            WorldServer world = server.getWorld(0);
+            this.check = new Check(world);
+            try {
+                dumpStates(server.getFile("selftest-states.txt"));
+                dumpItems(server.getFile("selftest-items.txt"));
+            } catch (Exception e) {
+                this.check.fail("dump: " + e);
+            }
+            List<SelfTest> chosen = new java.util.ArrayList<SelfTest>();
+            for (SelfTest test : TESTS) {
+                if (this.wanted.contains("all") || this.wanted.contains(test.name()) || test instanceof ScaffoldSelfTest) {
+                    chosen.add(test);
                 }
             }
+            this.queue = chosen.iterator();
+            return;
         }
+        if (this.queue.hasNext()) {
+            SelfTest test = this.queue.next();
+            this.check.section(test.name());
+            try {
+                test.run(this.check);
+            } catch (Throwable t) {
+                NetherUpdateBackport.LOGGER.error("SELFTEST {} threw", test.name(), t);
+                this.check.fail(test.name() + " threw " + t);
+            }
+            return;
+        }
+        if (this.ticks < 0) {
+            return;
+        }
+        this.ticks = Integer.MIN_VALUE;
+        Check check = this.check;
         NetherUpdateBackport.LOGGER.info("SELFTEST DONE pass={} fail={}", check.passed(), check.failed());
         try {
             PrintWriter out = new PrintWriter(server.getFile("selftest-report.txt"), "UTF-8");

@@ -192,3 +192,6 @@ Pillage Backport installed.
 *   The low-impact set adds `asm/SmallChangesTransformer` (in `NetherUpdateCore`), 24 config keys in all 19
     languages (inserted by hand after `changes.blockSounds` and `mobs.ridersStay`), and `block.vine.step` in
     `sounds.json` (`tools/changes/generate.py`).
+*   Test harness: `SelfTestRunner` runs one test per server tick (the suite as one tick neared the 60 s watchdog),
+    `PiglinFightSelfTest.arena` loads its chunks and a ring around them before clearing (late decoration put basalt
+    in the arena: the piglinfight flake), and `BiomeSelfTest` ignores a bastion covering its sample.
