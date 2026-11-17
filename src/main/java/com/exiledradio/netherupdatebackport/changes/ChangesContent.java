@@ -23,6 +23,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  *   <li>Fishing treasure only in open water, lily pads in the junk ({@link Fishing}).</li>
  *   <li>1.16's sounds for netherrack, nether bricks, quartz ore, bone blocks, soul sand and nether wart
  *       ({@link BlockSounds}).</li>
+ *   <li>The low-impact rest of the 2026-11-16 audit: patches P12 to P25 with their hooks in {@link SmallHooks},
+ *       and {@link SmallChanges} and {@link SpawnCosts} through events.</li>
  * </ul>
  * 1.16's nether-tab advancements all belong to a stream (see {@code docs/streams/changes.md}); vanilla's own
  * nether advancements did not change in 1.16, so none is added here.
@@ -48,7 +50,14 @@ public final class ChangesContent {
         }
         Fishing.init();
         MinecraftForge.EVENT_BUS.register(new Fishing());
+        SmallChanges.preInit();
+        MinecraftForge.EVENT_BUS.register(new SmallChanges());
+        spawnCosts = new SpawnCosts();
+        MinecraftForge.EVENT_BUS.register(spawnCosts);
     }
+
+    /** The spawn-cost tracker, for the self-test; null with the stream off. */
+    public static SpawnCosts spawnCosts;
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -71,6 +80,7 @@ public final class ChangesContent {
         if (ModConfig.changes.blockSounds) {
             BlockSounds.init();
         }
+        SmallChanges.init();
         if (!ModConfig.changes.hoes) {
             return;
         }

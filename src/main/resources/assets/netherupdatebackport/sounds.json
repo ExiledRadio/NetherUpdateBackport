@@ -3761,5 +3761,15 @@
       }
     ],
     "subtitle": "subtitles.block.generic.place"
+  },
+  "block.vine.step": {
+    "sounds": [
+      "netherupdatebackport:block/vine/climb1",
+      "netherupdatebackport:block/vine/climb2",
+      "netherupdatebackport:block/vine/climb3",
+      "netherupdatebackport:block/vine/climb4",
+      "netherupdatebackport:block/vine/climb5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
   }
 }

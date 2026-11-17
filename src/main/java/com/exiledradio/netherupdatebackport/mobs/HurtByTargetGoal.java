@@ -27,6 +27,11 @@ public final class HurtByTargetGoal extends EntityAITarget {
     public boolean shouldExecute() {
         int stamp = this.taskOwner.getRevengeTimer();
         EntityLivingBase attacker = this.taskOwner.getRevengeTarget();
+        if (attacker instanceof net.minecraft.entity.player.EntityPlayer
+                && com.exiledradio.netherupdatebackport.common.AngerGameRules.universalAnger(this.taskOwner.world)) {
+            // universalAnger: a player's hit is left to ResetAngerGoal.
+            return false;
+        }
         return stamp != this.timestamp && attacker != null
                 && isSuitableTarget(this.taskOwner, attacker, false, false)
                 && this.taskOwner.isWithinHomeDistanceFromPosition(new BlockPos(attacker));

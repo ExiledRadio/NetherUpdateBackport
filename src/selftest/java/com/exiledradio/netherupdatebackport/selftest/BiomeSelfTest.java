@@ -597,19 +597,19 @@ public final class BiomeSelfTest implements SelfTest {
         NetherUpdateBackport.LOGGER.info("SELFTEST biome {} at chunk {},{}: {}", k, cx, cz, summary(count));
         switch (kind) {
             case CRIMSON_FOREST:
-                c.ok(crimsonNylium > 500, k + ": crimson nylium floors: " + crimsonNylium);
+                c.ok(crimsonNylium > 500 || bastion(count), k + ": crimson nylium floors: " + crimsonNylium);
                 c.ok(n(count, "crimson_stem") > 0, k + ": huge crimson fungi: " + n(count, "crimson_stem"));
                 c.ok(n(count, "crimson_roots") + n(count, "crimson_fungus") > 0, k + ": roots and fungi");
                 c.ok(n(count, Blocks.NETHER_WART_BLOCK) > 0, k + ": nether wart blocks");
-                c.eq(0, warpedNylium + basalt, k + ": no warped nylium or basalt");
+                c.eq(0, warpedNylium + natural(count, basalt), k + ": no warped nylium or basalt");
                 break;
             case WARPED_FOREST:
-                c.ok(warpedNylium > 500, k + ": warped nylium floors: " + warpedNylium);
+                c.ok(warpedNylium > 500 || bastion(count), k + ": warped nylium floors: " + warpedNylium);
                 c.ok(n(count, "warped_stem") > 0, k + ": huge warped fungi: " + n(count, "warped_stem"));
                 c.ok(n(count, "warped_roots") + n(count, "nether_sprouts") + n(count, "twisting_vines") + n(count, "twisting_vines_plant") > 0,
                         k + ": roots, sprouts and twisting vines");
                 c.ok(n(count, "warped_wart_block") > 0, k + ": warped wart blocks");
-                c.eq(0, crimsonNylium + basalt, k + ": no crimson nylium or basalt");
+                c.eq(0, crimsonNylium + natural(count, basalt), k + ": no crimson nylium or basalt");
                 break;
             case SOUL_SAND_VALLEY:
                 c.ok(soul > 200, k + ": soul sand and soul soil floors: " + soul);
@@ -630,6 +630,19 @@ public final class BiomeSelfTest implements SelfTest {
             default:
                 break;
         }
+    }
+
+    /**
+     * A count of blocks the biome must not have, or 0 where a bastion stands in the sample: bastions are built of
+     * blackstone bricks and carry basalt, in any biome but basalt deltas, so they say nothing of the biome.
+     */
+    private static int natural(Map<Block, Integer> count, int blocks) {
+        return bastion(count) ? 0 : blocks;
+    }
+
+    /** A bastion in the sample covers the floor and brings its own blocks (any seed may put one there). */
+    private static boolean bastion(Map<Block, Integer> count) {
+        return n(count, "polished_blackstone_bricks") > 1000;
     }
 
     private static int n(Map<Block, Integer> count, String ours) {

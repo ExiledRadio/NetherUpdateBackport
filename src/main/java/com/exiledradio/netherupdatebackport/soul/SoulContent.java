@@ -67,8 +67,7 @@ public final class SoulContent {
         if (!enabled()) {
             return;
         }
-        soulSoil = Content.block(event.getRegistry(), "soul_soil",
-                new Shapes.Plain(Material.GROUND, MapColor.BROWN, 0.5F, 0.5F, Sounds.type("soul_soil")), "shovel");
+        soulSoil = Content.block(event.getRegistry(), "soul_soil", new SoulSoil(Sounds.type("soul_soil")), "shovel");
         soulFire = Content.block(event.getRegistry(), "soul_fire", new BlockSoulFire(), null);
         soulFire.setCreativeTab(null);
         Content.multipart(soulFire);

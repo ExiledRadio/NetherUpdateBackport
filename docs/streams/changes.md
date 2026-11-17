@@ -2,7 +2,11 @@
 
 Package `changes` (client part in `changes/client`). Config `changes` (`enabled`, `hoes`, `lavaFog`,
 `knockbackResistance`, `mending`, `portalSearch`, `lavaPushes`, `redstoneDot`, `fishing`, `totemFireResistance`,
-`blockSounds`). One block (`redstone_dot`, no item); no entities or packets. Patches P5 to P11 (`docs/PATCHES.md`).
+`blockSounds`, and the audit's low-impact set: `witherSoulSoil`, `magmaPathing`, `dispensers`, `endermanBlocks`,
+`hoeEnchanting`, `compassVanishing`, `spawnCosts`, `caveMood`, `parrotImitation`, `snowGolemWater`, `undeadHorseLeash`,
+`pistonHardness`, `wallsPanes`, `furnaceXp`, `vineClimbing`, `burningProjectilesTnt`, `armorStandPlacement`,
+`endPlatform`, `suffocation`, `ghastSoundRange`, `campfireDropsFood`, `witherRoseSoulSoil`). One block
+(`redstone_dot`, no item); no entities or packets. Patches P5 to P25 (`docs/PATCHES.md`).
 
 ## Changelog section
 
@@ -24,6 +28,31 @@ Package `changes` (client part in `changes/client`). Config `changes` (`enabled`
 *   **The totem of undying** also gives Fire Resistance for 40 seconds.
 *   **Sounds**: netherrack, nether bricks, quartz ore, bone blocks, soul sand, nether wart and nether wart blocks
     sound as in 1.16.
+*   **Withers** can be built on soul soil (or soul soil and soul sand mixed); **wither roses** can be planted on
+    soul soil (with Village & Pillage Backport).
+*   **Mobs avoid magma blocks** when finding their way, as they avoid fire.
+*   **Dispensers** put saddles on pigs, striders and tamed horses, donkeys and mules, horse armor on tamed horses,
+    carpets on tamed llamas and chests on tamed llamas, donkeys and mules, and shear mooshrooms and snow golems.
+*   **Endermen** pick up crimson and warped nylium, fungi and roots, and no longer netherrack.
+*   **Hoes** can be enchanted with Efficiency, Fortune and Silk Touch, at the enchanting table and the anvil.
+*   **Compasses** and lodestone compasses take Curse of Vanishing.
+*   **Spawn costs**: soul sand valleys and warped forests keep their mobs from crowding together.
+*   **The cave sound** plays after you have spent long enough in the dark, not at random.
+*   **Parrots** imitate nearby mobs far less often, on their own and on your shoulder.
+*   **Snow golems** are hurt by splash and lingering water bottles.
+*   **Skeleton and zombie horses** can be put on a lead.
+*   **Pistons** are harder (1.5) and a pickaxe breaks them faster.
+*   **Walls** connect to glass panes and iron bars, and they to walls.
+*   **Breaking a furnace** gives the experience for what is in its output.
+*   **Climbing** vines, weeping and twisting vines and scaffolding makes step sounds, and vines have their 1.16
+    climbing sound.
+*   **Any burning projectile** lights TNT it hits.
+*   **Armor stands** placed in tall grass or snow leave it where it is.
+*   **The End's obsidian platform** is rebuilt when any entity comes through a portal; players arrive in its
+    middle.
+*   **Farmland and grass paths** suffocate.
+*   **Ghasts** are heard from 80 blocks, not 160.
+*   **Soul campfires** throw off their food when put out (not with Caves & Cliffs Backport, as from 1.17).
 *   Fixed: blackstone and nether gold ore generation no longer makes the game generate extra chunks next to the
     ones being decorated ("cascading worldgen lag" in the log).
 
@@ -127,15 +156,42 @@ worldgen warnings** (52 on main's code with a fresh world); `-Pselftest=changes`
     models and the dot's tint, the block sounds heard.
 *   Other coremods that change the patched methods (P5 to P11), in a real instance.
 
-## Left as is (candidate patch)
+## The audit's low-impact set (`-Pselftest=smallchanges`)
 
-1.16 hoes are `DIGGER` items, so they take Efficiency, Fortune and Silk Touch at an enchanting table and an anvil,
-with their material's enchantability. 1.12.2's `EnumEnchantmentType.DIGGER` takes only `ItemTool` and `ItemHoe`
-has no enchantability, so that needs a patch (`EnumEnchantmentType.DIGGER.canEnchantItem` and
-`ItemHoe.getItemEnchantability`). For `docs/PATCHES.md`'s candidate table; not added there by this stream.
+Patches P12 to P25 (hooks in `SmallHooks`), and through events `SmallChanges` (dispensers, enderman blocks, pistons,
+the vine's sound type, burning projectiles and TNT, the End platform), `SpawnCosts` (1.16.5's `MobDensityTracker`
+on `LivingSpawnEvent.CheckSpawn` for natural spawns, charges gathered once a tick from the loaded mobs that may
+despawn) and `client.CaveMood` (1.16's `LEGACY_CAVE_SETTINGS` mood outside the nether biomes; 1.12.2's random cave
+sound is held off through `WorldClient.ambienceTicks`). Other streams' parts: the soul campfire's food
+(`soul.campfire.TileEntitySoulCampfire.dowse`), soul soil's wither rose (`soul.SoulSoil`), and stream Z's game rules
+and wither skeletons (`docs/streams/mobs.md`).
+
+Tested: every patch applied; withers matched on soul soil, mixed and soul sand, not soul soil with the setting off;
+a node by magma underfoot is a fire danger; a dispenser saddling a pig (and dropping the saddle with nothing there),
+armoring and saddling a tamed horse (not an untamed one), a chest on a tamed donkey, a carpet on a tamed llama,
+shearing a mooshroom into a cow and a snow golem's pumpkin off; the enderman's set; hoes as diggers, 10 and 22
+enchantability, the table offering Efficiency, Fortune, Silk Touch and Unbreaking; the curse on compasses only; a
+skeleton next to a soul sand valley skeleton refused (0.49 over 0.15), 10 blocks off allowed, a zombified piglin
+free; the cave mood arithmetic; soul soil holding a wither rose (by name) and not other flowers; parrot sounds
+counted over 80000 ticks (1 in 800) and a shoulder over 40000 (1 in 200); a water bottle taking 1 from a snow golem;
+skeleton and zombie horses leashable; piston hardness, blast resistance and tool; a wall joining a pane and bars and
+the pane joining back; 7 XP from 10 iron ingots in a broken furnace; vine climbing and its sound; a burning snowball
+lighting TNT, an unburning one not; an armor stand leaving tall grass; a pig going to the End rebuilding the
+platform; farmland, grass path and soul sand suffocating; a ghast's volume 5. Each setting's off switch where the
+change is read live.
+
+Not tested: the cave mood in a client (only its arithmetic), sounds heard, real pathfinding around magma (the node
+type is tested), a player's own arrival in the End (the 1.16.2 centering), and the wither rose with Village &
+Pillage Backport installed.
 
 ## For the integrator
 
 *   `en_us.lang`: the `# --- config ---` block was regenerated with `tools/config_lang.py` (4 new lines for
     `changes.hoes` and `changes.lavaFog`); rerun it after merging other streams' config changes.
 *   One line each in `NetherUpdateBackport.init`, `ClientSetup.init` and `SelfTestRunner.TESTS`.
+*   The low-impact set adds `asm/SmallChangesTransformer` (in `NetherUpdateCore`), 24 config keys in all 19
+    languages (inserted by hand after `changes.blockSounds` and `mobs.ridersStay`), and `block.vine.step` in
+    `sounds.json` (`tools/changes/generate.py`).
+*   Test harness: `SelfTestRunner` runs one test per server tick (the suite as one tick neared the 60 s watchdog),
+    `PiglinFightSelfTest.arena` loads its chunks and a ring around them before clearing (late decoration put basalt
+    in the arena: the piglinfight flake), and `BiomeSelfTest` ignores a bastion covering its sample.

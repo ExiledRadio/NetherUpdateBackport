@@ -52,9 +52,19 @@ public final class Anger {
         return this.remaining > 0;
     }
 
-    /** 1.16's {@code isAngryAt}, with {@code universalAnger} off (1.12.2 has no such game rule). */
+    /**
+     * 1.16's {@code isAngryAt}: at its one target, or, with {@code universalAnger} on, at every player while it is angry
+     * at no one in particular ({@code isAngryAtAllPlayers}).
+     */
     public boolean isAngryAt(@Nullable EntityLivingBase entity) {
-        return entity != null && EntitySelectors.CAN_AI_TARGET.apply(entity) && entity.getUniqueID().equals(this.target);
+        if (entity == null || !EntitySelectors.CAN_AI_TARGET.apply(entity)) {
+            return false;
+        }
+        if (entity instanceof net.minecraft.entity.player.EntityPlayer && this.target == null && isAngry()
+                && com.exiledradio.netherupdatebackport.common.AngerGameRules.universalAnger(entity.world)) {
+            return true;
+        }
+        return entity.getUniqueID().equals(this.target);
     }
 
     public int remaining() {

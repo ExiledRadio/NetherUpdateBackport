@@ -44,11 +44,16 @@ public final class PiglinFightSelfTest implements SelfTest {
         repellentCheck(c, nether, new BlockPos(base + 64 * i, 100, 4000));
     }
 
-    /** A 40x40 stone floor with air above, its chunks loaded. */
+    /**
+     * A 40x40 stone floor with air above, its chunks loaded. Every chunk the arena touches, and one more each way, is
+     * loaded first: a chunk is decorated once its neighbors exist, so one loaded only while clearing (the old steps of
+     * 16 from -20 missed the far edge) decorated the cleared arena afterwards, and a basalt delta's basalt or a fungus
+     * could stand between a piglin and the player (the occasional "fights 180/400").
+     */
     static void arena(WorldServer w, BlockPos at) {
-        for (int x = -20; x <= 20; x += 16) {
-            for (int z = -20; z <= 20; z += 16) {
-                w.getChunkProvider().provideChunk((at.getX() + x) >> 4, (at.getZ() + z) >> 4);
+        for (int cx = ((at.getX() - 20) >> 4) - 1; cx <= ((at.getX() + 20) >> 4) + 1; cx++) {
+            for (int cz = ((at.getZ() - 20) >> 4) - 1; cz <= ((at.getZ() + 20) >> 4) + 1; cz++) {
+                w.getChunkProvider().provideChunk(cx, cz);
             }
         }
         for (BlockPos p : BlockPos.getAllInBoxMutable(at.add(-20, -1, -20), at.add(20, 6, 20))) {
@@ -175,7 +180,11 @@ public final class PiglinFightSelfTest implements SelfTest {
             fought += "FIGHT".equals(a) ? 1 : 0;
             avoided += "AVOID".equals(a) ? 1 : 0;
             if (t == 50) {
-                trace.append(" {sees=").append(p.visibleLiving().contains(player)).append(" targetable=").append(p.isTargetable(player))
+                net.minecraft.util.math.RayTraceResult ray = w.rayTraceBlocks(new net.minecraft.util.math.Vec3d(p.posX, p.posY + p.getEyeHeight(), p.posZ),
+                        new net.minecraft.util.math.Vec3d(player.posX, player.posY + player.getEyeHeight(), player.posZ), false, true, false);
+                trace.append(" {ray=").append(ray == null ? "clear" : ray.getBlockPos() + "/" + w.getBlockState(ray.getBlockPos()).getBlock().getRegistryName()
+                        + " p=" + new BlockPos(p) + " pl=" + new BlockPos(player) + " at=" + at);
+                trace.append(" sees=").append(p.visibleLiving().contains(player)).append(" targetable=").append(p.isTargetable(player))
                         .append(" allowed=").append(com.exiledradio.netherupdatebackport.piglin.AbstractPiglin.isAttackAllowed(player))
                         .append(" inList=").append(w.playerEntities.contains(player)).append(" alive=").append(player.isEntityAlive())
                         .append(" diff=").append(player.world.getDifficulty()).append(" creative=").append(player.isCreative())

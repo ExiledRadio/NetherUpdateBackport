@@ -229,6 +229,15 @@ public final class ModConfig {
         @Config.Comment("A mob riding a boat, a minecart or another mob never despawns.")
         @Config.LangKey("config.netherupdatebackport.mobs.ridersStay")
         public boolean ridersStay = true;
+
+        @Config.Comment({"Worlds get 1.16's forgiveDeadPlayers (on) and universalAnger (off) game rules, which neutral mobs,",
+                "zombified piglins and piglins follow. Off, both stay as their defaults."})
+        @Config.LangKey("config.netherupdatebackport.mobs.angerGameRules")
+        public boolean angerGameRules = true;
+
+        @Config.Comment("Wither skeletons attack piglins and piglin brutes.")
+        @Config.LangKey("config.netherupdatebackport.mobs.witherSkeletonsTargetPiglins")
+        public boolean witherSkeletonsTargetPiglins = true;
     }
 
     public static final class Music {
@@ -307,6 +316,102 @@ public final class ModConfig {
         @Config.Comment("Netherrack, nether bricks, nether wart and its block, bone blocks, quartz ore and soul sand sound as in 1.16.")
         @Config.LangKey("config.netherupdatebackport.changes.blockSounds")
         public boolean blockSounds = true;
+
+        @Config.Comment("A wither can be built on soul soil as well as soul sand, or on a mix of both.")
+        @Config.LangKey("config.netherupdatebackport.changes.witherSoulSoil")
+        public boolean witherSoulSoil = true;
+
+        @Config.Comment("Mobs keep their paths away from magma blocks next to them, as they do from fire.")
+        @Config.LangKey("config.netherupdatebackport.changes.magmaPathing")
+        public boolean magmaPathing = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment({"Dispensers put saddles on pigs, striders and tamed horses, armor on horses, carpets on llamas and chests",
+                "on llamas, donkeys and mules, and shear mooshrooms and snow golems."})
+        @Config.LangKey("config.netherupdatebackport.changes.dispensers")
+        public boolean dispensers = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Endermen pick up crimson and warped nylium, fungi and roots, and no longer netherrack.")
+        @Config.LangKey("config.netherupdatebackport.changes.endermanBlocks")
+        public boolean endermanBlocks = true;
+
+        @Config.Comment("Hoes take Efficiency, Fortune and Silk Touch, at the enchanting table and the anvil.")
+        @Config.LangKey("config.netherupdatebackport.changes.hoeEnchanting")
+        public boolean hoeEnchanting = true;
+
+        @Config.Comment("Compasses and lodestone compasses take Curse of Vanishing.")
+        @Config.LangKey("config.netherupdatebackport.changes.compassVanishing")
+        public boolean compassVanishing = true;
+
+        @Config.Comment({"Soul sand valleys and warped forests limit how close together their mobs spawn (1.16's spawn costs), so",
+                "they hold fewer at once."})
+        @Config.LangKey("config.netherupdatebackport.changes.spawnCosts")
+        public boolean spawnCosts = true;
+
+        @Config.Comment({"The cave sound plays after you spend long enough in the dark, as the nether biomes' mood sounds do, instead",
+                "of at random. Client only."})
+        @Setting.Client
+        @Config.LangKey("config.netherupdatebackport.changes.caveMood")
+        public boolean caveMood = true;
+
+        @Config.Comment("Parrots imitate nearby mobs less often, on their own and on your shoulder.")
+        @Config.LangKey("config.netherupdatebackport.changes.parrotImitation")
+        public boolean parrotImitation = true;
+
+        @Config.Comment("Splash and lingering water bottles hurt snow golems, as they hurt endermen and blazes.")
+        @Config.LangKey("config.netherupdatebackport.changes.snowGolemWater")
+        public boolean snowGolemWater = true;
+
+        @Config.Comment("Skeleton horses and zombie horses can be put on a lead.")
+        @Config.LangKey("config.netherupdatebackport.changes.undeadHorseLeash")
+        public boolean undeadHorseLeash = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Pistons and sticky pistons take longer to break (hardness and blast resistance 1.5) and a pickaxe breaks them faster.")
+        @Config.LangKey("config.netherupdatebackport.changes.pistonHardness")
+        public boolean pistonHardness = true;
+
+        @Config.Comment("Walls connect to glass panes and iron bars, and they to walls.")
+        @Config.LangKey("config.netherupdatebackport.changes.wallsPanes")
+        public boolean wallsPanes = true;
+
+        @Config.Comment("Breaking a furnace gives the experience for what is in its output slot.")
+        @Config.LangKey("config.netherupdatebackport.changes.furnaceXp")
+        public boolean furnaceXp = true;
+
+        @Config.Comment("Climbing vines, weeping and twisting vines and scaffolding makes step sounds as ladders do; vines sound as in 1.16.")
+        @Config.LangKey("config.netherupdatebackport.changes.vineClimbing")
+        public boolean vineClimbing = true;
+
+        @Config.Comment("Any burning projectile lights TNT it hits, not only burning arrows.")
+        @Config.LangKey("config.netherupdatebackport.changes.burningProjectilesTnt")
+        public boolean burningProjectilesTnt = true;
+
+        @Config.Comment("An armor stand placed in tall grass or snow leaves the grass or snow where it is.")
+        @Config.LangKey("config.netherupdatebackport.changes.armorStandPlacement")
+        public boolean armorStandPlacement = true;
+
+        @Config.Comment("The End's obsidian platform is rebuilt when any entity comes through a portal, and players arrive in its center.")
+        @Config.LangKey("config.netherupdatebackport.changes.endPlatform")
+        public boolean endPlatform = true;
+
+        @Config.Comment("Farmland and grass paths suffocate, as soul sand already does.")
+        @Config.LangKey("config.netherupdatebackport.changes.suffocation")
+        public boolean suffocation = true;
+
+        @Config.Comment("Ghasts are heard from 80 blocks away, not 160.")
+        @Config.LangKey("config.netherupdatebackport.changes.ghastSoundRange")
+        public boolean ghastSoundRange = true;
+
+        @Config.Comment({"Putting out a soul campfire throws off the food on it. Off, or with Caves & Cliffs Backport installed",
+                "(1.17 brought the food back), it stays."})
+        @Config.LangKey("config.netherupdatebackport.changes.campfireDropsFood")
+        public boolean campfireDropsFood = true;
+
+        @Config.Comment("Wither roses can be planted on soul soil, and a wither's kill can grow one there.")
+        @Config.LangKey("config.netherupdatebackport.changes.witherRoseSoulSoil")
+        public boolean witherRoseSoulSoil = true;
     }
 
     public static final class Biomes {

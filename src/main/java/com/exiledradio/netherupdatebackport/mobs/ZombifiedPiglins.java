@@ -101,6 +101,7 @@ public final class ZombifiedPiglins {
                         return anger.isAngryAt(player);
                     }
                 }));
+        pigman.targetTasks.addTask(3, new ResetAngerGoal(pigman, true));
         pigman.setPathPriority(PathNodeType.LAVA, 8.0F);
     }
 
@@ -257,14 +258,16 @@ public final class ZombifiedPiglins {
         }
     }
 
-    /** 1.16.5's {@code ServerPlayerEntity.tellNeutralMobsThatIDied}, with {@code forgiveDeadPlayers} on. */
+    /** 1.16.5's {@code ServerPlayerEntity.tellNeutralMobsThatIDied}, while {@code forgiveDeadPlayers} is on. */
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void playerDied(LivingDeathEvent event) {
         if (!(event.getEntityLiving() instanceof EntityPlayerMP)) {
             return;
         }
         EntityPlayer player = (EntityPlayer) event.getEntityLiving();
-        forgive(player);
+        if (com.exiledradio.netherupdatebackport.common.AngerGameRules.forgiveDeadPlayers(player.world)) {
+            forgive(player);
+        }
     }
 
     static void forgive(EntityPlayer player) {

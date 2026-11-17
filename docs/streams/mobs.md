@@ -1,6 +1,7 @@
 # Stream Z: zombified piglins and other mob changes
 
-Package `mobs` (client: `mobs/client`). Config `mobs` (`enabled`, `neutralAnger`, `ridersStay`). No entity ids, no
+Package `mobs` (client: `mobs/client`). Config `mobs` (`enabled`, `neutralAnger`, `ridersStay`, `angerGameRules`,
+`witherSkeletonsTargetPiglins`). No entity ids, no
 packets. Patch P1
 (`asm/PigZombieTransformer`, see `docs/PATCHES.md`), the first patch of this mod's own coremod.
 
@@ -20,6 +21,20 @@ packets. Patch P1
     still angry at), and the anger is saved with them. A player who dies is forgiven by every one of them nearby,
     bees from Buzzy Bees Backport included.
 *   **Mobs riding** a boat, a minecart or another mob never despawn.
+*   **Game rules `forgiveDeadPlayers` and `universalAnger`** (1.16's, on and off by default): with
+    `forgiveDeadPlayers` off, mobs stay angry at a player who died; with `universalAnger` on, a neutral mob, zombified
+    piglin or piglin a player hits is angry at every player nearby (and calls its kind to be). Bees from Buzzy Bees
+    Backport keep their own rules.
+*   **Wither skeletons attack piglins** and piglin brutes.
+
+Game rules: `common.AngerGameRules` adds both to each world as it loads (and makes a reloaded world's saved ones
+true/false rules again: 1.12.2 reads a rule it does not know as "any value"). `forgiveDeadPlayers` gates
+`NeutralMobs`, `ZombifiedPiglins` and the piglins' `EndAttackTask`/`GetAngryTask`; `universalAnger` drives
+`ResetAngerGoal` (wolves 8 with the alarm, polar bears 5, golems and endermen 4, zombified piglins 3 with the alarm),
+`Anger.isAngryAt` (any player while angry at no one), patch P24 and this stream's `HurtByTargetGoal` (a player's hit
+left to the reset), and the piglins' universal paths (`maybeRetaliate`, `angerNearbyPiglins`, `UNIVERSAL_ANGER` in
+`findNearestValidAttackTarget`). Wither skeletons: `WitherSkeletons` adds 1.16's target goal (priority 3) on joining,
+finding the piglin class through the entity registry. Tested in `-Pselftest=smallchanges`.
 
 ## How it works
 

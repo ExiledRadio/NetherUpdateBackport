@@ -42,8 +42,9 @@ import java.util.UUID;
  *   <li>A player dying calms every one of them angry at that player within 32 blocks (10 up and down):
  *       {@code forgiveDeadPlayers}, on in 1.16 by default. Bees too: 1.16's bee is an {@code IAngerable}.</li>
  * </ul>
- * 1.12.2 has neither {@code universalAnger} nor {@code forgiveDeadPlayers} as game rules; both act as their 1.16
- * defaults (off and on).
+ * Both game rules are 1.16's ({@code common.AngerGameRules}): {@code forgiveDeadPlayers} gates the forgiving;
+ * {@code universalAnger} makes a player's hit a 20-39 s anger at every player ({@link ResetAngerGoal}, and patch P24
+ * keeping 1.12.2's {@code EntityAIHurtByTarget} out of it).
  */
 public final class NeutralMobs {
 
@@ -81,6 +82,9 @@ public final class NeutralMobs {
         if (priority >= 0) {
             mob.targetTasks.addTask(priority, new AngryAtPlayer(mob, anger));
         }
+        // 1.16's ResetAngerGoal: wolves (8, with the alarm), polar bears (5), iron golems and endermen (4).
+        boolean wolf = entity instanceof EntityWolf;
+        mob.targetTasks.addTask(wolf ? 8 : entity instanceof EntityPolarBear ? 5 : 4, new ResetAngerGoal(mob, wolf));
     }
 
     /** 1.16's {@code NearestAttackableTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::isAngryAt)}. */
@@ -149,10 +153,11 @@ public final class NeutralMobs {
         anger.remaining = 0;
     }
 
-    /** 1.16.5's {@code ServerPlayerEntity.tellNeutralMobsThatIDied}, with {@code forgiveDeadPlayers} on. */
+    /** 1.16.5's {@code ServerPlayerEntity.tellNeutralMobsThatIDied}, while {@code forgiveDeadPlayers} is on. */
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void playerDied(LivingDeathEvent event) {
-        if (event.isCanceled() || !(event.getEntityLiving() instanceof EntityPlayerMP) || !active()) {
+        if (event.isCanceled() || !(event.getEntityLiving() instanceof EntityPlayerMP) || !active()
+                || !com.exiledradio.netherupdatebackport.common.AngerGameRules.forgiveDeadPlayers(event.getEntityLiving().world)) {
             return;
         }
         forgive((EntityPlayer) event.getEntityLiving());

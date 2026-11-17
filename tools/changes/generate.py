@@ -1,4 +1,5 @@
-"""Stream C assets: 1.16's sounds for nether blocks 1.12.2 already has (changes.BlockSounds).
+"""Stream C assets: 1.16's sounds for nether blocks 1.12.2 already has (changes.BlockSounds), and the vine's
+climbing sound (changes.SmallChanges).
 
 Nether bricks' and wart blocks' events are stream U's and stream F's already; this adds the rest.
 
@@ -15,7 +16,7 @@ for group in ("netherrack", "nether_ore", "bone_block", "soul_sand"):
     for kind in ("break", "step", "place", "hit", "fall"):
         e = "block.%s.%s" % (group, kind)
         events[e] = assets.copy_sound(e)
-for e in ("block.nether_wart.break", "item.nether_wart.plant"):
+for e in ("block.nether_wart.break", "item.nether_wart.plant", "block.vine.step"):
     events[e] = assets.copy_sound(e)
 assets.merge_sounds("changes", events)
 
