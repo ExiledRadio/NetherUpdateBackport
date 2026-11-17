@@ -26,7 +26,7 @@ import java.util.Random;
  * its additions at 1.11% a tick, and its mood sound after long darkness. One per client player, as in 1.16 (a
  * respawn or a new dimension makes a new player, and a new handler).
  *
- * <p>Other biomes have no 1.16 ambience but the cave mood, which 1.12.2 plays its own way and is left alone.
+ * <p>Other biomes have no 1.16 ambience but the cave mood, which stream C plays ({@code changes.client.CaveMood}).
  */
 final class BiomeSounds {
 

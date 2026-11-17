@@ -141,7 +141,7 @@ public class EntityPiglinBrute extends AbstractPiglin {
         Memories m = this.memories;
         // GetAngryTask.
         EntityLivingBase angry = entityByUuid(m.<java.util.UUID>get(Mem.ANGRY_AT));
-        if (angry != null && PiglinTasks.isDeadOrDying(angry)) {
+        if (angry != null && PiglinTasks.isDeadOrDying(angry) && PiglinTasks.forgives(this, angry)) {
             m.erase(Mem.ANGRY_AT);
         }
         boolean fight = getAttackTarget() != null;

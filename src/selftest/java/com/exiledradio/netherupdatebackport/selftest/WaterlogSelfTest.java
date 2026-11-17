@@ -187,7 +187,7 @@ public final class WaterlogSelfTest implements SelfTest {
         bucket(player, d, Items.WATER_BUCKET);
         c.ok(!Waterlogging.hasWater(world, d) && Waterlogging.hasWater(world, d.up()), "a water bucket on a double slab pours the water on top of it");
 
-        // A lit soul campfire with food: the bucket waterlogs it, puts it out, and the food stays.
+        // A lit soul campfire with food: the bucket waterlogs it and puts it out; 1.16 throws the food off (1.17 keeps it).
         BlockPos f = cup(world, cups.add(10, 0, 2));
         world.setBlockState(f, campfire.getDefaultState().withProperty(BlockSoulCampfire.LIT, Boolean.TRUE), 3);
         TileEntitySoulCampfire tile = (TileEntitySoulCampfire) world.getTileEntity(f);
@@ -197,8 +197,14 @@ public final class WaterlogSelfTest implements SelfTest {
         c.ok(Waterlogging.hasWaterSource(world, f) && world.getBlockState(f).getBlock() == campfire, "and waterlogs it");
         c.eq(false, world.getBlockState(f).getValue(BlockSoulCampfire.LIT), "which puts it out");
         TileEntitySoulCampfire after = (TileEntitySoulCampfire) world.getTileEntity(f);
-        c.ok(after != null && after.items().get(0).getItem() == Items.BEEF || after != null && containsBeef(after),
-                "the beef stays on it");
+        boolean kept = after != null && containsBeef(after);
+        boolean thrown = !world.getEntitiesWithinAABB(net.minecraft.entity.item.EntityItem.class,
+                new net.minecraft.util.math.AxisAlignedBB(f).grow(2.0D), e -> e.getItem().getItem() == Items.BEEF).isEmpty();
+        if (TileEntitySoulCampfire.dropsFood()) {
+            c.ok(!kept && thrown, "the beef is thrown off it (1.16)");
+        } else {
+            c.ok(kept && !thrown, "the beef stays on it");
+        }
         // Waterlogged, it cannot be lit.
         player.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(Items.FLINT_AND_STEEL));
         boolean used = campfire.onBlockActivated(world, f, world.getBlockState(f), player, EnumHand.MAIN_HAND, EnumFacing.UP, 0.5F, 1.0F, 0.5F);

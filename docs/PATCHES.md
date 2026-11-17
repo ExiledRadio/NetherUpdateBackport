@@ -142,6 +142,61 @@ entry points (`knockBack`, `onCollideWithPlayer`, `placeInExistingPortal`, `onEn
     exists only while unconnected (`changes/RedstoneDot`). While any wire works out its own power, no wire of either
     block gives power, as vanilla's single instance does. Lines, line ends, lone dust and lamps behave as in 1.12.2.
 
+### P12 to P25. The audit's low-impact behavior changes
+
+A second transformer, `asm/SmallChangesTransformer`; every hook in `changes/SmallHooks`, each reading its own
+`changes.*` setting (P24: the `universalAnger` game rule) on every call. Each patch is skipped with a warning when
+its method is not of the expected shape; `-Pselftest=smallchanges` checks each is applied.
+
+*   **P12. Withers on soul soil.** `BlockSkull.getWitherBasePattern`/`getWitherPattern` (`func_176414_j`,
+    `func_176416_l`): the `BlockStateMatcher.forBlock(Blocks.SOUL_SAND)` call right after `getstatic SOUL_SAND`
+    becomes `SmallHooks.witherBase(Block)`, a predicate for soul sand or soul soil. *Vanilla 1.16.5*:
+    `BlockTags.WITHER_SUMMON_BASE_BLOCKS`. *Why*: the patterns are built once into private fields.
+*   **P13. Mobs avoid magma.** `WalkNodeProcessor.checkNeighborBlocks` (`func_193578_a`): its result passes through
+    `SmallHooks.neighbors`: a walkable node with a magma block anywhere in the 3x3x3 around it (not its own column)
+    is `DANGER_FIRE`. *Vanilla 1.16.5* `checkNeighbourBlocks` with `isBurningBlock`. Lava there is 1.15's (Buzzy
+    Bees Backport's audit item) and left alone.
+*   **P14. Hoe enchantments.** The `EnumEnchantmentType$N` whose `canEnchantItem` tests `instanceof ItemTool`
+    (DIGGER): head `if (SmallHooks.hoeDigger(item)) return true;`; and `ItemHoe` gets a `getItemEnchantability`
+    (`func_77619_b`, named as its `onItemUse` shows the environment) returning its material's. *Vanilla 1.16.5*:
+    `HoeItem extends ToolItem`, a digger with its tier's enchantability. Hoes take Efficiency, Fortune and Silk
+    Touch at the table and the anvil (Unbreaking and Mending they took at the anvil already).
+*   **P15. Compasses take Curse of Vanishing.** `Enchantment.canApply` (`func_92089_a`): head
+    `if (SmallHooks.vanishingCompass(this, stack)) return true;` for the compass and the lodestone compass.
+    *Vanilla 1.16.5*: `CompassItem implements IVanishable`.
+*   **P16. Parrot imitation rate.** `EntityParrot.onLivingUpdate`: its `playMimicSound` call becomes
+    `SmallHooks.parrotTick` (1 tick in 400, then 1.16's `imitateNearbyMobs`, itself 1 in 2); `playAmbientSound`
+    (`func_192005_a`, a shoulder parrot): head guard running 1.16's `playShoulderEntityAmbientSound` (1 tick in 200,
+    an imitation or its own call, no imitation on Peaceful). 1.12.2 imitates 1 tick in 50.
+*   **P17. Water bottles hurt snow golems.** `EntityPotion.isWaterSensitiveEntity` (`func_190544_c`): head
+    `if (SmallHooks.waterSensitive(entity)) return true;`. *Vanilla 1.16.5*: `SnowGolemEntity.isSensitiveToWater`.
+*   **P18. Undead horses on a lead.** `AbstractHorse.canBeLeashedTo` (`func_184652_a`): head guard returning
+    `!getLeashed()`. *Vanilla 1.16.5* has no undead exception (`MobEntity.canBeLeashed`).
+*   **P19. Walls and panes.** `BlockWall.canConnectTo` (`func_176253_e`): head
+    `if (SmallHooks.wallToPane(world, pos)) return true;` for any `BlockPane` (glass panes, iron bars). Panes ask the
+    wall's `canBeConnectedTo`, which calls the same method, so they connect back. Backport Core's `ModernWall`
+    already does both.
+*   **P20. Furnace XP when broken.** `BlockFurnace.breakBlock`: before its `InventoryHelper.dropInventoryItems`
+    (inside vanilla's `!keepInventory` branch), `SmallHooks.furnaceBroken(world, pos)`: the output slot's XP, by
+    1.16's `createExperience`. 1.12.2 owes XP only for the output still in the slot (it pays when one is taken),
+    which is what 1.16's `RecipesUsed` holds there.
+*   **P21. Suffocation in farmland and grass paths.** `BlockFarmland`, `BlockGrassPath`: a new
+    `causesSuffocation(IBlockState)` (`func_176214_u`, named as the class's `isFullCube` shows) returning
+    `SmallHooks.suffocates()`. *Vanilla 1.16.5*: `isSuffocating(Blocks::always)` for the two and soul sand; 1.12.2's
+    soul sand already suffocates (a full cube).
+*   **P22. Ghast sound range.** `EntityGhast.getSoundVolume` (`func_70599_aP`): head guard returning 5 (80 blocks)
+    instead of 10.
+*   **P23. Armor stands in grass and snow.** `ItemArmorStand.onItemUse`: its two `World.setBlockToAir` calls become
+    `SmallHooks.armorStandClear`, which leaves the block (20w07a: "placing an armor stand inside a replaceable block
+    no longer removes it").
+*   **P24. Universal anger: the hurt-by goal.** `EntityAIHurtByTarget.shouldExecute`: head
+    `if (SmallHooks.ignoreHurtByPlayer(this.taskOwner)) return false;` while `universalAnger` is on and the attacker
+    is a player. *Vanilla 1.16.5* `HurtByTargetGoal.canUse` (all mobs); `mobs.ResetAngerGoal` then takes the hit.
+*   **P25. Climbing steps.** `Entity.move` (`func_70091_d`): `block != Blocks.LADDER` (`if_acmpeq`) becomes
+    `SmallHooks.climbable(block, LADDER)` (`ifne`): vines, weeping and twisting vines and Village & Pillage's
+    scaffolding count their vertical movement as steps, so climbing them plays their step sound. *Vanilla 1.16.5*:
+    `BlockTags.CLIMBABLE`. Vines get 1.16's `SoundType.VINE` (their own climbing step) in `changes.SmallChanges`.
+
 ## Candidates: approximations made without patches that a patch would make vanilla
 
 | Where | What vanilla 1.16 does | What this mod does now | Patch |
@@ -151,6 +206,5 @@ entry points (`knockBack`, `onCollideWithPlayer`, `placeInExistingPortal`, `onEn
 | R, striders | Stand on lava (`canStandOnFluid`) | Held on the surface after each move, so they can jitter at block edges and path through lava nodes | `Entity.move` collision: lava's top half solid for striders |
 | Z, zombified piglins | A baby rides 0.05 lower (`getMyRidingOffset` -0.05; adults -0.45 as a zombie's) | 1.12.2's zombie offset (baby 0.0) | Add `getYOffset` to `EntityPigZombie` (a new method, so not a head guard) |
 | L, soul sand | Soul Speed sets soul sand's speed factor to 1 | Divides soul sand's 0.4 back out the next tick | `BlockSoulSand.onEntityCollision`: skip for Soul Speed wearers |
-| V, spawning | Soul sand valleys and warped forests limit their mobs with spawn costs (`MobSpawnInfo.addMobCharge`: energy budget 0.15 / 0.12, charge 0.7 / 1.0) | Plain spawn lists: those biomes can hold denser groups than 1.16's | `WorldEntitySpawner.findChunksForSpawning`: 1.16's `PotentialCalculator` per spawn attempt |
 
 Each is worth doing when its stream is next touched; none blocks a stream.

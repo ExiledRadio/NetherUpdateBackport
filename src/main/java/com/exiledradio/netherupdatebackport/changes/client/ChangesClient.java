@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GLContext;
 
 /**
- * Client side of stream C: the lava fog of {@link LavaVision}.
+ * Client side of stream C: the lava fog of {@link LavaVision}, and the cave mood ({@link CaveMood}).
  *
  * <p>1.12.2's {@code EntityRenderer.setupFog} asks Forge's fog density event before anything else; for a
  * camera in lava this sets linear fog itself and cancels the event, so vanilla's exponential lava fog is
@@ -29,6 +29,7 @@ public final class ChangesClient {
 
     public static void init() {
         MinecraftForge.EVENT_BUS.register(new ChangesClient());
+        MinecraftForge.EVENT_BUS.register(new CaveMood());
     }
 
     /** The redstone dot is tinted by its power as vanilla's wire is. */

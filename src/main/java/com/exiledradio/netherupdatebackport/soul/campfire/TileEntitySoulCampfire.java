@@ -25,9 +25,9 @@ import net.minecraft.world.World;
  * this is not an {@code IInventory} either. A hopper underneath still collects what pops off.
  *
  * <h2>Going out</h2>
- * Put out, the food stays where it is and its timer runs backwards at twice the speed it ran forward,
- * never below zero; relit, it picks up from wherever that left it. Current Java keeps the food on an
- * extinguished campfire (1.14.4 threw it off, a bug fixed in 20w46a).
+ * Put out, 1.16 throws the food off (20w22a; setting {@code changes.campfireDropsFood}). With that off, or with
+ * Caves &amp; Cliffs Backport installed (1.17's 20w46a keeps it), the food stays where it is and its timer runs
+ * backwards at twice the speed it ran forward, never below zero; relit, it picks up from wherever that left it.
  *
  * <h2>The client</h2>
  * The four items are sent with the block's update packet, for the renderer to draw lying on the logs.
@@ -118,9 +118,29 @@ public class TileEntitySoulCampfire extends TileEntity implements ITickable {
         return false;
     }
 
-    /** Put out: nothing is thrown off any more (see the class notes), but the client is told. */
+    /**
+     * Put out: 1.16.5's {@code CampfireTileEntity.dowse} throws the food off ({@code dropContents}), and the client is
+     * told. With Caves &amp; Cliffs Backport installed the food stays, as from 1.17 (see the class notes).
+     */
     public void dowse() {
+        if (this.world != null && !this.world.isRemote && dropsFood()) {
+            for (int i = 0; i < SLOTS; i++) {
+                ItemStack stack = this.items.get(i);
+                if (!stack.isEmpty()) {
+                    InventoryHelper.spawnItemStack(this.world, this.pos.getX(), this.pos.getY(), this.pos.getZ(), stack);
+                    this.items.set(i, ItemStack.EMPTY);
+                    this.cookingTimes[i] = 0;
+                }
+            }
+        }
         markUpdated();
+    }
+
+    /** 1.16 (20w22a to 1.16.5) throws the food off; 1.17 (20w46a, Caves &amp; Cliffs Backport's) keeps it. */
+    public static boolean dropsFood() {
+        return com.exiledradio.netherupdatebackport.ModConfig.changes.enabled
+                && com.exiledradio.netherupdatebackport.ModConfig.changes.campfireDropsFood
+                && !net.minecraftforge.fml.common.Loader.isModLoaded("cavesandcliffsbackport");
     }
 
     private void markUpdated() {

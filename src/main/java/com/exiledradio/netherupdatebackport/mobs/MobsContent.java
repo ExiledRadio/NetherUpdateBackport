@@ -47,5 +47,7 @@ public final class MobsContent {
         PigmanHooks.activate();
         MinecraftForge.EVENT_BUS.register(new ZombifiedPiglins());
         MinecraftForge.EVENT_BUS.register(new NeutralMobs());
+        MinecraftForge.EVENT_BUS.register(new com.exiledradio.netherupdatebackport.common.AngerGameRules());
+        MinecraftForge.EVENT_BUS.register(new WitherSkeletons());
     }
 }

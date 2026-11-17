@@ -148,13 +148,15 @@ public final class PiglinTasks {
                 m.setFor(Mem.DANCING, true, 300);
             }
             m.setFor(Mem.CELEBRATE_LOCATION, new BlockPos(target), 300);
-            // 1.16's forgiveDeadPlayers game rule, which defaults to true and 1.12.2 lacks.
-            p.setAttackTarget(null);
-            m.erase(Mem.ANGRY_AT);
+            // 1.16's forgiveDeadPlayers game rule: a dead player stays the target (and is met again on respawning).
+            if (forgives(p, target)) {
+                p.setAttackTarget(null);
+                m.erase(Mem.ANGRY_AT);
+            }
         }
-        // GetAngryTask: forget anger at the dead.
+        // GetAngryTask: forget anger at the dead (a player only with forgiveDeadPlayers).
         EntityLivingBase angry = p.entityByUuid(m.<java.util.UUID>get(Mem.ANGRY_AT));
-        if (m.has(Mem.ANGRY_AT) && angry != null && isDeadOrDying(angry)) {
+        if (m.has(Mem.ANGRY_AT) && angry != null && isDeadOrDying(angry) && forgives(p, angry)) {
             m.erase(Mem.ANGRY_AT);
         }
     }
@@ -680,7 +682,32 @@ public final class PiglinTasks {
     public static void angerNearbyPiglins(EntityPlayer player, boolean requireLineOfSight) {
         for (EntityPiglin p : player.world.getEntitiesWithinAABB(EntityPiglin.class, player.getEntityBoundingBox().grow(16.0))) {
             if (p.activity == Activity.IDLE && (!requireLineOfSight || p.visibleLiving().contains(player) || p.isTargetable(player))) {
-                setAngerTarget(p, player);
+                if (com.exiledradio.netherupdatebackport.common.AngerGameRules.universalAnger(player.world)) {
+                    setAngerTargetToNearestTargetablePlayerIfFound(p, player);
+                } else {
+                    setAngerTarget(p, player);
+                }
+            }
+        }
+    }
+
+    /** {@code GetAngryTask} and {@code EndAttackTask}: a dead player is forgotten only with {@code forgiveDeadPlayers}. */
+    static boolean forgives(AbstractPiglin p, EntityLivingBase dead) {
+        return !(dead instanceof EntityPlayer) || com.exiledradio.netherupdatebackport.common.AngerGameRules.forgiveDeadPlayers(p.world);
+    }
+
+    /** 1.16's {@code setAngerTargetToNearestTargetablePlayerIfFound}. */
+    private static void setAngerTargetToNearestTargetablePlayerIfFound(AbstractPiglin p, EntityLivingBase fallback) {
+        EntityPlayer nearest = p.memories.get(Mem.NEAREST_VISIBLE_TARGETABLE_PLAYER);
+        setAngerTarget(p, nearest != null ? nearest : fallback);
+    }
+
+    /** 1.16's {@code broadcastUniversalAnger}: every adult piglin nearby turns on the nearest player it can see. */
+    private static void broadcastUniversalAnger(AbstractPiglin p) {
+        for (AbstractPiglin q : nearbyAdultPiglins(p)) {
+            EntityPlayer nearest = q.memories.get(Mem.NEAREST_VISIBLE_TARGETABLE_PLAYER);
+            if (nearest != null) {
+                setAngerTarget(q, nearest);
             }
         }
     }
@@ -725,8 +752,13 @@ public final class PiglinTasks {
         if (!AbstractPiglin.isAttackAllowed(by) || isOtherTargetMuchFurtherAway(p, by, 4.0)) {
             return;
         }
-        setAngerTarget(p, by);
-        broadcastAngerTarget(p, by);
+        if (by instanceof EntityPlayer && com.exiledradio.netherupdatebackport.common.AngerGameRules.universalAnger(p.world)) {
+            setAngerTargetToNearestTargetablePlayerIfFound(p, by);
+            broadcastUniversalAnger(p);
+        } else {
+            setAngerTarget(p, by);
+            broadcastAngerTarget(p, by);
+        }
     }
 
     private static boolean isOtherTargetMuchFurtherAway(AbstractPiglin p, EntityLivingBase other, double range) {
@@ -751,6 +783,9 @@ public final class PiglinTasks {
         p.memories.setFor(Mem.ANGRY_AT, target.getUniqueID(), 600);
         if (isHoglin(target) && p.canHunt()) {
             dontKillAnyMoreHoglinsForAWhile(p);
+        }
+        if (target instanceof EntityPlayer && com.exiledradio.netherupdatebackport.common.AngerGameRules.universalAnger(p.world)) {
+            p.memories.setFor(Mem.UNIVERSAL_ANGER, true, 600);
         }
     }
 
@@ -799,6 +834,12 @@ public final class PiglinTasks {
         EntityLivingBase angry = p.entityByUuid(m.<java.util.UUID>get(Mem.ANGRY_AT));
         if (angry != null && AbstractPiglin.isAttackAllowed(angry)) {
             return angry;
+        }
+        if (m.has(Mem.UNIVERSAL_ANGER)) {
+            EntityPlayer player = m.get(Mem.NEAREST_VISIBLE_TARGETABLE_PLAYER);
+            if (player != null) {
+                return player;
+            }
         }
         EntityLivingBase nemesis = m.get(Mem.NEAREST_VISIBLE_NEMESIS);
         if (nemesis != null) {

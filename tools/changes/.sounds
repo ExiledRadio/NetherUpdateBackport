@@ -19,4 +19,5 @@ block.soul_sand.fall
 block.soul_sand.hit
 block.soul_sand.place
 block.soul_sand.step
+block.vine.step
 item.nether_wart.plant
