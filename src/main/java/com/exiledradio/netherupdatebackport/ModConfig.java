@@ -220,6 +220,15 @@ public final class ModConfig {
         @Config.Comment("1.16's changes to existing mobs.")
         @Config.LangKey("config.netherupdatebackport.mobs.enabled")
         public boolean enabled = true;
+
+        @Config.Comment({"Wolves, endermen, polar bears and iron golems stay angry at whoever hurt them for 20 to 39 seconds",
+                "after losing them, and forgive a player who dies. Bees forgive too."})
+        @Config.LangKey("config.netherupdatebackport.mobs.neutralAnger")
+        public boolean neutralAnger = true;
+
+        @Config.Comment("A mob riding a boat, a minecart or another mob never despawns.")
+        @Config.LangKey("config.netherupdatebackport.mobs.ridersStay")
+        public boolean ridersStay = true;
     }
 
     public static final class Music {
@@ -263,6 +272,41 @@ public final class ModConfig {
         @Setting.Client
         @Config.LangKey("config.netherupdatebackport.changes.lavaFog")
         public boolean lavaFog = true;
+
+        @Config.Comment("Knockback resistance takes off its share of every knockback, instead of a chance to take none.")
+        @Config.LangKey("config.netherupdatebackport.changes.knockbackResistance")
+        public boolean knockbackResistance = true;
+
+        @Config.Comment("Mending repairs only damaged items with Mending, so no XP goes to an undamaged one.")
+        @Config.LangKey("config.netherupdatebackport.changes.mending")
+        public boolean mending = true;
+
+        @Config.Comment("A portal into the nether links to a portal within 16 blocks there, not 128. The overworld keeps 128.")
+        @Config.LangKey("config.netherupdatebackport.changes.portalSearch")
+        public boolean portalSearch = true;
+
+        @Config.Comment("Flowing lava pushes mobs, players and items, as flowing water does (faster in the nether).")
+        @Config.LangKey("config.netherupdatebackport.changes.lavaPushes")
+        public boolean lavaPushes = true;
+
+        @Config.Comment({"Lone redstone dust is a cross that powers all four sides; use it to make a dot that powers only",
+                "the block below. Dust powers the sides it points into."})
+        @Config.LangKey("config.netherupdatebackport.changes.redstoneDot")
+        public boolean redstoneDot = true;
+
+        @Config.RequiresWorldRestart
+        @Config.Comment("Fishing treasure only in open water (5x4x5 of water or air around the bobber); lily pads are junk.")
+        @Config.LangKey("config.netherupdatebackport.changes.fishing")
+        public boolean fishing = true;
+
+        @Config.Comment("A totem of undying also gives Fire Resistance for 40 seconds.")
+        @Config.LangKey("config.netherupdatebackport.changes.totemFireResistance")
+        public boolean totemFireResistance = true;
+
+        @Config.RequiresMcRestart
+        @Config.Comment("Netherrack, nether bricks, nether wart and its block, bone blocks, quartz ore and soul sand sound as in 1.16.")
+        @Config.LangKey("config.netherupdatebackport.changes.blockSounds")
+        public boolean blockSounds = true;
     }
 
     public static final class Biomes {

@@ -94,6 +94,54 @@ looks for.
 *   **Tested**: as P3 (dev and SRG classes, one hook call in `setupTerrain`, `BasicVerifier`; 200% doubles the
     weight; applied in the dev client).
 
+### P5 to P11. Behavior changes to existing things (the 2026-11-16 audit)
+
+One transformer, `asm/MechanicsTransformer`; every hook in `changes/ChangeHooks`, each reading its own setting on
+every call (`changes.*`, `mobs.ridersStay`), so a change switched off in the settings screen runs vanilla's code at
+once. Each patch fails safe on its own: a method missing or of another shape is left alone and `P<n> ... patch
+skipped` is logged. **Tested** (`-Pselftest=mechanics`): each applied, and the behavior below, through vanilla's own
+entry points (`knockBack`, `onCollideWithPlayer`, `placeInExistingPortal`, `onEntityUpdate`, `attackEntityFrom`,
+`despawnEntity`, `getWeakPower`/`getActualState`). Not yet checked against other coremods in a real instance.
+
+*   **P5. Knockback resistance scales knockback.** `EntityLivingBase.knockBack(Entity, float, double, double)`
+    (`func_70653_a`): head guard `if (ChangeHooks.knockbackActive()) { ChangeHooks.knockBack(...); return; }`.
+    *Vanilla 1.16.5* `LivingEntity.knockback`: strength times `1 - knockback resistance`, then the same push.
+    *Why a patch*: 1.12.2 rolls the resistance as a chance (`rand.nextDouble() >= resistance`) after Forge's
+    `LivingKnockBackEvent`, inside the method; no event comes after the roll. The hook fires Forge's event first,
+    as vanilla does, so other mods' changes to the strength still apply. Netherite's 0.1 per piece and hoglins'
+    0.6 now take that share off every hit.
+*   **P6. Mending only takes damaged items.** `EntityXPOrb.onCollideWithPlayer` (`func_70100_b_`): its one
+    `EnchantmentHelper.getEnchantedItem(Enchantment, EntityLivingBase)` call is renamed to
+    `ChangeHooks.mendingItem`, same descriptor. *Vanilla 1.16.5*: `getRandomItemWith(MENDING, player,
+    ItemStack::isDamaged)`. *1.12.2* picks any Mending item; an undamaged pick sends the whole orb to the XP bar
+    while a damaged Mending item stays damaged. The repair amounts stay Forge 1.12.2's (`getXpRepairRatio`).
+*   **P7. The nether side searches 16 blocks for a portal.** `Teleporter.placeInExistingPortal` (`func_180620_b`):
+    its three `sipush 128` and two `bipush -128` (the search square) become `ChangeHooks.portalRadius(this.world)`
+    (negated for the -128s). *Vanilla 1.16.5* `findPortalAround`: 16 when the destination is the nether, else 128.
+    *Why*: the radius is a constant in the loop bounds.
+*   **P8. Flowing lava pushes.** `Entity.onEntityUpdate` (`func_70030_z`): right after its `handleWaterMovement()`
+    (and the `pop` of its result), `ChangeHooks.lavaPush(this)`. *Vanilla 1.16.5*
+    `updateFluidHeightAndDoFluidPushing(LAVA, 0.007 in an ultrawarm dimension, else 0.0023)`: the flow of each lava
+    block the box is in (scaled by depth under 0.4), averaged, normalized except for players, at least 0.0045 for a
+    still entity. Entities `isPushedByWater` says no to (squid, fish, flying players) are not pushed, as 1.16's
+    `isPushedByFluid`. Runs on both sides, as vanilla's, so a player's own movement sees it.
+*   **P9. The totem gives Fire Resistance.** `EntityLivingBase.checkTotemDeathProtection` (`func_190628_d`): after
+    its one `World.setEntityState` (the totem has worked), `ChangeHooks.totemUsed(this)`: Fire Resistance 800 ticks
+    (1.16.2, 20w28a).
+*   **P10. Riders do not despawn.** `EntityLiving.despawnEntity` (`func_70623_bb`): head
+    `if (ChangeHooks.keepRider(this)) return;`. *Vanilla 1.16.5* `MobEntity.requiresCustomPersistence` is
+    `isPassenger()`, which skips `checkDespawn`. *Why a patch*: Forge's `AllowDespawn` runs only every 32nd tick in
+    1.12.2; the instant despawn beyond 128 blocks runs in between. Any vehicle counts, as in 1.16's code (boats,
+    minecarts, another mob).
+*   **P11. Redstone dust's dot and cross.** `BlockRedstoneWire.getWeakPower` (`func_180656_a`): head guard returning
+    `ChangeHooks.weakPower(this, state, world, pos, side)`; `getActualState` (`func_176221_a`): its one result goes
+    through `ChangeHooks.actualState`. *Vanilla 1.16.5* `getSignal`: up and below as before, a side only when the
+    wire's connection state (a lone connection drawn as a line, none as a cross) points into it; so corners and
+    T-junctions now power what they point into, as 1.16 does. An unconnected wire is drawn (and boxed) as a cross.
+    The dot itself is a block, `netherupdatebackport:redstone_dot` (1.12.2's wire has no metadata to spare), which
+    exists only while unconnected (`changes/RedstoneDot`). While any wire works out its own power, no wire of either
+    block gives power, as vanilla's single instance does. Lines, line ends, lone dust and lamps behave as in 1.12.2.
+
 ## Candidates: approximations made without patches that a patch would make vanilla
 
 | Where | What vanilla 1.16 does | What this mod does now | Patch |

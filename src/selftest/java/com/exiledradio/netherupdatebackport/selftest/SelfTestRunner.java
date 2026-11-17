@@ -55,6 +55,7 @@ public final class SelfTestRunner {
             new StriderSelfTest(),
             new OwnedSelfTest(),
             new ChangesSelfTest(),
+            new MechanicsSelfTest(),
             new MobsSelfTest(),
             new BiomeSelfTest(),
             new PiglinSelfTest(),

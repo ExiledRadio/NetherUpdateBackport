@@ -63,6 +63,21 @@ final class Asm {
      * method patched here has
      */
     static boolean guardAtHead(ClassNode owner, MethodNode m, String hooks, InsnList body) {
+        return guardAtHead(owner, m, hooks, "active", body);
+    }
+
+    /** {@link #guardAtHead(ClassNode, MethodNode, String, InsnList)} with a switch method of another name. */
+    static boolean guardAtHead(ClassNode owner, MethodNode m, String hooks, String active, InsnList body) {
+        InsnList test = new InsnList();
+        test.add(new MethodInsnNode(Opcodes.INVOKESTATIC, hooks, active, "()Z", false));
+        return ifAtHead(owner, m, test, body);
+    }
+
+    /**
+     * {@code if (<test>) { <body> }} at a method's head: {@code test} leaves one int on the stack, {@code body}
+     * ends in a return. Same frame rules as {@link #guardAtHead}.
+     */
+    static boolean ifAtHead(ClassNode owner, MethodNode m, InsnList test, InsnList body) {
         AbstractInsnNode first = m.instructions.getFirst();
         for (AbstractInsnNode i = first; i != null && i.getOpcode() < 0; i = i.getNext()) {
             if (i instanceof FrameNode) {
@@ -71,7 +86,7 @@ final class Asm {
         }
         LabelNode vanilla = new LabelNode();
         InsnList head = new InsnList();
-        head.add(new MethodInsnNode(Opcodes.INVOKESTATIC, hooks, "active", "()Z", false));
+        head.add(test);
         head.add(new JumpInsnNode(Opcodes.IFEQ, vanilla));
         head.add(body);
         head.add(vanilla);
