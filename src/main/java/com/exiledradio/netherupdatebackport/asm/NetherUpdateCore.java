@@ -29,6 +29,7 @@ public final class NetherUpdateCore implements IFMLLoadingPlugin {
                 PigZombieTransformer.class.getName(),
                 JukeboxTransformer.class.getName(),
                 LookTransformer.class.getName(),
+                MechanicsTransformer.class.getName(),
         };
     }
 

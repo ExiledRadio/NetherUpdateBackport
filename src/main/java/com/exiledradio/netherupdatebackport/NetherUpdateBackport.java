@@ -70,6 +70,7 @@ public final class NetherUpdateBackport {
         }
         com.exiledradio.netherupdatebackport.owned.OwnedContent.preInit();
         com.exiledradio.netherupdatebackport.mobs.MobsContent.preInit();
+        com.exiledradio.netherupdatebackport.changes.ChangesContent.preInit();
         com.exiledradio.netherupdatebackport.structure.StructureContent.preInit();
         com.exiledradio.netherupdatebackport.common.FutureMcPairs.preInit();
         net.minecraftforge.fml.common.network.NetworkRegistry.INSTANCE.registerGuiHandler(this,

@@ -3397,5 +3397,369 @@
         "stream": true
       }
     ]
+  },
+  "block.netherrack.break": {
+    "sounds": [
+      "netherupdatebackport:block/netherrack/break1",
+      "netherupdatebackport:block/netherrack/break2",
+      "netherupdatebackport:block/netherrack/break3",
+      "netherupdatebackport:block/netherrack/break4",
+      "netherupdatebackport:block/netherrack/break5",
+      "netherupdatebackport:block/netherrack/break6"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.netherrack.step": {
+    "sounds": [
+      "netherupdatebackport:block/netherrack/step1",
+      "netherupdatebackport:block/netherrack/step2",
+      "netherupdatebackport:block/netherrack/step3",
+      "netherupdatebackport:block/netherrack/step4",
+      "netherupdatebackport:block/netherrack/step5",
+      "netherupdatebackport:block/netherrack/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.netherrack.place": {
+    "sounds": [
+      "netherupdatebackport:block/netherrack/break1",
+      "netherupdatebackport:block/netherrack/break2",
+      "netherupdatebackport:block/netherrack/break3",
+      "netherupdatebackport:block/netherrack/break4",
+      "netherupdatebackport:block/netherrack/break5",
+      "netherupdatebackport:block/netherrack/break6"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.netherrack.hit": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/netherrack/step1",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/netherrack/step2",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/netherrack/step3",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/netherrack/step4",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/netherrack/step5",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/netherrack/step6",
+        "volume": 0.55
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.netherrack.fall": {
+    "sounds": [
+      "netherupdatebackport:block/netherrack/step1",
+      "netherupdatebackport:block/netherrack/step2",
+      "netherupdatebackport:block/netherrack/step3",
+      "netherupdatebackport:block/netherrack/step4",
+      "netherupdatebackport:block/netherrack/step5",
+      "netherupdatebackport:block/netherrack/step6"
+    ]
+  },
+  "block.nether_ore.break": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/break1",
+      "netherupdatebackport:block/nether_ore/break2",
+      "netherupdatebackport:block/nether_ore/break3",
+      "netherupdatebackport:block/nether_ore/break4"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.nether_ore.step": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.nether_ore.place": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/break1",
+      "netherupdatebackport:block/nether_ore/break2",
+      "netherupdatebackport:block/nether_ore/break3",
+      "netherupdatebackport:block/nether_ore/break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.nether_ore.hit": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.nether_ore.fall": {
+    "sounds": [
+      "netherupdatebackport:block/nether_ore/step1",
+      "netherupdatebackport:block/nether_ore/step2",
+      "netherupdatebackport:block/nether_ore/step3",
+      "netherupdatebackport:block/nether_ore/step4",
+      "netherupdatebackport:block/nether_ore/step5"
+    ]
+  },
+  "block.bone_block.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/bone_block/break1",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:block/bone_block/break2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:block/bone_block/break3",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:block/bone_block/break4",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:block/bone_block/break5",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.bone_block.step": {
+    "sounds": [
+      "netherupdatebackport:block/bone_block/step1",
+      "netherupdatebackport:block/bone_block/step2",
+      "netherupdatebackport:block/bone_block/step3",
+      "netherupdatebackport:block/bone_block/step4",
+      "netherupdatebackport:block/bone_block/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.bone_block.place": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/bone_block/break1",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:block/bone_block/break2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:block/bone_block/break3",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:block/bone_block/break4",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:block/bone_block/break5",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.bone_block.hit": {
+    "sounds": [
+      "netherupdatebackport:block/bone_block/step1",
+      "netherupdatebackport:block/bone_block/step2",
+      "netherupdatebackport:block/bone_block/step3",
+      "netherupdatebackport:block/bone_block/step4",
+      "netherupdatebackport:block/bone_block/step5"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.bone_block.fall": {
+    "sounds": [
+      "netherupdatebackport:block/bone_block/step1",
+      "netherupdatebackport:block/bone_block/step2",
+      "netherupdatebackport:block/bone_block/step3",
+      "netherupdatebackport:block/bone_block/step4",
+      "netherupdatebackport:block/bone_block/step5"
+    ]
+  },
+  "block.soul_sand.break": {
+    "sounds": [
+      "netherupdatebackport:block/soul_sand/break1",
+      "netherupdatebackport:block/soul_sand/break2",
+      "netherupdatebackport:block/soul_sand/break3",
+      "netherupdatebackport:block/soul_sand/break4",
+      "netherupdatebackport:block/soul_sand/break5",
+      "netherupdatebackport:block/soul_sand/break6",
+      "netherupdatebackport:block/soul_sand/break7",
+      "netherupdatebackport:block/soul_sand/break8",
+      "netherupdatebackport:block/soul_sand/break9"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.soul_sand.step": {
+    "sounds": [
+      "netherupdatebackport:block/soul_sand/step1",
+      "netherupdatebackport:block/soul_sand/step2",
+      "netherupdatebackport:block/soul_sand/step3",
+      "netherupdatebackport:block/soul_sand/step4",
+      "netherupdatebackport:block/soul_sand/step5"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
+  "block.soul_sand.place": {
+    "sounds": [
+      "netherupdatebackport:block/soul_sand/break1",
+      "netherupdatebackport:block/soul_sand/break2",
+      "netherupdatebackport:block/soul_sand/break3",
+      "netherupdatebackport:block/soul_sand/break4",
+      "netherupdatebackport:block/soul_sand/break5",
+      "netherupdatebackport:block/soul_sand/break6",
+      "netherupdatebackport:block/soul_sand/break7",
+      "netherupdatebackport:block/soul_sand/break8",
+      "netherupdatebackport:block/soul_sand/break9"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.soul_sand.hit": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:block/soul_sand/step1",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/soul_sand/step2",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/soul_sand/step3",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/soul_sand/step4",
+        "volume": 0.55
+      },
+      {
+        "name": "netherupdatebackport:block/soul_sand/step5",
+        "volume": 0.55
+      }
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.soul_sand.fall": {
+    "sounds": [
+      "netherupdatebackport:block/soul_sand/step1",
+      "netherupdatebackport:block/soul_sand/step2",
+      "netherupdatebackport:block/soul_sand/step3",
+      "netherupdatebackport:block/soul_sand/step4",
+      "netherupdatebackport:block/soul_sand/step5"
+    ]
+  },
+  "block.nether_wart.break": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/plant/netherwart1",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart2",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart3",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart4",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart5",
+        "pitch": 0.9,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart6",
+        "pitch": 0.9,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "item.nether_wart.plant": {
+    "sounds": [
+      {
+        "name": "netherupdatebackport:item/plant/netherwart1",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart1",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart2",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart2",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart3",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart3",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart4",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart4",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart5",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart5",
+        "pitch": 1.12,
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart6",
+        "volume": 0.9
+      },
+      {
+        "name": "netherupdatebackport:item/plant/netherwart6",
+        "pitch": 1.12,
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.generic.place"
   }
 }

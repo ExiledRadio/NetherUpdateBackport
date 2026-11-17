@@ -46,5 +46,6 @@ public final class MobsContent {
         Anger.register();
         PigmanHooks.activate();
         MinecraftForge.EVENT_BUS.register(new ZombifiedPiglins());
+        MinecraftForge.EVENT_BUS.register(new NeutralMobs());
     }
 }

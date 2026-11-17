@@ -31,6 +31,21 @@ public final class ChangesClient {
         MinecraftForge.EVENT_BUS.register(new ChangesClient());
     }
 
+    /** The redstone dot is tinted by its power as vanilla's wire is. */
+    @SubscribeEvent
+    public void colors(net.minecraftforge.client.event.ColorHandlerEvent.Block event) {
+        final net.minecraft.block.Block dot = com.exiledradio.netherupdatebackport.changes.RedstoneDot.block();
+        if (dot != null) {
+            event.getBlockColors().registerBlockColorHandler(new net.minecraft.client.renderer.color.IBlockColor() {
+                @Override
+                public int colorMultiplier(net.minecraft.block.state.IBlockState state, net.minecraft.world.IBlockAccess world,
+                        net.minecraft.util.math.BlockPos pos, int tint) {
+                    return net.minecraft.block.BlockRedstoneWire.colorMultiplier(state.getValue(net.minecraft.block.BlockRedstoneWire.POWER));
+                }
+            }, dot);
+        }
+    }
+
     @SubscribeEvent
     public void fog(EntityViewRenderEvent.FogDensity event) {
         if (!ModConfig.changes.enabled || !ModConfig.changes.lavaFog || event.getState().getMaterial() != Material.LAVA) {

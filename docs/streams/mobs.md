@@ -1,6 +1,7 @@
 # Stream Z: zombified piglins and other mob changes
 
-Package `mobs` (client: `mobs/client`). Config `mobs` (`enabled`). No entity ids, no packets. Patch P1
+Package `mobs` (client: `mobs/client`). Config `mobs` (`enabled`, `neutralAnger`, `ridersStay`). No entity ids, no
+packets. Patch P1
 (`asm/PigZombieTransformer`, see `docs/PATCHES.md`), the first patch of this mod's own coremod.
 
 ## Changelog section
@@ -14,6 +15,11 @@ Package `mobs` (client: `mobs/client`). Config `mobs` (`enabled`). No entity ids
     39 seconds; it forgives you at once when you die. Hit by another mob, it fights that mob and calms down once the
     mob is dead. Only one angry at you keeps you from sleeping.
 *   Zombified piglins avoid walking through lava and never spawn on nether wart blocks.
+*   **Neutral mobs hold a grudge, and forgive**: wolves, endermen, polar bears and iron golems stay angry at whoever
+    hurt them for 20 to 39 seconds after losing them (wolves, bears and golems come back for a player they are
+    still angry at), and the anger is saved with them. A player who dies is forgiven by every one of them nearby,
+    bees from Buzzy Bees Backport included.
+*   **Mobs riding** a boat, a minecart or another mob never despawn.
 
 ## How it works
 
@@ -62,6 +68,17 @@ Package `mobs` (client: `mobs/client`). Config `mobs` (`enabled`). No entity ids
     down, with no sight needed for the first alarm and sight needed for the repeated one. The Java numbers are used.
 *   minecraft.wiki says the Java anger lasts 20-55 s; 1.16.5's code is `rangeOfSeconds(20, 39)`. The code is used.
 
+*   **Neutral mobs** (`mobs/NeutralMobs`, `mobs.neutralAnger`): the same `Anger` capability on wolves, endermen,
+    polar bears and iron golems; each server tick 1.16.5's `updatePersistentAnger(world, true)`; wolves (priority 4),
+    polar bears and iron golems (3) get 1.16's `NearestAttackableTargetGoal<PlayerEntity>(10, true, false,
+    isAngryAt)`; endermen none, as 1.16's `FindPlayerGoal` only starts on a stare. An untamed wolf's 1.12.2 angry
+    flag follows the anger. `forgiveDeadPlayers` (1.16's default): a dying player calms every one of them angry at
+    them within 32 blocks (10 up and down), and Buzzy Bees Backport's bee through its public `getAngerTarget` and
+    `stopBeingAngry` (by reflection, by class name: no compile dependency). 1.16's bee is an `IAngerable` and so
+    forgives; BB's own bee does not do it itself. `universalAnger` stays off (1.16's default).
+*   **Riders** (`mobs.ridersStay`): patch P10 (`docs/PATCHES.md`); 1.16's `requiresCustomPersistence` is
+    `isPassenger()`, so any vehicle counts.
+
 ## Tested headlessly
 
 `-Pselftest=mobs`: **pass=54 fail=0**; `-Pselftest=all` (every stream): **pass=7197 fail=0**; `check_assets.py`: 0 errors,
@@ -84,6 +101,10 @@ population grew into its cleared area where the crimson door goes. Seed-dependen
 *   Anger survives a save and load; vanilla's `Anger` tag stays unused; a pigman saved angry by 1.12.2 carries its
     player and time over; an angry baby gets no speed boost.
 *   No spawning on a nether wart block; stone is left to vanilla.
+
+*   `-Pselftest=mechanics`: a wolf carries the anger and the take-back goal; targeting a player starts 20-39 s
+    that hold while it targets the player and run once it has lost them; `AngerTime`/`AngryAt` survive a save; a
+    dying player is forgiven; endermen, polar bears and iron golems the same (endermen without the goal). Riders: P10.
 
 ## Not tested
 
