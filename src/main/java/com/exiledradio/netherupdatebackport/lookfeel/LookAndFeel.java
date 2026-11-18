@@ -99,11 +99,12 @@ public final class LookAndFeel {
 
     /** @return the scale 1.16.2 applies to field-of-view changes: the root of the FOV Effects slider */
     public static float fovEffectScale() {
-        return (float) Math.sqrt(FOV_EFFECTS.get());
+        // A hidden option (Core's Look & Feel page turned its part off) leaves 1.12.2's full effect.
+        return FOV_EFFECTS.isShown() ? (float) Math.sqrt(FOV_EFFECTS.get()) : 1.0F;
     }
 
     /** @return Distortion Effects, 0 to 1 */
     public static float screenEffectScale() {
-        return (float) DISTORTION.get();
+        return DISTORTION.isShown() ? (float) DISTORTION.get() : 1.0F;
     }
 }
