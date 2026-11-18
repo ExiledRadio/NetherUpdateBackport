@@ -236,7 +236,8 @@ public final class LookAndFeelClient {
     /** 1.16 {@code WorldSelectionList}: with no world to select, Singleplayer opens Create New World. */
     @SubscribeEvent
     public void onGuiOpen(GuiOpenEvent event) {
-        if (!(event.getGui() instanceof GuiWorldSelection) || !(Minecraft.getMinecraft().currentScreen instanceof GuiMainMenu)) {
+        if (!(event.getGui() instanceof GuiWorldSelection) || !(Minecraft.getMinecraft().currentScreen instanceof GuiMainMenu)
+                || !com.exiledradio.backportcore.presentation.Presentation.isAtLeast("1.16")) {
             return;
         }
         if (noWorlds(Minecraft.getMinecraft())) {

@@ -23,6 +23,6 @@ public final class LookHooks {
      * {@code LevelRenderer.renderLevel} multiplies vanilla's clamp(render distance / 8, 1, 2.5) by Entity Distance.
      */
     public static double entityDistance(double weight) {
-        return weight * LookAndFeel.ENTITY_DISTANCE.get();
+        return LookAndFeel.ENTITY_DISTANCE.isShown() ? weight * LookAndFeel.ENTITY_DISTANCE.get() : weight;
     }
 }
