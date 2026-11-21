@@ -113,7 +113,8 @@ public final class NetherUpdateBackport {
     @Mod.EventHandler
     public void serverStarted(FMLServerStartedEvent event) {
         String selftest = System.getProperty(MOD_ID + ".selftest");
-        if (selftest == null || selftest.isEmpty()) {
+        // "babyrender" is a client test that opens its own world (ClientBabyRenderTest): no server tests run in it.
+        if (selftest == null || selftest.isEmpty() || "babyrender".equals(selftest)) {
             return;
         }
         try {

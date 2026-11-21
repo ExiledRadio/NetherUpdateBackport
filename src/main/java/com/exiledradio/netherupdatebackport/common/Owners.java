@@ -26,6 +26,9 @@ public final class Owners {
     /** Owns 1.13's blocks, and a copy of Village &amp; Pillage's 1.13 blocks when that is absent. */
     public static final String UPDATE_AQUATIC = "updateaquaticbackport";
 
+    /** Game Drops Backport: 26.x's drops (26.1's golden dandelion, which piglins love, and baby models). */
+    public static final String GAME_DROPS = "gamedropsbackport";
+
     private Owners() {
     }
 

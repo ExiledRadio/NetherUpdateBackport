@@ -58,6 +58,14 @@ public final class ClientSetup {
                 NetherUpdateBackport.LOGGER.error("CLIENT SELFTEST DONE pass=0 fail=1: the test classes are not in this build", e);
             }
         }
+        // `runClient -Pselftest=babyrender`: 26.1's baby models drawn in a flat world, with screenshots.
+        if (selftest != null && selftest.contains("babyrender")) {
+            try {
+                Class.forName("com.exiledradio.netherupdatebackport.selftest.ClientBabyRenderTest").getMethod("register").invoke(null);
+            } catch (ReflectiveOperationException e) {
+                NetherUpdateBackport.LOGGER.error("BABYRENDER DONE pass=0 fail=1: the test classes are not in this build", e);
+            }
+        }
     }
 
     @SubscribeEvent

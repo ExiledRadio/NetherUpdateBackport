@@ -58,7 +58,7 @@ import java.util.Set;
  *   <li><b>loved</b> ({@code piglin_loved}): gold ores (vanilla's, nether gold ore, and the {@code oreGold} ore
  *       name), gold block, gilded blackstone, the light weighted pressure plate, gold ingot, the bell (Village &amp;
  *       Pillage's), clock, golden carrot, glistering melon, golden apples, golden armor and horse armor, golden tools,
- *       raw gold and its block from any mod;</li>
+ *       raw gold and its block from any mod, and Game Drops Backport's golden dandelion (26.1);</li>
  *   <li><b>repellent</b> items: soul torch, soul lantern, soul campfire; blocks: soul fire, soul torch, soul lantern,
  *       a lit soul campfire;</li>
  *   <li><b>guarded</b> ({@code guarded_by_piglins}): gold block, chests, trapped chests, ender chests, barrels,
@@ -1135,6 +1135,8 @@ public final class PiglinTasks {
                 Items.GOLDEN_AXE, Items.GOLDEN_HOE);
         addOurs(s, "nether_gold_ore", "gilded_blackstone");
         addNamed(s, Owners.VILLAGE_AND_PILLAGE + ":bell", "futuremc:bell");
+        // 26.1 (Game Drops Backport's): piglins admire the golden dandelion and keep it.
+        addNamed(s, Owners.GAME_DROPS + ":golden_dandelion");
         for (Item item : ForgeRegistries.ITEMS) {
             String path = item.getRegistryName().getPath();
             if ("raw_gold".equals(path) || "raw_gold_block".equals(path) || "deepslate_gold_ore".equals(path)) {

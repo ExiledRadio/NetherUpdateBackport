@@ -1,6 +1,7 @@
 package com.exiledradio.netherupdatebackport.hoglin.client;
 
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
+import com.exiledradio.netherupdatebackport.babies.client.NetherBabies;
 import com.exiledradio.netherupdatebackport.hoglin.EntityHoglin;
 import com.exiledradio.netherupdatebackport.hoglin.EntityZoglin;
 
@@ -10,7 +11,10 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
-/** Client side of stream H: renderers for hoglins (shaking while they turn into zoglins) and zoglins. */
+/**
+ * Client side of stream H: renderers for hoglins (shaking while they turn into zoglins) and zoglins, their babies
+ * drawn with 26.1's models while {@code NetherBabies} says so.
+ */
 public final class HoglinClient {
 
     static final ResourceLocation HOGLIN = new ResourceLocation(NetherUpdateBackport.MOD_ID, "textures/entity/hoglin/hoglin.png");
@@ -20,8 +24,8 @@ public final class HoglinClient {
     }
 
     public static void init() {
-        RenderingRegistry.registerEntityRenderingHandler(EntityHoglin.class, m -> new Boar<EntityHoglin>(m, HOGLIN));
-        RenderingRegistry.registerEntityRenderingHandler(EntityZoglin.class, m -> new Boar<EntityZoglin>(m, ZOGLIN));
+        RenderingRegistry.registerEntityRenderingHandler(EntityHoglin.class, m -> NetherBabies.hoglin(m, new Boar<EntityHoglin>(m, HOGLIN), "hoglin"));
+        RenderingRegistry.registerEntityRenderingHandler(EntityZoglin.class, m -> NetherBabies.hoglin(m, new Boar<EntityZoglin>(m, ZOGLIN), "zoglin"));
     }
 
     static final class Boar<T extends EntityLiving> extends RenderLiving<T> {

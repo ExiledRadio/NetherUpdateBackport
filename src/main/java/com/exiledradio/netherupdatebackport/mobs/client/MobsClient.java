@@ -1,6 +1,7 @@
 package com.exiledradio.netherupdatebackport.mobs.client;
 
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
+import com.exiledradio.netherupdatebackport.babies.client.NetherBabies;
 import com.exiledradio.netherupdatebackport.mobs.MobsContent;
 
 import net.minecraft.client.model.ModelZombie;
@@ -28,7 +29,8 @@ public final class MobsClient {
         if (!MobsContent.enabled()) {
             return;
         }
-        RenderingRegistry.registerEntityRenderingHandler(EntityPigZombie.class, RenderZombifiedPiglin::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityPigZombie.class,
+                m -> NetherBabies.zombifiedPiglin(m, new RenderZombifiedPiglin(m)));
     }
 
     /**

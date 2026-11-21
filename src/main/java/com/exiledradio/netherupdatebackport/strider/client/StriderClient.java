@@ -1,6 +1,7 @@
 package com.exiledradio.netherupdatebackport.strider.client;
 
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
+import com.exiledradio.netherupdatebackport.babies.client.NetherBabies;
 import com.exiledradio.netherupdatebackport.strider.EntityStrider;
 
 import net.minecraft.client.renderer.GlStateManager;
@@ -28,7 +29,7 @@ public final class StriderClient {
     }
 
     public static void init() {
-        RenderingRegistry.registerEntityRenderingHandler(EntityStrider.class, Render::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityStrider.class, m -> NetherBabies.strider(m, new Render(m)));
     }
 
     static final class Render extends RenderLiving<EntityStrider> {

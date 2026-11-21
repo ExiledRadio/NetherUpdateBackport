@@ -1,3 +1,8 @@
+# 1.1.1
+
+*   **With Game Drops Backport, babies get 26.1's models**: baby hoglins, zoglins, striders, piglins and zombified piglins are drawn with their own 26.1 models and textures, baby piglins with their baby armor, helmets and held items. They follow Game Drops Backport's Baby Models setting; without it, they show when Backport Core's look is 26.1 or later, and are 1.16's shrunken adults otherwise.
+*   **With Game Drops Backport, piglins love the golden dandelion**: they admire one, pick it up and keep it, as they do the gold they love.
+
 # 1.1.0
 
 Behavior changes from 1.16 to things 1.12.2 already has, and fixes. Each change can be turned off in the Smaller Changes and Mob Changes settings.

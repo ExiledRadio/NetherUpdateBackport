@@ -1,6 +1,7 @@
 package com.exiledradio.netherupdatebackport.piglin.client;
 
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
+import com.exiledradio.netherupdatebackport.babies.client.NetherBabies;
 import com.exiledradio.netherupdatebackport.piglin.AbstractPiglin;
 import com.exiledradio.netherupdatebackport.piglin.EntityPiglin;
 import com.exiledradio.netherupdatebackport.piglin.EntityPiglinBrute;
@@ -25,7 +26,7 @@ public final class PiglinClient {
     }
 
     public static void init() {
-        RenderingRegistry.registerEntityRenderingHandler(EntityPiglin.class, m -> new Render<EntityPiglin>(m, PIGLIN));
+        RenderingRegistry.registerEntityRenderingHandler(EntityPiglin.class, m -> NetherBabies.piglin(m, new Render<EntityPiglin>(m, PIGLIN)));
         RenderingRegistry.registerEntityRenderingHandler(EntityPiglinBrute.class, m -> new Render<EntityPiglinBrute>(m, BRUTE));
     }
 

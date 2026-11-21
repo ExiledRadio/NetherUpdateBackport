@@ -73,6 +73,8 @@ Every feature can be turned off in Backport Core's settings screen, under Mod Op
 
 **[Trails & Tales Backport](https://www.curseforge.com/minecraft/mc-mods/trails-tales-backport)**: crimson and warped hanging signs, the snout and netherite upgrade templates in bastions, and the piglin head.
 
+**Game Drops Backport**: baby hoglins, zoglins, striders, piglins and zombified piglins get 26.1's baby models, and piglins love its golden dandelion.
+
 Worlds that had another mod's 1.16 blocks keep them, converted to this mod's.
 
 ## Requirements
