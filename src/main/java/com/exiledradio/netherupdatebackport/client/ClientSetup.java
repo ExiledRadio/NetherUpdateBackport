@@ -48,7 +48,6 @@ public final class ClientSetup {
         com.exiledradio.netherupdatebackport.owned.client.CrossbowClient.init();
         com.exiledradio.netherupdatebackport.piglin.client.PiglinClient.init();
         com.exiledradio.netherupdatebackport.music.client.MusicClient.init();
-        com.exiledradio.netherupdatebackport.lookfeel.client.LookAndFeelClient.init();
         // `runClient -Pselftest=client`: stream Lf's title-screen check, reached by name (a release jar has no test classes).
         String selftest = System.getProperty(NetherUpdateBackport.MOD_ID + ".selftest");
         if (selftest != null && selftest.contains("client")) {

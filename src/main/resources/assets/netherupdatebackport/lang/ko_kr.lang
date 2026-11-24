@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=중복 블록
 config.netherupdatebackport.compat.duplicates.tooltip=설치된 다른 모드가 같은 1.16 블록과 아이템을 추가할 때의 처리입니다. OURS는 상대 쪽을, THEIRS는 이 모드 쪽을 숨기고, BOTH는 아무것도 숨기지 않습니다. 보이는 쪽의 고대 잔해만 생성됩니다.
 config.netherupdatebackport.compat.convertRemoved=제거 시 변환
 config.netherupdatebackport.compat.convertRemoved.tooltip=같은 것을 추가하던 다른 모드가 세계에서 제거되면, 그 모드가 남긴 블록과 아이템을 변환합니다.
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=개체 거리
-options.screenEffectScale=왜곡 효과
-options.fovEffectScale=시야 효과
-debug.gamemodes.help=F3 + F4 = 게임 모드 전환기 열기
-debug.gamemodes.error=권한이 없어 게임 모드 전환기를 열 수 없습니다
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=%s 다음
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=멀미와 네더 차원문의 화면 왜곡 효과 강도.\n수치를 낮추면, 멀미 효과는 초록색 오버레이로 대체됩니다.
-options.fovEffectScale.tooltip=게임플레이 효과에 따라 시야가 얼마나 변하는지 조절합니다.
-options.accessibility.link=접근성 안내

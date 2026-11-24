@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=Bloques duplicados
 config.netherupdatebackport.compat.duplicates.tooltip=Cuando otro mod instalado agrega los mismos bloques y objetos de la 1.16: OURS oculta los del otro mod, THEIRS oculta los nuestros y BOTH no oculta nada. Solo se generan los escombros ancestrales visibles.
 config.netherupdatebackport.compat.convertRemoved=Convertir al quitar un mod
 config.netherupdatebackport.compat.convertRemoved.tooltip=Convierte los bloques y objetos que deja otro mod que los agregaba cuando ese mod se quita de un mundo.
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=Distancia de entidades
-options.screenEffectScale=Efectos de distorsión
-options.fovEffectScale=Efectos de FOV
-debug.gamemodes.help=F3 + F4 = Abrir menú de modos de juego
-debug.gamemodes.error=No tienes permiso para abrir el menú de modos de juego
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=%s siguiente
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=Modifica la intensidad de los efectos de distorsión que causan los portales del Nether y las náuseas.\nSi el valor es bajo, el efecto de náuseas será sustituido por un coloreado verde.
-options.fovEffectScale.tooltip=Controla qué tanto cambia el FOV (campo de visión) al tener efectos.
-options.accessibility.link=Guía de accesibilidad

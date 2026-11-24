@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=Doppelte Blöcke
 config.netherupdatebackport.compat.duplicates.tooltip=Wenn ein anderer installierter Mod dieselben Blöcke und Gegenstände aus 1.16 hinzufügt: OURS blendet die des anderen Mods aus, THEIRS blendet unsere aus, BOTH blendet nichts aus. Nur der sichtbare antike Schrott wird generiert.
 config.netherupdatebackport.compat.convertRemoved=Beim Entfernen umwandeln
 config.netherupdatebackport.compat.convertRemoved.tooltip=Wandelt Blöcke und Gegenstände um, die ein anderer Mod hinterlassen hat, der sie hinzugefügt hat, wenn dieser Mod aus einer Welt entfernt wird.
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=Objektweite
-options.screenEffectScale=Verzerrungseffekte
-options.fovEffectScale=Sichtfeldeffekte
-debug.gamemodes.help=F3 + F4 = Spielmodusauswahl öffnen
-debug.gamemodes.error=Spielmodusauswahl kann wegen fehlender Berechtigung nicht geöffnet werden
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=%s Nächster
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=Stärke von Übelkeits‐ und Netherportal‐Verzerrungseffekten.\nBei niedrigeren Werten wird der Übelkeitseffekt durch eine grüne Überlagerung ersetzt.
-options.fovEffectScale.tooltip=Steuert, wie stark das Sichtfeld durch Spielmechanikeffekte verändert wird.
-options.accessibility.link=Barrierefreiheitsleitfaden

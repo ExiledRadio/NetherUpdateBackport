@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=重複ブロック
 config.netherupdatebackport.compat.duplicates.tooltip=インストールされている別のModが同じ1.16のブロックやアイテムを追加する場合の扱いです。OURSは相手側を、THEIRSはこちら側を非表示にし、BOTHは何も非表示にしません。生成されるのは表示されている方の古代の残骸だけです。
 config.netherupdatebackport.compat.convertRemoved=削除時に変換
 config.netherupdatebackport.compat.convertRemoved.tooltip=同じものを追加していた別のModがワールドから削除されたとき、そのModが残したブロックとアイテムを変換します。
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=エンティティの描画距離
-options.screenEffectScale=画面の歪み
-options.fovEffectScale=視野の変化
-debug.gamemodes.help=F3 + F4 = ゲームモード切り替え画面を開く
-debug.gamemodes.error=ゲームモード切り替え画面を開くための権限がありません
-debug.gamemodes.press_f4=［F4］
-debug.gamemodes.select_next=%sで次を選択
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=吐き気とネザーポータルに入った時に起こる画面の歪み効果の強さを変更します。\n設定の値を小さくすると、吐き気の歪み効果は緑色のオーバーレイに置き換えられます。
-options.fovEffectScale.tooltip=ゲーム内の効果により視野がどの程度変化するかを設定できます。
-options.accessibility.link=アクセシビリティについて

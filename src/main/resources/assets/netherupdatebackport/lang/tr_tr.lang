@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=Yinelenen Bloklar
 config.netherupdatebackport.compat.duplicates.tooltip=Yüklü başka bir mod 1.16'nın aynı bloklarını ve eşyalarını eklediğinde: OURS diğer modunkileri gizler, THEIRS bizimkileri gizler, BOTH hiçbir şeyi gizlemez. Yalnızca görünen antik kalıntı oluşur.
 config.netherupdatebackport.compat.convertRemoved=Kaldırılınca dönüştür
 config.netherupdatebackport.compat.convertRemoved.tooltip=Bunları ekleyen başka bir mod bir dünyadan kaldırıldığında, o modun geride bıraktığı blokları ve eşyaları dönüştürür.
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=Varlık Mesafesi
-options.screenEffectScale=Çarpıtma Efektleri
-options.fovEffectScale=Görüş Açısı Efektleri
-debug.gamemodes.help=F3 + F4 = Oyun modu değiştiricisini aç
-debug.gamemodes.error=Oyun modu değiştiricisi açılamadı, yetkiniz yok
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=%s Sonraki
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=Bulantı ve Nether portalı ekran çarpıtma efekt şiddetleri.\nDüşük seviyelerde bulantı efekti yerini yeşil bir önyüze bırakır.
-options.fovEffectScale.tooltip=Görüş alanının oynanış etkileriyle ne kadar değişebileceğini kontrol eder.
-options.accessibility.link=Erişilebilirlik Kılavuzu

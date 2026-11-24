@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=Zduplikowane bloki
 config.netherupdatebackport.compat.duplicates.tooltip=Gdy inny zainstalowany mod dodaje te same bloki i przedmioty z wersji 1.16: OURS ukrywa te z innego moda, THEIRS ukrywa nasze, BOTH niczego nie ukrywa. Generują się tylko widoczne pradawne zgliszcza.
 config.netherupdatebackport.compat.convertRemoved=Konwertuj po usunięciu
 config.netherupdatebackport.compat.convertRemoved.tooltip=Konwertuje bloki i przedmioty pozostawione przez inny mod, który je dodawał, gdy ten mod zostanie usunięty ze świata.
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=Odl. renderow. bytów
-options.screenEffectScale=Efekty zniekształcenia
-options.fovEffectScale=Efekty pola widzenia
-debug.gamemodes.help=F3 + F4 = Otwórz interfejs zmiany trybu gry
-debug.gamemodes.error=Nie można otworzyć interfejsu zmiany trybu gry, brak uprawnień
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=%s — następny
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=Moc efektu zniekształcenia powodowanego przez nudności i portale do Netheru.\nPrzy niższych wartościach efekt nudności zostaje zastąpiony zieloną nakładką.
-options.fovEffectScale.tooltip=Wpływa na stopień efektów zmiany pola widzenia w czasie rozgrywki.
-options.accessibility.link=Wskazówki ułatwień dostępu

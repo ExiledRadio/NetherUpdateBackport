@@ -1,5 +1,6 @@
 package com.exiledradio.netherupdatebackport.selftest;
 
+import com.exiledradio.backportcore.asm.DistortionTransformer;
 import com.exiledradio.backportcore.presentation.Contribution;
 import com.exiledradio.backportcore.presentation.GameVersion;
 import com.exiledradio.backportcore.presentation.LoadingRevision;
@@ -7,10 +8,8 @@ import com.exiledradio.backportcore.presentation.Presentation;
 import com.exiledradio.backportcore.presentation.Splashes;
 import com.exiledradio.backportcore.presentation.option.OptionScreen;
 import com.exiledradio.backportcore.presentation.option.PresentationOption;
+import com.exiledradio.backportcore.presentation.versions.Look116;
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
-import com.exiledradio.netherupdatebackport.asm.LookTransformer;
-import com.exiledradio.netherupdatebackport.lookfeel.LookAndFeel;
-import com.exiledradio.netherupdatebackport.lookfeel.LookHooks;
 import net.minecraft.util.ResourceLocation;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.ClassNode;
@@ -35,10 +34,15 @@ import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-/** Stream Lf: 1.16's look and feel registered with Backport Core, its assets, patches P3 and P4, and the lang overrides. */
+/**
+ * Stream Lf: 1.16's look and feel. Since 1.1.2 Backport Core owns every piece but the panorama, its overlay and the
+ * music (Core's {@code presentation.versions.Look116}, patches P70 and P71): this checks that this mod still declares
+ * 1.16 and that Core's pieces are there and right with it installed.
+ */
 public final class LookFeelSelfTest implements SelfTest {
 
     private static final String ID = NetherUpdateBackport.MOD_ID;
+    private static final String CORE = "backportcore";
 
     @Override
     public String name() {
@@ -78,7 +82,7 @@ public final class LookFeelSelfTest implements SelfTest {
         };
         for (String[] a : assets) {
             ResourceLocation src = Presentation.asset(a[0]);
-            c.eq(new ResourceLocation(ID, a[1]), src, "Core serves vanilla's " + a[0] + " from 1.16's");
+            c.eq(new ResourceLocation(CORE, "look/1.16/" + a[1]), src, "Core serves vanilla's " + a[0] + " from its own 1.16 copy");
             int[] size;
             try {
                 size = src == null ? null : pngSize(src);
@@ -87,11 +91,11 @@ public final class LookFeelSelfTest implements SelfTest {
             }
             c.ok(size != null && (a[2] == null || a[2].equals(size[0] + "x" + size[1])), a[1] + " is in the jar: " + Arrays.toString(size));
         }
-        c.eq(new ResourceLocation(ID, "textures/gui/accessibility.png"), Presentation.titleAccessibilityIcon(), "the title screen's Accessibility icon");
+        c.eq(new ResourceLocation(CORE, "look/1.16/textures/gui/accessibility.png"), Presentation.titleAccessibilityIcon(), "the title screen's Accessibility icon");
         String[] warn = Presentation.multiplayerWarning();
         c.ok(warn != null && "multiplayerWarning.header".equals(warn[0]) && "multiplayerWarning.check".equals(warn[2]),
                 "the multiplayer warning uses vanilla's keys: " + Arrays.toString(warn));
-        c.ok(Presentation.vanillaTexts().contains(new ResourceLocation(ID, "vanilla_text")), "1.16's vanilla text is registered");
+        c.ok(Presentation.vanillaTexts().contains(new ResourceLocation(CORE, "look/1.16/vanilla_text")), "1.16's vanilla text is registered");
         c.eq(com.exiledradio.backportcore.presentation.VanillaRevisions.Startup.STUDIOS_1_16,
                 com.exiledradio.backportcore.presentation.VanillaRevisions.startup(), "the startup screen is 1.16's");
     }
@@ -113,7 +117,8 @@ public final class LookFeelSelfTest implements SelfTest {
         int[] size = overlay == null ? null : pngSize(overlay);
         c.ok(size != null && size[0] == 1 && size[1] == 1, "1.16.5's overlay is one clear pixel: " + Arrays.toString(size));
         for (String tex : new String[] {"textures/gui/container/gamemode_switcher.png", "textures/misc/nausea.png"}) {
-            c.ok(pngSize(new ResourceLocation(ID, tex)) != null, tex + " is in the jar");
+            c.ok(pngSize(new ResourceLocation(CORE, "look/1.16/" + tex)) != null, tex + " is in Core's jar");
+            c.ok(pngSize(new ResourceLocation(ID, tex)) == null, tex + " is no longer in this mod's jar");
         }
     }
 
@@ -123,8 +128,8 @@ public final class LookFeelSelfTest implements SelfTest {
             "Getting ready to show!", "Getting ready to speak!"};
 
     private static void splashes(Check c) throws IOException {
-        List<String> added = lines(new ResourceLocation(ID, "texts/splashes_added.txt"));
-        List<String> removed = lines(new ResourceLocation(ID, "texts/splashes_removed.txt"));
+        List<String> added = lines(new ResourceLocation(CORE, "look/1.16/texts/splashes_added.txt"));
+        List<String> removed = lines(new ResourceLocation(CORE, "look/1.16/texts/splashes_removed.txt"));
         c.eq(41, added.size(), "1.16.5 adds this many splashes to 1.15.2's");
         c.eq(14, removed.size(), "1.16.5 removes this many");
         List<String> base = lines("/assets/minecraft/texts/splashes.txt");
@@ -148,46 +153,47 @@ public final class LookFeelSelfTest implements SelfTest {
             byId.put(o.id(), o);
         }
         Object[][] want = {
-                {LookAndFeel.ENTITY_DISTANCE, OptionScreen.VIDEO, "1.16", "options.entityDistanceScaling"},
-                {LookAndFeel.DISTORTION, OptionScreen.ACCESSIBILITY, "1.16.2", "options.screenEffectScale"},
-                {LookAndFeel.FOV_EFFECTS, OptionScreen.ACCESSIBILITY, "1.16.2", "options.fovEffectScale"},
+                {Look116.ENTITY_DISTANCE, OptionScreen.VIDEO, "1.16", "options.entityDistanceScaling"},
+                {Look116.DISTORTION, OptionScreen.ACCESSIBILITY, "1.16.2", "options.screenEffectScale"},
+                {Look116.FOV_EFFECTS, OptionScreen.ACCESSIBILITY, "1.16.2", "options.fovEffectScale"},
         };
         for (Object[] w : want) {
             PresentationOption o = (PresentationOption) w[0];
-            c.ok(byId.get(o.id()) == o, o.id() + " is registered");
+            c.ok(byId.get(o.id()) == o && o.isCoreOwned(), o.id() + " is registered, Core's");
+            c.ok(o.id().startsWith(ID + ":"), o.id() + " keeps this mod's id (saved values carry over)");
             c.eq(w[1], o.screen(), o.id() + "'s screen");
             c.eq(GameVersion.parse((String) w[2]), o.since(), o.id() + "'s since");
             c.eq(w[3], o.labelKey(), o.id() + "'s label");
             c.ok(o.isShown(), o.id() + " shows at the newest version");
         }
-        c.eq(0.5, LookAndFeel.ENTITY_DISTANCE.min(), "Entity Distance min");
-        c.eq(5.0, LookAndFeel.ENTITY_DISTANCE.max(), "Entity Distance max");
-        c.eq(1.0, LookAndFeel.ENTITY_DISTANCE.defaultValue(), "Entity Distance default");
-        c.eq(1.25, LookAndFeel.ENTITY_DISTANCE.snap(1.3), "Entity Distance moves in steps of 25%");
-        c.eq(1.0, LookAndFeel.DISTORTION.defaultValue(), "Distortion Effects default");
-        c.eq(1.0, LookAndFeel.FOV_EFFECTS.defaultValue(), "FOV Effects default");
+        c.eq(0.5, Look116.ENTITY_DISTANCE.min(), "Entity Distance min");
+        c.eq(5.0, Look116.ENTITY_DISTANCE.max(), "Entity Distance max");
+        c.eq(1.0, Look116.ENTITY_DISTANCE.defaultValue(), "Entity Distance default");
+        c.eq(1.25, Look116.ENTITY_DISTANCE.snap(1.3), "Entity Distance moves in steps of 25%");
+        c.eq(1.0, Look116.DISTORTION.defaultValue(), "Distortion Effects default");
+        c.eq(1.0, Look116.FOV_EFFECTS.defaultValue(), "FOV Effects default");
 
         List<String> video = ids(Presentation.optionsOn(OptionScreen.VIDEO));
-        int d = video.indexOf(LookAndFeel.DISTORTION.id());
-        int e = video.indexOf(LookAndFeel.ENTITY_DISTANCE.id());
-        int f = video.indexOf(LookAndFeel.FOV_EFFECTS.id());
+        int d = video.indexOf(Look116.DISTORTION.id());
+        int e = video.indexOf(Look116.ENTITY_DISTANCE.id());
+        int f = video.indexOf(Look116.FOV_EFFECTS.id());
         c.ok(d >= 0 && e >= 0 && f >= 0, "Video Settings shows all three (one option on two screens): " + video);
-        c.eq("ENTITY_SHADOWS", LookAndFeel.DISTORTION.after(), "Distortion Effects follows Entity Shadows");
-        c.eq(LookAndFeel.DISTORTION.id(), LookAndFeel.ENTITY_DISTANCE.after(), "Entity Distance follows Distortion Effects");
-        c.eq(LookAndFeel.ENTITY_DISTANCE.id(), LookAndFeel.FOV_EFFECTS.after(), "FOV Effects follows Entity Distance");
+        c.eq("ENTITY_SHADOWS", Look116.DISTORTION.after(), "Distortion Effects follows Entity Shadows");
+        c.eq(Look116.DISTORTION.id(), Look116.ENTITY_DISTANCE.after(), "Entity Distance follows Distortion Effects");
+        c.eq(Look116.ENTITY_DISTANCE.id(), Look116.FOV_EFFECTS.after(), "FOV Effects follows Entity Distance");
         List<String> access = ids(Presentation.optionsOn(OptionScreen.ACCESSIBILITY));
-        int ad = access.indexOf(LookAndFeel.DISTORTION.id());
-        int af = access.indexOf(LookAndFeel.FOV_EFFECTS.id());
+        int ad = access.indexOf(Look116.DISTORTION.id());
+        int af = access.indexOf(Look116.FOV_EFFECTS.id());
         c.ok(ad >= 0 && af == ad + 1, "Accessibility Settings shows Distortion Effects then FOV Effects: " + access);
-        c.ok(LookAndFeel.DISTORTION.alsoOn().contains(OptionScreen.VIDEO) && LookAndFeel.FOV_EFFECTS.alsoOn().contains(OptionScreen.VIDEO),
+        c.ok(Look116.DISTORTION.alsoOn().contains(OptionScreen.VIDEO) && Look116.FOV_EFFECTS.alsoOn().contains(OptionScreen.VIDEO),
                 "both are also on Video Settings (no mirrored copies)");
-        c.eq("options.off", LookAndFeel.DISTORTION.zeroKey(), "Distortion Effects reads OFF at zero");
-        c.eq("options.off", LookAndFeel.FOV_EFFECTS.zeroKey(), "FOV Effects reads OFF at zero");
-        c.eq("options.screenEffectScale.tooltip", LookAndFeel.DISTORTION.tooltipKey(), "Distortion Effects' tooltip");
-        c.eq("options.fovEffectScale.tooltip", LookAndFeel.FOV_EFFECTS.tooltipKey(), "FOV Effects' tooltip");
-        LookAndFeel.FOV_EFFECTS.set(0.25);
-        c.eq(0.5F, LookAndFeel.fovEffectScale(), "FOV Effects at 25% scales by its root, 0.5 (1.16.2's sqrt)");
-        LookAndFeel.FOV_EFFECTS.reset();
+        c.eq("options.off", Look116.DISTORTION.zeroKey(), "Distortion Effects reads OFF at zero");
+        c.eq("options.off", Look116.FOV_EFFECTS.zeroKey(), "FOV Effects reads OFF at zero");
+        c.eq("options.screenEffectScale.tooltip", Look116.DISTORTION.tooltipKey(), "Distortion Effects' tooltip");
+        c.eq("options.fovEffectScale.tooltip", Look116.FOV_EFFECTS.tooltipKey(), "FOV Effects' tooltip");
+        Look116.FOV_EFFECTS.set(0.25);
+        c.eq(0.5F, Look116.fovEffectScale(), "FOV Effects at 25% scales by its root, 0.5 (1.16.2's sqrt)");
+        Look116.FOV_EFFECTS.reset();
     }
 
     private static List<String> ids(List<PresentationOption> options) {
@@ -199,19 +205,19 @@ public final class LookFeelSelfTest implements SelfTest {
     }
 
     private static void hooks(Check c) {
-        c.eq(2.0F, LookHooks.portalWobble(2.0F), "full Distortion Effects keeps the wobble");
-        LookAndFeel.DISTORTION.set(0.5);
-        c.eq(0.5F, LookHooks.portalWobble(2.0F), "Distortion Effects at 50% scales the wobble by its square");
-        LookAndFeel.DISTORTION.set(0.0);
-        c.eq(0.0F, LookHooks.portalWobble(2.0F), "Distortion Effects off removes it");
-        LookAndFeel.DISTORTION.reset();
-        c.eq(1.5, LookHooks.entityDistance(1.5), "Entity Distance at 100% keeps vanilla's weight");
-        LookAndFeel.ENTITY_DISTANCE.set(2.0);
-        c.eq(3.0, LookHooks.entityDistance(1.5), "Entity Distance at 200% doubles it");
-        LookAndFeel.ENTITY_DISTANCE.reset();
+        c.eq(2.0F, Look116.portalWobble(2.0F), "full Distortion Effects keeps the wobble");
+        Look116.DISTORTION.set(0.5);
+        c.eq(0.5F, Look116.portalWobble(2.0F), "Distortion Effects at 50% scales the wobble by its square");
+        Look116.DISTORTION.set(0.0);
+        c.eq(0.0F, Look116.portalWobble(2.0F), "Distortion Effects off removes it");
+        Look116.DISTORTION.reset();
+        c.eq(1.5, Look116.entityDistance(1.5), "Entity Distance at 100% keeps vanilla's weight");
+        Look116.ENTITY_DISTANCE.set(2.0);
+        c.eq(3.0, Look116.entityDistance(1.5), "Entity Distance at 200% doubles it");
+        Look116.ENTITY_DISTANCE.reset();
     }
 
-    /** P3 and P4 against the dev jar's MCP-named classes and Forge's SRG-named jar, then a stack check. */
+    /** Core's P70 and P71 against the dev jar's MCP-named classes and Forge's SRG-named jar, then a stack check. */
     private static void patches(Check c) throws IOException {
         String[][] targets = {
                 {"net.minecraft.client.renderer.EntityRenderer", "portalWobble", "setupCameraTransform", "func_78479_a"},
@@ -219,7 +225,7 @@ public final class LookFeelSelfTest implements SelfTest {
         };
         for (String[] t : targets) {
             byte[] dev = classBytes(t[0]);
-            check(c, "dev " + t[0], dev == null ? null : LookTransformer.patchForTest(t[0], dev), t);
+            check(c, "dev " + t[0], dev == null ? null : DistortionTransformer.patchForTest(t[0], dev), t);
         }
         File srg = new File(System.getProperty("user.home"),
                 ".gradle/caches/minecraft/net/minecraftforge/forge/1.12.2-14.23.5.2847/stable/39/forge-1.12.2-14.23.5.2847-srgBin.jar");
@@ -231,7 +237,7 @@ public final class LookFeelSelfTest implements SelfTest {
             for (String[] t : targets) {
                 ZipEntry entry = zip.getEntry(t[0].replace('.', '/') + ".class");
                 byte[] bytes = entry == null ? null : read(zip.getInputStream(entry));
-                check(c, "SRG " + t[0], bytes == null ? null : LookTransformer.patchForTest(t[0], bytes), t);
+                check(c, "SRG " + t[0], bytes == null ? null : DistortionTransformer.patchForTest(t[0], bytes), t);
             }
         } finally {
             zip.close();
@@ -262,7 +268,7 @@ public final class LookFeelSelfTest implements SelfTest {
                 c.fail(what + "." + m.name + " fails ASM's stack check: " + e);
             }
         }
-        c.eq(1, hooks, what + ": calls to LookHooks." + t[1]);
+        c.eq(1, hooks, what + ": calls to Look116." + t[1]);
     }
 
     private static final String[][] LANG = {
@@ -287,18 +293,20 @@ public final class LookFeelSelfTest implements SelfTest {
             "ko_kr", "nl_nl", "pl_pl", "pt_br", "ru_ru", "tr_tr", "uk_ua", "zh_cn", "zh_tw"};
 
     private static void lang(Check c) throws IOException {
-        Map<String, String> en = langFile("lang", "en_us");
-        Map<String, String> ven = langFile("vanilla_text", "en_us");
+        Map<String, String> en = langFile(CORE, "lang", "en_us");
+        Map<String, String> ven = langFile(CORE, "look/1.16/vanilla_text", "en_us");
+        Map<String, String> own = langFile(ID, "lang", "en_us");
         for (String[] kv : LANG) {
-            c.ok(kv[1] == null ? en.containsKey(kv[0]) : kv[1].equals(en.get(kv[0])), "en_us " + kv[0] + ": " + en.get(kv[0]));
+            c.ok(kv[1] == null ? en.containsKey(kv[0]) : kv[1].equals(en.get(kv[0])), "Core's en_us " + kv[0] + ": " + en.get(kv[0]));
+            c.ok(!own.containsKey(kv[0]), kv[0] + " left this mod's lang");
         }
         for (String[] kv : VANILLA) {
             c.eq(kv[1], ven.get(kv[0]), "vanilla_text en_us " + kv[0]);
-            c.ok(!en.containsKey(kv[0]), kv[0] + " is not in the mod's own lang (load order would decide it)");
+            c.ok(!en.containsKey(kv[0]) && !own.containsKey(kv[0]), kv[0] + " is in no mod's own lang (load order would decide it)");
         }
         for (String code : LANGUAGES) {
-            Map<String, String> l = langFile("lang", code);
-            Map<String, String> v = langFile("vanilla_text", code);
+            Map<String, String> l = langFile(CORE, "lang", code);
+            Map<String, String> v = langFile(CORE, "look/1.16/vanilla_text", code);
             int have = 0;
             for (String[] kv : LANG) {
                 if (l.get(kv[0]) != null && !l.get(kv[0]).isEmpty()) {
@@ -317,9 +325,9 @@ public final class LookFeelSelfTest implements SelfTest {
 
     // ------------------------------------------------------------------------------------------
 
-    private static Map<String, String> langFile(String folder, String code) throws IOException {
+    private static Map<String, String> langFile(String namespace, String folder, String code) throws IOException {
         Map<String, String> out = new HashMap<String, String>();
-        for (String line : lines(new ResourceLocation(ID, folder + "/" + code + ".lang"))) {
+        for (String line : lines(new ResourceLocation(namespace, folder + "/" + code + ".lang"))) {
             int eq = line.indexOf('=');
             if (eq > 0 && !line.startsWith("#")) {
                 out.put(line.substring(0, eq), line.substring(eq + 1));

@@ -7,9 +7,8 @@ import com.exiledradio.backportcore.presentation.Presentation;
 import com.exiledradio.backportcore.presentation.client.PanoramaRenderer;
 import com.exiledradio.backportcore.presentation.client.TitleSplashes;
 import com.exiledradio.netherupdatebackport.NetherUpdateBackport;
-import com.exiledradio.netherupdatebackport.asm.LookTransformer;
-import com.exiledradio.netherupdatebackport.lookfeel.LookAndFeel;
-import com.exiledradio.netherupdatebackport.lookfeel.client.LookAndFeelClient;
+import com.exiledradio.backportcore.presentation.versions.Look116;
+import com.exiledradio.backportcore.presentation.versions.client.Look116Client;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiCreateWorld;
 import net.minecraft.client.gui.GuiMainMenu;
@@ -30,7 +29,7 @@ import java.util.Map;
 /**
  * Stream Lf's client check, for {@code gradlew runClient -Pselftest=client}: at the title screen it checks what
  * Backport Core shows (newest version, panorama, overlay, splash pool, loading revision, F3 keys), the lang
- * overrides and patches P3 and P4, and the Singleplayer button, all in code (nothing reaches the window). It logs
+ * overrides and Core's patches P70 and P71, and the Singleplayer button, all in code (nothing reaches the window). It logs
  * {@code LOOKFEEL ...} lines and {@code CLIENT SELFTEST DONE pass=N fail=M}, then closes the game.
  *
  * <p>With other backports installed beside this one (the family's combined check) it also checks that their
@@ -119,9 +118,11 @@ public final class ClientLookFeelTest {
         ok(n != null && n.action != null && "debug.creative_spectator.help".equals(n.helpKey), "F3+N is 1.16's: " + n);
         NetherUpdateBackport.LOGGER.info("LOOKFEEL F3 keys: {}", keys.values());
 
-        // P3 and P4 ran on the classes the client loaded.
-        ok(LookTransformer.appliedP3, "P3 (Distortion Effects) patched EntityRenderer");
-        ok(LookTransformer.appliedP4, "P4 (Entity Distance) patched RenderGlobal");
+        // Core's P70 and P71 (this mod's P3 and P4 before 1.1.2) ran on the classes the client loaded.
+        ok("applied".equals(com.exiledradio.backportcore.asm.Asm.state("P70")), "P70 (Distortion Effects) patched EntityRenderer: "
+                + com.exiledradio.backportcore.asm.Asm.state("P70"));
+        ok("applied".equals(com.exiledradio.backportcore.asm.Asm.state("P71")), "P71 (Entity Distance) patched RenderGlobal: "
+                + com.exiledradio.backportcore.asm.Asm.state("P71"));
 
         // Lang: 1.16's wording of vanilla's keys (Core's vanilla text) and this mod's own.
         String[][] lang = {
@@ -139,7 +140,7 @@ public final class ClientLookFeelTest {
         // Textures this stream draws.
         for (String tex : new String[] {"textures/gui/container/gamemode_switcher.png", "textures/misc/nausea.png"}) {
             try {
-                mc.getResourceManager().getResource(new ResourceLocation(NetherUpdateBackport.MOD_ID, tex)).close();
+                mc.getResourceManager().getResource(new ResourceLocation("backportcore", "look/1.16/" + tex)).close();
                 ok(true, tex);
             } catch (Exception e) {
                 ok(false, tex + " loads: " + e);
@@ -158,7 +159,7 @@ public final class ClientLookFeelTest {
         ok(composed != null && composed.length > 100, "Core composes vanilla text for en_us from " + Presentation.vanillaTexts() + ": "
                 + (composed == null ? "null" : composed.length + " bytes") + "; class loader sees the file: "
                 + (com.exiledradio.backportcore.presentation.client.VanillaAssetPack.class.getClassLoader()
-                        .getResource("assets/netherupdatebackport/vanilla_text/en_us.lang")));
+                        .getResource("assets/backportcore/look/1.16/vanilla_text/en_us.lang")));
         ok(com.exiledradio.backportcore.presentation.VanillaRevisions.startup() == com.exiledradio.backportcore.presentation.VanillaRevisions.Startup.STUDIOS_1_16,
                 "the startup screen is 1.16's");
         ok(com.exiledradio.backportcore.presentation.client.StartupScreen.lastDrawn == com.exiledradio.backportcore.presentation.VanillaRevisions.Startup.STUDIOS_1_16
@@ -186,7 +187,7 @@ public final class ClientLookFeelTest {
             for (net.minecraft.client.gui.GuiButton b : buttons) {
                 guide |= "Accessibility Guide".equals(b.displayString);
                 if (b instanceof com.exiledradio.backportcore.presentation.client.OptionWidgets.OptionButton
-                        && ((com.exiledradio.backportcore.presentation.client.OptionWidgets.OptionButton) b).option() == LookAndFeel.DISTORTION) {
+                        && ((com.exiledradio.backportcore.presentation.client.OptionWidgets.OptionButton) b).option() == Look116.DISTORTION) {
                     distortion++;
                 }
             }
@@ -205,7 +206,7 @@ public final class ClientLookFeelTest {
                 others, Presentation.assets(), Presentation.vanillaTexts(), com.exiledradio.backportcore.presentation.client.GameMusic.names(),
                 com.exiledradio.backportcore.presentation.client.DebugText.steps().names(newest));
         if (others) {
-            String id = NetherUpdateBackport.MOD_ID;
+            String id = "backportcore";
             ok(id.equals(Presentation.asset("textures/gui/widgets.png").getNamespace()), "combined: widgets.png is 1.16's (over 1.15's)");
             ok(id.equals(Presentation.asset("textures/gui/checkbox.png").getNamespace()), "combined: checkbox.png is 1.16's (over 1.15.2's)");
             ok(id.equals(Presentation.titleAccessibilityIcon().getNamespace()), "combined: the title Accessibility icon is 1.16's (over 1.14's and 1.15's)");
@@ -227,7 +228,7 @@ public final class ClientLookFeelTest {
 
         // Singleplayer: Create New World when there is no world, the world list otherwise.
         GuiScreen menu = mc.currentScreen;
-        boolean empty = LookAndFeelClient.noWorlds(mc);
+        boolean empty = Look116Client.noWorlds(mc);
         mc.displayGuiScreen(new GuiWorldSelection(menu));
         ok(empty ? mc.currentScreen instanceof GuiCreateWorld : mc.currentScreen instanceof GuiWorldSelection,
                 "Singleplayer with " + (empty ? "no world" : "worlds") + " opens " + (mc.currentScreen == null ? null : mc.currentScreen.getClass().getSimpleName()));

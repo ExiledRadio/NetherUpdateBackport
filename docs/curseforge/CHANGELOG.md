@@ -1,3 +1,7 @@
+# 1.1.2
+
+*   **1.16's look and feel is Backport Core's now** (needs Backport Core 1.4.7): Entity Distance, Distortion Effects and FOV Effects (with the green nausea overlay), F3 + F4's game mode switcher, F3 + N, the F3 spawn counts and targeted block coordinates, Singleplayer opening Create New World when there is no world, the title and startup logos, the button, check box and Accessibility textures, the multiplayer warning, the splashes and vanilla's 1.16 wording. They work as before, and a later backport installed without this one has them too. Saved option values carry over. The nether panorama and the music stay in this mod.
+
 # 1.1.1
 
 *   **With Game Drops Backport, babies get 26.1's models**: baby hoglins, zoglins, striders, piglins and zombified piglins are drawn with their own 26.1 models and textures, baby piglins with their baby armor, helmets and held items. They follow Game Drops Backport's Baby Models setting; without it, they show when Backport Core's look is 26.1 or later, and are 1.16's shrunken adults otherwise.

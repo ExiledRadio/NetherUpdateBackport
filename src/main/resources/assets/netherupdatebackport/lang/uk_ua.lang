@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=Дублікати блоків
 config.netherupdatebackport.compat.duplicates.tooltip=Коли інший установлений мод додає ті самі блоки й предмети з 1.16: OURS приховує блоки й предмети іншого мода, THEIRS приховує наші, BOTH нічого не приховує. Генеруються лише видимі стародавні залишки.
 config.netherupdatebackport.compat.convertRemoved=Перетворювати після видалення
 config.netherupdatebackport.compat.convertRemoved.tooltip=Перетворює блоки та предмети, що залишилися від іншого мода, який їх додавав, коли цей мод видалено зі світу.
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=Відст. до сутностей
-options.screenEffectScale=Ефекти викривлення
-options.fovEffectScale=Ефекти поля зору
-debug.gamemodes.help=F3 + F4 = Відкрити перемикач режиму гри
-debug.gamemodes.error=Неможливо відкрити перемикач режиму гри: немає прав
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=%s — далі
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=Сила ефектів запаморочення та спотворення екрана від порталу Незеру.\nЗа низьких значень ефект запаморочення замінюється зеленим підсвічуванням.
-options.fovEffectScale.tooltip=Керує тим, наскільки ігрові ефекти можуть змінювати поле зору.
-options.accessibility.link=Посібник із доступности

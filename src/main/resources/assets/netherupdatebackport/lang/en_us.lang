@@ -392,17 +392,3 @@ config.netherupdatebackport.compat.duplicates=Duplicate Blocks
 config.netherupdatebackport.compat.duplicates.tooltip=When another installed mod adds the same 1.16 blocks and items: OURS hides the other mod's, THEIRS hides ours, BOTH hides nothing. Only the visible ancient debris generates.
 config.netherupdatebackport.compat.convertRemoved=Convert when removed
 config.netherupdatebackport.compat.convertRemoved.tooltip=Convert blocks and items left behind by another mod that added them, when that mod is removed from a world.
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=Entity Distance
-options.screenEffectScale=Distortion Effects
-options.fovEffectScale=FOV Effects
-debug.gamemodes.help=F3 + F4 = Open game mode switcher
-debug.gamemodes.error=Unable to open game mode switcher; no permission
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=%s Next
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=Strength of nausea and Nether portal screen distortion effects.\nAt lower values, the nausea effect is replaced with a green overlay.
-options.fovEffectScale.tooltip=Controls how much the field of view can change with speed effects.
-options.accessibility.link=Accessibility Guide

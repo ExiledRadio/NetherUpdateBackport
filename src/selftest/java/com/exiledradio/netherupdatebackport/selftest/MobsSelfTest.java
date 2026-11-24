@@ -253,7 +253,7 @@ public final class MobsSelfTest implements SelfTest {
     private static boolean langHas(String line) throws Exception {
         BufferedReader in = new BufferedReader(new InputStreamReader(
                 // A rewording of vanilla's own key: Backport Core's vanilla text (newest version wins), not lang/.
-                MobsSelfTest.class.getResourceAsStream("/assets/netherupdatebackport/vanilla_text/en_us.lang"), "UTF-8"));
+                MobsSelfTest.class.getResourceAsStream("/assets/backportcore/look/1.16/vanilla_text/en_us.lang"), "UTF-8"));
         try {
             for (String l = in.readLine(); l != null; l = in.readLine()) {
                 if (l.equals(line)) {

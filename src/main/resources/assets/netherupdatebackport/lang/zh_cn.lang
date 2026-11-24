@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=重复方块
 config.netherupdatebackport.compat.duplicates.tooltip=当另一个已安装的模组添加了相同的1.16方块和物品时：OURS隐藏那个模组的，THEIRS隐藏我们的，BOTH不隐藏任何内容。只有可见的远古残骸会生成。
 config.netherupdatebackport.compat.convertRemoved=移除时转换
 config.netherupdatebackport.compat.convertRemoved.tooltip=当另一个添加了这些方块和物品的模组从世界中移除后，转换它遗留下来的方块和物品。
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=实体渲染距离
-options.screenEffectScale=屏幕扭曲效果
-options.fovEffectScale=视场角效果
-debug.gamemodes.help=F3 + F4 = 打开游戏模式切换器
-debug.gamemodes.error=你没有权限打开游戏模式切换器
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=%s 下一个
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=反胃状态效果和下界传送门所使用的屏幕扭曲效果的强度。\n值较低时，反胃的扭曲效果会被一层绿色的视觉效果替代。
-options.fovEffectScale.tooltip=控制游戏机制效果改变视场角的程度。
-options.accessibility.link=辅助功能指南

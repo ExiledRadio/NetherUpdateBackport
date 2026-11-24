@@ -393,17 +393,3 @@ config.netherupdatebackport.compat.duplicates=Dubbele blokken
 config.netherupdatebackport.compat.duplicates.tooltip=Als een andere geïnstalleerde mod dezelfde blokken en voorwerpen uit 1.16 toevoegt: OURS verbergt die van de andere mod, THEIRS verbergt die van ons, BOTH verbergt niets. Alleen het zichtbare oude puin genereert.
 config.netherupdatebackport.compat.convertRemoved=Omzetten bij verwijderen
 config.netherupdatebackport.compat.convertRemoved.tooltip=Zet blokken en voorwerpen om die zijn achtergelaten door een andere mod die ze toevoegde, wanneer die mod uit een wereld wordt verwijderd.
-
-# Stream Lf: 1.16's look and feel. Options and the game mode switcher (1.16, 1.16.2).
-options.entityDistanceScaling=Entiteitsafstand
-options.screenEffectScale=Vervormingseffecten
-options.fovEffectScale=Gezichtsveldeffecten
-debug.gamemodes.help=F3 + F4 = Spelmoduswisselaar openen
-debug.gamemodes.error=Spelmoduswisselaar openen mislukt. Geen toestemming
-debug.gamemodes.press_f4=[ F4 ]
-debug.gamemodes.select_next=Volgende: %s
-
-# Vanilla text 1.16.5 words differently from 1.12.2 (the same keys, from a diff of the 1.15.2 and 1.16.5 jars).
-options.screenEffectScale.tooltip=Misselijkheidskracht- en Netherportaalschermvervormingseffecten.\nBij lagere waarden wordt het misselijkheidseffect vervangen door een groene waas.
-options.fovEffectScale.tooltip=Bepaalt hoeveel het gezichtsveld kan wijzigen met speleffecten.
-options.accessibility.link=Toegankelijkheidsgids
