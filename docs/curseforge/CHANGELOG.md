@@ -1,6 +1,8 @@
 # 1.1.2
 
-*   **1.16's look and feel is Backport Core's now** (needs Backport Core 1.4.7): Entity Distance, Distortion Effects and FOV Effects (with the green nausea overlay), F3 + F4's game mode switcher, F3 + N, the F3 spawn counts and targeted block coordinates, Singleplayer opening Create New World when there is no world, the title and startup logos, the button, check box and Accessibility textures, the multiplayer warning, the splashes and vanilla's 1.16 wording. They work as before, and a later backport installed without this one has them too. Saved option values carry over. The nether panorama and the music stay in this mod.
+*   **1.16's look and feel is Backport Core's now**: Entity Distance, Distortion Effects and FOV Effects (with the green nausea overlay), F3 + F4's game mode switcher, F3 + N, the F3 spawn counts and targeted block coordinates, Singleplayer opening Create New World when there is no world, the title and startup logos, the button, check box and Accessibility textures, the multiplayer warning, the splashes and vanilla's 1.16 wording. They work as before, and a later backport installed without this one has them too. Saved option values carry over. The nether panorama and the music stay in this mod.
+
+Needs Backport Core 1.4.7 or newer.
 
 # 1.1.1
 
