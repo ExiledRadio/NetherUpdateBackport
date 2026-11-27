@@ -1,3 +1,9 @@
+# 1.1.3
+
+*   **Lanterns and soul lanterns stand on furniture tables**: MrCrayfish's Furniture Mod and other furniture mods' tables, desks and counters hold them, as any block with a full top does. A lantern goes by the shape of the block's top, as current Java does.
+
+Needs Backport Core 1.4.7 or newer.
+
 # 1.1.2
 
 *   **1.16's look and feel is Backport Core's now**: Entity Distance, Distortion Effects and FOV Effects (with the green nausea overlay), F3 + F4's game mode switcher, F3 + N, the F3 spawn counts and targeted block coordinates, Singleplayer opening Create New World when there is no world, the title and startup logos, the button, check box and Accessibility textures, the multiplayer warning, the splashes and vanilla's 1.16 wording. They work as before, and a later backport installed without this one has them too. Saved option values carry over. The nether panorama and the music stay in this mod.

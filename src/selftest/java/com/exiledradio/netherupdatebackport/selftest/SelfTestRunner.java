@@ -54,6 +54,7 @@ public final class SelfTestRunner {
             new HoglinSelfTest(),
             new StriderSelfTest(),
             new OwnedSelfTest(),
+            new LanternTableSelfTest(),
             new ChangesSelfTest(),
             new MechanicsSelfTest(),
             new SmallChangesSelfTest(),

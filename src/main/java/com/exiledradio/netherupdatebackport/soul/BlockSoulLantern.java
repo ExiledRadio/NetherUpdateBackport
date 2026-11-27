@@ -65,7 +65,8 @@ public final class BlockSoulLantern extends Block implements Waterloggable {
         BlockFaceShape shape = world.getBlockState(at).getBlockFaceShape(world, at, towards.getOpposite());
         return shape == BlockFaceShape.SOLID || shape == BlockFaceShape.CENTER || shape == BlockFaceShape.CENTER_BIG
                 || shape == BlockFaceShape.CENTER_SMALL || shape == BlockFaceShape.MIDDLE_POLE_THICK
-                || shape == BlockFaceShape.MIDDLE_POLE || shape == BlockFaceShape.MIDDLE_POLE_THIN;
+                || shape == BlockFaceShape.MIDDLE_POLE || shape == BlockFaceShape.MIDDLE_POLE_THIN
+                || com.exiledradio.netherupdatebackport.owned.CenterSupport.byShape(world, at, towards.getOpposite());
     }
 
     static boolean canStay(IBlockAccess world, BlockPos pos, boolean hanging) {
